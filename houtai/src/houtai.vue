@@ -111,14 +111,28 @@ export default {
 	height: 100%;
 	.config_left {
 		height: 100%;
+
 		.el-menu-vertical-demo:not(.el-menu--collapse) {
 			width: 220px;
-			min-height: 400px;
+			// min-height: 400px;
+			height: 100vh;
+			background-image: linear-gradient(
+				-60deg,
+				#6af0e9 0%,
+				#edafff 100%
+			);
+		}
+		.el-menu-item {
+			font-family: PingFangSC-Medium;
+			font-weight: 500;
+			font-size: 0.16rem;
+			color: #791d94;
 		}
 	}
 	.config_right {
 		height: 100%;
 		flex: 1;
+		font-size: 0.16rem;
 	}
 }
 </style>
