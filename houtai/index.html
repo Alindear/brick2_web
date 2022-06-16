@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>BNS</title>
+    <script src="https://ruigedist.oss-cn-hongkong.aliyuncs.com/vendor.dll.js"></script>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> -->
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="no" />
+
+    <link rel="icon" href="houtai/img/首页/BNS_logo@2x.png" sizes="32x32" />
+    <link rel="icon" href="houtai/img/BNS_logo@2x.png" sizes="192x192" />
+    <!-- <link rel="apple-touch-icon" href="houtai/img/701651807815_old.png" /> -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- <div id="prepare">
+            <button class="btn btn-primary" id="btn-connect">
+              Connect wallet
+            </button>
+          </div> -->
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+    <script type="text/javascript"
+        src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+
+    <!-- <script type="text/javascript" src="./web3_eth.js"></script> -->
+
+</body>
+<script>
+    fnResize()
+    window.onresize = function () {
+        fnResize()
+
+    }
+    function fnResize() {
+        var deviceWidth = document.documentElement.clientWidth || window.innerWidth
+        console.log('deviceWidth----111', deviceWidth);
+        if (deviceWidth >= 750) {
+            deviceWidth = 750
+        }
+        if (deviceWidth <= 320) {
+            deviceWidth = 320
+        }
+        document.documentElement.style.fontSize = (deviceWidth / 7.5) + 'px'
+        console.log('document.documentElement.style.fontSize------2222', document.documentElement.style.fontSize);
+    }
+</script>
+
+</html>

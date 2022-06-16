@@ -1,0 +1,32 @@
+{
+	"presets": [
+		[
+			"@babel/env",
+			{
+				"useBuiltIns": "usage",
+				"corejs": "3.8"
+			}
+		]
+	],
+	"sourceType": "unambiguous",
+	"plugins": [
+		"@babel/plugin-syntax-dynamic-import",
+		[
+			"component",
+			{
+				"libraryName": "element-ui",
+				"styleLibraryName": "theme-chalk"
+			}
+		],
+		"@babel/transform-runtime",
+		[
+			"import",
+			{
+				"libraryName": "vant",
+				"libraryDirectory": "es",
+				"style": true
+			},
+			"vant"
+		]
+	]
+}
