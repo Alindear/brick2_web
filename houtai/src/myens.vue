@@ -1,6 +1,6 @@
 <template>
-    <div class="app_main">
-        首页
+    <div class="app_my">
+        我的域名
     </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.app_main {
+.app_my {
 	height: 100%;
 	width: 100%;
 }

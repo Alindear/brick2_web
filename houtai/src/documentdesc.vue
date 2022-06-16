@@ -1,6 +1,6 @@
 <template>
-    <div class="app_main">
-        首页
+    <div class="app_desc">
+        文档说明
     </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.app_main {
+.app_desc {
 	height: 100%;
 	width: 100%;
 }
