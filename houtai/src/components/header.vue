@@ -33,6 +33,13 @@
                     </span>
                     <el-button @click="disConnect">断开连接</el-button>
                 </div>
+                <div class="secrch_title">
+                    <img
+                        :src="searchPng"
+                        alt=""
+                    >
+                    <span>搜索</span>
+                </div>
             </div>
         </div>
     </div>
@@ -41,6 +48,7 @@
 <script>
 import anglesign from 'img/角标.png';
 import menu from 'img/菜单.png';
+import searchPng from 'img/icon/编组.png';
 import closemenu from 'img/关闭菜单.png';
 import logoPng from 'img/首页/BNS_logo@2x.png';
 import 'houtai/web3.min.js';
@@ -61,6 +69,7 @@ export default {
 			menu,
 			closemenu,
 			logoPng,
+			searchPng,
 			selectedAccount: '',
 			menuFlag: true,
 		};
@@ -191,6 +200,37 @@ export default {
 					font-size: 0.16rem;
 					color: #000000;
 					margin-right: 0.32rem;
+				}
+			}
+
+			.secrch_title {
+				width: 0.92rem;
+				height: 0.48rem;
+				border-radius: 0.24rem;
+				border: 1px;
+				border-style: solid;
+				border-image: linear-gradient(
+						to right,
+						#e5b3fd,
+						#7de7ec
+					)
+					1 10;
+				padding: 0 0.12rem;
+				img {
+					height: 0.22rem;
+					width: 0.2rem;
+				}
+				span {
+					width: 0.32rem;
+					height: 0.22rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.16rem;
+					background-image: linear-gradient(
+						right,
+						#e5b3fd,
+						#7de7ec
+					);
 				}
 			}
 		}
