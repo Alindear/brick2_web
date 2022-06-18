@@ -222,7 +222,7 @@ export default {
 	.menu_content {
 		width: 7.5rem;
 		// width: 3.5rem;
-		height: 13.34rem;
+		// height: 13.34rem;
 		position: relative;
 		z-index: 1;
 		.animate_bounceIn {
@@ -425,7 +425,7 @@ export default {
 		}
 		.menu_content {
 			width: 7.5rem;
-			height: 13.34rem;
+			// height: 13.34rem;
 			position: relative;
 			z-index: 1;
 			.animate_bounceIn {
