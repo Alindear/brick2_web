@@ -118,6 +118,7 @@ export default {
 	// height: 100%;
 	width: 100%;
 	height: 1rem;
+	background-color: #ffffff;
 	.header_pc {
 		display: flex;
 		flex-direction: row;
