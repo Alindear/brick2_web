@@ -4,19 +4,19 @@ export default new VueRouter({
     routes: [
         {
             path: '/',
-            redirect: '/brick/index',
+            redirect: '/index',
+        },
+        {
+            path: '/index',
+            component: () =>
+                import(
+                    'houtai/src/index.vue'
+                ),
         },
         {
             path: '/brick',
             component: () => import('houtai/src/houtai.vue'),
             children: [
-                {
-                    path: '/brick/index',
-                    component: () =>
-                        import(
-                            'houtai/src/index.vue'
-                        ),
-                },
                 {
                     path: '/brick/myens',
                     component: () =>

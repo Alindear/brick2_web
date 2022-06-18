@@ -5,7 +5,6 @@
         </div>
         <div class="container_config">
             <div class="config_left">
-
                 <el-menu
                     default-active="2"
                     :collapse="isCollapse"
@@ -61,7 +60,7 @@ export default {
 			configData: [
 				{
 					label: '首页',
-					path: '/brick/index',
+					path: '/index',
 					img: indexIcon,
 					code: '0501',
 					showed: true,
@@ -111,15 +110,15 @@ export default {
 .houtai_container {
 	display: flex;
 	flex-direction: column;
-	// justify-content: space-around;
 	width: 100%;
-	// height: 100%;
 	.container_config {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;
 		.config_left {
-			// height: 100%;
+			ul {
+				padding-top: 0.2rem;
+			}
 			.el-menu-vertical-demo:not(.el-menu--collapse) {
 				width: 2.7rem;
 				height: calc(100vh - 1rem);
@@ -130,7 +129,6 @@ export default {
 				);
 			}
 			.el-menu-item {
-				// width: 2.7rem;
 				height: 0.3rem;
 				line-height: 0.3rem;
 				font-family: PingFangSC-Medium;

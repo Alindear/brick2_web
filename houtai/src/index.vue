@@ -1,5 +1,8 @@
 <template>
     <div class="app_main">
+        <div class="header_top">
+            <head-er type="index"></head-er>
+        </div>
         首页
     </div>
 </template>
