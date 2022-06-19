@@ -108,6 +108,7 @@
                 <div
                     class="left_img"
                     v-if="!changeStatusShowFlag && !linkShowFlag"
+                    @click="linkClick"
                 >
                     <p
                         class="dis_link"
@@ -691,6 +692,14 @@ export default {
 				height: 6.6rem;
 				background-image: url('houtai/img/首页/收益.png');
 				background-size: 100% 100%;
+				border: 1px solid;
+				border-image: linear-gradient(
+						to bottom,
+						#e5b3fd,
+						#7de7ec
+					)
+					1 10;
+				box-sizing: border-box;
 				.now_profit {
 					margin-left: 0.69rem;
 					margin-bottom: 1.95rem;
