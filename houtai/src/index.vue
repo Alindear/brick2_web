@@ -1,9 +1,11 @@
 <template>
     <div class="app_main">
+        <div class="back_top_img"></div>
         <div class="header_top">
             <head-er type="index"></head-er>
         </div>
         <div class="index_content">
+            <div class="back_bottom_img"></div>
             <div class="index_left">
                 <div class="left_top">
                     <!-- <span>BNS</span>
@@ -119,12 +121,29 @@ export default {
 	width: 100%;
 	font-size: 0.16rem;
 	background: #ffffff;
+	position: relative;
+	// .header_top {
+	// 	// position: relative;
+	// 	position: absolute;
+	// }
+	.back_top_img {
+		width: 4.34rem;
+		height: 7.84rem;
+		opacity: 0.12;
+		background: #e3a0ff;
+		filter: blur(0.44rem);
+		position: absolute;
+		top: -3.92rem;
+		right: 0;
+		float: right;
+	}
 	.index_content {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		height: 9.8rem;
 		box-sizing: border-box;
+		position: relative;
 		// background: pink;
 		.index_left {
 			margin-top: 1.62rem;
@@ -135,35 +154,6 @@ export default {
 				img {
 					height: 1.48rem;
 				}
-				// span {
-				// 	width: 1.69rem;
-				// 	height: 1.03rem;
-				// 	font-family: Womby-Regular;
-				// 	font-weight: 600;
-				// 	font-size: 0.86rem;
-				// 	color: #ffffff;
-				// 	letter-spacing: 0.04rem;
-				// 	background-image: linear-gradient(
-				// 		to right,
-				// 		#6af0e9,
-				// 		#edafff
-				// 	);
-				// 	-webkit-background-clip: text;
-				// 	color: transparent;
-				// }
-				// .el-button {
-				// 	width: 3.28rem;
-				// 	height: 1.48rem;
-				// 	background-image: linear-gradient(
-				// 		-60deg,
-				// 		#6af0e9 0%,
-				// 		#edafff 100%
-				// 	);
-				// 	border-radius: 0.24rem;
-				// 	font-family: CKTKingKong;
-				// 	font-size: 0.72rem;
-				// 	color: #ffffff;
-				// }
 			}
 			.left_center {
 				display: flex;
@@ -297,6 +287,19 @@ export default {
 				height: 2.07rem;
 				margin-top: 0.315rem;
 			}
+		}
+		.back_bottom_img {
+			width: 6.28rem;
+			// height: 5.45rem;
+			height: 4.2rem;
+			opacity: 0.11;
+			background: #78ffef;
+			filter: blur(44px);
+			position: absolute;
+			float: left;
+			left: -1.74rem;
+			bottom: 0;
+			// bottom: -1.25rem;
 		}
 	}
 }

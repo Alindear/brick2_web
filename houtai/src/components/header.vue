@@ -33,7 +33,10 @@
                     </span>
                     <el-button @click="disConnect">断开连接</el-button>
                 </div>
-                <div class="secrch_title">
+                <div
+                    class="secrch_title"
+                    v-if="$route.fullPath !== '/index'"
+                >
                     <div class="search_border">
                         <img
                             :src="searchPng"
@@ -85,6 +88,7 @@ export default {
 	methods: {
 		// 链接钱包
 		async onConnect() {
+			console.log('连接');
 			let _this = this;
 			await connectWallet(function () {
 				_this.selectedAccount = currentAddr;
