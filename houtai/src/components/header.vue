@@ -13,6 +13,7 @@
                     <span @click="goRouter('/brick/myens')">我的域名</span>
                     <span @click="goRouter('/brick/documentdesc')">文档说明</span>
                     <span @click="goRouter('/brick/contactus')">联系社区</span>
+                    <span @click="goRouter('/brick/searchEns')">11111</span>
                 </div>
 
                 <div
@@ -88,21 +89,20 @@ export default {
 	methods: {
 		// 链接钱包
 		async onConnect() {
-			console.log('连接');
-			if (this.$route.fullPath === '/index') {
-				console.log('this.isconnect', this.isconnect);
-				this.isconnect = true;
-				this.$emit('changeStatus', this.isconnect);
-			}
+			// console.log('连接');
+			// if (this.$route.fullPath === '/index') {
+			// 	this.isconnect = true;
+			// 	this.$emit('changeStatus', this.isconnect);
+			// }
 			let _this = this;
 			await connectWallet(function () {
 				_this.selectedAccount = currentAddr;
 				_this.isconnect = true;
 			});
-			// if (this.$route.fullPath === '/index') {
-			// 	console.log('this.isconnect', this.isconnect);
-			// 	this.$emit('changeStatus', this.isconnect);
-			// }
+			if (this.$route.fullPath === '/index') {
+				console.log('this.isconnect', this.isconnect);
+				this.$emit('changeStatus', this.isconnect);
+			}
 
 			//await allowancedUSDT();
 		},

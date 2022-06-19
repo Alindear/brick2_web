@@ -38,6 +38,14 @@ export default new VueRouter({
                             'houtai/src/contactus.vue'
                         ),
                 },
+                {
+                    path: '/brick/searchens',
+                    component: () =>
+                        import(
+                            'houtai/src/searchEns.vue'
+                        ),
+                },
+
 
 
 
