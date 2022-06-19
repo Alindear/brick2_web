@@ -35,6 +35,9 @@
                         >
                         您的浏览器不支持 HTML5 video 标签。
                     </video>
+                    <div class="video_btn">
+                        <el-button @click="registerBtn">注册域名</el-button>
+                    </div>
                 </div>
                 <div
                     class="bottom_popover2"
@@ -183,6 +186,10 @@ export default {
 			console.log('index', index);
 			this.popoverClick = index;
 		},
+		// 注册域名
+		registerBtn() {
+			console.log('注册域名');
+		},
 	},
 };
 </script>
@@ -257,10 +264,29 @@ export default {
 				border-radius: 0.3128rem;
 				margin: 0.25rem 0.5rem 0;
 				box-sizing: border-box;
+				position: relative;
 				video {
 					width: 13.5rem;
 					height: 7.594rem;
 					padding-top: 0.23rem;
+				}
+				.video_btn {
+					position: absolute;
+					right: 0.53rem;
+					top: 6.5rem;
+					// bottom: 0.38rem;
+					.el-button {
+						width: 1.44rem;
+						height: 0.7rem;
+						background: #5c70ff;
+						border: 1px solid #5c70ff;
+						border-radius: 64.5px;
+						font-family: PingFangSC-Semibold;
+						font-weight: 600;
+						font-size: 0.16rem;
+						color: #ffffff;
+						text-align: center;
+					}
 				}
 			}
 			.bottom_popover2 {

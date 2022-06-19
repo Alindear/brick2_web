@@ -34,11 +34,13 @@
                     <el-button @click="disConnect">断开连接</el-button>
                 </div>
                 <div class="secrch_title">
-                    <img
-                        :src="searchPng"
-                        alt=""
-                    >
-                    <span>搜索</span>
+                    <div class="search_border">
+                        <img
+                            :src="searchPng"
+                            alt=""
+                        >
+                        <span>搜索</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -204,6 +206,7 @@ export default {
 			}
 
 			.secrch_title {
+				margin-left: 0.32rem;
 				width: 0.92rem;
 				height: 0.48rem;
 				border-radius: 0.24rem;
@@ -216,9 +219,11 @@ export default {
 					)
 					1 10;
 				padding: 0 0.12rem;
+				// clip-path: inset(0 round 0.32rem);
 				img {
 					height: 0.22rem;
 					width: 0.2rem;
+					margin-right: 0.16rem;
 				}
 				span {
 					width: 0.32rem;
@@ -227,10 +232,12 @@ export default {
 					font-weight: 400;
 					font-size: 0.16rem;
 					background-image: linear-gradient(
-						right,
+						to right,
 						#e5b3fd,
 						#7de7ec
 					);
+					-webkit-background-clip: text;
+					color: transparent;
 				}
 			}
 		}
