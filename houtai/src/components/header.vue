@@ -89,11 +89,20 @@ export default {
 		// 链接钱包
 		async onConnect() {
 			console.log('连接');
+			if (this.$route.fullPath === '/index') {
+				console.log('this.isconnect', this.isconnect);
+				this.isconnect = true;
+				this.$emit('changeStatus', this.isconnect);
+			}
 			let _this = this;
 			await connectWallet(function () {
 				_this.selectedAccount = currentAddr;
 				_this.isconnect = true;
 			});
+			// if (this.$route.fullPath === '/index') {
+			// 	console.log('this.isconnect', this.isconnect);
+			// 	this.$emit('changeStatus', this.isconnect);
+			// }
 
 			//await allowancedUSDT();
 		},
@@ -104,7 +113,10 @@ export default {
 				_this.selectedAccount = '';
 				_this.isconnect = false;
 			});
-
+			if (this.$route.fullPath === '/index') {
+				console.log('this.isconnect', this.isconnect);
+				this.$emit('changeStatus', this.isconnect);
+			}
 			alert('断开连接');
 		},
 
