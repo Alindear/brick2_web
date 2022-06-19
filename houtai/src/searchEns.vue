@@ -788,15 +788,15 @@ export default {
 						}
 					}
 					.step_left_process {
-						width: 43%;
+						// width: 43%;
 						display: flex;
 						flex-direction: row;
 						.step_text {
 						}
-						margin-right: 0.5rem;
+						margin-right: 1rem;
 					}
 					.step_center_process {
-						width: 43%;
+						// width: 43%;
 						display: flex;
 						flex-direction: row;
 						.step_text {

@@ -45,6 +45,14 @@ export default new VueRouter({
                             'houtai/src/searchEns.vue'
                         ),
                 },
+                {
+                    path: '/brick/step',
+                    component: () =>
+                        import(
+                            'houtai/src/registration_step.vue'
+                        ),
+                },
+
 
 
 
