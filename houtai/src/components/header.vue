@@ -40,16 +40,25 @@
                     class="secrch_title"
                     v-if="$route.fullPath !== '/index'"
                 >
-                    <div class="search_border">
-                        <img
-                            :src="searchPng"
-                            alt=""
-                        >
-                        <span>搜索</span>
-                    </div>
+									<el-button class="search_border" @click="showSearchBtn(true)">
+										<img
+												:src="searchPng"
+												alt=""
+											>
+											<span>搜索</span>
+									</el-button>
                 </div>
             </div>
         </div>
+				<div v-if="showSearchContainer">
+					<div class="search_container">
+						<p class="search_text">搜索</p>
+						<el-input v-model="searchText"></el-input>
+            <span class="his_text" v-for="(his, i) in histroys" :key="i" @click="goDetail(his)">{{ his }}</span>
+					</div>
+					<div class="mask_dialog" @click="showSearchBtn(false)"></div>
+				</div>
+			
     </div>
 </template>
 
@@ -71,6 +80,7 @@ export default {
 	props: ['type'],
 	data() {
 		return {
+			searchText:'',
 			language: false,
 			isconnect: false,
 			anglesign,
@@ -80,15 +90,47 @@ export default {
 			searchPng,
 			selectedAccount: '',
 			menuFlag: true,
+			showSearchContainer: false,
+			
+			histroys:['888888','neko是只猫咪','neko是只猫咪','neko是只猫咪'],
 		};
 	},
 
 	mounted() {
 		console.log('this.$route', this.$route.fullPath);
 		// this.onConnect();
+    this.showHotSearch()
+		
 	},
 
+
 	methods: {
+		onSearch(value) {
+      this.addHotSearch(value) //调用添加搜索的方法
+      this.goDetail(value) //跳转页面
+    },
+		showHotSearch() {
+      var items = localStorage.getItem('api-hot-search') // 从本地获取
+      if (items) {
+        items = JSON.parse(items)
+        this.histroys = items
+      }
+    },
+    addHotSearch(keyword) { 
+      keyword = String(keyword)
+      var items = this.histroys //historys是在data中定义的一个数组
+      if (items.indexOf(keyword) == -1) { //如果historys中没有，现在搜索的值
+        // if (items.length >= 5) { // 控制historys这个数组的长度不超过5
+        //   items.pop() 
+        // }
+        items.unshift(keyword) //往数组的前面加上该值
+      }
+      localStorage.setItem('api-hot-search', JSON.stringify(items)) //存到本地
+    },
+		// 点击查询 打开查询面板
+		showSearchBtn(flag){
+			this.showSearchContainer = flag
+		},
 		// 链接钱包
 		async onConnect() {
 			// console.log('连接');
@@ -222,30 +264,45 @@ export default {
 					margin-right: 0.32rem;
 				}
 			}
+			
 
 			.secrch_title {
-				margin-left: 0.32rem;
-				width: 0.92rem;
-				height: 0.48rem;
-				border-radius: 0.24rem;
-				border: 1px;
-				border-style: solid;
-				border-image: linear-gradient(
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				padding: 0;
+				.search_border {
+					padding: 0 0.12rem;
+					width:0.92rem;
+					height: 0.48rem;
+					line-height: 0.48rem;
+					border-radius: 0.24rem;
+					font-family: PingFangSC-Semibold;
+					font-weight: 600;
+					font-size: 0.16rem;
+					color: #999999;
+					letter-spacing: 0;
+					background-image: linear-gradient(
 						to right,
 						#e5b3fd,
 						#7de7ec
-					)
-					1 10;
-				padding: 0 0.12rem;
-				// clip-path: inset(0 round 0.32rem);
+					);
+					-webkit-background-clip: text;
+					color: transparent;
+					display: flex;
+					flex-direction: row;
+					// align-items: center;
+				}
 				img {
 					height: 0.22rem;
 					width: 0.2rem;
-					margin-right: 0.16rem;
+					margin-right: 0.1rem;
+					vertical-align: middle;
 				}
 				span {
 					width: 0.32rem;
 					height: 0.22rem;
+					margin: auto;
 					font-family: PingFangSC-Regular;
 					font-weight: 400;
 					font-size: 0.16rem;
@@ -258,6 +315,54 @@ export default {
 					color: transparent;
 				}
 			}
+		}
+	}
+	.mask_dialog{
+		width: 100%;
+		height: calc( 100% - 1rem );
+		opacity: 0.7;
+		background-color: #000000;
+		// bottom: 0;
+		// left: 0;
+		// position: fixed;
+		position: absolute;
+		z-index: 1;
+	}
+	.search_container{
+		width: 16.00rem;
+		height: 4.10rem;
+		background: #FFFFFF;
+		// background: #000000;
+		border-radius: 0 0 .32rem .32rem;
+		z-index: 999;
+		position: absolute;
+		margin: 0 1.6rem;
+		padding: 0 1rem;
+		box-sizing: border-box;
+		.search_text{
+			height: 0.40rem;
+			font-family: PingFangSC-Semibold;
+			font-weight: 600;
+			font-size: 0.28rem;
+			color: #000000;
+			letter-spacing: 0;
+		}
+		.el-input{
+			width: 14.00rem;
+			height: 0.96rem;
+			border-radius: 0.32rem;
+		}
+		.his_text{
+			// width: 0.84rem;
+			height: 0.58rem;
+			background: #F1F1F1;
+			width: 48rem;
+			height: .22rem;
+			font-family: PingFangSC-Semibold;
+			font-weight: 600;
+			font-size: .16rem;
+			color: #999999;
+			letter-spacing: 0;
 		}
 	}
 }

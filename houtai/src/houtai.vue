@@ -118,6 +118,7 @@ export default {
 		.config_left {
 			ul {
 				padding-top: 0.2rem;
+				box-sizing: border-box;
 			}
 			.el-menu-vertical-demo:not(.el-menu--collapse) {
 				width: 2.7rem;
