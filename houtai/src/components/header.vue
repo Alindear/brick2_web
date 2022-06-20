@@ -19,46 +19,106 @@
                 </div>
 
                 <div
-                    v-if="!isconnect"
+                    v-if="!selectedAccount"
                     class="on_connect"
                 >
                     <span class="connect_text">链接钱包（只读状态）</span>
-                    <el-button @click="onConnect">连接</el-button>
+                    <el-button @click="connectWallet">连接</el-button>
                 </div>
                 <div
-                    v-if="isconnect"
+                    v-if="selectedAccount"
                     class="dis_connect"
                 >
-                    <span class="connect_text">0x88…4ds3</span>
+                    <span class="connect_text">
+                        {{(selectedAccount && selectedAccount.length > 8) ? (selectedAccount.slice(0,4) + '...' + selectedAccount.slice(-4)) : selectedAccount}}
+                    </span>
                     <span class="connect_main">
                         <span class="coin_main"></span>
                         <span>Main 网络</span>
                     </span>
-                    <el-button @click="disConnect">断开连接</el-button>
+                    <el-button @click="disconnectWallet">断开连接</el-button>
                 </div>
                 <div
                     class="secrch_title"
                     v-if="$route.fullPath !== '/index'"
                 >
-									<el-button class="search_border" @click="showSearchBtn(true)">
-										<img
-												:src="searchPng"
-												alt=""
-											>
-											<span>搜索</span>
-									</el-button>
+                    <el-button
+                        class="search_border"
+                        @click="showSearchBtn(true)"
+                    >
+                        <img
+                            :src="searchPng"
+                            alt=""
+                        >
+                        <span>搜索</span>
+                    </el-button>
                 </div>
             </div>
         </div>
-				<div v-if="showSearchContainer">
-					<div class="search_container">
-						<p class="search_text">搜索</p>
-						<el-input v-model="searchText"></el-input>
-            <span class="his_text" v-for="(his, i) in histroys" :key="i" @click="goDetail(his)">{{ his }}</span>
-					</div>
-					<div class="mask_dialog" @click="showSearchBtn(false)"></div>
-				</div>
-			
+        <div v-if="showSearchContainer">
+            <div class="search_container">
+                <p class="search_text">搜索</p>
+                <el-button
+                    class="pc_top_search"
+                    type="primary"
+                >
+                    <div class="search_module">
+                        <el-select
+                            class="select_lang"
+                            v-model="select"
+                            slot="suffix"
+                            placeholder=""
+                            @change="selectLanageChange"
+                        >
+                            <el-option
+                                v-for="item in lanageListOpts"
+                                :key="item.value"
+                                :label="item.value"
+                                :value="item.label"
+                            >
+                                <el-radio
+                                    v-model="selectRadio"
+                                    :label="item.label"
+                                > </el-radio>
+                            </el-option>
+
+                        </el-select>
+                        <div class="cut_border"></div>
+                        <el-input
+                            class="input_search"
+                            placeholder="请输入域名或地址"
+                            v-model="searchText"
+                            @input="searchTextChange"
+                        >
+                            <div style="width: 1px;height: 38.68px;border: 1px solid red;"></div>
+                        </el-input>
+                        <el-button
+                            @click="searchEns"
+                            :loading="searchEnsLoading"
+                        >
+                            <img
+                                :src="searchPng"
+                                alt=""
+                            >
+                            <span>查询</span>
+                        </el-button>
+                    </div>
+                </el-button>
+                <div class="his_list">
+                    <!-- @click="goDetail(his)" -->
+                    <span
+                        class="his_text"
+                        v-for="(his, i) in histroys"
+                        :key="i"
+                    >{{ his }}</span>
+                </div>
+            </div>
+            <div
+                class="mask_dialog"
+                @click="showSearchBtn(false)"
+            ></div>
+        </div>
+
     </div>
 </template>
 
@@ -69,18 +129,28 @@ import searchPng from 'img/icon/编组.png';
 import closemenu from 'img/关闭菜单.png';
 import logoPng from 'img/首页/BNS_logo@2x.png';
 import 'houtai/web3.min.js';
+// import {
+// 	connectWallet,
+// 	disconnectWallet,
+// 	currentAddr,
+// 	alert,
+// } from 'houtai/web3_eth.js';
 import {
-	connectWallet,
-	disconnectWallet,
-	currentAddr,
-	alert,
+	onConnect,
+	onDisconnect,
+	getAccount,
+	isExist,
+	checkBrickbalance,
+	checkAndLoadFromLast,
+	checkEachLength,
+	init,
 } from 'houtai/web3_eth.js';
 
 export default {
 	props: ['type'],
 	data() {
 		return {
-			searchText:'',
+			searchText: '',
 			language: false,
 			isconnect: false,
 			anglesign,
@@ -91,94 +161,263 @@ export default {
 			selectedAccount: '',
 			menuFlag: true,
 			showSearchContainer: false,
-			
-			histroys:['888888','neko是只猫咪','neko是只猫咪','neko是只猫咪'],
+
+			histroys: [
+				'888888',
+				'neko是只猫咪',
+				'neko是只猫咪',
+				'neko是只猫咪',
+			],
+
+			selectedAccount: '',
+			moreCloseShowFlag: false,
+			isExist: null,
+			openLinkShowFlag: false,
+			searchEnsLoading: false,
+			searchText: '',
+			// select: this.$store.state.language,
+			// selectRadio: this.$store.state.languageSelect,
+			select: 'CN',
+			selectRadio: '简体中文 (CN)',
+			lanageListOpts: [
+				{
+					label: 'English (EN)',
+					value: 'EN',
+				},
+				{
+					label: '简体中文 (CN)',
+					value: 'CN',
+				},
+			],
 		};
+	},
+	watch: {
+		searchText(newValue, oldValue) {
+			console.log(newValue);
+			this.searchText = newValue.replace('-', '');
+			// this.searchText = this.searchText.replace(
+			// 	/[`:_.~!｜」』『「@#$%^&*() \+ =<>?"{}|, \/ ;' \\ [ \] ·~～！@#￥¥%……&*（）—— \+ ={}|《》<>？：“”【】、；‘’，。、]/g,
+			// 	'',
+			// );
+			this.searchText = this.searchText.replace(
+				/[`:_.~!｜［｛｝〉×〉×［］〖〗＊〔〕‖〈〉«»«»×÷＞＜≥≤¡¿£€﹉–´´＂＇¢฿♀♂‹›」』『「@#$%^&*() \+ =<>?"{}|, \/ ;' \\ [ \] ·~～！@#￥¥%……&*（）—— \+ ={}|《》<>？：“”【】、；‘’，。、]/g,
+				'',
+			);
+			this.searchText = this.searchText.toLowerCase();
+		},
 	},
 
 	mounted() {
+		window.addEventListener('load', async () => {
+			init();
+			if (localStorage.getItem('STATUS')) {
+				await this.connectWallet();
+			}
+		});
+		window.addEventListener('beforeunload', (e) => {
+			localStorage.setItem('STATUS', '');
+		});
+		this.$nextTick(async () => {
+			this.selectedAccount = localStorage.getItem('STATUS')
+				? localStorage.getItem('STATUS')
+				: this.selectedAccount;
+		});
 		console.log('this.$route', this.$route.fullPath);
 		// this.onConnect();
-    this.showHotSearch()
-		
+		this.showHotSearch();
 	},
-
 
 	methods: {
 		onSearch(value) {
-      this.addHotSearch(value) //调用添加搜索的方法
-      this.goDetail(value) //跳转页面
-    },
+			this.addHotSearch(value); //调用添加搜索的方法
+			// this.goDetail(value); //跳转页面
+		},
 		showHotSearch() {
-      var items = localStorage.getItem('api-hot-search') // 从本地获取
-      if (items) {
-        items = JSON.parse(items)
-        this.histroys = items
-      }
-    },
-    addHotSearch(keyword) { 
-      keyword = String(keyword)
-      var items = this.histroys //historys是在data中定义的一个数组
-      if (items.indexOf(keyword) == -1) { //如果historys中没有，现在搜索的值
-        // if (items.length >= 5) { // 控制historys这个数组的长度不超过5
-        //   items.pop() 
-        // }
-        items.unshift(keyword) //往数组的前面加上该值
-      }
-      localStorage.setItem('api-hot-search', JSON.stringify(items)) //存到本地
-    },
+			var items = localStorage.getItem('api-hot-search'); // 从本地获取
+			if (items) {
+				items = JSON.parse(items);
+				this.histroys = items;
+			}
+		},
+		addHotSearch(keyword) {
+			keyword = String(keyword);
+			var items = this.histroys; //historys是在data中定义的一个数组
+			if (items.indexOf(keyword) == -1) {
+				//如果historys中没有，现在搜索的值
+				if (items.length >= 10) {
+					// 控制historys这个数组的长度不超过10
+					items.pop();
+				}
+				items.unshift(keyword); //往数组的前面加上该值
+			}
+			localStorage.setItem(
+				'api-hot-search',
+				JSON.stringify(items),
+			); //存到本地
+		},
 		// 点击查询 打开查询面板
-		showSearchBtn(flag){
-			this.showSearchContainer = flag
-		},
-		// 链接钱包
-		async onConnect() {
-			// console.log('连接');
-			// if (this.$route.fullPath === '/index') {
-			// 	this.isconnect = true;
-			// 	this.$emit('changeStatus', this.isconnect);
-			// }
-			let _this = this;
-			await connectWallet(function () {
-				_this.selectedAccount = currentAddr;
-				_this.isconnect = true;
-			});
-			if (this.$route.fullPath === '/index') {
-				console.log('this.isconnect', this.isconnect);
-				this.$emit('changeStatus', this.isconnect);
-			}
-
-			//await allowancedUSDT();
-		},
-		//断开连接
-		async disConnect() {
-			let _this = this;
-			await disconnectWallet(function () {
-				_this.selectedAccount = '';
-				_this.isconnect = false;
-			});
-			if (this.$route.fullPath === '/index') {
-				console.log('this.isconnect', this.isconnect);
-				this.$emit('changeStatus', this.isconnect);
-			}
-			alert('断开连接');
+		showSearchBtn(flag) {
+			this.showSearchContainer = flag;
 		},
 
-		//打开菜单
-		openMenu() {
-			console.log('打开菜单');
-			this.menuFlag = false;
-		},
-		//关闭菜单
-		closeMenu() {
-			console.log('关闭菜单');
-			this.menuFlag = true;
-		},
+		// //打开菜单
+		// openMenu() {
+		// 	console.log('打开菜单');
+		// 	this.menuFlag = false;
+		// },
+		// //关闭菜单
+		// closeMenu() {
+		// 	console.log('关闭菜单');
+		// 	this.menuFlag = true;
+		// },
 		//跳转路由
 		goRouter(type) {
 			this.$router.push({
 				path: type,
 			});
+		},
+
+		searchTextChange() {
+			console.log('域名发生变化');
+			this.isExist = null;
+			this.searchEnsLoading = false;
+		},
+		selectLanageChange(val) {
+			if (val === 'English (EN)') {
+				this.$store.commit('showENLanage');
+			} else if (val === '简体中文 (CN)') {
+				this.$store.commit('showCNLanage');
+			}
+			// console.log('this.i18n', this.i18n);
+		},
+		goMain() {
+			this.$router.push({
+				path: '/main',
+			});
+		},
+		myEnsBtn() {
+			this.$router.push({
+				path: '/my/enslist',
+			});
+		},
+		async connectWallet() {
+			await onConnect(this);
+			let account = getAccount();
+			this.selectedAccount = account || '';
+			localStorage.setItem('STATUS', this.selectedAccount);
+			// if (
+			// 	this.$router.history.current.path ===
+			// 	'/my/enslist'
+			// ) {
+			// 	console.log('/my/enslist');
+			// 	this.$parent.searchEnsList();
+			// }
+			// if (
+			// 	this.$router.history.current.path ===
+			// 	'/registration/request'
+			// ) {
+			// 	this.$parent.inIt();
+			// }
+			if (this.$route.fullPath === '/index') {
+				console.log('this.isconnect', this.isconnect);
+				this.$emit('changeStatus', this.isconnect);
+			}
+		},
+		async disconnectWallet() {
+			onDisconnect();
+			this.selectedAccount = '';
+			localStorage.setItem('STATUS', this.selectedAccount);
+			// if (
+			// 	this.$router.history.current.path ===
+			// 	'/my/enslist'
+			// ) {
+			// 	console.log('/my/enslist');
+			// 	this.$parent.searchEnsList();
+			// }
+			if (this.$route.fullPath === '/index') {
+				console.log('this.isconnect', this.isconnect);
+				this.$emit('changeStatus', this.isconnect);
+			}
+		},
+		//点击更多图标
+		moreCloseChange(flag) {
+			this.moreCloseShowFlag = flag;
+		},
+		//查询
+		async searchEns() {
+			//  document.activeElement.blur();  // 关闭软键盘
+			if (!this.searchText) {
+				alert('请输入查询的域名');
+				// alert(
+				// 	this.$store.state.i18n[
+				// 		this.$store.state.language
+				// 	].enter_names,
+				// );
+				return;
+			}
+
+			if (this.searchText.length < 3) {
+				alert('请至少输入三个字符');
+				// alert(
+				// 	this.$store.state.i18n[
+				// 		this.$store.state.language
+				// 	].text_1,
+				// );
+				return;
+			}
+
+			//查询当前页面的域名时 直接清空 不进行查询（用于注册页 & 详情页）
+			if (this.searchText === this.$route.query.text) {
+				this.searchText = '';
+				return;
+			}
+
+			// 存入查询历史中
+			this.onSearch(this.searchText);
+
+			this.searchEnsLoading = true;
+			let text = this.searchText.toLowerCase() + '.bsc';
+			this.isExist = await isExist(text);
+			if (!(await checkEachLength(this.searchText))) {
+				return;
+			}
+			console.log('this.isExist----', this.isExist);
+			if (this.isExist) {
+				this.openLinkBtn(true);
+			} else if (!this.isExist && this.isExist !== null) {
+				// this.searchText = this.searchText + '.bsc';
+				console.log('this.$router', this.$router);
+				//注册页 刷新后处理默认值 （目的：防止刷新界面 需要重新链接钱包）
+				if (
+					this.$router.history.current.path ===
+					'/registration/request'
+				) {
+					this.$parent.changeText(
+						this.searchText,
+					);
+				}
+				this.$router.push({
+					path: '/registration/request',
+					query: {
+						text: this.searchText,
+					},
+				});
+			}
+			if (this.isExist || !this.isExist) {
+				this.searchEnsLoading = false;
+			}
+		},
+		openLinkBtn(flag) {
+			this.openLinkShowFlag = flag;
+		},
+		changeEnsText(text) {
+			//详情页
+			if (
+				this.$router.history.current.path ===
+				'/registration/info'
+			) {
+				this.$parent.changeEnsText(this.searchText);
+			}
 		},
 	},
 };
@@ -209,6 +448,10 @@ export default {
 			.on_connect {
 				display: flex;
 				flex-direction: row;
+				.el-button {
+					// color: #ffffff;
+					border: none;
+				}
 			}
 			.dis_connect {
 				display: flex;
@@ -230,6 +473,7 @@ export default {
 				}
 				.el-button {
 					color: #ffffff;
+					border: none;
 				}
 			}
 			.connect_text {
@@ -251,6 +495,7 @@ export default {
 					#edafff 100%
 				);
 				border-radius: 0.0533rem;
+				// border: none;
 			}
 			.menu_top {
 				span {
@@ -264,18 +509,19 @@ export default {
 					margin-right: 0.32rem;
 				}
 			}
-			
 
 			.secrch_title {
 				display: flex;
 				flex-direction: row;
 				align-items: center;
 				padding: 0;
+				margin-left: 0.32rem;
 				.search_border {
 					padding: 0 0.12rem;
-					width:0.92rem;
+					width: 0.92rem;
 					height: 0.48rem;
-					line-height: 0.48rem;
+					// line-height: 0.48rem;
+					line-height: 0.44rem;
 					border-radius: 0.24rem;
 					font-family: PingFangSC-Semibold;
 					font-weight: 600;
@@ -317,9 +563,9 @@ export default {
 			}
 		}
 	}
-	.mask_dialog{
+	.mask_dialog {
 		width: 100%;
-		height: calc( 100% - 1rem );
+		height: calc(100% - 1rem);
 		opacity: 0.7;
 		background-color: #000000;
 		// bottom: 0;
@@ -328,41 +574,135 @@ export default {
 		position: absolute;
 		z-index: 1;
 	}
-	.search_container{
-		width: 16.00rem;
-		height: 4.10rem;
-		background: #FFFFFF;
+	.search_container {
+		width: 16rem;
+		height: 4.1rem;
+		background: #ffffff;
 		// background: #000000;
-		border-radius: 0 0 .32rem .32rem;
+		border-radius: 0 0 0.32rem 0.32rem;
 		z-index: 999;
 		position: absolute;
 		margin: 0 1.6rem;
 		padding: 0 1rem;
 		box-sizing: border-box;
-		.search_text{
-			height: 0.40rem;
+		display: flex;
+		flex-direction: column;
+		.search_text {
+			// height: 0.40rem;
 			font-family: PingFangSC-Semibold;
 			font-weight: 600;
 			font-size: 0.28rem;
 			color: #000000;
 			letter-spacing: 0;
 		}
-		.el-input{
-			width: 14.00rem;
+		.pc_top_search {
+			display: flex;
+			flex-direction: row;
+			width: 14rem;
 			height: 0.96rem;
+			line-height: 0.96rem;
 			border-radius: 0.32rem;
+			padding: 0;
+			background-image: linear-gradient(
+				to right,
+				#e5b3fd,
+				#7de7ec
+			);
+			-webkit-background-clip: text;
+			color: transparent;
+			.search_module {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				width: 14rem;
+				.select_lang {
+					margin-right: 0.28rem;
+					/deep/.el-input__inner {
+						height: 0.9rem;
+						line-height: 0.96rem;
+						border: none;
+						border-radius: 0.32rem;
+						font-family: PingFangSC-Medium;
+						font-weight: 500;
+						font-size: 0.2rem;
+						color: #999999;
+						margin: 0;
+						margin-left: 0.34rem;
+						padding: 0;
+						width: 0.7rem;
+					}
+				}
+				.cut_border {
+					width: 0.01rem;
+					height: 0.38rem;
+					border-left: 0.02rem solid #979797;
+					// float: left;
+					margin-right: 0.32rem;
+				}
+				.input_search {
+					width: 11.09rem;
+					/deep/.el-input__inner {
+						// width: 11.09rem;
+						height: 0.9rem;
+						line-height: 0.96rem;
+						border: none;
+						border-radius: 0.32rem;
+						font-family: PingFangSC-Medium;
+						font-weight: 500;
+						font-size: 0.2rem;
+						color: #999999;
+						margin: 0;
+						// margin-left: 0.34rem;
+						padding: 0;
+					}
+				}
+				.el-button {
+					width: 1.73rem;
+					background-image: linear-gradient(
+						-60deg,
+						#6af0e9 0%,
+						#edafff 100%
+					);
+					border-radius: 0.32rem;
+					box-sizing: border-box;
+					height: 0.98rem;
+					margin-top: -0.02rem;
+					font-family: PingFangSC-Semibold;
+					font-weight: 600;
+					font-size: 0.2rem;
+					color: #ffffff;
+				}
+				img {
+					width: 0.29rem;
+					height: 0.32rem;
+					vertical-align: middle;
+					margin-right: 0.16rem;
+				}
+			}
 		}
-		.his_text{
-			// width: 0.84rem;
-			height: 0.58rem;
-			background: #F1F1F1;
-			width: 48rem;
-			height: .22rem;
-			font-family: PingFangSC-Semibold;
-			font-weight: 600;
-			font-size: .16rem;
-			color: #999999;
-			letter-spacing: 0;
+		// .el-input {
+		// 	width: 14rem;
+		// 	height: 0.96rem;
+		// 	border-radius: 0.32rem;
+		// }
+		.his_list {
+			display: flex;
+			flex-direction: row;
+			margin-top: 0.32rem;
+			.his_text {
+				height: 0.58rem;
+				line-height: 0.58rem;
+				padding: 0 0.18rem;
+				background: #f1f1f1;
+				font-family: PingFangSC-Semibold;
+				font-weight: 600;
+				font-size: 0.16rem;
+				margin-right: 0.16rem;
+				color: #999999;
+				letter-spacing: 0;
+				display: flex;
+				flex-direction: row;
+			}
 		}
 	}
 }

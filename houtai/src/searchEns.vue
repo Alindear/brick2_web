@@ -7,7 +7,6 @@
                     <div class="right_content">
                         <p class="title_name">
                             {{searchText}}.bsc
-                            <!-- <span>  </span> -->
                         </p>
                         <div class="number_content">
 
@@ -146,6 +145,77 @@
             </div>
 
         </div>
+        <!-- 注册过程 -->
+        <!-- v-if="approveBtnLoading" -->
+        <div
+            class="search_ens_step"
+            v-if="approveBtnLoading"
+        >
+            <p class="ens_text">域名</p>
+            <div class="domian_name_search">
+                <div class="domian_name_content">
+                    <div class="right_content">
+                        <p class="title_name">
+                            {{searchText}}.bsc
+                        </p>
+                        <div class="step_content">
+
+                            <p
+                                class="step_title"
+                                v-if="!approveBtnDisabled"
+                            >您很快就可以完成域名注册</p>
+                            <p
+                                class="step_title"
+                                v-if="approveBtnDisabled"
+                            >
+                                <img
+                                    :src="successPng"
+                                    alt=""
+                                >
+                                您已完成注册
+                            </p>
+                            <p class="step_title_desc">*您可以收藏喜欢的域名，以便于浏览器关闭以后重新查看这个域名。</p>
+
+                            <div class="step_process">
+                                <div class="step_left_process">
+                                    <div class="left_circle">
+                                        <p :style="{color: approveBtnDisabled ? '#ffffff' : '#d8d8d8', 'background-image': approveBtnDisabled ? 'linear-gradient(-60deg, #6AF0E9 0%, #EDAFFF 100%)' : 'linear-gradient(-60deg, #ffffff 0%, #ffffff 100%)','border': approveBtnDisabled? 'none' : '0.01rem solid #ccc;'}">1</p>
+                                    </div>
+                                    <div class="step_text">
+                                        <div class="step_text_title">请求注册</div>
+                                        <div class="step_text_desc">需要在钱包中确认一笔交易，这是完成域名注册所需的两笔交易中的第一笔。如果第1步完成之后的24小时内没有进行第2步，则需要从第1步重新开始。</div>
+                                    </div>
+                                </div>
+                                <div class="step_center_process">
+                                    <div class="left_circle">
+                                        <!-- <p :style="{color: registBtnDisabled ? '#ffffff' : '#d8d8d8', border: registBtnDisabled ? '0.02rem solid #a63928' : '0.01rem solid #d8d8d8'}">2</p> -->
+                                        <p :style="{color: registBtnDisabled ? '#ffffff' : '#d8d8d8', 'background-image': registBtnDisabled ? 'linear-gradient(-60deg, #6AF0E9 0%, #EDAFFF 100%)' : 'linear-gradient(-60deg, #ffffff 0%, #ffffff 100%)','border': registBtnDisabled? 'none' : '0.01rem solid #ccc;'}">2</p>
+                                    </div>
+                                    <div class="step_text">
+                                        <div class="step_text_title">完成注册</div>
+                                        <div class="step_text_desc">点击“注册”按钮，并在钱包中再次确认一笔交易，只有在这次交易确认后，才能确定是不是成功注册了这个域名。</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="process_img">
+                                <el-progress
+                                    :show-text="false"
+                                    :stroke-width="20"
+                                    :percentage="registBtnDisabled ? 100 : (approveBtnDisabled ? 50 : 0)"
+                                    status="exception"
+                                ></el-progress>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </div>
 </template>
 
@@ -155,6 +225,7 @@ import addPng from 'img/增加.png';
 import reducePng from 'img/减少.png';
 import linkPng from 'img/链接.png';
 import warnPng from 'img/警告.png';
+import successPng from 'img/编组@2x.png';
 import {
 	buyWithEth,
 	buyWithUsdt,
@@ -172,6 +243,7 @@ export default {
 			reducePng,
 			linkPng,
 			warnPng,
+			successPng,
 			searchBtnPng,
 
 			bodyHeight: '',
@@ -266,6 +338,7 @@ export default {
 		openLinkBtn(flag) {
 			this.openLinkShowFlag = flag;
 		},
+
 		approveToken() {
 			var _this = this;
 			approve(
@@ -739,12 +812,6 @@ export default {
 					display: flex;
 					flex-direction: row;
 					.step_text_title {
-						// height: 1.5rem;
-						// font-weight: 600;
-						// font-size: 1rem;
-						// color: #000000;
-						// padding-bottom: 0.5rem;
-						// width: 0.64rem;
 						height: 0.22rem;
 						font-family: PingFangSC-Semibold;
 						font-weight: 600;
@@ -753,13 +820,7 @@ export default {
 						margin-bottom: 0.08rem;
 					}
 					.step_text_desc {
-						// width: 100%;
-						// // height: 80rem;
-						// font-weight: 400;
-						// font-size: 0.8rem;
-						// color: #333333;
-						// width: 4.87rem;
-						width: 5.5rem;
+						width: 5.7rem;
 						height: 0.4rem;
 						font-family: PingFangSC-Regular;
 						font-weight: 400;
@@ -800,6 +861,175 @@ export default {
 						display: flex;
 						flex-direction: row;
 						.step_text {
+						}
+					}
+				}
+			}
+		}
+	}
+	.search_ens_step {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		.ens_text {
+			width: 0.44rem;
+			height: 0.3rem;
+			font-family: PingFangSC-Medium;
+			font-weight: 500;
+			font-size: 0.22rem;
+			color: #000000;
+			margin: 0.4rem 0 0.2rem 0.6rem;
+		}
+		.domian_name_search {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			.domian_name_content {
+				width: 15.3rem;
+				height: 5rem;
+				background: #ffffff;
+				border-radius: 0.32rem;
+				position: relative;
+
+				.right_content {
+					.title_name {
+						height: 0.96rem;
+						line-height: 0.96rem;
+						font-family: PingFangSC-Regular;
+						font-weight: 400;
+						font-size: 0.2rem;
+						color: #333333;
+						border-bottom: 0.01rem solid
+							#dedede;
+						margin: 0;
+						padding-left: 0.34rem;
+						margin-bottom: 0.32rem;
+					}
+					.step_content {
+						width: 15.3rem;
+						height: 2.17rem;
+						background: #ffffff;
+						border-radius: 0.32rem;
+						display: flex;
+						flex-direction: column;
+						padding-left: 0.34rem;
+						padding-top: 0.4rem;
+						box-sizing: border-box;
+						margin-top: 0.16rem;
+						margin-bottom: 0.34rem;
+
+						.step_title {
+							// width: 2.79rem;
+							height: 0.33rem;
+							font-family: PingFangSC-Regular;
+							font-weight: 400;
+							font-size: 0.24rem;
+							color: #000000;
+							margin: 0;
+							margin-bottom: 0.08rem;
+							img {
+								width: 0.32rem;
+								height: 0.32rem;
+								vertical-align: middle;
+								margin-top: -0.06rem;
+							}
+						}
+						.step_title_desc {
+							height: 0.2rem;
+							font-family: PingFangSC-Regular;
+							font-weight: 400;
+							font-size: 0.14rem;
+							margin: 0;
+							color: #999999;
+							margin-bottom: 0.6rem;
+						}
+						.step_process {
+							display: flex;
+							flex-direction: row;
+							margin-bottom: 0.6rem;
+							.step_text_title {
+								// height: 1.5rem;
+								// font-weight: 600;
+								// font-size: 1rem;
+								// color: #000000;
+								// padding-bottom: 0.5rem;
+								// width: 0.64rem;
+								height: 0.22rem;
+								font-family: PingFangSC-Semibold;
+								font-weight: 600;
+								font-size: 0.16rem;
+								color: #000000;
+								margin-bottom: 0.08rem;
+							}
+							.step_text_desc {
+								// width: 100%;
+								// // height: 80rem;
+								// font-weight: 400;
+								// font-size: 0.8rem;
+								// color: #333333;
+								// width: 4.87rem;
+								width: 5.55rem;
+								height: 0.4rem;
+								font-family: PingFangSC-Regular;
+								font-weight: 400;
+								font-size: 0.14rem;
+								color: #333333;
+							}
+							.left_circle {
+								color: #d8d8d8;
+								height: 0.56rem;
+								width: 0.56rem;
+								line-height: 0.56rem;
+								margin-right: 0.12rem;
+								box-sizing: border-box;
+								p {
+									margin: 0;
+									text-align: center;
+									font-family: PingFangSC-Regular;
+									font-weight: 400;
+									height: 0.56rem;
+									line-height: 0.56rem;
+									width: 0.56rem;
+									border: 0.02rem
+										solid
+										#ccc;
+									border-radius: 50%;
+									font-size: 0.24rem;
+								}
+							}
+							.step_left_process {
+								// width: 43%;
+								display: flex;
+								flex-direction: row;
+								.step_text {
+								}
+								margin-right: 1rem;
+							}
+							.step_center_process {
+								// width: 43%;
+								display: flex;
+								flex-direction: row;
+								.step_text {
+								}
+							}
+						}
+						.process_img {
+							width: 13.32rem;
+							// height: 4.72rem;
+							background: #ffffff;
+							border-radius: 0.32rem;
+							// height: 0.24rem;
+							/deep/.el-progress-bar__inner {
+								opacity: 0.66;
+								background-image: linear-gradient(
+									-60deg,
+									#6af0e9
+										0%,
+									#edafff
+										100%
+								);
+							}
 						}
 					}
 				}

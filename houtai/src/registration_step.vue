@@ -10,7 +10,17 @@
                         </p>
                         <div class="step_content">
 
-                            <p class="step_title">您很快就可以完成域名注册</p>
+                            <p
+                                class="step_title"
+                                v-if=""
+                            >您很快就可以完成域名注册</p>
+                            <p class="step_title">
+                                <img
+                                    :src="successPng"
+                                    alt=""
+                                >
+                                您已完成注册
+                            </p>
                             <p class="step_title_desc">*您可以收藏喜欢的域名，以便于浏览器关闭以后重新查看这个域名。</p>
 
                             <div class="step_process">
@@ -62,6 +72,7 @@ import addPng from 'img/增加.png';
 import reducePng from 'img/减少.png';
 import linkPng from 'img/链接.png';
 import warnPng from 'img/警告.png';
+import successPng from 'img/编组@2x.png';
 import {
 	buyWithEth,
 	buyWithUsdt,
@@ -79,6 +90,7 @@ export default {
 			reducePng,
 			linkPng,
 			warnPng,
+			successPng,
 			searchBtnPng,
 
 			bodyHeight: '',
@@ -364,6 +376,12 @@ export default {
 							color: #000000;
 							margin: 0;
 							margin-bottom: 0.08rem;
+							img {
+								width: 0.32rem;
+								height: 0.32rem;
+								vertical-align: middle;
+								margin-top: -0.06rem;
+							}
 						}
 						.step_title_desc {
 							height: 0.2rem;
