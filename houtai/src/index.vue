@@ -38,11 +38,44 @@
                     </div>
                 </div>
                 <div class="left_bottom">
-                    <el-input
-                        v-model="searchText"
-                        placeholder="请输入域名或地址"
-                    ></el-input>
+                    <el-button
+                        class="pc_top_search"
+                        type="primary"
+                    >
+                        <div class="search_module">
+                            <el-select
+                                class="select_lang"
+                                v-model="select"
+                                slot="suffix"
+                                placeholder=""
+                                @change="selectLanageChange"
+                            >
+                                <el-option
+                                    v-for="item in lanageListOpts"
+                                    :key="item.value"
+                                    :label="item.value"
+                                    :value="item.label"
+                                >
+                                    <el-radio
+                                        v-model="selectRadio"
+                                        :label="item.label"
+                                    > </el-radio>
+                                </el-option>
+
+                            </el-select>
+                            <div class="cut_border"></div>
+                            <el-input
+                                class="input_search"
+                                placeholder="请输入域名或地址"
+                                v-model="searchText"
+                                @input="searchTextChange"
+                            >
+                                <div style="width: 1px;height: 38.68px;border: 1px solid red;"></div>
+                            </el-input>
+                        </div>
+                    </el-button>
                     <img
+                        @click="searchEns"
                         :src="searchBtnPng"
                         alt=""
                     >
@@ -207,6 +240,17 @@
 
 <script>
 import headEr from './components/header.vue';
+import {
+	onConnect,
+	onDisconnect,
+	getAccount,
+	isExist,
+	checkBrickbalance,
+	checkAndLoadFromLast,
+	checkEachLength,
+	init,
+} from 'houtai/web3_eth.js';
+
 import searchBtnPng from 'img/首页/search.png';
 import bnsClickPng from 'img/首页/bnsClick.png';
 import top1Png from 'img/首页/rodion-kutsaev--tgTipG2t_g-unsplash@2x.png';
@@ -254,6 +298,7 @@ export default {
 	components: { headEr },
 	data() {
 		return {
+			searchEnsLoading: false,
 			changeStatusShowFlag: false,
 			linkShowFlag: false,
 			searchBtnPng,
@@ -300,6 +345,18 @@ export default {
 			searchText: '',
 			megaInput: 'Mega.bsc',
 			bnsInput: 'BNS-apple.bsc',
+			select: 'CN',
+			selectRadio: '简体中文 (CN)',
+			lanageListOpts: [
+				{
+					label: 'English (EN)',
+					value: 'EN',
+				},
+				{
+					label: '简体中文 (CN)',
+					value: 'CN',
+				},
+			],
 			addressPriceList: [
 				{
 					icon: addressIcon,
@@ -350,6 +407,80 @@ export default {
 	},
 
 	methods: {
+		searchTextChange() {
+			console.log('域名发生变化');
+			this.isExist = null;
+			this.searchEnsLoading = false;
+		},
+		selectLanageChange(val) {
+			if (val === 'English (EN)') {
+				this.$store.commit('showENLanage');
+			} else if (val === '简体中文 (CN)') {
+				this.$store.commit('showCNLanage');
+			}
+			// console.log('this.i18n', this.i18n);
+		},
+		//查询
+		async searchEns() {
+			//  document.activeElement.blur();  // 关闭软键盘
+			if (!this.searchText) {
+				alert('请输入查询的域名');
+				// alert(
+				// 	this.$store.state.i18n[
+				// 		this.$store.state.language
+				// 	].enter_names,
+				// );
+				return;
+			}
+
+			if (this.searchText.length < 3) {
+				alert('请至少输入三个字符');
+				// alert(
+				// 	this.$store.state.i18n[
+				// 		this.$store.state.language
+				// 	].text_1,
+				// );
+				return;
+			}
+
+			//查询当前页面的域名时 直接清空 不进行查询（用于注册页 & 详情页）
+			if (this.searchText === this.$route.query.text) {
+				this.searchText = '';
+				return;
+			}
+
+			this.searchEnsLoading = true;
+			let text = this.searchText.toLowerCase() + '.bsc';
+			this.isExist = await isExist(text);
+			if (!(await checkEachLength(this.searchText))) {
+				return;
+			}
+			console.log('this.isExist----', this.isExist);
+			if (this.isExist) {
+				this.openLinkBtn(true);
+			} else if (!this.isExist && this.isExist !== null) {
+				// this.searchText = this.searchText + '.bsc';
+				console.log('this.$router', this.$router);
+				//注册页 刷新后处理默认值 （目的：防止刷新界面 需要重新链接钱包）
+				if (
+					this.$router.history.current.path ===
+					'/registration/request'
+				) {
+					this.$parent.changeText(
+						this.searchText,
+					);
+				}
+				this.$router.push({
+					path: '/registration/request',
+					query: {
+						text: this.searchText,
+					},
+				});
+			}
+			if (this.isExist || !this.isExist) {
+				this.searchEnsLoading = false;
+			}
+		},
 		onConnect() {
 			console.log('去链接');
 		},
@@ -485,12 +616,86 @@ export default {
 					width: 1.5733rem;
 					height: 1.28rem;
 					margin-left: 0.16rem;
-					// background-image: linear-gradient(
-					// 	-60deg,
-					// 	#6af0e9 0%,
-					// 	#edafff 100%
-					// );
-					// border-radius: 32rem;
+				}
+				.pc_top_search {
+					display: flex;
+					flex-direction: row;
+					padding: 0;
+					border: none;
+					width: 6.64rem;
+					height: 1.28rem;
+					line-height: 1.28rem;
+					opacity: 0.8;
+					background: #f1f1f1;
+					border-radius: 0.32rem;
+					.search_module {
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						width: 6.64rem;
+						.select_lang {
+							margin-right: 0.21rem;
+							/deep/.el-input__inner {
+								height: 1.28rem;
+								line-height: 1.28rem;
+								border: none;
+								border-radius: 0.32rem;
+								font-family: PingFangSC-Medium;
+								font-weight: 500;
+								font-size: 0.2rem;
+								color: #999999;
+								margin: 0;
+								margin-left: 0.5rem;
+								padding: 0;
+								width: 0.7rem;
+							}
+						}
+						.cut_border {
+							width: 0.01rem;
+							height: 0.38rem;
+							border-left: 0.02rem
+								solid #cdcdcd;
+							margin-right: 0.39rem;
+						}
+						.input_search {
+							width: 5rem;
+							/deep/.el-input__inner {
+								width: 4.8rem;
+								height: 1.28rem;
+								line-height: 1.28rem;
+								border: none;
+								border-radius: 0.32rem;
+								font-family: PingFangSC-Medium;
+								font-weight: 500;
+								font-size: 0.2rem;
+								color: #999999;
+								margin: 0;
+								padding: 0;
+							}
+						}
+						.el-button {
+							width: 1.73rem;
+							background-image: linear-gradient(
+								-60deg,
+								#6af0e9 0%,
+								#edafff 100%
+							);
+							border-radius: 0.32rem;
+							box-sizing: border-box;
+							height: 0.98rem;
+							margin-top: -0.02rem;
+							font-family: PingFangSC-Semibold;
+							font-weight: 600;
+							font-size: 0.2rem;
+							color: #ffffff;
+						}
+						img {
+							width: 0.29rem;
+							height: 0.32rem;
+							vertical-align: middle;
+							margin-right: 0.16rem;
+						}
+					}
 				}
 			}
 		}
@@ -514,14 +719,20 @@ export default {
 					width: 3.75rem;
 					height: 0.74rem;
 					border-radius: 0.2764rem;
-					border: 0.01rem;
-					border-style: solid;
+					// border: 0.01rem;
+					// border-style: solid;
 					border-image: linear-gradient(
 							to right,
 							#e5b3fd,
 							#7de7ec
 						)
 						1 10;
+					// background-image: linear-gradient(
+					// 		right,
+					// 		#e5b3fd,
+					// 		#7de7ec
+					// 	)
+					// 	1 10;
 				}
 			}
 			.right_bottom {
@@ -543,6 +754,7 @@ export default {
 						font-weight: R;
 						font-size: 0.2764rem;
 						color: #ffffff;
+						border: none;
 					}
 				}
 			}

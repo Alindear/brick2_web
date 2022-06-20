@@ -6,8 +6,9 @@
                     <div class="title_name">
                         <el-avatar
                             class="title_name_img"
-                            src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+                            :src="teamImg1"
                         ></el-avatar>
+                        <!-- :src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" -->
                         <div class="title_name_text">{{selectedAccount}}</div>
                     </div>
                     <div
@@ -29,8 +30,16 @@
                         </div>
                         <div
                             v-if="!myEnsNameList || myEnsNameList.length == 0"
-                            style="text-align:center; padding-bottom:20rem;"
-                        >暂无数据</div>
+                            class="no_data_img"
+                        >
+                            <img
+                                :src="nodataPng"
+                                alt=""
+                            >
+                            <p>
+                                什么都没有～
+                            </p>
+                        </div>
                     </div>
 
                 </div>
@@ -41,30 +50,34 @@
 
 <script>
 import { getAllNodes } from 'houtai/web3_eth.js';
+import nodataPng from 'img/编组 8.png';
+import teamImg1 from 'img/头像/椭圆形.png';
 export default {
 	// components: { connectWallet, titleEnsSearch },
 	data() {
 		return {
+			nodataPng,
+			teamImg1,
 			selectedAccount:
 				'0x56789098765482345678987654367890876545643232123122346789090987',
 			bodyHeight: '',
 			myEnsNameList: [
-				{
-					ensName: 'benxiong.brick',
-					endTime: '到期时间：2023.05.05',
-				},
-				{
-					ensName: 'benxiong.brick',
-					endTime: '到期时间：2023.05.05',
-				},
-				{
-					ensName: 'benxiong.brick',
-					endTime: '到期时间：2023.05.05',
-				},
-				{
-					ensName: 'benxiong.brick',
-					endTime: '到期时间：2023.05.05',
-				},
+				// {
+				// 	ensName: 'benxiong.brick',
+				// 	endTime: '到期时间：2023.05.05',
+				// },
+				// {
+				// 	ensName: 'benxiong.brick',
+				// 	endTime: '到期时间：2023.05.05',
+				// },
+				// {
+				// 	ensName: 'benxiong.brick',
+				// 	endTime: '到期时间：2023.05.05',
+				// },
+				// {
+				// 	ensName: 'benxiong.brick',
+				// 	endTime: '到期时间：2023.05.05',
+				// },
 			],
 		};
 	},
@@ -84,9 +97,9 @@ export default {
 	methods: {
 		// 钱包链接成功 查询
 		searchEnsList() {
-			// this.selectedAccount = localStorage.getItem('STATUS')
-			// 	? localStorage.getItem('STATUS')
-			// 	: '';
+			this.selectedAccount = localStorage.getItem('STATUS')
+				? localStorage.getItem('STATUS')
+				: '';
 			//钱包已连接 查询
 			if (this.selectedAccount) {
 				this.getAllNodesClick();
@@ -130,6 +143,7 @@ export default {
 				.title_name_img {
 					vertical-align: middle;
 					height: 0.5rem;
+					width: 0.5rem;
 					margin: auto 0;
 					margin-left: 0.34rem;
 				}
@@ -153,7 +167,7 @@ export default {
 					border-bottom: 0.01rem solid #850099;
 					font-family: PingFangSC-Semibold;
 					font-weight: 600;
-					font-size: 0.16px;
+					font-size: 0.16rem;
 					color: #850099;
 				}
 			}
@@ -179,10 +193,24 @@ export default {
 						color: #999999;
 					}
 				}
-				// .ens_name_timelast-child {
-				// 	// border-bottom: 0.01rem dashed #ededed;
-				// 	border: none;
-				// }
+				.no_data_img {
+					text-align: center;
+					margin: 1.47rem auto;
+					img {
+						width: 4.73rem;
+						height: 1.83rem;
+					}
+					p {
+						width: 1.2rem;
+						height: 0.28rem;
+						font-family: PingFangSC-Regular;
+						font-weight: 400;
+						font-size: 0.2rem;
+						color: #000000;
+						margin: 0 auto;
+						margin-top: 0.32rem;
+					}
+				}
 			}
 		}
 	}

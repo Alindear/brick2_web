@@ -13,8 +13,8 @@
                     <span @click="goRouter('/brick/myens')">我的域名</span>
                     <span @click="goRouter('/brick/documentdesc')">文档说明</span>
                     <span @click="goRouter('/brick/contactus')">联系社区</span>
-                    <span @click="goRouter('/brick/searchEns')">11111</span>
-                    <span @click="goRouter('/brick/step')">222222</span>
+                    <!-- <span @click="goRouter('/brick/searchEns')">11111</span>
+                    <span @click="goRouter('/brick/step')">222222</span> -->
 
                 </div>
 
