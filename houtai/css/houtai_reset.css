@@ -22,6 +22,14 @@ html body {
     font-family: PingFangSC-Regular;
     src: url('./PingFangSC-Regular.ttf') format('truetype');
 }
+@font-face {
+    font-family: Womby-Regular;
+    src: url('./Womby-Regular-3.ttf') format('truetype');
+}
+/* @font-face {
+    font-family: YouSheBiaoTiYuan;
+    src: url('./优设标题圆.otf') format('truetype');
+} */
 ::marker {
     color: #6A008E;
     unicode-bidi: isolate;

@@ -58,7 +58,11 @@
         <div v-if="showSearchContainer">
             <div class="search_container">
                 <p class="search_text">搜索</p>
-                <el-button
+                <!-- <el-button
+                    class="pc_top_search"
+                    type="primary"
+                > -->
+                <div
                     class="pc_top_search"
                     type="primary"
                 >
@@ -103,7 +107,8 @@
                             <span>查询</span>
                         </el-button>
                     </div>
-                </el-button>
+                    <!-- </el-button> -->
+                </div>
                 <div class="his_list">
                     <!-- @click="goDetail(his)" -->
                     <span
@@ -320,8 +325,14 @@ export default {
 			// 	this.$parent.inIt();
 			// }
 			if (this.$route.fullPath === '/index') {
-				console.log('this.isconnect', this.isconnect);
-				this.$emit('changeStatus', this.isconnect);
+				console.log(
+					'this.selectedAccount',
+					this.selectedAccount,
+				);
+				this.$emit(
+					'changeStatus',
+					this.selectedAccount,
+				);
 			}
 		},
 		async disconnectWallet() {
@@ -336,8 +347,14 @@ export default {
 			// 	this.$parent.searchEnsList();
 			// }
 			if (this.$route.fullPath === '/index') {
-				console.log('this.isconnect', this.isconnect);
-				this.$emit('changeStatus', this.isconnect);
+				console.log(
+					'this.selectedAccount',
+					this.selectedAccount,
+				);
+				this.$emit(
+					'changeStatus',
+					this.selectedAccount,
+				);
 			}
 		},
 		//点击更多图标
@@ -616,6 +633,16 @@ export default {
 				flex-direction: row;
 				align-items: center;
 				width: 14rem;
+				border-radius: 0.32rem;
+				border: 0.01rem solid;
+				background-clip: padding-box, border-box;
+				background-origin: padding-box, border-box;
+				background-image: linear-gradient(
+						to right,
+						#ffffff,
+						#ffffff
+					),
+					linear-gradient(90deg, #e5b3fd, #7de7ec);
 				.select_lang {
 					margin-right: 0.28rem;
 					/deep/.el-input__inner {
