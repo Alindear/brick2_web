@@ -301,6 +301,7 @@ export default {
 			});
 		},
 		async connectWallet() {
+			console.log('链接');
 			await onConnect(this);
 			let account = getAccount();
 			this.selectedAccount = account || '';

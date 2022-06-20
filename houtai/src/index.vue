@@ -1,12 +1,14 @@
 <template>
     <div class="app_main">
-        <div class="back_top_img"></div>
+        <!-- <div class="back_top_img"></div> -->
         <div class="header_top">
             <head-er
                 type="index"
                 @changeStatus="changeStatus"
             ></head-er>
         </div>
+
+        <div class="back_top_img"></div>
         <div class="index_content">
             <div class="back_bottom_img"></div>
             <div class="index_left">
@@ -70,7 +72,6 @@
                                 v-model="searchText"
                                 @input="searchTextChange"
                             >
-                                <div style="width: 1px;height: 38.68px;border: 1px solid red;"></div>
                             </el-input>
                         </div>
                     </el-button>
@@ -89,7 +90,14 @@
                             :src="top1Png"
                             alt=""
                         >
-                        <el-input v-model="megaInput"></el-input>
+                        <!-- <el-input v-model="megaInput"></el-input> -->
+                        <div class="border_input">
+                            <span>{{megaInput}}</span>
+                            <img
+                                :src="inputIcon"
+                                alt=""
+                            >
+                        </div>
                     </div>
                     <img
                         class="img2"
@@ -104,7 +112,14 @@
                         alt=""
                     >
                     <div class="right_bottom_input">
-                        <el-input v-model="bnsInput"></el-input>
+                        <!-- <el-input v-model="bnsInput"></el-input> -->
+                        <div class="border_bns_input">
+                            <span>{{bnsInput}}</span>
+                            <img
+                                :src="inputIcon"
+                                alt=""
+                            >
+                        </div>
                         <img
                             class="img4"
                             :src="top4Png"
@@ -263,6 +278,7 @@ import priceIcon from 'img/首页/编组 19@2x.png';
 import img1 from 'img/首页/未标题-2.png';
 import img2 from 'img/首页/编组 20.png';
 import enterIcon from 'img/首页/编组 24@2x.png';
+import inputIcon from 'img/首页/椭圆形@2x.png';
 
 import icon1 from 'img/logo/灰色2x/icon1.png';
 import icon2 from 'img/logo/灰色2x/icon2.png';
@@ -313,6 +329,7 @@ export default {
 			img1,
 			img2,
 			enterIcon,
+			inputIcon,
 
 			icon1,
 			icon2,
@@ -527,10 +544,11 @@ export default {
 	font-size: 0.16rem;
 	background: #ffffff;
 	position: relative;
-	// .header_top {
-	// 	// position: relative;
-	// 	position: absolute;
-	// }
+	.header_top {
+		position: relative;
+		// position: absolute;
+		z-index: 1;
+	}
 	.back_top_img {
 		width: 4.34rem;
 		height: 7.84rem;
@@ -711,8 +729,42 @@ export default {
 					display: flex;
 					flex-direction: column;
 					margin-right: 0.39rem;
-					img {
+					.img {
 						margin-bottom: 0.37rem;
+					}
+					.border_input {
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+						width: 3.75rem;
+						height: 0.74rem;
+						line-height: 0.74rem;
+						border: 0.01px solid transparent;
+						border-radius: 0.32rem;
+						background-clip: padding-box,
+							border-box;
+						background-origin: padding-box,
+							border-box;
+						background-image: linear-gradient(
+								to right,
+								#ffffff,
+								#ffffff
+							),
+							linear-gradient(
+								90deg,
+								#edafff,
+								#6af0e9
+							);
+						img {
+							height: 0.51rem;
+							width: 0.51rem;
+							vertical-align: middle;
+							margin: auto 0;
+							margin-right: 0.1rem;
+						}
+						span {
+							margin-left: 0.28rem;
+						}
 					}
 				}
 				/deep/.el-input__inner {
@@ -741,9 +793,28 @@ export default {
 				.right_bottom_input {
 					display: flex;
 					flex-direction: column;
-					/deep/.el-input__inner {
+					// /deep/.el-input__inner {
+					// 	width: 3.52rem;
+					// 	height: 0.74rem;
+					// 	background-image: linear-gradient(
+					// 		-60deg,
+					// 		#6af0e9 0%,
+					// 		#edafff 100%
+					// 	);
+					// 	border-radius: 0.2764rem;
+					// 	font-family: Alibaba-PuHuiTi-R;
+					// 	font-weight: R;
+					// 	font-size: 0.2764rem;
+					// 	color: #ffffff;
+					// 	border: none;
+					// }
+					.border_bns_input {
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
 						width: 3.52rem;
 						height: 0.74rem;
+						line-height: 0.74rem;
 						background-image: linear-gradient(
 							-60deg,
 							#6af0e9 0%,
@@ -755,6 +826,16 @@ export default {
 						font-size: 0.2764rem;
 						color: #ffffff;
 						border: none;
+						img {
+							height: 0.51rem;
+							width: 0.51rem;
+							vertical-align: middle;
+							margin: auto 0;
+							margin-right: 0.1rem;
+						}
+						span {
+							margin-left: 0.28rem;
+						}
 					}
 				}
 			}
@@ -904,7 +985,7 @@ export default {
 				height: 6.6rem;
 				background-image: url('houtai/img/首页/收益.png');
 				background-size: 100% 100%;
-				border: 1px solid;
+				border: 0.01rem solid;
 				border-image: linear-gradient(
 						to bottom,
 						#e5b3fd,
