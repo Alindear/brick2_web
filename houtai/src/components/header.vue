@@ -134,7 +134,8 @@ import searchPng from 'img/icon/编组.png';
 import search2Png from 'img/icon/编组 2.png';
 
 import closemenu from 'img/关闭菜单.png';
-import logoPng from 'img/首页/BNS_logo@2x.png';
+// import logoPng from 'img/首页/BNS_logo@2x.png';
+import logoPng from 'img/logoleft.png';
 import 'houtai/web3.min.js';
 // import {
 // 	connectWallet,
