@@ -24,76 +24,76 @@
 
             </div>
             <div class="card_desc_four_module">
-							<div class="card_desc_four1">
-								 <div
-                    class="bottom_popover1"
-                    v-if="popoverClick === 0"
-                >
-                    <video controls>
-                        <source
-                            :src="videoSrc"
-                            type="video/mp4"
-                        >
-                        您的浏览器不支持 HTML5 video 标签。
-                    </video>
-                    <div class="video_btn">
-                        <el-button @click="registerBtn">注册域名</el-button>
-                    </div>
-                </div>
-							</div>
-               
-							<div class="card_desc_four2">
-                <div
-                    class="bottom_popover2"
-                    v-if="popoverClick === 1"
-                >
-                    <p>
-                        文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容
-                    </p>
-                </div>
-							</div>
-
-							<div class="card_desc_four3">
-                <div
-                    class="bottom_popover"
-                    v-if="popoverClick === 2"
-                >
-                    <!-- 3 -->
-                </div>
-							</div>
-
-							<div class="card_desc_four4">
-                <div
-                    class="bottom_popover4"
-                    v-if="popoverClick === 3"
-                >
+                <div class="card_desc_four1">
                     <div
-                        v-for="(item,index) in teamList"
-                        :key="index"
-                        class="team_list"
+                        class="bottom_popover1"
+                        v-if="popoverClick === 0"
                     >
-                        <img
-                            class="team_title"
-                            :src="item.img"
-                            alt=""
-                        >
-                        <p class="team_name">{{item.name}}</p>
-                        <p class="team_level">{{item.level}}</p>
-                        <div class="team_desc">
-                            <p>{{item.descaname}}</p>
-                            <span>{{item.desc}}</span>
+                        <video controls>
+                            <source
+                                :src="videoSrc"
+                                type="video/mp4"
+                            >
+                            您的浏览器不支持 HTML5 video 标签。
+                        </video>
+                        <div class="video_btn">
+                            <el-button @click="registerBtn">注册域名</el-button>
                         </div>
-                        <img
-                            v-if="item.icon"
-                            class="team_icon"
-                            :src="item.icon"
-                            alt=""
+                    </div>
+                </div>
+
+                <div class="card_desc_four2">
+                    <div
+                        class="bottom_popover2"
+                        v-if="popoverClick === 1"
+                    >
+                        <p>
+                            文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card_desc_four3">
+                    <div
+                        class="bottom_popover"
+                        v-if="popoverClick === 2"
+                    >
+                        <!-- 3 -->
+                    </div>
+                </div>
+
+                <div class="card_desc_four4">
+                    <div
+                        class="bottom_popover4"
+                        v-if="popoverClick === 3"
+                    >
+                        <div
+                            v-for="(item,index) in teamList"
+                            :key="index"
+                            class="team_list"
                         >
+                            <img
+                                class="team_title"
+                                :src="item.img"
+                                alt=""
+                            >
+                            <p class="team_name">{{item.name}}</p>
+                            <p class="team_level">{{item.level}}</p>
+                            <div class="team_desc">
+                                <p>{{item.descaname}}</p>
+                                <span>{{item.desc}}</span>
+                            </div>
+                            <img
+                                v-if="item.icon"
+                                class="team_icon"
+                                :src="item.icon"
+                                alt=""
+                            >
+
+                        </div>
 
                     </div>
-
                 </div>
-							</div>
             </div>
 
         </div>
@@ -272,22 +272,22 @@ export default {
 			// border-radius: 0.3128rem;
 			// background-image: url('houtai/img/imgdesc/使用指南.png');
 			// background-size: 100% 100%;
-			.card_desc_four1{
+			.card_desc_four1 {
 				width: 14.5rem;
 				background-image: url('houtai/img/imgdesc/使用指南.png');
 				background-size: 100% 100%;
 			}
-			.card_desc_four2{
+			.card_desc_four2 {
 				width: 14.5rem;
 				background-image: url('houtai/img/imgdesc/代币.png');
 				background-size: 100% 100%;
 			}
-			.card_desc_four3{
+			.card_desc_four3 {
 				width: 14.5rem;
 				background-image: url('houtai/img/imgdesc/开发人员.png');
 				background-size: 100% 100%;
 			}
-			.card_desc_four4{
+			.card_desc_four4 {
 				width: 14.5rem;
 				background-image: url('houtai/img/imgdesc/矩形.png');
 				background-size: 100% 100%;
@@ -335,7 +335,7 @@ export default {
 				justify-content: space-between;
 				// padding: 0.24rem 0.24rem 0.4rem;
 				padding: 0.4983rem 0.24rem 0.4rem;
-				
+
 				.team_list {
 					width: 2.676rem;
 					height: 4.14rem;

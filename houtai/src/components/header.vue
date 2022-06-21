@@ -1,5 +1,9 @@
 <template>
     <div class="header_web">
+        <registered
+            v-if="openLinkShowFlag"
+            :openLinkShowFlag="openLinkShowFlag"
+        ></registered>
         <div class="header_pc">
             <img
                 :src="logoPng"
@@ -128,6 +132,7 @@
 </template>
 
 <script>
+import registered from './registered.vue';
 import anglesign from 'img/角标.png';
 import menu from 'img/菜单.png';
 import searchPng from 'img/icon/编组.png';
@@ -136,7 +141,7 @@ import search2Png from 'img/icon/编组 2.png';
 import closemenu from 'img/关闭菜单.png';
 // import logoPng from 'img/首页/BNS_logo@2x.png';
 import logoPng from 'img/logoleft.png';
-import 'houtai/web3.min.js';
+// import 'houtai/web3.min.js';
 // import {
 // 	connectWallet,
 // 	disconnectWallet,
@@ -155,6 +160,7 @@ import {
 } from 'houtai/web3_eth.js';
 
 export default {
+	components: { registered },
 	props: ['type'],
 	data() {
 		return {
@@ -367,7 +373,6 @@ export default {
 		},
 		//查询
 		async searchEns() {
-			//  document.activeElement.blur();  // 关闭软键盘
 			if (!this.searchText) {
 				alert('请输入查询的域名');
 				// alert(
@@ -403,23 +408,22 @@ export default {
 			if (!(await checkEachLength(this.searchText))) {
 				return;
 			}
-			console.log('this.isExist----', this.isExist);
 			if (this.isExist) {
 				this.openLinkBtn(true);
 			} else if (!this.isExist && this.isExist !== null) {
 				// this.searchText = this.searchText + '.bsc';
 				console.log('this.$router', this.$router);
 				//注册页 刷新后处理默认值 （目的：防止刷新界面 需要重新链接钱包）
-				if (
-					this.$router.history.current.path ===
-					'/registration/request'
-				) {
-					this.$parent.changeText(
-						this.searchText,
-					);
-				}
+				// if (
+				// 	this.$router.history.current.path ===
+				// 	'/brick/searchens'
+				// ) {
+				// 	this.$parent.changeText(
+				// 		this.searchText,
+				// 	);
+				// }
 				this.$router.push({
-					path: '/registration/request',
+					path: '/brick/searchens',
 					query: {
 						text: this.searchText,
 					},
@@ -545,7 +549,7 @@ export default {
 						#ffffff,
 						#ffffff
 					),
-				linear-gradient(90deg, #e5b3fd, #7de7ec);
+					linear-gradient(90deg, #e5b3fd, #7de7ec);
 				.search_border {
 					padding: 0 0.12rem;
 					width: 0.92rem;

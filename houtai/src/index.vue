@@ -987,7 +987,8 @@ export default {
 			.left_img {
 				width: 8rem;
 				height: 6.6rem;
-				border: 0.33rem solid;
+				// border: 0.33rem solid;
+				border: 0.01rem solid;
 				border-image: linear-gradient(
 						to right,
 						#e5b3fd,
@@ -1020,7 +1021,25 @@ export default {
 					);
 					-webkit-background-clip: text;
 					color: transparent;
+					// padding: 4.39rem 0 1.59rem 0.55rem;
+					margin: 4.72rem 0 1.25rem 0.88rem;
+					// box-sizing: border-box;
+				}
+			}
+			.left_img:hover {
+				border: 0.34rem solid;
+				border-image: linear-gradient(
+						to right,
+						#e5b3fd,
+						#7de7ec
+					)
+					1 10;
+				box-sizing: border-box;
+				.dis_link {
 					margin: 4.39rem 0 1.59rem 0.55rem;
+					box-sizing: border-box;
+					// padding: 4.72rem 0 1.25rem 0.88rem;
+					// box-sizing: border-box;
 				}
 			}
 			.right_img {

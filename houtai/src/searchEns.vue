@@ -1,6 +1,9 @@
 <template>
     <div class="search_main">
-        <div class="search_ens">
+        <div
+            class="search_ens"
+            v-if="!registBtnLoading"
+        >
             <p class="ens_text">域名</p>
             <div class="domian_name_search">
                 <div class="domian_name_content">
@@ -149,7 +152,7 @@
         <!-- v-if="approveBtnLoading" -->
         <div
             class="search_ens_step"
-            v-if="approveBtnLoading"
+            v-if="registBtnLoading"
         >
             <p class="ens_text">域名</p>
             <div class="domian_name_search">
@@ -162,11 +165,13 @@
 
                             <p
                                 class="step_title"
-                                v-if="!approveBtnDisabled"
-                            >您很快就可以完成域名注册</p>
+                                v-if="registBtnLoading"
+                            >
+                                您很快就可以完成域名注册
+                            </p>
                             <p
                                 class="step_title"
-                                v-if="approveBtnDisabled"
+                                v-if="!registBtnLoading"
                             >
                                 <img
                                     :src="successPng"
