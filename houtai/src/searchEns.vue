@@ -99,8 +99,8 @@
                                     v-if="['USDT','BRICK'].includes(paymentMethod)"
                                     @click="approveToken"
                                     :disabled="approveBtnDisabled"
-                                    :loading="approveBtnLoading"
                                 >请求授权</el-button>
+                                <!-- :loading="approveBtnLoading" -->
                                 <el-button
                                     class="regist_btn"
                                     type="primary"

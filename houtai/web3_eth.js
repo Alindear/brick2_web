@@ -970,12 +970,12 @@ export function init() {
 export async function approve(token, loadingFuncT, loadingFuncF, callback) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount == "") {
-        // alert("请链接钱包");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].please_connect_wallet
-        )
+        alert("请链接钱包");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].please_connect_wallet
+        // )
         return null;
     }
 
@@ -1008,12 +1008,12 @@ export async function approve(token, loadingFuncT, loadingFuncF, callback) {
 export async function allowance(token) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount == "") {
-        // alert("请链接钱包");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].please_connect_wallet
-        )
+        alert("请链接钱包");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].please_connect_wallet
+        // )
         return null;
     }
 
@@ -1029,12 +1029,12 @@ export async function allowance(token) {
 export async function isExist(searchText) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount == "") {
-        // alert("请链接钱包");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].please_connect_wallet
-        )
+        alert("请链接钱包");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].please_connect_wallet
+        // )
         return null;
     }
 
@@ -1052,12 +1052,12 @@ export async function isExist(searchText) {
 export async function getNode(name) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount == "") {
-        // alert("请链接钱包");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].please_connect_wallet
-        )
+        alert("请链接钱包");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].please_connect_wallet
+        // )
         return null;
     }
 
@@ -1076,12 +1076,12 @@ async function checkAndLoadFromLast() {
 
 async function checkYear(year) {
     if (year != null && year < 1) {
-        // alert("年份最少选择1年");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].at_least_1_year
-        )
+        alert("年份最少选择1年");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].at_least_1_year
+        // )
         return false;
     }
     return true;
@@ -1092,12 +1092,12 @@ export async function getAllNodes() {
     await checkAndLoadFromLast();
     console.log("getAllNodes selectedAccount：" + selectedAccount)
     if (selectedAccount == null || selectedAccount == "") {
-        // alert("请链接钱包");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].please_connect_wallet
-        )
+        alert("请链接钱包");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].please_connect_wallet
+        // )
         return;
     }
 
@@ -1120,12 +1120,12 @@ export async function getAllNodes() {
 export async function buyWithEth(name, callback, loadingTrue, loadingFalse, _years, amount) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount == "") {
-        // alert("请链接钱包");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].please_connect_wallet
-        )
+        alert("请链接钱包");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].please_connect_wallet
+        // )
         return;
     }
     if (!await checkYear(_years)) return;
@@ -1152,12 +1152,12 @@ export async function buyWithUsdt(name, callback, loadingTrue, loadingFalse, _ye
         selectedAccount = localStorage.getItem('STATUS');
     }
     if (selectedAccount == null || selectedAccount == "") {
-        // alert("请链接钱包");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].please_connect_wallet
-        )
+        alert("请链接钱包");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].please_connect_wallet
+        // )
         return;
     }
     if (!await checkYear(_years)) return;
@@ -1181,12 +1181,12 @@ export async function buyWithUsdt(name, callback, loadingTrue, loadingFalse, _ye
 export async function buyWithBrick(name, callback, loadingTrue, loadingFalse, _years, amount) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount == "") {
-        // alert("请链接钱包");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].please_connect_wallet
-        )
+        alert("请链接钱包");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].please_connect_wallet
+        // )
         return;
     }
     if (!await checkYear(_years)) return;
@@ -1208,12 +1208,12 @@ export async function buyWithBrick(name, callback, loadingTrue, loadingFalse, _y
 export async function getPrice(name) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount == "") {
-        // alert("请链接钱包");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].please_connect_wallet
-        )
+        alert("请链接钱包");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].please_connect_wallet
+        // )
         return;
     }
 
@@ -1235,22 +1235,22 @@ export async function checkEachLength(name) {
 
     for (let char of name) {
         if (char === "❤") {
-            // alert("存在非法字符[❤]️，请替换再查询");
-            alert(
-                store.state.i18n[
-                    store.state.language
-                ].illegal_love_exists
-            );
+            alert("存在非法字符[❤]️，请替换再查询");
+            // alert(
+            //     store.state.i18n[
+            //         store.state.language
+            //     ].illegal_love_exists
+            // );
             return false;
         }
     }
     if (parseInt(lengthFromPrice) !== Array.from(name).length) {
-        // alert("存在非法字符，请替换再查询");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].illegal_exists
-        );
+        alert("存在非法字符，请替换再查询");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].illegal_exists
+        // );
 
         return false;
     }
@@ -1370,24 +1370,24 @@ function formatTime(timestamp) {
 export async function checkBNBbalance(amount) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount === "") {
-        // alert("请链接钱包");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].please_connect_wallet
-        )
+        alert("请链接钱包");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].please_connect_wallet
+        // )
         return null;
     }
     var balance = await web3.eth.getBalance(selectedAccount);
     console.log(balance);
     console.log(amount);
     if (balance < amount) {
-        // alert("钱包BNB余额不足");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].BNB_wallet
-        )
+        alert("钱包BNB余额不足");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].BNB_wallet
+        // )
         return null;
     }
     return "1";
@@ -1396,24 +1396,24 @@ export async function checkBNBbalance(amount) {
 export async function checkUSDTbalance(amount) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount === "") {
-        // alert("请链接钱包");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].please_connect_wallet
-        )
+        alert("请链接钱包");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].please_connect_wallet
+        // )
         return null;
     }
     var balance = await usdtContract.methods.balanceOf(selectedAccount).call();
     console.log(balance);
     console.log(amount);
     if (balance < amount) {
-        // alert("钱包USDT余额不足");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].USDT_wallet
-        )
+        alert("钱包USDT余额不足");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].USDT_wallet
+        // )
         return null;
     }
     return "1";
@@ -1422,24 +1422,24 @@ export async function checkUSDTbalance(amount) {
 export async function checkBrickbalance(amount) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount === "") {
-        // alert("请链接钱包");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].please_connect_wallet
-        )
+        alert("请链接钱包");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].please_connect_wallet
+        // )
         return null;
     }
     var balance = await brickContract.methods.balanceOf(selectedAccount).call();
     console.log(balance);
     console.log(amount);
     if (balance < amount) {
-        // alert("钱包BRICK余额不足");
-        alert(
-            store.state.i18n[
-                store.state.language
-            ].BRICK_wallet
-        )
+        alert("钱包BRICK余额不足");
+        // alert(
+        //     store.state.i18n[
+        //         store.state.language
+        //     ].BRICK_wallet
+        // )
         return null;
     }
     return "1";
