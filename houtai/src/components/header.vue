@@ -101,7 +101,7 @@
                             :loading="searchEnsLoading"
                         >
                             <img
-                                :src="searchPng"
+                                :src="search2Png"
                                 alt=""
                             >
                             <span>查询</span>
@@ -131,6 +131,8 @@
 import anglesign from 'img/角标.png';
 import menu from 'img/菜单.png';
 import searchPng from 'img/icon/编组.png';
+import search2Png from 'img/icon/编组 2.png';
+
 import closemenu from 'img/关闭菜单.png';
 import logoPng from 'img/首页/BNS_logo@2x.png';
 import 'houtai/web3.min.js';
@@ -163,6 +165,7 @@ export default {
 			closemenu,
 			logoPng,
 			searchPng,
+			search2Png,
 			selectedAccount: '',
 			menuFlag: true,
 			showSearchContainer: false,
@@ -708,6 +711,7 @@ export default {
 					font-weight: 600;
 					font-size: 0.2rem;
 					color: #ffffff;
+					border: none;
 				}
 				img {
 					width: 0.29rem;
