@@ -139,7 +139,25 @@ html body {
 }
 
 .el-radio__inner {
-	border: 0.01rem solid #a63928 !important;
+	/* border: 0.01rem solid #a63928 !important; */
+	border: 0.01rem solid ;
+    /* background-image: linear-gradient(
+					-60deg,
+					#6af0e9 0%,
+					#edafff 100%
+				);
+
+        background-clip: padding-box, border-box;
+        background-origin: padding-box, border-box;
+        background-image: linear-gradient(
+                to right,
+                #ffffff,
+                #ffffff
+            ),
+        linear-gradient(90deg, #e5b3fd, #7de7ec); */
+        /* background-image: url('houtai/img/首页/编组 12@3x.png');
+        background-size: 100% 100%;
+        border: none; */
 }
 
 .el-radio__label {
@@ -158,45 +176,28 @@ html body {
     color: #999999;
     margin-right: 0.4rem;
     padding: 0;
-
 }
 
 .el-radio__input.is-checked .el-radio__inner {
-	/* background-color: #ffffff; */
-        background-color: inherit;
+    background-color: inherit;
 }
-/* .el-select-dropdown__item {
-	border-bottom: 1px solid #eeeeee;
-    height: 0.3rem;
-    line-height: 0.3rem;
-} */
-/* .el-step__icon.is-text {
-	border: 0;
-	width: 45px;
-}
-.el-step.is-horizontal .el-step__line {
-	height: 1px;
-}
-.el-step__line {
-	background-color: #ededed;
-} */
+
 .el-radio__input.is-checked + .el-radio__label {
     color: #999999 !important;
 }
 .el-radio__inner::after{
 
-    width: 6px;
-    height: 6px;
-    background-color: #a63928;
+    width: 0.2rem;
+    height: 0.2rem;
+    background-image: url('houtai/img/首页/编组 12@3x.png');
+    background-size: 100% 100%;
+    border: none;
 }
 .el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
-    /* background-color: #ffffff; */
-
-        background-color: inherit;
+    background-color: inherit;
 }
 .el-popper .popper__arrow {
     border-width: 1px;
-
 }
 
 .el-popper[x-placement^=bottom] .popper__arrow{
