@@ -23,12 +23,46 @@ html body {
     src: url('./PingFangSC-Regular.ttf') format('truetype');
 }
 @font-face {
+    font-family: Alibaba-PuHuiTi-B;
+    src: url('./Alibaba-PuHuiTi-B.ttf') format('truetype');
+}
+@font-face {
+    font-family: Alibaba-PuHuiTi-R;
+    src: url('./Alibaba-PuHuiTi-Regular.ttf') format('truetype');
+}
+/* @font-face {
+    font-family: Alibaba-PuHuiTi-H;
+    src: url('./Alibaba-PuHuiTi-H.ttf') format('truetype');
+} */
+@font-face {
+    font-family: Alibaba-PuHuiTi-M;
+    src: url('./Alibaba-PuHuiTi-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: PingFangSC-Regular;
+    src: url('./PingFangSC-Regular.ttf') format('truetype');
+}
+@font-face {
     font-family: Womby-Regular;
     src: url('./Womby-Regular-3.ttf') format('truetype');
 }
 /* @font-face {
     font-family: YouSheBiaoTiYuan;
     src: url('./优设标题圆.otf') format('truetype');
+}*/
+ @font-face {
+    font-family: YouSheBiaoTiYuan;
+    src: url("./优设标题圆.otf");
+    /* src: url('./优设标题圆.otf') ; */
+}
+/* @font-face {
+    font-family: GraublauWeb;
+    src: url("../../assets/otf/111.otf");
+  } */
+
+/* font-family: GraublauWeb;
+  src: url("../../assets/otf/111.otf");
 } */
 ::marker {
     color: #6A008E;
