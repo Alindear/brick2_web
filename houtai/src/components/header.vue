@@ -534,6 +534,14 @@ export default {
 				align-items: center;
 				padding: 0;
 				margin-left: 0.32rem;
+				background-clip: padding-box, border-box;
+				background-origin: padding-box, border-box;
+				background-image: linear-gradient(
+						to right,
+						#ffffff,
+						#ffffff
+					),
+				linear-gradient(90deg, #e5b3fd, #7de7ec);
 				.search_border {
 					padding: 0 0.12rem;
 					width: 0.92rem;
@@ -553,6 +561,7 @@ export default {
 					);
 					-webkit-background-clip: text;
 					color: transparent;
+
 					display: flex;
 					flex-direction: row;
 					// align-items: center;

@@ -6,7 +6,7 @@
         <div class="container_config">
             <div class="config_left">
                 <el-menu
-                    default-active="2"
+                    :default-active="activeMenu"
                     :collapse="isCollapse"
                     class="el-menu-vertical-demo"
                 >
@@ -52,6 +52,7 @@ export default {
 			myensIcon,
 			documentdescIcon,
 			contanctusIcon,
+			activeMenu: '1',
 
 			myensSelect,
 			documentdescSelect,
@@ -102,6 +103,15 @@ export default {
 	},
 	mounted: function () {
 		console.log(this.configData);
+		console.log('this.$route',this.$route);
+		// activeMenu
+		if(this.$route === '/brick/myens'){
+			this.activeMenu = '2'
+		} else if (this.$route === '/brick/documentdesc'){
+			this.activeMenu = '3'
+		} else if(this.$route === '/brick/contactus') {
+			this.activeMenu = '4'
+		}
 	},
 };
 </script>
@@ -140,6 +150,26 @@ export default {
 				padding: 0 !important;
 				display: flex;
 				flex-direction: row;
+			}
+	
+			.el-menu-item.is-active {
+			//你要修改的颜⾊
+				// background-color:rgb(48,105,132)!important;//
+				// img{
+				// 	background-image: url('houtai/img/icon/我的域名-选中态.png');
+				// 	background-size: 100% 100%;
+				// }
+				.icon_img {
+					// width: 0.3rem;
+					// height: 0.3rem;
+					opacity:1;
+					// background: #ffffff;
+					// border-radius: 0.08rem;
+					// vertical-align: middle;
+					// margin-right: 0.16rem;
+					// background-image: url('houtai/img/icon/我的域名-选中态.png');
+					// background-size: 100% 100%;
+				}
 			}
 			.icon_img {
 				width: 0.3rem;
