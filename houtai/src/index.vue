@@ -149,15 +149,17 @@
             <div class="share_img">
                 <div
                     class="left_img"
-                    v-if="!changeStatusShowFlag && linkShowFlag"
+                    v-if="linkShowFlag"
                 >
+                    <!-- v-if="!changeStatusShowFlag && linkShowFlag" -->
                     <p class="on_link">http:24989:cnwert.fogfh3wr4560-24989:cnwert.fogfh34560-567asd。i c</p>
                 </div>
                 <div
                     class="left_img"
-                    v-if="!changeStatusShowFlag && !linkShowFlag"
                     @click="linkClick"
+                    v-if="!linkShowFlag"
                 >
+                    <!-- v-if="!changeStatusShowFlag && !linkShowFlag" -->
                     <p
                         class="dis_link"
                         @click="linkClick"
@@ -1008,7 +1010,8 @@ export default {
 					-webkit-background-clip: text;
 					color: transparent;
 					word-break: break-all;
-					margin: 3.61rem 0.57rem 0.44rem 0.55rem;
+					// margin: 3.61rem 0.57rem 0.44rem 0.55rem;
+					margin: 3.94rem 0.9rem 0.77rem 0.88rem;
 				}
 				.dis_link {
 					font-family: Alibaba-PuHuiTi-B;
@@ -1035,6 +1038,10 @@ export default {
 					)
 					1 10;
 				box-sizing: border-box;
+				.on_link {
+					// margin: 3.94rem 0.9rem 0.77rem 0.88rem;
+					margin: 3.61rem 0.57rem 0.44rem 0.55rem;
+				}
 				.dis_link {
 					margin: 4.39rem 0 1.59rem 0.55rem;
 					box-sizing: border-box;
