@@ -23,8 +23,9 @@
                 </div>
 
             </div>
-            <div class="card_desc_four">
-                <div
+            <div class="card_desc_four_module">
+							<div class="card_desc_four1">
+								 <div
                     class="bottom_popover1"
                     v-if="popoverClick === 0"
                 >
@@ -39,6 +40,9 @@
                         <el-button @click="registerBtn">注册域名</el-button>
                     </div>
                 </div>
+							</div>
+               
+							<div class="card_desc_four2">
                 <div
                     class="bottom_popover2"
                     v-if="popoverClick === 1"
@@ -47,12 +51,18 @@
                         文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容
                     </p>
                 </div>
+							</div>
+
+							<div class="card_desc_four3">
                 <div
                     class="bottom_popover"
                     v-if="popoverClick === 2"
                 >
                     <!-- 3 -->
                 </div>
+							</div>
+
+							<div class="card_desc_four4">
                 <div
                     class="bottom_popover4"
                     v-if="popoverClick === 3"
@@ -83,6 +93,7 @@
                     </div>
 
                 </div>
+							</div>
             </div>
 
         </div>
@@ -246,29 +257,52 @@ export default {
 				}
 			}
 		}
-		.card_desc_four {
+		.card_desc_four_module {
 			width: 14.5rem;
-			// height: 40.183rem;
-			margin: 0.25rem 0.4rem;
-			background-image: linear-gradient(
-				180deg,
-				#e3f2ff 0%,
-				rgba(228, 242, 255, 0.96) 11%,
-				rgba(243, 250, 255, 0) 100%
-			);
-			border-radius: 16px 0 0 0 16px 16px 16px;
-			border-radius: 16px 0 0 0 16px 16px 16px;
-			border-radius: 0.3128rem;
+			margin: 0.0717rem 0.4rem 0;
+			// margin: 0.25rem 0.4rem;
+			// background-image: linear-gradient(
+			// 	180deg,
+			// 	#e3f2ff 0%,
+			// 	rgba(228, 242, 255, 0.96) 11%,
+			// 	rgba(243, 250, 255, 0) 100%
+			// );
+			// border-radius: 16px 0 0 0 16px 16px 16px;
+			// border-radius: 16px 0 0 0 16px 16px 16px;
+			// border-radius: 0.3128rem;
+			// background-image: url('houtai/img/imgdesc/使用指南.png');
+			// background-size: 100% 100%;
+			.card_desc_four1{
+				width: 14.5rem;
+				background-image: url('houtai/img/imgdesc/使用指南.png');
+				background-size: 100% 100%;
+			}
+			.card_desc_four2{
+				width: 14.5rem;
+				background-image: url('houtai/img/imgdesc/代币.png');
+				background-size: 100% 100%;
+			}
+			.card_desc_four3{
+				width: 14.5rem;
+				background-image: url('houtai/img/imgdesc/开发人员.png');
+				background-size: 100% 100%;
+			}
+			.card_desc_four4{
+				width: 14.5rem;
+				background-image: url('houtai/img/imgdesc/矩形.png');
+				background-size: 100% 100%;
+			}
 			.bottom_popover1 {
 				width: 13.5rem;
 				border-radius: 0.3128rem;
-				margin: 0.25rem 0.5rem 0;
+				// margin: 0.25rem 0.5rem 0;
+				margin: 0.0717rem 0.5rem 0.3rem;
 				box-sizing: border-box;
 				position: relative;
 				video {
 					width: 13.5rem;
 					height: 7.594rem;
-					padding-top: 0.23rem;
+					padding-top: 0.7283rem;
 				}
 				.video_btn {
 					position: absolute;
@@ -291,15 +325,17 @@ export default {
 			}
 			.bottom_popover2 {
 				p {
-					margin: 0.23rem 0.32rem;
-					padding-top: 0.23rem;
+					margin: 0.0717rem 0.32rem 0.23rem;
+					padding-top: 0.4983rem;
 				}
 			}
 			.bottom_popover4 {
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
-				padding: 0.24rem 0.24rem 0.4rem;
+				// padding: 0.24rem 0.24rem 0.4rem;
+				padding: 0.4983rem 0.24rem 0.4rem;
+				
 				.team_list {
 					width: 2.676rem;
 					height: 4.14rem;
