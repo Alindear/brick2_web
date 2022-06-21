@@ -230,12 +230,12 @@
                 >
             </div> -->
 
-						<div class="partner_img">
-						 	<img
-								:src="partnerImg"
-								alt=""
-							>
-						</div>
+            <div class="partner_img">
+                <img
+                    :src="partnerImg"
+                    alt=""
+                >
+            </div>
         </div>
 
         <div class="contact_us_module">
@@ -244,13 +244,25 @@
             </p>
             <div class="contact_input">
                 <span class="email">E-mail: admin@bnsdid.io </span>
-								<span class="bottom_img">
-									<img class="bottom_icon1" :src="twitterPng" alt="">
-									<img class="bottom_icon2" :src="twitterPng" alt="">
-									<img class="bottom_icon3" :src="twitterPng" alt="">
-									<!-- <div class="img_left"></div> -->
-								</span>
-								<span class="img_left"></span>
+                <span class="bottom_img">
+                    <img
+                        class="bottom_icon1"
+                        :src="twitterPng"
+                        alt=""
+                    >
+                    <img
+                        class="bottom_icon2"
+                        :src="twitterPng"
+                        alt=""
+                    >
+                    <img
+                        class="bottom_icon3"
+                        :src="twitterPng"
+                        alt=""
+                    >
+                    <!-- <div class="img_left"></div> -->
+                </span>
+                <span class="img_left"></span>
                 <span class="img_center">SAY HI HERE</span>
                 <img
                     class="img_right"
@@ -290,8 +302,8 @@ import img1 from 'img/首页/未标题-2.png';
 import img2 from 'img/首页/编组 20.png';
 import enterIcon from 'img/首页/编组 24@2x.png';
 import inputIcon from 'img/首页/椭圆形@2x.png';
-import partnerImg from 'img/首页/编组 39@2x.png'
-import twitterPng from 'img/首页/矩形@2x.png'
+import partnerImg from 'img/首页/编组 39@2x.png';
+import twitterPng from 'img/首页/矩形@2x.png';
 
 import icon1 from 'img/logo/灰色2x/icon1.png';
 import icon2 from 'img/logo/灰色2x/icon2.png';
@@ -436,6 +448,18 @@ export default {
 				{ img: iconSelect14 },
 			],
 		};
+	},
+
+	watch: {
+		searchText(newValue, oldValue) {
+			console.log(newValue);
+			this.searchText = newValue.replace('-', '');
+			this.searchText = this.searchText.replace(
+				/[`:_.~!｜［｛｝〉×〉×［］〖〗＊〔〕‖〈〉«»«»×÷＞＜≥≤¡¿£€﹉–´´＂＇¢฿♀♂‹›」』『「@#$%^&*() \+ =<>?"{}|, \/ ;' \\ [ \] ·~～！@#￥¥%……&*（）—— \+ ={}|《》<>？：“”【】、；‘’，。、]/g,
+				'',
+			);
+			this.searchText = this.searchText.toLowerCase();
+		},
 	},
 
 	methods: {
@@ -583,7 +607,7 @@ export default {
 		height: 9.8rem;
 		box-sizing: border-box;
 		position: relative;
-		width: calc( 100% - 1rem );
+		width: calc(100% - 1rem);
 		// background: pink;
 		.index_left {
 			margin-top: 1.62rem;
@@ -951,7 +975,7 @@ export default {
 			font-weight: 500;
 			font-size: 0.22rem;
 			color: #999999;
-    	margin: 0;
+			margin: 0;
 			margin-bottom: 0.6rem;
 		}
 		.share_img {
@@ -1188,7 +1212,7 @@ export default {
 			margin-bottom: 1.22rem;
 		}
 		.partner_img {
-			img{
+			img {
 				width: 3.09rem;
 				height: 1.46rem;
 			}
@@ -1246,25 +1270,25 @@ export default {
 				margin-left: 0.84rem;
 				margin-right: 1.58rem;
 			}
-			.bottom_img{
-				img{
+			.bottom_img {
+				img {
 					height: 0.33rem;
 					width: 0.33rem;
 					margin-right: 0.24rem;
 					vertical-align: middle;
 				}
-				.bottom_icon3{
+				.bottom_icon3 {
 					margin-right: 0.6rem;
 				}
 			}
 			.img_left {
-					// border-left: 0.02rem solid #6af0e9;
-					margin: auto 0;
-					margin-right: 1.77rem;
-					height: 0.6rem;
-					display: inline-block;
-				}
-			
+				// border-left: 0.02rem solid #6af0e9;
+				margin: auto 0;
+				margin-right: 1.77rem;
+				height: 0.6rem;
+				display: inline-block;
+			}
+
 			.img_center {
 				width: 1.54rem;
 				height: 0.34rem;

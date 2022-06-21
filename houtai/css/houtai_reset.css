@@ -55,7 +55,6 @@ html body {
  @font-face {
     font-family: YouSheBiaoTiYuan;
     src: url("./优设标题圆.otf");
-    /* src: url('./优设标题圆.otf') ; */
 }
 /* @font-face {
     font-family: GraublauWeb;
@@ -78,8 +77,47 @@ html body {
 /* .tvps-font {
    font-family: 'DINCond';
 } */
-
-
+.el-select-dropdown {
+    width: 2.30rem;
+    height: 1.36rem;
+    background: #FFFFFF;
+    border-radius: .32rem;
+    border: none;
+}
+.el-popper .popper__arrow {
+    border-width: 0;
+}
+.el-popper .popper__arrow::after{
+    border-width: 0px;
+}
+.el-select-dropdown__wrap{
+    height: 1.36rem;
+    max-height: 1.36rem;
+}
+.el-scrollbar{
+    height: 1.36rem;
+    max-height: 1.36rem;
+}
+.el-select-dropdown__list{
+    height: 1.36rem;
+    max-height: 1.36rem;
+    padding:0;
+}
+.el-select-dropdown__item{
+    height: 0.675rem;
+    line-height: 0.675rem;
+    border-bottom: 0.01rem solid #eeeeee;
+    padding: 0 0.2rem;
+}
+.el-select-dropdown__item{
+    /* height: 0.675rem;
+    line-height: 0.675rem; */
+    /* border-bottom: none; */
+}
+.el-select-dropdown__item:last-child {
+  /* border-bottom: 1px solid #EEEEEE;*/
+    border-bottom: none;
+}
 /* .web-font {
   font-family: "PangMenZhengDao" !important;
   font-size: 1rem;
@@ -94,34 +132,45 @@ html body {
     border: 1px solid #ffffff;
     border-radius: 20px;
 }
+ */
 
 .el-breadcrumb {
-	padding: 0 0 20px 0;
+	padding: 0 0 0.020rem 0;
 }
 
 .el-radio__inner {
-	border: 1px solid #a63928 !important;
+	border: 0.01rem solid #a63928 !important;
 }
 
 .el-radio__label {
     float: left !important;
-    width: 7rem !important;
-    padding-left: 5px;
+    /* width: 0.2rem !important;
+    padding-left: 0.05rem;
     font-weight: 600;
     color: #999999;
-    font-size: 1rem;
+    font-size: 0.32rem; */
     font-family:PingFangSC-Regular;
+    width: 1.30rem;
+    height: .28re,;
+    font-family: PingFangSC-Semibold;
+    font-weight: 600;
+    font-size: .20rem;
+    color: #999999;
+    margin-right: 0.4rem;
+    padding: 0;
+
 }
 
 .el-radio__input.is-checked .el-radio__inner {
-	background-color: #ffffff;
+	/* background-color: #ffffff; */
+        background-color: inherit;
 }
-.el-select-dropdown__item {
+/* .el-select-dropdown__item {
 	border-bottom: 1px solid #eeeeee;
-    height: 3rem;
-    line-height: 3rem;
-}
-.el-step__icon.is-text {
+    height: 0.3rem;
+    line-height: 0.3rem;
+} */
+/* .el-step__icon.is-text {
 	border: 0;
 	width: 45px;
 }
@@ -130,7 +179,7 @@ html body {
 }
 .el-step__line {
 	background-color: #ededed;
-}
+} */
 .el-radio__input.is-checked + .el-radio__label {
     color: #999999 !important;
 }
@@ -141,7 +190,9 @@ html body {
     background-color: #a63928;
 }
 .el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
+
+        background-color: inherit;
 }
 .el-popper .popper__arrow {
     border-width: 1px;
@@ -153,4 +204,4 @@ html body {
 }
 .el-select {
     -webkit-tap-highlight-color: #ffffff !important;
-} */
+}
