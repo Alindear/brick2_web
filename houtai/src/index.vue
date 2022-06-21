@@ -219,7 +219,7 @@
 
         <div class="partner_module">
             <p class="partner_title">合作伙伴</p>
-            <div class="partner_img">
+            <!-- <div class="partner_img">
                 <img
                     v-for="(item,index) in imgList"
                     :key="index"
@@ -228,7 +228,14 @@
                     :src="item.img"
                     alt=""
                 >
-            </div>
+            </div> -->
+
+						<div class="partner_img">
+						 	<img
+								:src="partnerImg"
+								alt=""
+							>
+						</div>
         </div>
 
         <div class="contact_us_module">
@@ -237,15 +244,19 @@
             </p>
             <div class="contact_input">
                 <span class="email">E-mail: admin@bnsdid.io </span>
-                <span class="img_left"></span>
+								<span class="bottom_img">
+									<img class="bottom_icon1" :src="twitterPng" alt="">
+									<img class="bottom_icon2" :src="twitterPng" alt="">
+									<img class="bottom_icon3" :src="twitterPng" alt="">
+									<!-- <div class="img_left"></div> -->
+								</span>
+								<span class="img_left"></span>
                 <span class="img_center">SAY HI HERE</span>
-                <!-- <span class="img_right"> -->
                 <img
                     class="img_right"
                     :src="enterIcon"
                     alt=""
                 >
-                <!-- </span> -->
 
             </div>
         </div>
@@ -279,6 +290,8 @@ import img1 from 'img/首页/未标题-2.png';
 import img2 from 'img/首页/编组 20.png';
 import enterIcon from 'img/首页/编组 24@2x.png';
 import inputIcon from 'img/首页/椭圆形@2x.png';
+import partnerImg from 'img/首页/编组 39@2x.png'
+import twitterPng from 'img/首页/矩形@2x.png'
 
 import icon1 from 'img/logo/灰色2x/icon1.png';
 import icon2 from 'img/logo/灰色2x/icon2.png';
@@ -330,6 +343,8 @@ export default {
 			img2,
 			enterIcon,
 			inputIcon,
+			partnerImg,
+			twitterPng,
 
 			icon1,
 			icon2,
@@ -568,6 +583,7 @@ export default {
 		height: 9.8rem;
 		box-sizing: border-box;
 		position: relative;
+		width: calc( 100% - 1rem );
 		// background: pink;
 		.index_left {
 			margin-top: 1.62rem;
@@ -1160,7 +1176,8 @@ export default {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		margin-bottom: 1.4043rem;
+		// margin-bottom: 1.4043rem;
+		margin-bottom: 1.2rem;
 		.partner_title {
 			height: 1.04rem;
 			font-family: YouSheBiaoTiYuan;
@@ -1168,22 +1185,26 @@ export default {
 			color: #000000;
 			letter-spacing: 0.055rem;
 			margin: 0;
-			margin-bottom: 1.31rem;
+			margin-bottom: 1.22rem;
 		}
 		.partner_img {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-around;
-			flex-wrap: wrap;
-			width: 15.61rem;
-			img {
-				width: 1.29rem;
-				height: 1.27rem;
-				margin-right: 0.96rem;
+			img{
+				width: 3.09rem;
+				height: 1.46rem;
 			}
-			img:nth-child(7n) {
-				margin-right: 0;
-			}
+			// display: flex;
+			// flex-direction: row;
+			// justify-content: space-around;
+			// flex-wrap: wrap;
+			// width: 15.61rem;
+			// img {
+			// 	width: 1.29rem;
+			// 	height: 1.27rem;
+			// 	margin-right: 0.96rem;
+			// }
+			// img:nth-child(7n) {
+			// 	margin-right: 0;
+			// }
 		}
 	}
 
@@ -1222,13 +1243,28 @@ export default {
 				font-size: 0.28rem;
 				color: #000000;
 				letter-spacing: -0.0054rem;
-				margin-left: 2.34rem;
-				margin-right: 2rem;
+				margin-left: 0.84rem;
+				margin-right: 1.58rem;
+			}
+			.bottom_img{
+				img{
+					height: 0.33rem;
+					width: 0.33rem;
+					margin-right: 0.24rem;
+					vertical-align: middle;
+				}
+				.bottom_icon3{
+					margin-right: 0.6rem;
+				}
 			}
 			.img_left {
-				border-left: 0.02rem solid #6af0e9;
-				margin-right: 1.77rem;
-			}
+					// border-left: 0.02rem solid #6af0e9;
+					margin: auto 0;
+					margin-right: 1.77rem;
+					height: 0.6rem;
+					display: inline-block;
+				}
+			
 			.img_center {
 				width: 1.54rem;
 				height: 0.34rem;
