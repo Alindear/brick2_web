@@ -3,28 +3,28 @@
         <div class="contact_module">
             <div class="comm_list color1">
                 <img
-                    :src="warnPng"
+                    :src="icon1"
                     alt=""
                 >
                 <p>DISCORD</p>
             </div>
             <div class="comm_list color2">
                 <img
-                    :src="warnPng"
+                    :src="icon2"
                     alt=""
                 >
                 <p>MEDIUM</p>
             </div>
             <div class="comm_list color3">
                 <img
-                    :src="warnPng"
+                    :src="icon3"
                     alt=""
                 >
                 <p>TWITTER</p>
             </div>
             <div class="comm_list color4">
                 <img
-                    :src="warnPng"
+                    :src="icon4"
                     alt=""
                 >
                 <p>TELEGRAM PERSONAL</p>
@@ -35,12 +35,18 @@
 
 <script>
 import headEr from './components/header.vue';
-import warnPng from 'img/警告.png';
+import icon1 from 'img/iconus/discord@2x.png';
+import icon2 from 'img/iconus/编组 28@2x.png';
+import icon3 from 'img/iconus/推特@2x.png';
+import icon4 from 'img/iconus/telegram@2x.png';
 export default {
 	components: { headEr },
 	data() {
 		return {
-			warnPng,
+			icon1,
+			icon2,
+			icon3,
+			icon4,
 		};
 	},
 
