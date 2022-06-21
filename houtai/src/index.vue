@@ -252,12 +252,12 @@
                     >
                     <img
                         class="bottom_icon2"
-                        :src="twitterPng"
+                        :src="discordPng"
                         alt=""
                     >
                     <img
                         class="bottom_icon3"
-                        :src="twitterPng"
+                        :src="lastIconPng"
                         alt=""
                     >
                     <!-- <div class="img_left"></div> -->
@@ -303,7 +303,9 @@ import img2 from 'img/首页/编组 20.png';
 import enterIcon from 'img/首页/编组 24@2x.png';
 import inputIcon from 'img/首页/椭圆形@2x.png';
 import partnerImg from 'img/首页/编组 39@2x.png';
-import twitterPng from 'img/首页/矩形@2x.png';
+import twitterPng from 'img/首页/推特_twitter44@2x.png';
+import discordPng from 'img/首页/discord@2x.png';
+import lastIconPng from 'img/首页/编组 56@2x.png';
 
 import icon1 from 'img/logo/灰色2x/icon1.png';
 import icon2 from 'img/logo/灰色2x/icon2.png';
@@ -357,6 +359,8 @@ export default {
 			inputIcon,
 			partnerImg,
 			twitterPng,
+			discordPng,
+			lastIconPng,
 
 			icon1,
 			icon2,
@@ -902,7 +906,6 @@ export default {
 		}
 		.back_bottom_img {
 			width: 6.28rem;
-			// height: 5.45rem;
 			height: 4.2rem;
 			opacity: 0.11;
 			background: #78ffef;
@@ -911,7 +914,6 @@ export default {
 			float: left;
 			left: -1.74rem;
 			bottom: 0;
-			// bottom: -1.25rem;
 		}
 	}
 	.bns_compose_module {
@@ -1276,6 +1278,7 @@ export default {
 					width: 0.33rem;
 					margin-right: 0.24rem;
 					vertical-align: middle;
+					margin-top: -0.1rem;
 				}
 				.bottom_icon3 {
 					margin-right: 0.6rem;
@@ -1311,6 +1314,7 @@ export default {
 				width: 0.49rem;
 				height: 0.49rem;
 				vertical-align: middle;
+				margin-top: -0.12rem;
 				// opacity: 0;
 				// background: #000000;
 			}
