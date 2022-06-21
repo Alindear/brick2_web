@@ -935,7 +935,7 @@ export default {
 			font-weight: 500;
 			font-size: 0.22rem;
 			color: #999999;
-    margin: 0;
+    	margin: 0;
 			margin-bottom: 0.6rem;
 		}
 		.share_img {
