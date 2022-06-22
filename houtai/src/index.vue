@@ -217,6 +217,26 @@
 
         </div>
 
+        <div class="gift_module">
+            <div class="title_text">web3的第一份礼物请收下</div>
+            <p class="span_text">域名抽奖活动，每周一次，周五开奖，周六开始新一轮抽奖，每周四抽奖截止</p>
+            <el-button>请链接钱包</el-button>
+            <div>
+                <div
+                    v-for="(item,index) in giftList"
+                    :key="index"
+                >
+                    <img
+                        :src="item.img"
+                        alt=""
+                    >
+                    <p>{{item.title}}</p>
+                    <span>{{item.desc}}</span>
+                </div>
+            </div>
+
+        </div>
+
         <div class="partner_module">
             <p class="partner_title">合作伙伴</p>
             <!-- <div class="partner_img">
@@ -306,6 +326,10 @@ import partnerImg from 'img/首页/编组 39@2x.png';
 import twitterPng from 'img/首页/推特_twitter44@2x.png';
 import discordPng from 'img/首页/discord@2x.png';
 import lastIconPng from 'img/首页/编组 56@2x.png';
+import giftImg1 from 'img/gift/编组 30.png';
+import giftImg2 from 'img/gift/编组 31.png';
+import giftImg3 from 'img/gift/编组 32.png';
+import giftImg4 from 'img/gift/编组 33.png';
 
 import icon1 from 'img/logo/灰色2x/icon1.png';
 import icon2 from 'img/logo/灰色2x/icon2.png';
@@ -361,6 +385,10 @@ export default {
 			twitterPng,
 			discordPng,
 			lastIconPng,
+			giftImg1,
+			giftImg2,
+			giftImg3,
+			giftImg4,
 
 			icon1,
 			icon2,
@@ -417,6 +445,28 @@ export default {
 					title: '交易域名，好的域名会比某些NFT更有价值',
 					desc: '收集、出售.bsc域名，从这些独一无二的域名中获利。',
 					img: img2,
+				},
+			],
+			giftList: [
+				{
+					title: '2022Q3',
+					desc: '融资计划开启测试网上线',
+					img: giftImg1,
+				},
+				{
+					title: '2022Q4',
+					desc: '主网上线域名交易市场开启Sharetoearn',
+					img: giftImg2,
+				},
+				{
+					title: '2022Q1-Q2',
+					desc: 'BNS代币上线实现90%的场景覆盖',
+					img: giftImg3,
+				},
+				{
+					title: '2023Q3',
+					desc: '基于数据的didUGC模式社交产品',
+					img: giftImg4,
 				},
 			],
 			imgList: [
