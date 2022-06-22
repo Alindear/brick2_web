@@ -14,9 +14,18 @@
                     class="menu_top"
                     v-if="$route.fullPath == '/index'"
                 >
-                    <span @click="goRouter('/brick/myens')">我的域名</span>
-                    <span @click="goRouter('/brick/documentdesc')">文档说明</span>
-                    <span @click="goRouter('/brick/contactus')">联系社区</span>
+                    <span @click="goRouter('/brick/myens')">
+                        <!-- 我的域名 -->
+                        {{i18n.my_domain}}
+                    </span>
+                    <span @click="goRouter('/brick/documentdesc')">
+                        <!-- 文档说明 -->
+                        {{i18n.document_desc}}
+                    </span>
+                    <span @click="goRouter('/brick/contactus')">
+                        <!-- 联系社区 -->
+                        {{i18n.contact_community}}
+                    </span>
                     <!-- <span @click="goRouter('/brick/searchEns')">11111</span>
                     <span @click="goRouter('/brick/step')">222222</span> -->
 
@@ -26,8 +35,14 @@
                     v-if="!selectedAccount"
                     class="on_connect"
                 >
-                    <span class="connect_text">链接钱包（只读状态）</span>
-                    <el-button @click="connectWallet">连接</el-button>
+                    <span class="connect_text">
+                        <!-- 链接钱包（只读状态） -->
+                        {{i18n.connectwallet}}
+                    </span>
+                    <el-button @click="connectWallet">
+                        <!-- 连接 -->
+                        {{i18n.connect}}
+                    </el-button>
                 </div>
                 <div
                     v-if="selectedAccount"
@@ -38,9 +53,16 @@
                     </span>
                     <span class="connect_main">
                         <span class="coin_main"></span>
-                        <span>Main 网络</span>
+                        <span>
+                            <!-- Main 网络 -->
+                            {{i18n.main_net}}
+
+                        </span>
                     </span>
-                    <el-button @click="disconnectWallet">断开连接</el-button>
+                    <el-button @click="disconnectWallet">
+                        <!-- 断开连接 -->
+                        {{i18n.connected}}
+                    </el-button>
                 </div>
                 <div
                     class="secrch_title"
@@ -54,14 +76,20 @@
                             :src="searchPng"
                             alt=""
                         >
-                        <span>搜索</span>
+                        <span>
+                            <!-- 搜索 -->
+                            {{i18n.search}}
+                        </span>
                     </el-button>
                 </div>
             </div>
         </div>
         <div v-if="showSearchContainer">
             <div class="search_container">
-                <p class="search_text">搜索</p>
+                <p class="search_text">
+                    <!-- 搜索 -->
+                    {{i18n.search_title}}
+                </p>
                 <!-- <el-button
                     class="pc_top_search"
                     type="primary"
@@ -94,7 +122,7 @@
                         <div class="cut_border"></div>
                         <el-input
                             class="input_search"
-                            placeholder="请输入域名或地址"
+                            :placeholder="i18n.placeholder"
                             v-model="searchText"
                             @input="searchTextChange"
                         >
@@ -108,7 +136,10 @@
                                 :src="search2Png"
                                 alt=""
                             >
-                            <span>查询</span>
+                            <span>
+                                <!-- 查询 -->
+                                {{i18n.search}}
+                            </span>
                         </el-button>
                     </div>
                     <!-- </el-button> -->
@@ -190,10 +221,10 @@ export default {
 			openLinkShowFlag: false,
 			searchEnsLoading: false,
 			searchText: '',
-			// select: this.$store.state.language,
-			// selectRadio: this.$store.state.languageSelect,
-			select: 'CN',
-			selectRadio: '简体中文 (CN)',
+			select: this.$store.state.language,
+			selectRadio: this.$store.state.languageSelect,
+			// select: 'CN',
+			// selectRadio: '简体中文 (CN)',
 			lanageListOpts: [
 				{
 					label: 'English (EN)',
@@ -222,6 +253,13 @@ export default {
 		},
 	},
 
+	computed: {
+		i18n: function () {
+			return this.$store.state.i18n[
+				this.$store.state.language
+			];
+		},
+	},
 	mounted() {
 		window.addEventListener('load', async () => {
 			init();

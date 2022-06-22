@@ -15,7 +15,10 @@
                         class="list_tab_content"
                         :style="{ 'padding-bottom': (!myEnsNameList || myEnsNameList.length == 0) ? '0.01rem' : 0 } "
                     >
-                        <span class="list_tab">有效期</span>
+                        <span class="list_tab">
+                            <!-- 有效期 -->
+                            {{i18n.validity_period}}
+                        </span>
                     </div>
                     <div class="ens_list">
                         <div
@@ -25,7 +28,11 @@
                         >
                             <div class="ens_name_time">
                                 <span class="ens_name">{{item.ensName}}</span>
-                                <span class="ens_time">过期{{item.endTime}}</span>
+                                <span class="ens_time">
+                                    <!-- 过期 -->
+                                    {{i18n.expiration}}
+                                    {{item.endTime}}
+                                </span>
                             </div>
                         </div>
                         <div
@@ -37,7 +44,8 @@
                                 alt=""
                             >
                             <p>
-                                什么都没有～
+                                <!-- 什么都没有～ -->
+                                {{i18n.no_data}}
                             </p>
                         </div>
                     </div>
@@ -87,13 +95,13 @@ export default {
 			document.body.clientHeight;
 		this.searchEnsList();
 	},
-	// computed: {
-	// 	i18n: function () {
-	// 		return this.$store.state.i18n[
-	// 			this.$store.state.language
-	// 		];
-	// 	},
-	// },
+	computed: {
+		i18n: function () {
+			return this.$store.state.i18n[
+				this.$store.state.language
+			];
+		},
+	},
 	methods: {
 		// 钱包链接成功 查询
 		searchEnsList() {
@@ -158,12 +166,12 @@ export default {
 			}
 			.list_tab_content {
 				padding: 0.32rem 0 0 0.34rem;
-				width: 0.72rem;
+				width: 1.2rem;
 				.list_tab {
 					text-align: center;
 					display: block;
 					padding-bottom: 0.09rem;
-					width: 0.72rem;
+					// width: 0.72rem;
 					border-bottom: 0.01rem solid #850099;
 					font-family: PingFangSC-Semibold;
 					font-weight: 600;
@@ -201,7 +209,7 @@ export default {
 						height: 1.83rem;
 					}
 					p {
-						width: 1.2rem;
+						// width: 1.2rem;
 						height: 0.28rem;
 						font-family: PingFangSC-Regular;
 						font-weight: 400;

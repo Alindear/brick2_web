@@ -1,7 +1,7 @@
 <template>
     <div class="app_main">
         <!-- <div class="back_top_img"></div> -->
-				<registered
+        <registered
             v-if="openLinkShowFlag"
             :openLinkShowFlag="openLinkShowFlag"
         ></registered>
@@ -18,7 +18,7 @@
             <div class="index_left">
                 <div class="left_top">
                     <!-- <span>BNS</span>
-                    <el-button>去链接</el-button> -->
+                    <el-button @click="onConnect">去链接</el-button> -->
                     <img
                         :src="bnsClickPng"
                         alt=""
@@ -28,19 +28,32 @@
                 <div class="left_center">
                     <div class="text_list">
                         <span class="list_icon"></span>
-                        <span>链接每一个web3用户</span>
+                        <span>
+                            <!-- 链接每一个web3用户 -->
+                            {{i18n.index_text1}}
+                        </span>
                     </div>
                     <div class="text_list">
                         <span class="list_icon list_icon2"></span>
-                        <span>链接每一个主流平台场景</span>
+                        <span>
+                            <!-- 链接每一个主流平台场景 -->
+                            {{i18n.index_text2}}
+
+                        </span>
                     </div>
                     <div class="text_list">
                         <span class="list_icon list_icon3"></span>
-                        <span>帮助每一个用户链接他的身份和资产</span>
+                        <span>
+                            <!-- 帮助每一个用户链接他的身份和资产 -->
+                            {{i18n.index_text3}}
+                        </span>
                     </div>
                     <div class="text_list">
                         <span class="list_icon list_icon4"></span>
-                        <span>帮助bsc链接更大的增量客户</span>
+                        <span>
+                            <!-- 帮助bsc链接更大的增量客户 -->
+                            {{i18n.index_text4}}
+                        </span>
                     </div>
                 </div>
                 <div class="left_bottom">
@@ -72,7 +85,7 @@
                             <div class="cut_border"></div>
                             <el-input
                                 class="input_search"
-                                placeholder="请输入域名或地址"
+                                :placeholder="i18n.placeholder"
                                 v-model="searchText"
                                 @input="searchTextChange"
                             >
@@ -137,7 +150,10 @@
 
         <div class="bns_compose_module">
             <p class="the_text">The</p>
-            <div class="title_text">Bns生态构成</div>
+            <div class="title_text">
+                <!-- Bns生态构成 -->
+                {{i18n.bns}}
+            </div>
             <img
                 :src="bnsComposeImg"
                 alt=""
@@ -148,8 +164,14 @@
         <div class="back_right_center_img"></div>
 
         <div class="share_module">
-            <div class="title_text">分享赚取收益</div>
-            <p class="span_text">推荐好友注册域名有奖励！赶紧生成自己的专属链接吧！</p>
+            <div class="title_text">
+                <!-- 分享赚取收益 -->
+                {{i18n.share}}
+            </div>
+            <p class="span_text">
+                <!-- 推荐好友注册域名有奖励！赶紧生成自己的专属链接吧！ -->
+                {{i18n.share_desc}}
+            </p>
             <div class="share_img">
                 <div
                     class="left_img"
@@ -167,7 +189,10 @@
                     <p
                         class="dis_link"
                         @click="linkClick"
-                    >点击生成专属链接</p>
+                    >
+                        <!-- 点击生成专属链接 -->
+                        {{i18n.click_text}}
+                    </p>
                 </div>
                 <div class="right_img">
                     <div
@@ -181,15 +206,22 @@
                         class="dis_content"
                         v-if="!changeStatusShowFlag"
                     >
-                        请链接钱包后查看当前收益
+                        <!-- 请链接钱包后查看当前收益 -->
+                        {{i18n.please_link_wallet}}
                     </p>
-                    <el-button @click="getIncomeBtn">提取收益</el-button>
+                    <el-button @click="getIncomeBtn">
+                        <!-- 提取收益 -->
+                        {{i18n.btn_gains}}
+                    </el-button>
                 </div>
             </div>
         </div>
 
         <div class="express_module">
-            <p class="title_text">个性化是表达自我的第一步，而不是：</p>
+            <p class="title_text">
+                <!-- 个性化是表达自我的第一步，而不是： -->
+                {{i18n.first_step}}
+            </p>
             <el-button class="button_text">
                 <p>
                     0xF7Bc92...79E7A4AD
@@ -224,7 +256,10 @@
         </div>
 
         <div class="partner_module">
-            <p class="partner_title">合作伙伴</p>
+            <p class="partner_title">
+                <!-- 合作伙伴 -->
+                {{i18n.partners}}
+            </p>
             <!-- <div class="partner_img">
                 <img
                     v-for="(item,index) in imgList"
@@ -246,7 +281,8 @@
 
         <div class="contact_us_module">
             <p class="contanct_title">
-                联系我们
+                <!-- 联系我们 -->
+                {{i18n.contact_us}}
             </p>
             <div class="contact_input">
                 <span class="email">E-mail: admin@bnsdid.io </span>
@@ -401,8 +437,10 @@ export default {
 			searchText: '',
 			megaInput: 'Mega.bsc',
 			bnsInput: 'BNS-apple.bsc',
-			select: 'CN',
-			selectRadio: '简体中文 (CN)',
+			// select: 'CN',
+			// selectRadio: '简体中文 (CN)',
+			select: this.$store.state.language,
+			selectRadio: this.$store.state.languageSelect,
 			lanageListOpts: [
 				{
 					label: 'English (EN)',
@@ -474,6 +512,14 @@ export default {
 		},
 	},
 
+	computed: {
+		i18n: function () {
+			return this.$store.state.i18n[
+				this.$store.state.language
+			];
+		},
+	},
+
 	methods: {
 		searchTextChange() {
 			console.log('域名发生变化');
@@ -492,7 +538,7 @@ export default {
 		openLinkBtn(flag) {
 			this.openLinkShowFlag = flag;
 		},
-			//查询
+		//查询
 		async searchEns() {
 			if (!this.searchText) {
 				alert('请输入查询的域名');
@@ -696,6 +742,39 @@ export default {
 				img {
 					height: 1.48rem;
 				}
+				// span {
+				// 	width: 1.69rem;
+				// 	height: 1.03rem;
+				// 	font-family: Womby-Regular;
+				// 	font-weight: 400;
+				// 	font-size: 0.86rem;
+				// 	// color: #ffffff;
+				// 	letter-spacing: 0.04rem;
+				// 	background-image: linear-gradient(
+				// 		to right,
+				// 		#e5b3fd,
+				// 		#7de7ec
+				// 	);
+				// 	-webkit-background-clip: text;
+				// 	color: transparent;
+				// }
+				// .el-button {
+				// 	width: 5.63rem;
+				// 	height: 1.48rem;
+				// 	background-image: linear-gradient(
+				// 		-60deg,
+				// 		#6af0e9 0%,
+				// 		#edafff 100%
+				// 	);
+				// 	border-radius: 0.24rem;
+				// 	// width: 443px;
+				// 	// height: 86px;
+				// 	font-family: Womby-Regular;
+				// 	font-weight: 400;
+				// 	font-size: 0.72rem;
+				// 	color: #ffffff;
+				// 	border: none;
+				// }
 			}
 			.left_center {
 				display: flex;
@@ -1168,7 +1247,7 @@ export default {
 				.el-button {
 					margin-left: 0.69rem;
 					margin-bottom: 0.92rem;
-					width: 3.32rem;
+					// width: 3.32rem;
 					height: 1.28rem;
 					background-image: linear-gradient(
 						-60deg,
@@ -1180,6 +1259,7 @@ export default {
 					font-weight: B;
 					font-size: 0.46rem;
 					color: #ffffff;
+					padding: 0 0.75rem;
 				}
 			}
 		}

@@ -1,7 +1,7 @@
 <template>
     <div class="houtai_container">
         <div class="header_top">
-            <head-er type="medal"></head-er>
+            <head-er></head-er>
         </div>
         <div class="container_config">
             <div class="config_left">
@@ -60,14 +60,21 @@ export default {
 			isCollapse: false,
 			configData: [
 				{
-					label: '首页',
+					// label: '首页',
+					// label: '首页',
+					label: this.$store.state.i18n[
+						this.$store.state.language
+					].index_menu,
 					path: '/index',
 					img: indexIcon,
 					code: '0501',
 					showed: true,
 				},
 				{
-					label: '我的域名',
+					// label: '我的域名',
+					label: this.$store.state.i18n[
+						this.$store.state.language
+					].my_domain,
 					path: '/brick/myens',
 					icon: 'el-icon-c-scale-to-original',
 					img: myensIcon,
@@ -76,7 +83,10 @@ export default {
 					showed: true,
 				},
 				{
-					label: '文档说明',
+					// label: '文档说明',
+					label: this.$store.state.i18n[
+						this.$store.state.language
+					].document_desc,
 					path: '/brick/documentdesc',
 					icon: 'el-icon-c-scale-to-original',
 					img: documentdescIcon,
@@ -85,7 +95,10 @@ export default {
 					showed: true,
 				},
 				{
-					label: '联系社区',
+					// label: '联系社区',
+					label: this.$store.state.i18n[
+						this.$store.state.language
+					].contact_community,
 					path: '/brick/contactus',
 					icon: 'el-icon-c-scale-to-original',
 					img: contanctusIcon,
@@ -103,15 +116,22 @@ export default {
 	},
 	mounted: function () {
 		console.log(this.configData);
-		console.log('this.$route',this.$route);
+		console.log('this.$route************', this.$route);
 		// activeMenu
-		if(this.$route === '/brick/myens'){
-			this.activeMenu = '2'
-		} else if (this.$route === '/brick/documentdesc'){
-			this.activeMenu = '3'
-		} else if(this.$route === '/brick/contactus') {
-			this.activeMenu = '4'
+		if (this.$route === '/brick/myens') {
+			this.activeMenu = '2';
+		} else if (this.$route === '/brick/documentdesc') {
+			this.activeMenu = '3';
+		} else if (this.$route === '/brick/contactus') {
+			this.activeMenu = '4';
 		}
+	},
+	computed: {
+		i18n: function () {
+			return this.$store.state.i18n[
+				this.$store.state.language
+			];
+		},
 	},
 };
 </script>
@@ -151,9 +171,9 @@ export default {
 				display: flex;
 				flex-direction: row;
 			}
-	
+
 			.el-menu-item.is-active {
-			//你要修改的颜⾊
+				//你要修改的颜⾊
 				// background-color:rgb(48,105,132)!important;//
 				// img{
 				// 	background-image: url('houtai/img/icon/我的域名-选中态.png');
@@ -162,7 +182,7 @@ export default {
 				.icon_img {
 					// width: 0.3rem;
 					// height: 0.3rem;
-					opacity:1;
+					opacity: 1;
 					// background: #ffffff;
 					// border-radius: 0.08rem;
 					// vertical-align: middle;

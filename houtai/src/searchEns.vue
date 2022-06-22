@@ -4,7 +4,10 @@
             class="search_ens"
             v-if="!registBtnLoading"
         >
-            <p class="ens_text">域名</p>
+            <p class="ens_text">
+                <!-- 域名 -->
+                {{i18n.bns}}
+            </p>
             <div class="domian_name_search">
                 <div class="domian_name_content">
                     <div class="right_content">
@@ -18,7 +21,7 @@
                                     <p class="payment_top">
                                         <el-select
                                             v-model="paymentMethod"
-                                            placeholder="请选择支付方式"
+                                            :placeholder="i18n.payment_option"
                                             @change="paymentMethodChange"
                                         >
                                             <el-option
@@ -31,7 +34,10 @@
                                         </el-select>
                                     </p>
                                     <!-- <span class="number_left_bottom">支付方式(使用Brick支付可享受85折优惠)</span> -->
-                                    <span class="number_left_bottom">支付方式</span>
+                                    <span class="number_left_bottom">
+                                        <!-- 支付方式 -->
+                                        {{i18n.payment}}
+                                    </span>
                                 </div>
                                 <div class="reg_number_left">
                                     <p class="number_left_top">
@@ -43,7 +49,10 @@
                                         >
                                         <span>
                                             <span class="left_top_year">{{years}} </span>
-                                            <span class="left_top_year_unit">年份</span>
+                                            <span class="left_top_year_unit">
+                                                <!-- 年份 -->
+                                                {{i18n.years}}
+                                            </span>
                                         </span>
                                         <img
                                             @click="addCount"
@@ -52,7 +61,10 @@
                                         >
 
                                     </p>
-                                    <span class="number_left_bottom">注册时长</span>
+                                    <span class="number_left_bottom">
+                                        <!-- 注册时长 -->
+                                        {{i18n.period}}
+                                    </span>
                                 </div>
                                 <div class="reg_number_center">
                                     <p class="number_center_top">
@@ -68,7 +80,10 @@
                                         <span class="number_brick">{{price}}</span>
                                         <span>{{currencyUnit}}</span>
                                     </p>
-                                    <span class="number_right_bottom">注册费用</span>
+                                    <span class="number_right_bottom">
+                                        <!-- 注册费用 -->
+                                        {{i18n.pricetopay}}
+                                    </span>
                                 </div>
                             </div>
 
@@ -78,7 +93,8 @@
                                     <span class="number_unit">{{currencyUnit}} = ${{toUsdtPrice}}</span>
                                 </p>
                                 <p class="number_bottom_desc">
-                                    字符越短价值越高，字符越长价值越低
+                                    <!-- 字符越短价值越高，字符越长价值越低 -->
+                                    {{i18n.low_long_price}}
                                 </p>
 
                             </div>
@@ -102,7 +118,10 @@
                                     v-if="['USDT','BRICK'].includes(paymentMethod)"
                                     @click="approveToken"
                                     :disabled="approveBtnDisabled"
-                                >请求授权</el-button>
+                                >
+                                    <!-- 请求授权 -->
+                                    {{i18n.approval_btn}}
+                                </el-button>
                                 <!-- :loading="approveBtnLoading" -->
                                 <el-button
                                     class="regist_btn"
@@ -110,7 +129,10 @@
                                     :disabled="!approveBtnDisabled || registBtnDisabled"
                                     :loading="registBtnLoading"
                                     @click="requestRegistration"
-                                >请求注册</el-button>
+                                >
+                                    <!-- 请求注册 -->
+                                    {{i18n.register_btn}}
+                                </el-button>
 
                             </div>
 
@@ -120,7 +142,10 @@
 
                 <div class="step_content">
 
-                    <p class="step_title">注册一个域名需要2个步骤</p>
+                    <p class="step_title">
+                        <!-- 注册一个域名需要2个步骤 -->
+                        {{i18n._steps}}
+                    </p>
 
                     <div class="step_process">
                         <div class="step_left_process">
@@ -128,7 +153,10 @@
                                 <p :style="{color: approveBtnDisabled ? '#ffffff' : '#d8d8d8', 'background-image': approveBtnDisabled ? 'linear-gradient(-60deg, #6AF0E9 0%, #EDAFFF 100%)' : 'linear-gradient(-60deg, #ffffff 0%, #ffffff 100%)','border': approveBtnDisabled? 'none' : '0.01rem solid #ccc;'}">1</p>
                             </div>
                             <div class="step_text">
-                                <div class="step_text_title">请求注册</div>
+                                <div class="step_text_title">
+                                    <!-- 请求注册 -->
+                                    {{i18n.registration}}
+                                </div>
                                 <div class="step_text_desc">需要在钱包中确认一笔交易，这是完成域名注册所需的两笔交易中的第一笔。如果第1步完成之后的24小时内没有进行第2步，则需要从第1步重新开始。</div>
                             </div>
                         </div>
@@ -154,7 +182,10 @@
             class="search_ens_step"
             v-if="registBtnLoading"
         >
-            <p class="ens_text">域名</p>
+            <p class="ens_text">
+                <!-- 域名 -->
+                {{i18n.bns}}
+            </p>
             <div class="domian_name_search">
                 <div class="domian_name_content">
                     <div class="right_content">
@@ -187,7 +218,10 @@
                                         <p :style="{color: approveBtnDisabled ? '#ffffff' : '#d8d8d8', 'background-image': approveBtnDisabled ? 'linear-gradient(-60deg, #6AF0E9 0%, #EDAFFF 100%)' : 'linear-gradient(-60deg, #ffffff 0%, #ffffff 100%)','border': approveBtnDisabled? 'none' : '0.01rem solid #ccc;'}">1</p>
                                     </div>
                                     <div class="step_text">
-                                        <div class="step_text_title">请求注册</div>
+                                        <div class="step_text_title">
+                                            <!-- 请求注册 -->
+                                            {{i18n.registration}}
+                                        </div>
                                         <div class="step_text_desc">需要在钱包中确认一笔交易，这是完成域名注册所需的两笔交易中的第一笔。如果第1步完成之后的24小时内没有进行第2步，则需要从第1步重新开始。</div>
                                     </div>
                                 </div>
@@ -270,7 +304,9 @@ export default {
 			reducePng,
 			linkPng,
 			addPng,
-			tips: '请注意! 使用brick,usdt购买时需要先授权',
+			// tips: '请注意! 使用brick,usdt购买时需要先授权',
+			tips: this.$store.state.i18n[this.$store.state.language]
+				.attention_approval,
 			paymentMethod: 'BRICK',
 			paymentMethodOpts: [
 				{
@@ -303,6 +339,13 @@ export default {
 		if (flag) {
 			this.inIt();
 		}
+	},
+	computed: {
+		i18n: function () {
+			return this.$store.state.i18n[
+				this.$store.state.language
+			];
+		},
 	},
 
 	methods: {
@@ -355,7 +398,11 @@ export default {
 					_this.approveBtnLoading = false;
 				},
 				function () {
-					_this.tips = '已经授权';
+					// _this.tips = '已经授权';
+					_this.tips =
+						_this.$store.state.i18n[
+							_this.$store.state.language
+						].approved;
 					_this.approveBtnDisabled = true;
 					_this.approveBtnLoading = false;
 				},
@@ -805,7 +852,7 @@ export default {
 				margin-top: 0.16rem;
 				margin-bottom: 0.34rem;
 				.step_title {
-					width: 2.79rem;
+					// width: 2.79rem;
 					height: 0.33rem;
 					font-family: PingFangSC-Regular;
 					font-weight: 400;
