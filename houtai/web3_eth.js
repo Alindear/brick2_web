@@ -232,6 +232,288 @@ const TOKEN_ABI = [
 ]
 const BRICK_ENS_ABI = [
     {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "approved",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "Approval",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "operator",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "bool",
+                "name": "approved",
+                "type": "bool"
+            }
+        ],
+        "name": "ApprovalForAll",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "addr",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "bytes32",
+                "name": "node",
+                "type": "bytes32"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "expired_time",
+                "type": "uint256"
+            }
+        ],
+        "name": "Deposit",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "previousOwner",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "Transfer",
+        "type": "event"
+    },
+    {
+        "inputs": [],
+        "name": "_brickAddr",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "holder",
+                "type": "address"
+            }
+        ],
+        "name": "_getNodesLen",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "_price",
+        "outputs": [
+            {
+                "internalType": "contract IPrice",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "_tokenIds",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "_value",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "_usdtAddr",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "_list",
+                "type": "address[]"
+            }
+        ],
+        "name": "addWhiteList",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "approve",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            }
+        ],
+        "name": "balanceOf",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "bunnyIds",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_from",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "burn",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
         "inputs": [
             {
                 "internalType": "bytes32",
@@ -252,6 +534,11 @@ const BRICK_ENS_ABI = [
                 "internalType": "uint256",
                 "name": "_years",
                 "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "ref",
+                "type": "address"
             }
         ],
         "name": "buyWithBrick",
@@ -280,6 +567,11 @@ const BRICK_ENS_ABI = [
                 "internalType": "uint256",
                 "name": "_years",
                 "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "ref",
+                "type": "address"
             }
         ],
         "name": "buyWithEth",
@@ -308,6 +600,11 @@ const BRICK_ENS_ABI = [
                 "internalType": "uint256",
                 "name": "_years",
                 "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "ref",
+                "type": "address"
             }
         ],
         "name": "buyWithUsdt",
@@ -318,121 +615,96 @@ const BRICK_ENS_ABI = [
     {
         "inputs": [
             {
-                "internalType": "address",
-                "name": "newAddr",
-                "type": "address"
+                "internalType": "uint256",
+                "name": "_rate",
+                "type": "uint256"
             }
         ],
-        "name": "setIPrice",
+        "name": "changePayment",
         "outputs": [],
-        "stateMutability": "payable",
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
         "inputs": [
+            {
+                "internalType": "bytes32[]",
+                "name": "nodes",
+                "type": "bytes32[]"
+            },
+            {
+                "internalType": "address[]",
+                "name": "owners",
+                "type": "address[]"
+            },
+            {
+                "internalType": "address[]",
+                "name": "_holders",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_years",
+                "type": "uint256"
+            }
+        ],
+        "name": "freeBuy",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "getApproved",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "getBunnyId",
+        "outputs": [
             {
                 "internalType": "bytes32",
-                "name": "node",
+                "name": "",
                 "type": "bytes32"
-            },
-            {
-                "internalType": "address",
-                "name": "owner",
-                "type": "address"
             }
         ],
-        "name": "setOwner",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "amountOut",
-                "type": "uint256"
-            }
-        ],
-        "name": "withdrawBNB",
-        "outputs": [],
-        "stateMutability": "payable",
+        "stateMutability": "view",
         "type": "function"
     },
     {
         "inputs": [
             {
-                "internalType": "address",
-                "name": "token",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "amountOut",
-                "type": "uint256"
+                "internalType": "uint256[]",
+                "name": "_tokenArray",
+                "type": "uint256[]"
             }
         ],
-        "name": "withdrawToken",
-        "outputs": [],
-        "stateMutability": "payable",
-        "type": "function"
-    },
-    {
-        "stateMutability": "payable",
-        "type": "receive"
-    },
-    {
-        "inputs": [],
-        "name": "_brickAddr",
+        "name": "getBunnyIdsByTokenIds",
         "outputs": [
             {
-                "internalType": "address",
+                "internalType": "bytes32[]",
                 "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "_price",
-        "outputs": [
-            {
-                "internalType": "contract IPrice",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "_usdtAddr",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "contractOwner",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
+                "type": "bytes32[]"
             }
         ],
         "stateMutability": "view",
@@ -490,7 +762,7 @@ const BRICK_ENS_ABI = [
                         "type": "uint256"
                     }
                 ],
-                "internalType": "struct ENSRegistry.NodeInfo",
+                "internalType": "struct BNSBase.NodeInfo",
                 "name": "",
                 "type": "tuple"
             }
@@ -531,7 +803,7 @@ const BRICK_ENS_ABI = [
                         "type": "uint256"
                     }
                 ],
-                "internalType": "struct ENSRegistry.NodeInfo[]",
+                "internalType": "struct BNSBase.NodeInfo[]",
                 "name": "",
                 "type": "tuple[]"
             }
@@ -559,95 +831,6 @@ const BRICK_ENS_ABI = [
         "type": "function"
     },
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "holders",
-        "outputs": [
-            {
-                "internalType": "bytes32",
-                "name": "name",
-                "type": "bytes32"
-            },
-            {
-                "internalType": "bool",
-                "name": "selected",
-                "type": "bool"
-            },
-            {
-                "internalType": "uint256",
-                "name": "register_time",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint256",
-                "name": "expired_time",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "knowNodes",
-        "outputs": [
-            {
-                "internalType": "bytes32",
-                "name": "",
-                "type": "bytes32"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "marketAddr",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "bytes32",
-                "name": "node",
-                "type": "bytes32"
-            }
-        ],
-        "name": "recordExists",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    }, {
         "inputs": [
             {
                 "internalType": "bytes32",
@@ -692,18 +875,515 @@ const BRICK_ENS_ABI = [
                                 "type": "uint256"
                             }
                         ],
-                        "internalType": "struct ENSRegistry.NodeInfo",
+                        "internalType": "struct BNSBase.NodeInfo",
                         "name": "info",
                         "type": "tuple"
                     }
                 ],
-                "internalType": "struct ENSRegistry.Record",
+                "internalType": "struct BNSBase.Record",
                 "name": "",
                 "type": "tuple"
             }
         ],
         "stateMutability": "view",
         "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_addr",
+                "type": "address"
+            }
+        ],
+        "name": "getWhiteList",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "operator",
+                "type": "address"
+            }
+        ],
+        "name": "isApprovedForAll",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "knowNodes",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "marketAddr",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "name",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "name": "nodeToBunnyIds",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "ownerOf",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_owner",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "totalPrice",
+                "type": "uint256"
+            }
+        ],
+        "name": "promotionFee",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_owner",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "totalPrice",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "tokenAddress",
+                "type": "address"
+            }
+        ],
+        "name": "promotionFeeToken",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "node",
+                "type": "bytes32"
+            }
+        ],
+        "name": "recordExists",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "_list",
+                "type": "address[]"
+            }
+        ],
+        "name": "removeWhiteList",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "renounceOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "safeTransferFrom",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "safeTransferFrom",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "operator",
+                "type": "address"
+            },
+            {
+                "internalType": "bool",
+                "name": "approved",
+                "type": "bool"
+            }
+        ],
+        "name": "setApprovalForAll",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "newAddr",
+                "type": "address"
+            }
+        ],
+        "name": "setIPrice",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "node",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            }
+        ],
+        "name": "setOwner",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes4",
+                "name": "interfaceId",
+                "type": "bytes4"
+            }
+        ],
+        "name": "supportsInterface",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "symbol",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "tokenByIndex",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "tokenOfOwnerByIndex",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "tokenURI",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "totalSupply",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "transferFrom",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "amountOut",
+                "type": "uint256"
+            }
+        ],
+        "name": "withdrawBNB",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "token",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amountOut",
+                "type": "uint256"
+            }
+        ],
+        "name": "withdrawToken",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "stateMutability": "payable",
+        "type": "receive"
     }
 ]
 const PRICE_ABI = [
@@ -904,8 +1584,11 @@ const PRICE_ABI = [
     }
 ]
 
-const BRICK_ENS_ADDRESS = "0xbeBa869a5B3F752658CD3a89046Fa3Ae30BC54a9"
+//const BRICK_ENS_ADDRESS = "0xbeBa869a5B3F752658CD3a89046Fa3Ae30BC54a9"
 const PRICE_ADDRESS = "0x3c55B43195Bad23F834c92b5104dc76863EE787c"
+const BRICK_ENS_ADDRESS =  "0x273D1a7d5b00b23761925709583e2BB47b8dc715"
+// const PRICE_ADDRESS = "0xccd5fb85f61728404436684b930b5a62a7709295"
+
 const brickAddr = '0xc4893fEa8547Fb1A4D860518285AF6655424645f';
 const usdtAddr = '0x55d398326f99059fF775485246999027B3197955';
 
@@ -970,12 +1653,12 @@ export function init() {
 export async function approve(token, loadingFuncT, loadingFuncF, callback) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount == "") {
-        alert("请链接钱包");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].please_connect_wallet
-        // )
+        // alert("请链接钱包");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].please_connect_wallet
+        )
         return null;
     }
 
@@ -1008,12 +1691,12 @@ export async function approve(token, loadingFuncT, loadingFuncF, callback) {
 export async function allowance(token) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount == "") {
-        alert("请链接钱包");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].please_connect_wallet
-        // )
+        // alert("请链接钱包");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].please_connect_wallet
+        )
         return null;
     }
 
@@ -1029,12 +1712,12 @@ export async function allowance(token) {
 export async function isExist(searchText) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount == "") {
-        alert("请链接钱包");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].please_connect_wallet
-        // )
+        // alert("请链接钱包");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].please_connect_wallet
+        )
         return null;
     }
 
@@ -1052,12 +1735,12 @@ export async function isExist(searchText) {
 export async function getNode(name) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount == "") {
-        alert("请链接钱包");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].please_connect_wallet
-        // )
+        // alert("请链接钱包");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].please_connect_wallet
+        )
         return null;
     }
 
@@ -1076,12 +1759,12 @@ async function checkAndLoadFromLast() {
 
 async function checkYear(year) {
     if (year != null && year < 1) {
-        alert("年份最少选择1年");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].at_least_1_year
-        // )
+        // alert("年份最少选择1年");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].at_least_1_year
+        )
         return false;
     }
     return true;
@@ -1092,12 +1775,12 @@ export async function getAllNodes() {
     await checkAndLoadFromLast();
     console.log("getAllNodes selectedAccount：" + selectedAccount)
     if (selectedAccount == null || selectedAccount == "") {
-        alert("请链接钱包");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].please_connect_wallet
-        // )
+        // alert("请链接钱包");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].please_connect_wallet
+        )
         return;
     }
 
@@ -1120,12 +1803,12 @@ export async function getAllNodes() {
 export async function buyWithEth(name, callback, loadingTrue, loadingFalse, _years, amount) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount == "") {
-        alert("请链接钱包");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].please_connect_wallet
-        // )
+        // alert("请链接钱包");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].please_connect_wallet
+        )
         return;
     }
     if (!await checkYear(_years)) return;
@@ -1137,7 +1820,7 @@ export async function buyWithEth(name, callback, loadingTrue, loadingFalse, _yea
     let _value = parseInt(bnbPrice * _years) + 100000000000000;
     console.log("buyWithEth node:", byte32Name, " value:", _value);
 
-    brickEnsContract.methods.buyWithEth(byte32Name, selectedAccount, selectedAccount, _years).send({ from: selectedAccount, value: _value }).then(result => {
+    brickEnsContract.methods.buyWithEth(byte32Name, selectedAccount, selectedAccount, _years,"0xA08977161EbF935fE17198ce852E6273d6284aCf").send({ from: selectedAccount, value: _value }).then(result => {
         loadingFalse()
         callback();
     }).catch((err) => {
@@ -1152,12 +1835,12 @@ export async function buyWithUsdt(name, callback, loadingTrue, loadingFalse, _ye
         selectedAccount = localStorage.getItem('STATUS');
     }
     if (selectedAccount == null || selectedAccount == "") {
-        alert("请链接钱包");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].please_connect_wallet
-        // )
+        // alert("请链接钱包");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].please_connect_wallet
+        )
         return;
     }
     if (!await checkYear(_years)) return;
@@ -1181,12 +1864,12 @@ export async function buyWithUsdt(name, callback, loadingTrue, loadingFalse, _ye
 export async function buyWithBrick(name, callback, loadingTrue, loadingFalse, _years, amount) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount == "") {
-        alert("请链接钱包");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].please_connect_wallet
-        // )
+        // alert("请链接钱包");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].please_connect_wallet
+        )
         return;
     }
     if (!await checkYear(_years)) return;
@@ -1208,12 +1891,12 @@ export async function buyWithBrick(name, callback, loadingTrue, loadingFalse, _y
 export async function getPrice(name) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount == "") {
-        alert("请链接钱包");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].please_connect_wallet
-        // )
+        // alert("请链接钱包");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].please_connect_wallet
+        )
         return;
     }
 
@@ -1235,22 +1918,22 @@ export async function checkEachLength(name) {
 
     for (let char of name) {
         if (char === "❤") {
-            alert("存在非法字符[❤]️，请替换再查询");
-            // alert(
-            //     store.state.i18n[
-            //         store.state.language
-            //     ].illegal_love_exists
-            // );
+            // alert("存在非法字符[❤]️，请替换再查询");
+            alert(
+                    store.state.i18n[
+                            store.state.language
+                            ].illegal_love_exists
+            );
             return false;
         }
     }
     if (parseInt(lengthFromPrice) !== Array.from(name).length) {
-        alert("存在非法字符，请替换再查询");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].illegal_exists
-        // );
+        // alert("存在非法字符，请替换再查询");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].illegal_exists
+        );
 
         return false;
     }
@@ -1370,24 +2053,24 @@ function formatTime(timestamp) {
 export async function checkBNBbalance(amount) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount === "") {
-        alert("请链接钱包");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].please_connect_wallet
-        // )
+        // alert("请链接钱包");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].please_connect_wallet
+        )
         return null;
     }
     var balance = await web3.eth.getBalance(selectedAccount);
     console.log(balance);
     console.log(amount);
     if (balance < amount) {
-        alert("钱包BNB余额不足");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].BNB_wallet
-        // )
+        // alert("钱包BNB余额不足");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].BNB_wallet
+        )
         return null;
     }
     return "1";
@@ -1396,24 +2079,24 @@ export async function checkBNBbalance(amount) {
 export async function checkUSDTbalance(amount) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount === "") {
-        alert("请链接钱包");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].please_connect_wallet
-        // )
+        // alert("请链接钱包");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].please_connect_wallet
+        )
         return null;
     }
     var balance = await usdtContract.methods.balanceOf(selectedAccount).call();
     console.log(balance);
     console.log(amount);
     if (balance < amount) {
-        alert("钱包USDT余额不足");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].USDT_wallet
-        // )
+        // alert("钱包USDT余额不足");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].USDT_wallet
+        )
         return null;
     }
     return "1";
@@ -1422,24 +2105,24 @@ export async function checkUSDTbalance(amount) {
 export async function checkBrickbalance(amount) {
     await checkAndLoadFromLast();
     if (selectedAccount == null || selectedAccount === "") {
-        alert("请链接钱包");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].please_connect_wallet
-        // )
+        // alert("请链接钱包");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].please_connect_wallet
+        )
         return null;
     }
     var balance = await brickContract.methods.balanceOf(selectedAccount).call();
     console.log(balance);
     console.log(amount);
     if (balance < amount) {
-        alert("钱包BRICK余额不足");
-        // alert(
-        //     store.state.i18n[
-        //         store.state.language
-        //     ].BRICK_wallet
-        // )
+        // alert("钱包BRICK余额不足");
+        alert(
+                store.state.i18n[
+                        store.state.language
+                        ].BRICK_wallet
+        )
         return null;
     }
     return "1";
