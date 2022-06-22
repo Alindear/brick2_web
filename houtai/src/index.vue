@@ -482,9 +482,8 @@ export default {
 			}
 			// console.log('this.i18n', this.i18n);
 		},
-		//查询
+			//查询
 		async searchEns() {
-			//  document.activeElement.blur();  // 关闭软键盘
 			if (!this.searchText) {
 				alert('请输入查询的域名');
 				// alert(
@@ -511,29 +510,31 @@ export default {
 				return;
 			}
 
+			// 存入查询历史中
+			this.onSearch(this.searchText);
+
 			this.searchEnsLoading = true;
 			let text = this.searchText.toLowerCase() + '.bsc';
 			this.isExist = await isExist(text);
 			if (!(await checkEachLength(this.searchText))) {
 				return;
 			}
-			console.log('this.isExist----', this.isExist);
 			if (this.isExist) {
 				this.openLinkBtn(true);
 			} else if (!this.isExist && this.isExist !== null) {
 				// this.searchText = this.searchText + '.bsc';
 				console.log('this.$router', this.$router);
 				//注册页 刷新后处理默认值 （目的：防止刷新界面 需要重新链接钱包）
-				if (
-					this.$router.history.current.path ===
-					'/registration/request'
-				) {
-					this.$parent.changeText(
-						this.searchText,
-					);
-				}
+				// if (
+				// 	this.$router.history.current.path ===
+				// 	'/brick/searchens'
+				// ) {
+				// 	this.$parent.changeText(
+				// 		this.searchText,
+				// 	);
+				// }
 				this.$router.push({
-					path: '/registration/request',
+					path: '/brick/searchens',
 					query: {
 						text: this.searchText,
 					},
@@ -543,6 +544,67 @@ export default {
 				this.searchEnsLoading = false;
 			}
 		},
+		// //查询
+		// async searchEns() {
+		// 	//  document.activeElement.blur();  // 关闭软键盘
+		// 	if (!this.searchText) {
+		// 		alert('请输入查询的域名');
+		// 		// alert(
+		// 		// 	this.$store.state.i18n[
+		// 		// 		this.$store.state.language
+		// 		// 	].enter_names,
+		// 		// );
+		// 		return;
+		// 	}
+
+		// 	if (this.searchText.length < 3) {
+		// 		alert('请至少输入三个字符');
+		// 		// alert(
+		// 		// 	this.$store.state.i18n[
+		// 		// 		this.$store.state.language
+		// 		// 	].text_1,
+		// 		// );
+		// 		return;
+		// 	}
+
+		// 	//查询当前页面的域名时 直接清空 不进行查询（用于注册页 & 详情页）
+		// 	if (this.searchText === this.$route.query.text) {
+		// 		this.searchText = '';
+		// 		return;
+		// 	}
+
+		// 	this.searchEnsLoading = true;
+		// 	let text = this.searchText.toLowerCase() + '.bsc';
+		// 	this.isExist = await isExist(text);
+		// 	if (!(await checkEachLength(this.searchText))) {
+		// 		return;
+		// 	}
+		// 	console.log('this.isExist----', this.isExist);
+		// 	if (this.isExist) {
+		// 		this.openLinkBtn(true);
+		// 	} else if (!this.isExist && this.isExist !== null) {
+		// 		// this.searchText = this.searchText + '.bsc';
+		// 		console.log('this.$router', this.$router);
+		// 		//注册页 刷新后处理默认值 （目的：防止刷新界面 需要重新链接钱包）
+		// 		if (
+		// 			this.$router.history.current.path ===
+		// 			'/registration/request'
+		// 		) {
+		// 			this.$parent.changeText(
+		// 				this.searchText,
+		// 			);
+		// 		}
+		// 		this.$router.push({
+		// 			path: '/registration/request',
+		// 			query: {
+		// 				text: this.searchText,
+		// 			},
+		// 		});
+		// 	}
+		// 	if (this.isExist || !this.isExist) {
+		// 		this.searchEnsLoading = false;
+		// 	}
+		// },
 		onConnect() {
 			console.log('去链接');
 		},
