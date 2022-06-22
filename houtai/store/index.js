@@ -9,26 +9,26 @@ export default new Vuex.Store({
             CN: {
                 placeholder: "请输入域名或地址",
                 search: '查询',
-                // register: '注册',
+                register: '注册',
                 details: '详情',
-                // contactus_title: "联系工棚",
+                contactus_title: "联系工棚",
                 mybns: '我的域名',
                 main_net: 'Main 网络',
                 connectwallet: '链接钱包 （只读状态）',
                 connect: '连接',
                 connected: '断开连接',
-                // mydomain: '我的域名',
-                // contactus_left: '关于我们',
+                mydomain: '我的域名',
+                contactus_left: '关于我们',
                 text_1: '请至少输入三个字符',
-                // text_2: '尚未注册，点击按钮去注册该域名(可注册)',
-                // text_3: '已注册，点击按钮查看注册详情(已注册)',
-                // dialog_text: '这个域名不可注册',
+                text_2: '尚未注册，点击按钮去注册该域名(可注册)',
+                text_3: '已注册，点击按钮查看注册详情(已注册)',
+                dialog_text: '这个域名不可注册',
                 dialog_cancle: '取消',
                 dialog_details: '查看详情',
 
 
-                // placeholder_title: "请输入域名或地址",
-                // search_title: '查询',
+                placeholder_title: "请输入域名或地址",
+                search_title: '查询',
                 bns: '域名',
                 years: '年份',
                 payment: '支付方式(使用Brick支付可享受85折优惠)',
@@ -130,6 +130,7 @@ export default new Vuex.Store({
                 main_net: 'Main 网络',
                 search: '查询',
                 search_title: '查询',
+                text_1: '请至少输入三个字符',
 
 
             },
@@ -272,6 +273,7 @@ export default new Vuex.Store({
                 main_net: 'Main net',
                 search: 'SEARCH',
                 search_title: 'Search',
+                text_1: 'Please enter at least three characters',
 
             }
         },

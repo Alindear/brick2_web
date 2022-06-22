@@ -541,22 +541,22 @@ export default {
 		//查询
 		async searchEns() {
 			if (!this.searchText) {
-				alert('请输入查询的域名');
-				// alert(
-				// 	this.$store.state.i18n[
-				// 		this.$store.state.language
-				// 	].enter_names,
-				// );
+				// alert('请输入查询的域名');
+				alert(
+					this.$store.state.i18n[
+						this.$store.state.language
+					].enter_names,
+				);
 				return;
 			}
 
 			if (this.searchText.length < 3) {
-				alert('请至少输入三个字符');
-				// alert(
-				// 	this.$store.state.i18n[
-				// 		this.$store.state.language
-				// 	].text_1,
-				// );
+				// alert('请至少输入三个字符');
+				alert(
+					this.$store.state.i18n[
+						this.$store.state.language
+					].text_1,
+				);
 				return;
 			}
 
