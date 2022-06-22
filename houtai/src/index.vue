@@ -1,6 +1,10 @@
 <template>
     <div class="app_main">
         <!-- <div class="back_top_img"></div> -->
+				<registered
+            v-if="openLinkShowFlag"
+            :openLinkShowFlag="openLinkShowFlag"
+        ></registered>
         <div class="header_top">
             <head-er
                 type="index"
@@ -279,6 +283,7 @@
 </template>
 
 <script>
+import registered from './components/registered.vue';
 import headEr from './components/header.vue';
 import {
 	onConnect,
@@ -340,9 +345,10 @@ import iconSelect13 from 'img/logo/彩色2x/iconSelect13.png';
 import iconSelect14 from 'img/logo/彩色2x/iconSelect14.png';
 
 export default {
-	components: { headEr },
+	components: { headEr, registered },
 	data() {
 		return {
+			openLinkShowFlag: false,
 			searchEnsLoading: false,
 			changeStatusShowFlag: false,
 			linkShowFlag: false,
@@ -482,6 +488,10 @@ export default {
 			}
 			// console.log('this.i18n', this.i18n);
 		},
+		// 打开已存在提示弹窗
+		openLinkBtn(flag) {
+			this.openLinkShowFlag = flag;
+		},
 			//查询
 		async searchEns() {
 			if (!this.searchText) {
@@ -510,8 +520,8 @@ export default {
 				return;
 			}
 
-			// 存入查询历史中
-			this.onSearch(this.searchText);
+			// // 存入查询历史中
+			// this.onSearch(this.searchText);
 
 			this.searchEnsLoading = true;
 			let text = this.searchText.toLowerCase() + '.bsc';

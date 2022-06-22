@@ -7,17 +7,24 @@
             :show-close="false"
         >
             <p style="font-size: 1.2rem; color: #000000; float:right;margin:0;">
-                {{i18n.dialog_text}}
+                <!-- {{i18n.dialog_text}} -->
+								该域名与存在
             </p>
             <span
                 slot="footer"
                 class="dialog-footer"
             >
-                <el-button @click="cancleBtn">{{i18n.dialog_cancle}}</el-button>
+                <el-button @click="cancleBtn">
+									<!-- {{i18n.dialog_cancle}} -->
+									取消
+								</el-button>
                 <el-button
                     type="primary"
                     @click="saveSelectBtn"
-                >{{i18n.dialog_details}}</el-button>
+                >
+								<!-- {{i18n.dialog_details}} -->
+								详情
+								</el-button>
             </span>
         </el-dialog>
     </div>
@@ -45,11 +52,11 @@ export default {
 		this.dialogVisible = this.openLinkShowFlag;
 	},
 	computed: {
-		i18n: function () {
-			return this.$store.state.i18n[
-				this.$store.state.language
-			];
-		},
+		// i18n: function () {
+		// 	return this.$store.state.i18n[
+		// 		this.$store.state.language
+		// 	];
+		// },
 	},
 	methods: {
 		cancleBtn() {
@@ -57,18 +64,25 @@ export default {
 		},
 		saveSelectBtn() {
 			// 详情页 刷新后处理默认值 （目的：防止刷新界面 需要重新链接钱包）
-			if (
-				this.$router.history.current.path ===
-				'/registration/info'
-			) {
-				this.$parent.changeEnsText(this.searchText);
-			}
+			// if (
+			// 	this.$router.history.current.path ===
+			// 	'/registration/info'
+			// ) {
+			// 	this.$parent.changeEnsText(this.searchText);
+			// }
 			// this.$router.go(0);
+			// this.$router.push({
+			// 	path: '/registration/info',
+			// 	query: {
+			// 		text: this.searchText,
+			// 	},
+			// });
+			//已存在 跳到首页
 			this.$router.push({
-				path: '/registration/info',
-				query: {
-					text: this.searchText,
-				},
+				path: '/index',
+				// query: {
+				// 	text: this.searchText,
+				// },
 			});
 			this.$parent.openLinkBtn(false);
 		},
