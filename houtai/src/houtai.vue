@@ -133,6 +133,62 @@ export default {
 			];
 		},
 	},
+	watch: {
+		'$store.state.language': function (val, old) {
+			console.log(val);
+			console.log('监听');
+
+			this.configData = [
+				{
+					// label: '首页',
+					// label: '首页',
+					label: this.$store.state.i18n[
+						this.$store.state.language
+					].index_menu,
+					path: '/index',
+					img: indexIcon,
+					code: '0501',
+					showed: true,
+				},
+				{
+					// label: '我的域名',
+					label: this.$store.state.i18n[
+						this.$store.state.language
+					].my_domain,
+					path: '/brick/myens',
+					icon: 'el-icon-c-scale-to-original',
+					img: myensIcon,
+					imgSelect: myensSelect,
+					code: '0502',
+					showed: true,
+				},
+				{
+					// label: '文档说明',
+					label: this.$store.state.i18n[
+						this.$store.state.language
+					].document_desc,
+					path: '/brick/documentdesc',
+					icon: 'el-icon-c-scale-to-original',
+					img: documentdescIcon,
+					imgSelect: documentdescSelect,
+					code: '0503',
+					showed: true,
+				},
+				{
+					// label: '联系社区',
+					label: this.$store.state.i18n[
+						this.$store.state.language
+					].contact_community,
+					path: '/brick/contactus',
+					icon: 'el-icon-c-scale-to-original',
+					img: contanctusIcon,
+					imgSelect: contanctusSelect,
+					code: '0504',
+					showed: true,
+				},
+			];
+		},
+	},
 };
 </script>
 

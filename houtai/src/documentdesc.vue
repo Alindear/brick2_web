@@ -37,7 +37,9 @@
                             您的浏览器不支持 HTML5 video 标签。
                         </video>
                         <div class="video_btn">
-                            <el-button @click="registerBtn">注册域名</el-button>
+                            <el-button @click="registerBtn">
+                                注册域名
+                            </el-button>
                         </div>
                     </div>
                 </div>
@@ -152,7 +154,10 @@ export default {
 					name: 'Tim',
 					level: 'Founder',
 					descaname: 'PM',
-					desc: '前美团产品经理，web2连续创业者，thebrickdao创始人负责bns整体方向和产品设计把控',
+					// desc: '前美团产品经理，web2连续创业者，thebrickdao创始人负责bns整体方向和产品设计把控',
+					desc: this.$store.state.i18n[
+						this.$store.state.language
+					].team_1,
 					icon: linkedinIcon,
 				},
 				{
@@ -160,7 +165,10 @@ export default {
 					name: 'Joseph',
 					level: 'Co-Founder',
 					descaname: 'User Development',
-					desc: '在FTX交易所负责用户增长斯巴达集团（dvisory分析师Crypto）多年用户侧增长工作经验；擅长用户体验调研策略',
+					// desc: '在FTX交易所负责用户增长斯巴达集团（dvisory分析师Crypto）多年用户侧增长工作经验；擅长用户体验调研策略',
+					desc: this.$store.state.i18n[
+						this.$store.state.language
+					].team_2,
 					icon: linkedinIcon,
 				},
 				{
@@ -168,7 +176,10 @@ export default {
 					name: 'Berry',
 					level: 'Co-Founder',
 					descaname: 'Market Development',
-					desc: '兼职麦肯锡的营销助理，三年腾讯营销经验目前负责营销和应用场景洽谈，如小狐狸、Chainlink 等',
+					// desc: '兼职麦肯锡的营销助理，三年腾讯营销经验目前负责营销和应用场景洽谈，如小狐狸、Chainlink 等',
+					desc: this.$store.state.i18n[
+						this.$store.state.language
+					].team_3,
 					icon: linkedinIcon,
 				},
 				{
@@ -176,7 +187,10 @@ export default {
 					name: 'Valery',
 					level: ' ',
 					descaname: 'Business communication',
-					desc: 'Polimi硕士学位，2年AECOM工作经历，任项目负责人目前负责商务沟通',
+					// desc: 'Polimi硕士学位，2年AECOM工作经历，任项目负责人目前负责商务沟通',
+					desc: this.$store.state.i18n[
+						this.$store.state.language
+					].team_4,
 					icon: '',
 				},
 				{
@@ -184,11 +198,84 @@ export default {
 					name: 'Guan',
 					level: ' ',
 					descaname: 'UI Designer',
-					desc: '前字节跳动UI设计师负责bns UE设计',
+					// desc: '前字节跳动UI设计师负责bns UE设计',
+					desc: this.$store.state.i18n[
+						this.$store.state.language
+					].team_5,
 					icon: '',
 				},
 			],
 		};
+	},
+	computed: {
+		i18n: function () {
+			return this.$store.state.i18n[
+				this.$store.state.language
+			];
+		},
+	},
+	watch: {
+		'$store.state.language': function (val, old) {
+			console.log(val);
+			console.log('监听');
+			this.teamList = [
+				{
+					img: this.teamImg1,
+					name: 'Tim',
+					level: 'Founder',
+					descaname: 'PM',
+					// desc: '前美团产品经理，web2连续创业者，thebrickdao创始人负责bns整体方向和产品设计把控',
+					desc: this.$store.state.i18n[
+						this.$store.state.language
+					].team_1,
+					icon: linkedinIcon,
+				},
+				{
+					img: this.teamImg2,
+					name: 'Joseph',
+					level: 'Co-Founder',
+					descaname: 'User Development',
+					// desc: '在FTX交易所负责用户增长斯巴达集团（dvisory分析师Crypto）多年用户侧增长工作经验；擅长用户体验调研策略',
+					desc: this.$store.state.i18n[
+						this.$store.state.language
+					].team_2,
+					icon: linkedinIcon,
+				},
+				{
+					img: this.teamImg3,
+					name: 'Berry',
+					level: 'Co-Founder',
+					descaname: 'Market Development',
+					// desc: '兼职麦肯锡的营销助理，三年腾讯营销经验目前负责营销和应用场景洽谈，如小狐狸、Chainlink 等',
+					desc: this.$store.state.i18n[
+						this.$store.state.language
+					].team_3,
+					icon: linkedinIcon,
+				},
+				{
+					img: this.teamImg4,
+					name: 'Valery',
+					level: ' ',
+					descaname: 'Business communication',
+					// desc: 'Polimi硕士学位，2年AECOM工作经历，任项目负责人目前负责商务沟通',
+					desc: this.$store.state.i18n[
+						this.$store.state.language
+					].team_4,
+					icon: '',
+				},
+				{
+					img: this.teamImg5,
+					name: 'Guan',
+					level: ' ',
+					descaname: 'UI Designer',
+					// desc: '前字节跳动UI设计师负责bns UE设计',
+					desc: this.$store.state.i18n[
+						this.$store.state.language
+					].team_5,
+					icon: '',
+				},
+			];
+		},
 	},
 
 	methods: {
@@ -338,7 +425,7 @@ export default {
 
 				.team_list {
 					width: 2.676rem;
-					height: 4.14rem;
+					min-height: 4.14rem;
 					background: #ffffff;
 					border-radius: 0.16rem;
 					text-align: center;

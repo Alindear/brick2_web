@@ -562,6 +562,7 @@ export default {
 				// border: none;
 			}
 			.menu_top {
+				cursor: pointer;
 				span {
 					width: 0.64rem;
 					height: 0.48rem;
@@ -590,7 +591,8 @@ export default {
 					linear-gradient(90deg, #e5b3fd, #7de7ec);
 				.search_border {
 					padding: 0 0.12rem;
-					width: 0.92rem;
+					// width: 0.92rem;
+					width: 100%;
 					height: 0.48rem;
 					// line-height: 0.48rem;
 					line-height: 0.44rem;

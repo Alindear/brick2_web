@@ -136,8 +136,11 @@ export default new Vuex.Store({
                 search: '查询',
                 search_title: '查询',
                 text_1: '请至少输入三个字符',
-
-
+                team_1: '前阿里产品经理，web2连续创业者。负责bns整体方向和设计把控',
+                team_2: '在韩国延世大学读的软件工程研究生，在 probit globall做上币和投研',
+                team_3: 'Market Development 兼职麦肯锡的营销助理，三年腾讯营销经验目前负责营销和应用场景洽谈，如小狐狸、Chainlink 等',
+                team_4: 'Business communication Polimi硕士学位，2年AECOM工作经历，任项目负责人 目前负责商务沟通',
+                team_5: 'UI Designer前字节跳动UI设计师 负责bns UE设计',
             },
             EN: {
 
@@ -284,6 +287,12 @@ export default new Vuex.Store({
                 search: 'SEARCH',
                 search_title: 'Search',
                 text_1: 'Please enter at least three characters',
+
+                team_1: 'Former PM in Ali; Serial entrepreneur of web2; Now responsible for BNS overall direction and design control',
+                team_2: 'A software engineering graduate student at Yonsei University in South Korea, doing coin listing and investment research at probit global',
+                team_3: 'Part-time marketing assistant of McKinsey,with three years of Tencent marketing experience,currently in charge of business marketing and application scenario negotiation of BNS, such as MetaMask,Chainlink,etc.',
+                team_4: 'Graduated from Polimi with a Master degree; 2 years’ experience in AECOM as a project leader;Responsible for business communication',
+                team_5: 'Former UI designer in Byte Dancer; Now responsible for UE design of BNS',
 
             }
         },
