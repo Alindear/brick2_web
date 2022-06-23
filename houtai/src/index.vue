@@ -156,7 +156,7 @@
                     v-if="linkShowFlag"
                 >
                     <!-- v-if="!changeStatusShowFlag && linkShowFlag" -->
-                    <p class="on_link">http:24989:cnwert.fogfh3wr4560-24989:cnwert.fogfh34560-567asd。i c</p>
+                    <p class="on_link">{{this.refAddress}}</p>
                 </div>
                 <div
                     class="left_img"
@@ -175,7 +175,9 @@
                         v-if="changeStatusShowFlag"
                     >
                         <p class="profit_text">当前收益</p>
-                        <div class="profit_num">$457,780,213.001</div>
+                        <div class="profit_num">BRICK: {{brickCps }}</div>
+			<div class="profit_num">USDT:{{usdtCps}}</div>
+		        <div class="profit_num">BNB:{{bnbCps}}</div>
                     </div>
                     <p
                         class="dis_content"
@@ -293,7 +295,7 @@ import {
 	checkBrickbalance,
 	checkAndLoadFromLast,
 	checkEachLength,
-	init,
+	init, drawMine,selectedAccount
 } from 'houtai/web3_eth.js';
 
 import searchBtnPng from 'img/首页/search.png';
@@ -352,6 +354,10 @@ export default {
 			searchEnsLoading: false,
 			changeStatusShowFlag: false,
 			linkShowFlag: false,
+			refAddress: '',
+			bnbCps: 0,
+			brickCps: 0,
+			usdtCps: 0,
 			searchBtnPng,
 			bnsClickPng,
 			bnsComposeImg,
@@ -471,6 +477,13 @@ export default {
 				'',
 			);
 			this.searchText = this.searchText.toLowerCase();
+		},
+		'$store.state.cpsFee': function (val, old) {
+			console.log(val);
+			console.log('监听');
+			this.bnbCps = val[0];
+			this.brickCps = val[1];
+			this.usdtCps = val[2];
 		},
 	},
 
@@ -627,16 +640,31 @@ export default {
 		},
 		//点击生成专属链接
 		linkClick() {
-			// if (this.changeStatusShowFlag) {
+			if (selectedAccount == null) {
+				alert('请先链接钱包');
+				return;
+			}
 			this.linkShowFlag = true;
-			// } else {
-			// 	console.log('先链接钱包');
-			// }
+			var text =
+				window.location.origin +
+				'/?ref=' +
+				selectedAccount;
+			const input = document.createElement('INPUT');
+			input.style.opacity = 0;
+			input.style.position = 'absolute';
+			input.style.left = '-100000px';
+			document.body.appendChild(input);
+
+			input.value = text;
+			input.select();
+			input.setSelectionRange(0, text.length);
+			document.execCommand('copy');
+			document.body.removeChild(input);
+			this.refAddress = text;
 		},
 		//提取收益
 		getIncomeBtn() {
-			console.log('提取收益');
-			alert('提取收益');
+			drawMine();
 		},
 		changeImageSrc(key, way) {
 			console.log('key, way', key, way);
@@ -1148,7 +1176,7 @@ export default {
 					}
 					.profit_num {
 						width: 5.69rem;
-						height: 0.77rem;
+						height: 0.60rem;
 						font-family: Womby-Regular;
 						font-weight: 400;
 						font-size: 0.64rem;
