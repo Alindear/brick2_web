@@ -145,6 +145,7 @@
                     <!-- </el-button> -->
                 </div>
                 <div class="his_list">
+                    <!-- v-if="histroys && histroys.length > 0" -->
                     <!-- @click="goDetail(his)" -->
                     <span
                         class="his_text"
@@ -208,12 +209,7 @@ export default {
 			menuFlag: true,
 			showSearchContainer: false,
 
-			histroys: [
-				'888888',
-				'neko是只猫咪',
-				'neko是只猫咪',
-				'neko是只猫咪',
-			],
+			histroys: [],
 
 			selectedAccount: '',
 			moreCloseShowFlag: false,
