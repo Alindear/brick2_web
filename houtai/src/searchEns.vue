@@ -376,14 +376,15 @@ export default {
 				_this.registBtnDisabled = true;
 			};
 			var _cb = function () {
-				_router.push({
-					path: '/registration/info',
-					query: {
-						text: this.searchText
-							? this.searchText
-							: undefined,
-					},
-				});
+				console.log('注册');
+				// _router.push({
+				// 	path: '/registration/info',
+				// 	query: {
+				// 		text: this.searchText
+				// 			? this.searchText
+				// 			: undefined,
+				// 	},
+				// });
 			};
 
 			console.log('_name', _name);
