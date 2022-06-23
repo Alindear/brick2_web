@@ -1,5 +1,18 @@
 <template>
     <div class="app_main">
+
+        <giftTips
+            type="viewResult"
+            v-if="viewResultShowFlag"
+            :viewResultShowFlag="viewResultShowFlag"
+            :luckOrNot="luckOrNot"
+        ></giftTips>
+        <giftTips
+            type="luckDraw"
+            v-if="luckDrawShowFlag"
+            :luckDrawShowFlag="luckDrawShowFlag"
+        ></giftTips>
+
         <!-- <div class="back_top_img"></div> -->
         <registered
             v-if="openLinkShowFlag"
@@ -178,7 +191,7 @@
                     v-if="linkShowFlag"
                 >
                     <!-- v-if="!changeStatusShowFlag && linkShowFlag" -->
-                    <p class="on_link">http:24989:cnwert.fogfh3wr4560-24989:cnwert.fogfh34560-567asd。i c</p>
+                    <p class="on_link">{{this.refAddress}}</p>
                 </div>
                 <div
                     class="left_img"
@@ -200,7 +213,9 @@
                         v-if="changeStatusShowFlag"
                     >
                         <p class="profit_text">当前收益</p>
-                        <div class="profit_num">$457,780,213.001</div>
+                        <div class="profit_num">BRICK: {{brickCps }}</div>
+                        <div class="profit_num">USDT:{{usdtCps}}</div>
+                        <div class="profit_num">BNB:{{bnbCps}}</div>
                     </div>
                     <p
                         class="dis_content"
@@ -255,21 +270,58 @@
 
         </div>
 
+        <div class="gift_module">
+            <div class="title_text_gift">web3的第一份礼物请收下</div>
+            <p class="span_text_gift">域名抽奖活动，每周一次，周五开奖，周六开始新一轮抽奖，每周四抽奖截止</p>
+            <el-button
+                v-if="!changeStatusShowFlag"
+                disabled
+            >请链接钱包</el-button>
+            <el-button
+                v-if="changeStatusShowFlag && !isShowDraw"
+                @click="luckDrawBtn(true)"
+            >参与抽奖</el-button>
+            <el-button
+                v-if="changeStatusShowFlag && isShowDraw"
+                @click="viewResultBtn(true)"
+            >查看结果</el-button>
+            <div class="four_gift_bottom">
+                <div
+                    v-for="(item,index) in giftList"
+                    :key="index"
+                    class="four_gift_item"
+                >
+                    <img
+                        :src="item.img"
+                        alt=""
+                    >
+                    <p class="item_title">{{item.title}}</p>
+                    <div :class="`item_desc${index+1}`">
+                        <p>{{item.desc1}}</p>
+                        <p>{{item.desc2}}</p>
+                        <p v-if="item.desc3">{{item.desc3}}</p>
+                    </div>
+                    <!-- <span :class="`item_desc${index+1}`">{{item.desc}}</span> -->
+                </div>
+            </div>
+
+        </div>
+
         <div class="partner_module">
             <p class="partner_title">
                 <!-- 合作伙伴 -->
                 {{i18n.partners}}
             </p>
             <!-- <div class="partner_img">
-                <img
-                    v-for="(item,index) in imgList"
-                    :key="index"
-                    @mouseenter="changeImageSrc(index, 'hover')"
-                    @mouseleave="changeImageSrc(index, '')"
-                    :src="item.img"
-                    alt=""
-                >
-            </div> -->
+									<img
+											v-for="(item,index) in imgList"
+											:key="index"
+											@mouseenter="changeImageSrc(index, 'hover')"
+											@mouseleave="changeImageSrc(index, '')"
+											:src="item.img"
+											alt=""
+									>
+							</div> -->
 
             <div class="partner_img">
                 <img
@@ -319,6 +371,7 @@
 </template>
 
 <script>
+import giftTips from './components/giftTips.vue';
 import registered from './components/registered.vue';
 import headEr from './components/header.vue';
 import {
@@ -330,6 +383,8 @@ import {
 	checkAndLoadFromLast,
 	checkEachLength,
 	init,
+	drawMine,
+	selectedAccount,
 } from 'houtai/web3_eth.js';
 
 import searchBtnPng from 'img/首页/search.png';
@@ -349,6 +404,10 @@ import partnerImg from 'img/首页/编组 39@2x.png';
 import twitterPng from 'img/首页/推特_twitter44@2x.png';
 import discordPng from 'img/首页/discord@2x.png';
 import lastIconPng from 'img/首页/编组 56@2x.png';
+import giftImg1 from 'img/gift/编组 30.png';
+import giftImg2 from 'img/gift/编组 31.png';
+import giftImg3 from 'img/gift/编组 32.png';
+import giftImg4 from 'img/gift/编组 33.png';
 
 import icon1 from 'img/logo/灰色2x/icon1.png';
 import icon2 from 'img/logo/灰色2x/icon2.png';
@@ -381,13 +440,21 @@ import iconSelect13 from 'img/logo/彩色2x/iconSelect13.png';
 import iconSelect14 from 'img/logo/彩色2x/iconSelect14.png';
 
 export default {
-	components: { headEr, registered },
+	components: { headEr, registered, giftTips },
 	data() {
 		return {
+			isShowDraw: false, //是否参与抽奖
+			luckDrawShowFlag: false, // 参与抽奖
+			viewResultShowFlag: false, // 查看结果
+			luckOrNot: 'NO', //是否中奖
 			openLinkShowFlag: false,
 			searchEnsLoading: false,
 			changeStatusShowFlag: false,
 			linkShowFlag: false,
+			refAddress: '',
+			bnbCps: 0,
+			brickCps: 0,
+			usdtCps: 0,
 			searchBtnPng,
 			bnsClickPng,
 			bnsComposeImg,
@@ -405,6 +472,10 @@ export default {
 			twitterPng,
 			discordPng,
 			lastIconPng,
+			giftImg1,
+			giftImg2,
+			giftImg3,
+			giftImg4,
 
 			icon1,
 			icon2,
@@ -465,6 +536,33 @@ export default {
 					img: img2,
 				},
 			],
+			giftList: [
+				{
+					title: '2022Q3',
+					desc1: '融资计划开启',
+					desc2: '测试网上线',
+					img: giftImg1,
+				},
+				{
+					title: '2022Q4',
+					desc1: '主网上线',
+					desc2: '域名交易市场开启',
+					desc3: 'Share to earn',
+					img: giftImg2,
+				},
+				{
+					title: '2022Q1-Q2',
+					desc1: 'BNS代币上线',
+					desc2: '实现90%的场景覆盖',
+					img: giftImg3,
+				},
+				{
+					title: '2023Q3',
+					desc1: '基于数据的did',
+					desc2: 'UGC模式社交产品',
+					img: giftImg4,
+				},
+			],
 			imgList: [
 				{ img: icon1 },
 				{ img: icon2 },
@@ -510,6 +608,13 @@ export default {
 			);
 			this.searchText = this.searchText.toLowerCase();
 		},
+		'$store.state.cpsFee': function (val, old) {
+			console.log(val);
+			console.log('监听');
+			this.bnbCps = val[0];
+			this.brickCps = val[1];
+			this.usdtCps = val[2];
+		},
 	},
 
 	computed: {
@@ -521,6 +626,16 @@ export default {
 	},
 
 	methods: {
+		//参与抽奖
+		luckDrawBtn(flag) {
+			this.luckDrawShowFlag = flag;
+			this.isShowDraw = true;
+		},
+		// 查看结果
+		viewResultBtn(flag) {
+			this.viewResultShowFlag = flag;
+			this.luckOrNot = this.luckOrNot;
+		},
 		searchTextChange() {
 			console.log('域名发生变化');
 			this.isExist = null;
@@ -673,16 +788,31 @@ export default {
 		},
 		//点击生成专属链接
 		linkClick() {
-			// if (this.changeStatusShowFlag) {
+			if (selectedAccount == null) {
+				alert('请先链接钱包');
+				return;
+			}
 			this.linkShowFlag = true;
-			// } else {
-			// 	console.log('先链接钱包');
-			// }
+			var text =
+				window.location.origin +
+				'/?ref=' +
+				selectedAccount;
+			const input = document.createElement('INPUT');
+			input.style.opacity = 0;
+			input.style.position = 'absolute';
+			input.style.left = '-100000px';
+			document.body.appendChild(input);
+
+			input.value = text;
+			input.select();
+			input.setSelectionRange(0, text.length);
+			document.execCommand('copy');
+			document.body.removeChild(input);
+			this.refAddress = text;
 		},
 		//提取收益
 		getIncomeBtn() {
-			console.log('提取收益');
-			alert('提取收益');
+			drawMine();
 		},
 		changeImageSrc(key, way) {
 			console.log('key, way', key, way);
@@ -936,7 +1066,8 @@ export default {
 						width: 3.75rem;
 						height: 0.74rem;
 						line-height: 0.74rem;
-						border: 0.01px solid transparent;
+						border: 0.01rem solid
+							transparent;
 						border-radius: 0.32rem;
 						background-clip: padding-box,
 							border-box;
@@ -1227,7 +1358,7 @@ export default {
 					}
 					.profit_num {
 						width: 5.69rem;
-						height: 0.77rem;
+						height: 0.6rem;
 						font-family: Womby-Regular;
 						font-weight: 400;
 						font-size: 0.64rem;
@@ -1314,7 +1445,8 @@ export default {
 
 	.back_address_price_module {
 		position: relative;
-		margin-bottom: 0.16rem;
+		// margin-bottom: 0.16rem;
+		margin-bottom: 2rem;
 		.back_left_center_img {
 			width: 7.15rem;
 			height: 7.84rem;
@@ -1370,6 +1502,112 @@ export default {
 					height: 4.1902rem;
 					transform: rotate(-7deg);
 					margin: 0.4992rem 1.059rem 0.2206rem 0;
+				}
+			}
+		}
+	}
+
+	.gift_module {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 2rem;
+		p {
+			margin: 0;
+		}
+		.title_text_gift {
+			// width: 8.74rem;
+			height: 1.04rem;
+			font-family: YouSheBiaoTiYuan;
+			font-size: 0.8rem;
+			color: #000000;
+		}
+		.span_text_gift {
+			width: 7.48rem;
+			height: 0.3rem;
+			font-family: PingFangSC-Medium;
+			font-weight: 500;
+			font-size: 0.22rem;
+			color: #999999;
+			margin: 0.32rem 0 0.8rem 0;
+		}
+		.el-button {
+			width: 4.03rem;
+			height: 0.92rem;
+			background-image: linear-gradient(
+				-60deg,
+				#6af0e9 0%,
+				#edafff 100%
+			);
+			border-radius: 0.46rem;
+			font-family: PingFangSC-Semibold;
+			font-weight: 600;
+			font-size: 0.24rem;
+			color: #ffffff;
+			border: none;
+		}
+		.four_gift_bottom {
+			margin-top: 1.92rem;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			.four_gift_item {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				margin-right: 0.16rem;
+				img {
+					width: 3.88rem;
+					margin-bottom: 0.1787rem;
+				}
+				.item_title {
+					height: 0.38rem;
+					font-family: Womby-Regular;
+					font-weight: 400;
+					font-size: 0.32rem;
+					color: #000000;
+					letter-spacing: 0.01rem;
+					margin-bottom: 0.32rem;
+				}
+
+				.item_desc1 {
+					// width: 1.08rem;
+					height: 0.5rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.18rem;
+					color: #666666;
+					text-align: center;
+				}
+				.item_desc2 {
+					// width: 1.44rem;
+					height: 0.5rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.18rem;
+					color: #666666;
+					text-align: center;
+				}
+				.item_desc3 {
+					// width: 1.66rem;
+					height: 0.5rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.18rem;
+					color: #666666;
+					text-align: center;
+				}
+				.item_desc4 {
+					// width: 1.48rem;
+					height: 0.5rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.18rem;
+					color: #666666;
+					text-align: center;
 				}
 			}
 		}

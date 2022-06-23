@@ -279,6 +279,7 @@ export default new Vuex.Store({
         },
         language: 'CN',
         languageSelect: '简体中文 (CN)',
+        cpsFee: []
     },
     mutations: {
         showENLanage(state) {
