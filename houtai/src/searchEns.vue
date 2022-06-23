@@ -155,9 +155,13 @@
                             <div class="step_text">
                                 <div class="step_text_title">
                                     <!-- 请求注册 -->
-                                    {{i18n.registration}}
+                                    <!-- {{i18n.registration}} -->
+                                    {{i18n.approval}}
                                 </div>
-                                <div class="step_text_desc">需要在钱包中确认一笔交易，这是完成域名注册所需的两笔交易中的第一笔。如果第1步完成之后的24小时内没有进行第2步，则需要从第1步重新开始。</div>
+                                <div class="step_text_desc">
+                                    <!-- 需要在钱包中确认一笔交易，这是完成域名注册所需的两笔交易中的第一笔。如果第1步完成之后的24小时内没有进行第2步，则需要从第1步重新开始。 -->
+                                    {{i18n.approval_desc}}
+                                </div>
                             </div>
                         </div>
                         <div class="step_center_process">
@@ -166,8 +170,14 @@
                                 <p :style="{color: registBtnDisabled ? '#ffffff' : '#d8d8d8', 'background-image': registBtnDisabled ? 'linear-gradient(-60deg, #6AF0E9 0%, #EDAFFF 100%)' : 'linear-gradient(-60deg, #ffffff 0%, #ffffff 100%)','border': registBtnDisabled? 'none' : '0.01rem solid #ccc;'}">2</p>
                             </div>
                             <div class="step_text">
-                                <div class="step_text_title">完成注册</div>
-                                <div class="step_text_desc">点击“注册”按钮，并在钱包中再次确认一笔交易，只有在这次交易确认后，才能确定是不是成功注册了这个域名。</div>
+                                <div class="step_text_title">
+                                    <!-- 完成注册 -->
+                                    {{i18n.registration}}
+                                </div>
+                                <div class="step_text_desc">
+                                    <!-- 点击“注册”按钮，并在钱包中再次确认一笔交易，只有在这次交易确认后，才能确定是不是成功注册了这个域名。 -->
+                                    {{i18n.registration_desc}}
+                                </div>
                             </div>
 
                         </div>
@@ -220,9 +230,13 @@
                                     <div class="step_text">
                                         <div class="step_text_title">
                                             <!-- 请求注册 -->
-                                            {{i18n.registration}}
+                                            <!-- {{i18n.registration}} -->
+                                            {{i18n.approval}}
                                         </div>
-                                        <div class="step_text_desc">需要在钱包中确认一笔交易，这是完成域名注册所需的两笔交易中的第一笔。如果第1步完成之后的24小时内没有进行第2步，则需要从第1步重新开始。</div>
+                                        <div class="step_text_desc">
+                                            <!-- 需要在钱包中确认一笔交易，这是完成域名注册所需的两笔交易中的第一笔。如果第1步完成之后的24小时内没有进行第2步，则需要从第1步重新开始。 -->
+                                            {{i18n.approval_desc}}
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="step_center_process">
@@ -231,8 +245,14 @@
                                         <p :style="{color: registBtnDisabled ? '#ffffff' : '#d8d8d8', 'background-image': registBtnDisabled ? 'linear-gradient(-60deg, #6AF0E9 0%, #EDAFFF 100%)' : 'linear-gradient(-60deg, #ffffff 0%, #ffffff 100%)','border': registBtnDisabled? 'none' : '0.01rem solid #ccc;'}">2</p>
                                     </div>
                                     <div class="step_text">
-                                        <div class="step_text_title">完成注册</div>
-                                        <div class="step_text_desc">点击“注册”按钮，并在钱包中再次确认一笔交易，只有在这次交易确认后，才能确定是不是成功注册了这个域名。</div>
+                                        <div class="step_text_title">
+                                            <!-- 完成注册 -->
+                                            {{i18n.registration}}
+                                        </div>
+                                        <div class="step_text_desc">
+                                            <!-- 点击“注册”按钮，并在钱包中再次确认一笔交易，只有在这次交易确认后，才能确定是不是成功注册了这个域名。 -->
+                                            {{i18n.registration_desc}}
+                                        </div>
                                     </div>
 
                                 </div>

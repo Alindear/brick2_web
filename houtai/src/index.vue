@@ -256,7 +256,7 @@
                         :src="item.icon"
                         alt=""
                     >
-                    <div class="address_price_title">{{item.title}}</div>
+                    <div class="address_price_title web-font">{{item.title}}</div>
                     <p class="address_price_desc">{{item.desc}}</p>
                 </div>
                 <div class="address_price_right_img">
@@ -271,16 +271,27 @@
         </div>
 
         <div class="gift_module">
-            <div class="title_text_gift">web3的第一份礼物请收下</div>
-            <p class="span_text_gift">域名抽奖活动，每周一次，周五开奖，周六开始新一轮抽奖，每周四抽奖截止</p>
+            <div class="title_text_gift">
+                <!-- web3的第一份礼物请收下 -->
+                {{i18n.first_gift}}
+            </div>
+            <p class="span_text_gift">
+                <!-- 域名抽奖活动，每周一次，周五开奖，周六开始新一轮抽奖，每周四抽奖截止 -->
+                {{i18n.first_gift_desc}}
+            </p>
             <el-button
                 v-if="!changeStatusShowFlag"
                 disabled
-            >请链接钱包</el-button>
+            >
+                <!-- 请链接钱包 -->
+                {{i18n.connect_wallet_btn}}
+            </el-button>
             <el-button
                 v-if="changeStatusShowFlag && !isShowDraw"
                 @click="luckDrawBtn(true)"
-            >参与抽奖</el-button>
+            >
+                参与抽奖
+            </el-button>
             <el-button
                 v-if="changeStatusShowFlag && isShowDraw"
                 @click="viewResultBtn(true)"
@@ -313,15 +324,15 @@
                 {{i18n.partners}}
             </p>
             <!-- <div class="partner_img">
-									<img
-											v-for="(item,index) in imgList"
-											:key="index"
-											@mouseenter="changeImageSrc(index, 'hover')"
-											@mouseleave="changeImageSrc(index, '')"
-											:src="item.img"
-											alt=""
-									>
-							</div> -->
+                <img
+                    v-for="(item,index) in imgList"
+                    :key="index"
+                    @mouseenter="changeImageSrc(index, 'hover')"
+                    @mouseleave="changeImageSrc(index, '')"
+                    :src="item.img"
+                    alt=""
+                >
+            </div> -->
 
             <div class="partner_img">
                 <img
@@ -525,41 +536,80 @@ export default {
 			addressPriceList: [
 				{
 					icon: addressIcon,
-					title: '转账时请输入能一眼记住的地址',
-					desc: '再也不用担心长长的、无序的地址了。直接从域名到域名进行交易，简单便捷。',
+					// title: '转账时请输入能一眼记住的地址',
+					// desc: '再也不用担心长长的、无序的地址了。直接从域名到域名进行交易，简单便捷。',
+					title: this.$store.state.i18n[
+						this.$store.state.language
+					].enter_address_text,
+					desc: this.$store.state.i18n[
+						this.$store.state.language
+					].enter_address_desc,
 					img: img1,
 				},
 				{
 					icon: priceIcon,
-					title: '交易域名，好的域名会比某些NFT更有价值',
-					desc: '收集、出售.bsc域名，从这些独一无二的域名中获利。',
+					// title: '交易域名，好的域名会比某些NFT更有价值',
+					// desc: '收集、出售.bsc域名，从这些独一无二的域名中获利。',
+					title: this.$store.state.i18n[
+						this.$store.state.language
+					].good_domain_name,
+					desc: this.$store.state.i18n[
+						this.$store.state.language
+					].collect_and_sell,
 					img: img2,
 				},
 			],
 			giftList: [
 				{
 					title: '2022Q3',
-					desc1: '融资计划开启',
-					desc2: '测试网上线',
+					// desc1: '融资计划开启',
+					// desc2: '测试网上线',
+					desc1: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_one_desc1,
+					desc2: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_one_desc2,
 					img: giftImg1,
 				},
 				{
 					title: '2022Q4',
-					desc1: '主网上线',
-					desc2: '域名交易市场开启',
-					desc3: 'Share to earn',
+					// desc1: '主网上线',
+					// desc2: '域名交易市场开启',
+					// desc3: 'Share to earn',
+					desc1: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_two_desc1,
+					desc2: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_two_desc2,
+					desc3: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_two_desc3,
 					img: giftImg2,
 				},
 				{
 					title: '2022Q1-Q2',
-					desc1: 'BNS代币上线',
-					desc2: '实现90%的场景覆盖',
+					// desc1: 'BNS代币上线',
+					// desc2: '实现90%的场景覆盖',
+					desc1: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_three_desc1,
+					desc2: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_three_desc2,
 					img: giftImg3,
 				},
 				{
 					title: '2023Q3',
-					desc1: '基于数据的did',
-					desc2: 'UGC模式社交产品',
+					// desc1: '基于数据的did',
+					// desc2: 'UGC模式社交产品',
+					desc1: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_four_desc1,
+					desc2: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_four_desc2,
 					img: giftImg4,
 				},
 			],
@@ -615,6 +665,94 @@ export default {
 			this.brickCps = val[1];
 			this.usdtCps = val[2];
 		},
+		'$store.state.language': function (val, old) {
+			console.log(val);
+			console.log('监听');
+			this.addressPriceList = [
+				{
+					icon: addressIcon,
+					// title: '转账时请输入能一眼记住的地址',
+					// desc: '再也不用担心长长的、无序的地址了。直接从域名到域名进行交易，简单便捷。',
+					title: this.$store.state.i18n[
+						this.$store.state.language
+					].enter_address_text,
+					desc: this.$store.state.i18n[
+						this.$store.state.language
+					].enter_address_desc,
+					img: img1,
+				},
+				{
+					icon: priceIcon,
+					// title: '交易域名，好的域名会比某些NFT更有价值',
+					// desc: '收集、出售.bsc域名，从这些独一无二的域名中获利。',
+					title: this.$store.state.i18n[
+						this.$store.state.language
+					].good_domain_name,
+					desc: this.$store.state.i18n[
+						this.$store.state.language
+					].collect_and_sell,
+					img: img2,
+				},
+			];
+
+			this.giftList = [
+				{
+					title: '2022Q3',
+					// desc1: '融资计划开启',
+					// desc2: '测试网上线',
+					desc1: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_one_desc1,
+					desc2: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_one_desc2,
+					img: giftImg1,
+				},
+				{
+					title: '2022Q4',
+					// desc1: '主网上线',
+					// desc2: '域名交易市场开启',
+					// desc3: 'Share to earn',
+					desc1: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_two_desc1,
+					desc2: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_two_desc2,
+					desc3: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_two_desc3,
+					img: giftImg2,
+				},
+				{
+					title: '2022Q1-Q2',
+					// desc1: 'BNS代币上线',
+					// desc2: '实现90%的场景覆盖',
+					desc1: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_three_desc1,
+					desc2: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_three_desc2,
+					img: giftImg3,
+				},
+				{
+					title: '2023Q3',
+					// desc1: '基于数据的did',
+					// desc2: 'UGC模式社交产品',
+					desc1: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_four_desc1,
+					desc2: this.$store.state.i18n[
+						this.$store.state.language
+					].gift_four_desc2,
+					img: giftImg4,
+				},
+			];
+		},
+		// '':{
+		//     giftList
+		// }
 	},
 
 	computed: {
@@ -1480,7 +1618,7 @@ export default {
 				}
 				.address_price_title {
 					// width: 4.14rem;
-					height: 0.42rem;
+					// height: 0.42rem;
 					font-family: Alibaba-PuHuiTi-B;
 					font-weight: B;
 					font-size: 0.3rem;
