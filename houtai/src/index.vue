@@ -1,303 +1,314 @@
 <template>
     <div class="app_main">
-        <!-- <div class="back_top_img"></div> -->
-        <div class="header_top">
-            <head-er
-                type="index"
-                @changeStatus="changeStatus"
-            ></head-er>
-        </div>
 
-        <div class="back_top_img"></div>
-        <div class="index_content">
-            <div class="back_bottom_img"></div>
-            <div class="index_left">
-                <div class="left_top">
-                    <!-- <span>BNS</span>
-                    <el-button>去链接</el-button> -->
-                    <img
-                        :src="bnsClickPng"
-                        alt=""
-                        @click="onConnect"
-                    >
-                </div>
-                <div class="left_center">
-                    <div class="text_list">
-                        <span class="list_icon"></span>
-                        <span>链接每一个web3用户</span>
-                    </div>
-                    <div class="text_list">
-                        <span class="list_icon list_icon2"></span>
-                        <span>链接每一个主流平台场景</span>
-                    </div>
-                    <div class="text_list">
-                        <span class="list_icon list_icon3"></span>
-                        <span>帮助每一个用户链接他的身份和资产</span>
-                    </div>
-                    <div class="text_list">
-                        <span class="list_icon list_icon4"></span>
-                        <span>帮助bsc链接更大的增量客户</span>
-                    </div>
-                </div>
-                <div class="left_bottom">
-                    <el-button
-                        class="pc_top_search"
-                        type="primary"
-                    >
-                        <div class="search_module">
-                            <el-select
-                                class="select_lang"
-                                v-model="select"
-                                slot="suffix"
-                                placeholder=""
-                                @change="selectLanageChange"
-                            >
-                                <el-option
-                                    v-for="item in lanageListOpts"
-                                    :key="item.value"
-                                    :label="item.value"
-                                    :value="item.label"
-                                >
-                                    <el-radio
-                                        v-model="selectRadio"
-                                        :label="item.label"
-                                    > </el-radio>
-                                </el-option>
+					<giftTips :type="luckDrawShowFlag ? 'luckDraw': 'viewResult'" v-if="luckDrawShowFlag || viewResultShowFlag" :luckDrawShowFlag="luckDrawShowFlag" :viewResultShowFlag="viewResultShowFlag"></giftTips>
+					
+					<div class="header_top">
+							<head-er
+									type="index"
+									@changeStatus="changeStatus"
+							></head-er>
+					</div>
 
-                            </el-select>
-                            <div class="cut_border"></div>
-                            <el-input
-                                class="input_search"
-                                placeholder="请输入域名或地址"
-                                v-model="searchText"
-                                @input="searchTextChange"
-                            >
-                            </el-input>
-                        </div>
-                    </el-button>
-                    <img
-                        @click="searchEns"
-                        :src="searchBtnPng"
-                        alt=""
-                    >
-                </div>
-            </div>
-            <div class="index_right">
-                <div class="right_top">
-                    <div class="right_top_input">
-                        <img
-                            class="img"
-                            :src="top1Png"
-                            alt=""
-                        >
-                        <!-- <el-input v-model="megaInput"></el-input> -->
-                        <div class="border_input">
-                            <span>{{megaInput}}</span>
-                            <img
-                                :src="inputIcon"
-                                alt=""
-                            >
-                        </div>
-                    </div>
-                    <img
-                        class="img2"
-                        :src="top2Png"
-                        alt=""
-                    >
-                </div>
-                <div class="right_bottom">
-                    <img
-                        class="img3"
-                        :src="top3Png"
-                        alt=""
-                    >
-                    <div class="right_bottom_input">
-                        <!-- <el-input v-model="bnsInput"></el-input> -->
-                        <div class="border_bns_input">
-                            <span>{{bnsInput}}</span>
-                            <img
-                                :src="inputIcon"
-                                alt=""
-                            >
-                        </div>
-                        <img
-                            class="img4"
-                            :src="top4Png"
-                            alt=""
-                        >
-                    </div>
+					<div class="back_top_img"></div>
+					<div class="index_content">
+							<div class="back_bottom_img"></div>
+							<div class="index_left">
+									<div class="left_top">
+											<!-- <span>BNS</span>
+											<el-button>去链接</el-button> -->
+											<img
+													:src="bnsClickPng"
+													alt=""
+													@click="onConnect"
+											>
+									</div>
+									<div class="left_center">
+											<div class="text_list">
+													<span class="list_icon"></span>
+													<span>链接每一个web3用户</span>
+											</div>
+											<div class="text_list">
+													<span class="list_icon list_icon2"></span>
+													<span>链接每一个主流平台场景</span>
+											</div>
+											<div class="text_list">
+													<span class="list_icon list_icon3"></span>
+													<span>帮助每一个用户链接他的身份和资产</span>
+											</div>
+											<div class="text_list">
+													<span class="list_icon list_icon4"></span>
+													<span>帮助bsc链接更大的增量客户</span>
+											</div>
+									</div>
+									<div class="left_bottom">
+											<el-button
+													class="pc_top_search"
+													type="primary"
+											>
+													<div class="search_module">
+															<el-select
+																	class="select_lang"
+																	v-model="select"
+																	slot="suffix"
+																	placeholder=""
+																	@change="selectLanageChange"
+															>
+																	<el-option
+																			v-for="item in lanageListOpts"
+																			:key="item.value"
+																			:label="item.value"
+																			:value="item.label"
+																	>
+																			<el-radio
+																					v-model="selectRadio"
+																					:label="item.label"
+																			> </el-radio>
+																	</el-option>
 
-                </div>
-            </div>
-        </div>
+															</el-select>
+															<div class="cut_border"></div>
+															<el-input
+																	class="input_search"
+																	placeholder="请输入域名或地址"
+																	v-model="searchText"
+																	@input="searchTextChange"
+															>
+															</el-input>
+													</div>
+											</el-button>
+											<img
+													@click="searchEns"
+													:src="searchBtnPng"
+													alt=""
+											>
+									</div>
+							</div>
+							<div class="index_right">
+									<div class="right_top">
+											<div class="right_top_input">
+													<img
+															class="img"
+															:src="top1Png"
+															alt=""
+													>
+													<!-- <el-input v-model="megaInput"></el-input> -->
+													<div class="border_input">
+															<span>{{megaInput}}</span>
+															<img
+																	:src="inputIcon"
+																	alt=""
+															>
+													</div>
+											</div>
+											<img
+													class="img2"
+													:src="top2Png"
+													alt=""
+											>
+									</div>
+									<div class="right_bottom">
+											<img
+													class="img3"
+													:src="top3Png"
+													alt=""
+											>
+											<div class="right_bottom_input">
+													<!-- <el-input v-model="bnsInput"></el-input> -->
+													<div class="border_bns_input">
+															<span>{{bnsInput}}</span>
+															<img
+																	:src="inputIcon"
+																	alt=""
+															>
+													</div>
+													<img
+															class="img4"
+															:src="top4Png"
+															alt=""
+													>
+											</div>
 
-        <div class="bns_compose_module">
-            <p class="the_text">The</p>
-            <div class="title_text">Bns生态构成</div>
-            <img
-                :src="bnsComposeImg"
-                alt=""
-            >
-            <div class="back_right_center_img"></div>
-        </div>
+									</div>
+							</div>
+					</div>
 
-        <div class="back_right_center_img"></div>
+					<div class="bns_compose_module">
+							<p class="the_text">The</p>
+							<div class="title_text">Bns生态构成</div>
+							<img
+									:src="bnsComposeImg"
+									alt=""
+							>
+							<div class="back_right_center_img"></div>
+					</div>
 
-        <div class="share_module">
-            <div class="title_text">分享赚取收益</div>
-            <p class="span_text">推荐好友注册域名有奖励！赶紧生成自己的专属链接吧！</p>
-            <div class="share_img">
-                <div
-                    class="left_img"
-                    v-if="!changeStatusShowFlag && linkShowFlag"
-                >
-                    <p class="on_link">http:24989:cnwert.fogfh3wr4560-24989:cnwert.fogfh34560-567asd。i c</p>
-                </div>
-                <div
-                    class="left_img"
-                    v-if="!changeStatusShowFlag && !linkShowFlag"
-                    @click="linkClick"
-                >
-                    <p
-                        class="dis_link"
-                        @click="linkClick"
-                    >点击生成专属链接</p>
-                </div>
-                <div class="right_img">
-                    <div
-                        class="now_profit"
-                        v-if="changeStatusShowFlag"
-                    >
-                        <p class="profit_text">当前收益</p>
-                        <div class="profit_num">$457,780,213.001</div>
-                    </div>
-                    <p
-                        class="dis_content"
-                        v-if="!changeStatusShowFlag"
-                    >
-                        请链接钱包后查看当前收益
-                    </p>
-                    <el-button @click="getIncomeBtn">提取收益</el-button>
-                </div>
-            </div>
-        </div>
+					<div class="back_right_center_img"></div>
 
-        <div class="express_module">
-            <p class="title_text">个性化是表达自我的第一步，而不是：</p>
-            <el-button class="button_text">
-                <p>
-                    0xF7Bc92...79E7A4AD
-                </p>
-            </el-button>
-        </div>
+					<div class="share_module">
+							<div class="title_text">分享赚取收益</div>
+							<p class="span_text">推荐好友注册域名有奖励！赶紧生成自己的专属链接吧！</p>
+							<div class="share_img">
+									<div
+											class="left_img"
+											v-if="!changeStatusShowFlag && linkShowFlag"
+									>
+											<p class="on_link">http:24989:cnwert.fogfh3wr4560-24989:cnwert.fogfh34560-567asd。i c</p>
+									</div>
+									<div
+											class="left_img"
+											v-if="!changeStatusShowFlag && !linkShowFlag"
+											@click="linkClick"
+									>
+											<p
+													class="dis_link"
+													@click="linkClick"
+											>点击生成专属链接</p>
+									</div>
+									<div class="right_img">
+											<div
+													class="now_profit"
+													v-if="changeStatusShowFlag"
+											>
+													<p class="profit_text">当前收益</p>
+													<div class="profit_num">$457,780,213.001</div>
+											</div>
+											<p
+													class="dis_content"
+													v-if="!changeStatusShowFlag"
+											>
+													请链接钱包后查看当前收益
+											</p>
+											<el-button @click="getIncomeBtn">提取收益</el-button>
+									</div>
+							</div>
+					</div>
 
-        <div class="back_address_price_module">
-            <div class="back_left_center_img"></div>
-            <div
-                v-for="(item,index) in addressPriceList"
-                :key="index"
-                class="address_price_module"
-            >
-                <div class="address_price_left_desc">
-                    <img
-                        :src="item.icon"
-                        alt=""
-                    >
-                    <div class="address_price_title">{{item.title}}</div>
-                    <p class="address_price_desc">{{item.desc}}</p>
-                </div>
-                <div class="address_price_right_img">
-                    <img
-                        :src="item.img"
-                        alt=""
-                    >
-                </div>
+					<div class="express_module">
+							<p class="title_text">个性化是表达自我的第一步，而不是：</p>
+							<el-button class="button_text">
+									<p>
+											0xF7Bc92...79E7A4AD
+									</p>
+							</el-button>
+					</div>
 
-            </div>
+					<div class="back_address_price_module">
+							<div class="back_left_center_img"></div>
+							<div
+									v-for="(item,index) in addressPriceList"
+									:key="index"
+									class="address_price_module"
+							>
+									<div class="address_price_left_desc">
+											<img
+													:src="item.icon"
+													alt=""
+											>
+											<div class="address_price_title">{{item.title}}</div>
+											<p class="address_price_desc">{{item.desc}}</p>
+									</div>
+									<div class="address_price_right_img">
+											<img
+													:src="item.img"
+													alt=""
+											>
+									</div>
 
-        </div>
+							</div>
 
-        <div class="gift_module">
-            <div class="title_text">web3的第一份礼物请收下</div>
-            <p class="span_text">域名抽奖活动，每周一次，周五开奖，周六开始新一轮抽奖，每周四抽奖截止</p>
-            <el-button>请链接钱包</el-button>
-            <div>
-                <div
-                    v-for="(item,index) in giftList"
-                    :key="index"
-                >
-                    <img
-                        :src="item.img"
-                        alt=""
-                    >
-                    <p>{{item.title}}</p>
-                    <span>{{item.desc}}</span>
-                </div>
-            </div>
+					</div>
 
-        </div>
+					<div class="gift_module">
+							<div class="title_text_gift">web3的第一份礼物请收下</div>
+							<p class="span_text_gift">域名抽奖活动，每周一次，周五开奖，周六开始新一轮抽奖，每周四抽奖截止</p>
+							<el-button v-if="!changeStatusShowFlag" disabled>请链接钱包</el-button>
+							<el-button v-if="!changeStatusShowFlag" @click="luckDrawBtn(true)">参与抽奖</el-button>
+							<el-button v-if="!changeStatusShowFlag && luckDrawShowFlag" @click="viewResultBtn(true)">查看结果</el-button>
+							<div class="four_gift_bottom">
+									<div
+											v-for="(item,index) in giftList"
+											:key="index"
+											class="four_gift_item"
+									>
+											<img
+													:src="item.img"
+													alt=""
+											>
+											<p class="item_title">{{item.title}}</p>
+											<div :class="`item_desc${index+1}`">
+												<p>{{item.desc1}}</p>
+												<p>{{item.desc2}}</p>
+												<p v-if="item.desc3">{{item.desc3}}</p>
+											</div>
+											<!-- <span :class="`item_desc${index+1}`">{{item.desc}}</span> -->
+									</div>
+							</div>
 
-        <div class="partner_module">
-            <p class="partner_title">合作伙伴</p>
-            <!-- <div class="partner_img">
-                <img
-                    v-for="(item,index) in imgList"
-                    :key="index"
-                    @mouseenter="changeImageSrc(index, 'hover')"
-                    @mouseleave="changeImageSrc(index, '')"
-                    :src="item.img"
-                    alt=""
-                >
-            </div> -->
+					</div>
 
-            <div class="partner_img">
-                <img
-                    :src="partnerImg"
-                    alt=""
-                >
-            </div>
-        </div>
+					<div class="partner_module">
+							<p class="partner_title">合作伙伴</p>
+							<!-- <div class="partner_img">
+									<img
+											v-for="(item,index) in imgList"
+											:key="index"
+											@mouseenter="changeImageSrc(index, 'hover')"
+											@mouseleave="changeImageSrc(index, '')"
+											:src="item.img"
+											alt=""
+									>
+							</div> -->
 
-        <div class="contact_us_module">
-            <p class="contanct_title">
-                联系我们
-            </p>
-            <div class="contact_input">
-                <span class="email">E-mail: admin@bnsdid.io </span>
-                <span class="bottom_img">
-                    <img
-                        class="bottom_icon1"
-                        :src="twitterPng"
-                        alt=""
-                    >
-                    <img
-                        class="bottom_icon2"
-                        :src="discordPng"
-                        alt=""
-                    >
-                    <img
-                        class="bottom_icon3"
-                        :src="lastIconPng"
-                        alt=""
-                    >
-                    <!-- <div class="img_left"></div> -->
-                </span>
-                <span class="img_left"></span>
-                <span class="img_center">SAY HI HERE</span>
-                <img
-                    class="img_right"
-                    :src="enterIcon"
-                    alt=""
-                >
+							<div class="partner_img">
+									<img
+											:src="partnerImg"
+											alt=""
+									>
+							</div>
+					</div>
 
-            </div>
-        </div>
+					<div class="contact_us_module">
+							<p class="contanct_title">
+									联系我们
+							</p>
+							<div class="contact_input">
+									<span class="email">E-mail: admin@bnsdid.io </span>
+									<span class="bottom_img">
+											<img
+													class="bottom_icon1"
+													:src="twitterPng"
+													alt=""
+											>
+											<img
+													class="bottom_icon2"
+													:src="discordPng"
+													alt=""
+											>
+											<img
+													class="bottom_icon3"
+													:src="lastIconPng"
+													alt=""
+											>
+											<!-- <div class="img_left"></div> -->
+									</span>
+									<span class="img_left"></span>
+									<span class="img_center">SAY HI HERE</span>
+									<img
+											class="img_right"
+											:src="enterIcon"
+											alt=""
+									>
+
+							</div>
+					</div>
 
     </div>
 </template>
 
 <script>
-import headEr from './components/header.vue';
+import giftTips from './components/giftTips.vue'
+import headEr from './components/header.vue'
 import {
 	onConnect,
 	onDisconnect,
@@ -362,9 +373,11 @@ import iconSelect13 from 'img/logo/彩色2x/iconSelect13.png';
 import iconSelect14 from 'img/logo/彩色2x/iconSelect14.png';
 
 export default {
-	components: { headEr },
+	components: { headEr, giftTips },
 	data() {
 		return {
+			luckDrawShowFlag: false, // 参与抽奖
+			viewResultShowFlag: false, // 查看结果
 			searchEnsLoading: false,
 			changeStatusShowFlag: false,
 			linkShowFlag: false,
@@ -450,22 +463,27 @@ export default {
 			giftList: [
 				{
 					title: '2022Q3',
-					desc: '融资计划开启测试网上线',
+					desc1: '融资计划开启',
+					desc2: '测试网上线',
 					img: giftImg1,
 				},
 				{
 					title: '2022Q4',
-					desc: '主网上线域名交易市场开启Sharetoearn',
+					desc1: '主网上线',
+					desc2: '域名交易市场开启',
+					desc3: 'Share to earn',
 					img: giftImg2,
 				},
 				{
 					title: '2022Q1-Q2',
-					desc: 'BNS代币上线实现90%的场景覆盖',
+					desc1: 'BNS代币上线',
+					desc2: '实现90%的场景覆盖',
 					img: giftImg3,
 				},
 				{
 					title: '2023Q3',
-					desc: '基于数据的didUGC模式社交产品',
+					desc1: '基于数据的did',
+					desc2: 'UGC模式社交产品',
 					img: giftImg4,
 				},
 			],
@@ -517,6 +535,14 @@ export default {
 	},
 
 	methods: {
+		//参与抽奖
+		luckDrawBtn(flag){
+			this.luckDrawShowFlag = flag
+		},
+		// 查看结果
+		viewResultBtn(flag){
+			this.viewResultShowFlag = flag
+		},
 		searchTextChange() {
 			console.log('域名发生变化');
 			this.isExist = null;
@@ -833,7 +859,7 @@ export default {
 						width: 3.75rem;
 						height: 0.74rem;
 						line-height: 0.74rem;
-						border: 0.01px solid transparent;
+						border: 0.01rem solid transparent;
 						border-radius: 0.32rem;
 						background-clip: padding-box,
 							border-box;
@@ -1224,7 +1250,8 @@ export default {
 			background: #ffffff;
 			// background: pink;
 			margin: 0 auto;
-			margin-bottom: 0.4rem;
+			// margin-bottom: 0.4rem;
+			margin-bottom: 2rem;
 			border-radius: 0.32rem;
 			display: flex;
 			flex-direction: row;
@@ -1265,6 +1292,108 @@ export default {
 			}
 		}
 	}
+
+	.gift_module{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 2rem;
+		p{
+			margin: 0;
+		}
+		.title_text_gift{
+			// width: 8.74rem;
+			height: 1.04rem;
+			font-family: YouSheBiaoTiYuan;
+			font-size: 0.80rem;
+			color: #000000;
+		}
+		.span_text_gift{
+			width: 7.48rem;
+			height: 0.30rem;
+			font-family: PingFangSC-Medium;
+			font-weight: 500;
+			font-size: 0.22rem;
+			color: #999999;
+			margin: 0.32rem 0 0.8rem 0;
+		}
+		.el-button{
+			width: 4.03rem;
+			height: 0.92rem;
+			background-image: linear-gradient(-60deg, #6AF0E9 0%, #EDAFFF 100%);
+			border-radius: 0.46rem;
+			font-family: PingFangSC-Semibold;
+			font-weight: 600;
+			font-size: 0.24rem;
+			color: #FFFFFF;
+			border: none;
+		}
+		.four_gift_bottom{
+			margin-top: 1.92rem;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			.four_gift_item{
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				margin-right: 0.16rem;
+				img{
+					width: 3.88rem;
+					margin-bottom: 0.1787rem;
+				}
+				.item_title{
+					height: 0.38rem;
+					font-family: Womby-Regular;
+					font-weight: 400;
+					font-size: 0.32rem;
+					color: #000000;
+					letter-spacing: 0.01rem;
+					margin-bottom: 0.32rem;
+				}
+			
+				.item_desc1{
+					// width: 1.08rem;
+					height: 0.50rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.18rem;
+					color: #666666;
+					text-align: center;
+				}
+				.item_desc2{
+					// width: 1.44rem;
+					height: 0.5rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.18rem;
+					color: #666666;
+					text-align: center;
+				}
+				.item_desc3{
+					// width: 1.66rem;
+					height: 0.50rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.18rem;
+					color: #666666;
+					text-align: center;
+				}
+				.item_desc4{
+					// width: 1.48rem;
+					height: 0.50rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.18rem;
+					color: #666666;
+					text-align: center;
+				}
+			}
+		}
+	}					
 
 	.partner_module {
 		display: flex;
