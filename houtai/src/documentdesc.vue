@@ -81,7 +81,7 @@
                             >
                             <p class="team_name">{{item.name}}</p>
                             <p class="team_level">{{item.level}}</p>
-                            <div class="team_desc">
+                            <div class="team_desc" :style="{ height: $store.state.language === 'CN' ? '1.2rem' : '2.3rem'}">
                                 <p>{{item.descaname}}</p>
                                 <span>{{item.desc}}</span>
                             </div>

@@ -30,9 +30,10 @@
             <div class="back_bottom_img"></div>
             <div class="index_left">
                 <div class="left_top">
-                    <!-- <span>BNS</span>
-                    <el-button @click="onConnect">去链接</el-button> -->
+                    <span v-if="$store.state.language === 'EN'">BNS</span>
+                    <el-button v-if="$store.state.language === 'EN'" @click="onConnect">Go and link</el-button>
                     <img
+												v-if="$store.state.language === 'CN'"
                         :src="bnsClickPng"
                         alt=""
                         @click="onConnect"
@@ -163,7 +164,7 @@
 
         <div class="bns_compose_module">
             <p class="the_text">The</p>
-            <div class="title_text">
+            <div class="title_text" :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold','font-weight': $store.state.language === 'CN' ? '' : 'Bold'}">
                 <!-- Bns生态构成 -->
                 {{i18n.bns}}
             </div>
@@ -177,7 +178,7 @@
         <div class="back_right_center_img"></div>
 
         <div class="share_module">
-            <div class="title_text">
+            <div class="title_text" :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold'}">
                 <!-- 分享赚取收益 -->
                 {{i18n.share}}
             </div>
@@ -233,7 +234,7 @@
         </div>
 
         <div class="express_module">
-            <p class="title_text">
+            <p class="title_text" :style="{ 'font-family': $store.state.language === 'CN' ? 'Alibaba-PuHuiTi-M' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold', 'width': $store.state.language === 'CN' ? '' : '13rem',}">
                 <!-- 个性化是表达自我的第一步，而不是： -->
                 {{i18n.first_step}}
             </p>
@@ -271,7 +272,7 @@
         </div>
 
         <div class="gift_module">
-            <div class="title_text_gift">
+            <div class="title_text_gift" :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold'}">
                 <!-- web3的第一份礼物请收下 -->
                 {{i18n.first_gift}}
             </div>
@@ -319,7 +320,7 @@
         </div>
 
         <div class="partner_module">
-            <p class="partner_title">
+            <p class="partner_title" :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold'}">
                 <!-- 合作伙伴 -->
                 {{i18n.partners}}
             </p>
@@ -343,7 +344,7 @@
         </div>
 
         <div class="contact_us_module">
-            <p class="contanct_title">
+            <p class="contanct_title" :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold'}">
                 <!-- 联系我们 -->
                 {{i18n.contact_us}}
             </p>
@@ -1010,39 +1011,40 @@ export default {
 				img {
 					height: 1.48rem;
 				}
-				// span {
-				// 	width: 1.69rem;
-				// 	height: 1.03rem;
-				// 	font-family: Womby-Regular;
-				// 	font-weight: 400;
-				// 	font-size: 0.86rem;
-				// 	// color: #ffffff;
-				// 	letter-spacing: 0.04rem;
-				// 	background-image: linear-gradient(
-				// 		to right,
-				// 		#e5b3fd,
-				// 		#7de7ec
-				// 	);
-				// 	-webkit-background-clip: text;
-				// 	color: transparent;
-				// }
-				// .el-button {
-				// 	width: 5.63rem;
-				// 	height: 1.48rem;
-				// 	background-image: linear-gradient(
-				// 		-60deg,
-				// 		#6af0e9 0%,
-				// 		#edafff 100%
-				// 	);
-				// 	border-radius: 0.24rem;
-				// 	// width: 443px;
-				// 	// height: 86px;
-				// 	font-family: Womby-Regular;
-				// 	font-weight: 400;
-				// 	font-size: 0.72rem;
-				// 	color: #ffffff;
-				// 	border: none;
-				// }
+				span {
+					width: 1.69rem;
+					height: 1.03rem;
+					font-family: Womby-Regular;
+					font-weight: 400;
+					font-size: 0.86rem;
+					// color: #ffffff;
+					letter-spacing: 0.04rem;
+					background-image: linear-gradient(
+						to right,
+						#e5b3fd,
+						#7de7ec
+					);
+					-webkit-background-clip: text;
+					color: transparent;
+					margin-right: 0.24rem;
+				}
+				.el-button {
+					width: 5.63rem;
+					height: 1.48rem;
+					background-image: linear-gradient(
+						-60deg,
+						#6af0e9 0%,
+						#edafff 100%
+					);
+					border-radius: 0.24rem;
+					// width: 443px;
+					// height: 86px;
+					font-family: Womby-Regular;
+					font-weight: 400;
+					font-size: 0.72rem;
+					color: #ffffff;
+					border: none;
+				}
 			}
 			.left_center {
 				display: flex;
@@ -1543,7 +1545,7 @@ export default {
 		// position: relative;
 		.title_text {
 			// width: 10.04rem;
-			height: 0.82rem;
+			// height: 0.82rem;
 			font-family: Alibaba-PuHuiTi-M;
 			font-weight: M;
 			font-size: 0.6rem;
@@ -1556,6 +1558,7 @@ export default {
 			-webkit-background-clip: text;
 			color: transparent;
 			margin-bottom: 0.6rem;
+			text-align: center;
 		}
 		.button_text {
 			width: 13.86rem;
@@ -1617,7 +1620,7 @@ export default {
 					margin: 0.71rem 0 0.45rem 0;
 				}
 				.address_price_title {
-					// width: 4.14rem;
+					width: 8.4rem;
 					// height: 0.42rem;
 					font-family: Alibaba-PuHuiTi-B;
 					font-weight: B;
@@ -1627,7 +1630,8 @@ export default {
 				}
 				.address_price_desc {
 					// width: 5.52rem;
-					height: 0.22rem;
+					// height: 0.22rem;
+    			width: 8.78rem;
 					font-family: Alibaba-PuHuiTi-R;
 					font-weight: R;
 					font-size: 0.16rem;
@@ -1662,7 +1666,7 @@ export default {
 			color: #000000;
 		}
 		.span_text_gift {
-			width: 7.48rem;
+			// width: 7.48rem;
 			height: 0.3rem;
 			font-family: PingFangSC-Medium;
 			font-weight: 500;

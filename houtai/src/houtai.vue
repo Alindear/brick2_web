@@ -15,6 +15,7 @@
                         :index="index.toString()"
                         :key="index"
                         @click="itemDeal(item)"
+												:style="{ 'margin': $store.state.language === 'CN' ? '0.4rem 0.8rem' : '0.4rem 0.3rem' }"
                     >
                         <img
                             class="icon_img"
