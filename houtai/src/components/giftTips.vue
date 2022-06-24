@@ -48,14 +48,14 @@
                     </span>
                 </div>
                 <div
-                    class="input_bsc_luck"
+                    :class="$store.state.language === 'CN' ? 'input_bsc_luck' :'input_bsc_luck_en'"
                     :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start', 'height': $store.state.language === 'CN' ? '0.7rem' : '1rem',}"
                 >
-                    <p class="left_bsc">
+                    <p :class="$store.state.language === 'CN' ? 'left_bsc':'left_bsc_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
                         {{i18n.lucky_this}}57892680.bsc
                     </p>
-                    <p class="right_bsc">
+                    <p :class="$store.state.language === 'CN' ? 'right_bsc':'right_bsc_en'">
                         <!-- 本期奖品：889988.bsc -->
                         {{i18n.prize_this}}889988.bsc
                     </p>
@@ -319,7 +319,7 @@ export default {
 				font-weight: B;
 				font-size: 0.16rem;
 				color: #000000;
-				margin: 0.24rem 0 0.08rem 0;
+				// margin: 0.24rem 0 0.08rem 0;
 			}
 			.right_bsc {
 				// width: 1.67rem;
@@ -328,6 +328,47 @@ export default {
 				font-weight: B;
 				font-size: 0.16rem;
 				color: #000000;
+				// margin: 0 0 0.24rem 0;
+			}
+		}
+		.input_bsc_luck_en {
+			width: 5.08rem;
+			height: 1rem;
+			background: rgba(138, 62, 162, 0.03);
+			border: 0.01rem solid rgba(138, 62, 162, 0.55);
+			border-radius: 0.12rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-start;
+			// margin: auto;
+			padding: 0 0.25rem;
+			margin: 0 0.66rem;
+			// margin: 0 0.66rem 0.3rem;
+			box-sizing: border-box;
+			p {
+				margin: 0;
+			}
+			.left_bsc {
+				// width: 2.02rem;
+				height: 0.22rem;
+				font-family: Alibaba-PuHuiTi-B;
+				font-weight: B;
+				font-size: 0.16rem;
+				color: #000000;
+			}
+			.right_bsc {
+				// width: 1.67rem;
+				height: 0.22rem;
+				font-family: Alibaba-PuHuiTi-B;
+				font-weight: B;
+				font-size: 0.16rem;
+				color: #000000;
+			}
+			.left_bsc_en {
+				margin: 0.24rem 0 0.08rem 0;
+			}
+			.right_bsc_en {
 				margin: 0 0 0.24rem 0;
 			}
 		}
