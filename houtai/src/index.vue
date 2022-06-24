@@ -459,6 +459,7 @@ export default {
 			luckDrawShowFlag: false, // 参与抽奖
 			viewResultShowFlag: false, // 查看结果
 			luckOrNot: 'NO', //是否中奖
+			// luckOrNot: 'YES', //是否中奖
 			openLinkShowFlag: false,
 			searchEnsLoading: false,
 			changeStatusShowFlag: false,

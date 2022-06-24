@@ -318,6 +318,7 @@ export default new Vuex.Store({
             }
         },
         language: 'CN',
+        // language: 'EN',
         languageSelect: '简体中文 (CN)',
         cpsFee: []
     },
