@@ -202,7 +202,7 @@
                     <!-- v-if="!changeStatusShowFlag && !linkShowFlag" -->
                     <p
                         class="dis_link"
-                        @click="linkClick"
+												:style="{ 'font-size': $store.state.language === 'CN' ? '0.46rem' : '0.4rem',}"
                     >
                         <!-- 点击生成专属链接 -->
                         {{i18n.click_text}}
@@ -928,7 +928,11 @@ export default {
 		//点击生成专属链接
 		linkClick() {
 			if (selectedAccount == null) {
-				alert('请先链接钱包');
+				// alert('请先链接钱包');
+				alert(
+					this.$store.state.i18n[this.$store.state.language].please_connect_wallet
+					
+				)
 				return;
 			}
 			this.linkShowFlag = true;

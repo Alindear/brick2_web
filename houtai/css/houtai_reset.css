@@ -71,7 +71,6 @@ html body {
     font-display: swap;
 }
 
-
 @font-face {
     font-family: 'Alibaba PuHuiTi B';
     src: url('./Alibaba-PuHuiTi-B.eot');
@@ -81,6 +80,19 @@ html body {
         url('./Alibaba-PuHuiTi-B.ttf') format('truetype'),
         url('./Alibaba-PuHuiTi-B.svg#Alibaba-PuHuiTi-B') format('svg');
     font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Alibaba-PuHuiTi-R';
+    src: url('./Alibaba-PuHuiTi-R.eot');
+    src: url('./Alibaba-PuHuiTi-R.eot?#iefix') format('embedded-opentype'),
+        url('./Alibaba-PuHuiTi-R.woff2') format('woff2'),
+        url('./Alibaba-PuHuiTi-R.woff') format('woff'),
+        url('./Alibaba-PuHuiTi-R.ttf') format('truetype'),
+        url('./Alibaba-PuHuiTi-R.svg#Alibaba-PuHuiTi-R') format('svg');
+    font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
@@ -175,6 +187,9 @@ html body {
 	padding: 0 0 0.020rem 0;
 }
 
+.el-radio, .el-radio__input{
+    line-height: normal;
+}
 .el-radio__inner {
 	/* border: 0.01rem solid #a63928 !important; */
 	border: 0.01rem solid ;
