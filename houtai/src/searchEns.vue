@@ -861,7 +861,8 @@ export default {
 			}
 			.step_content {
 				width: 15.3rem;
-				height: 2.17rem;
+				// height: 2.17rem;
+				height: 100%;
 				background: #ffffff;
 				border-radius: 0.32rem;
 				display: flex;
@@ -870,7 +871,8 @@ export default {
 				padding-top: 0.4rem;
 				box-sizing: border-box;
 				margin-top: 0.16rem;
-				margin-bottom: 0.34rem;
+				// margin-bottom: 0.34rem;
+    		padding-bottom: 0.34rem;
 				.step_title {
 					// width: 2.79rem;
 					height: 0.33rem;
@@ -894,7 +896,9 @@ export default {
 					}
 					.step_text_desc {
 						width: 5.7rem;
-						height: 0.4rem;
+						// height: 0.4rem;
+						height: 100%;
+
 						font-family: PingFangSC-Regular;
 						font-weight: 400;
 						font-size: 0.14rem;
@@ -981,7 +985,8 @@ export default {
 					}
 					.step_content {
 						width: 15.3rem;
-						height: 2.17rem;
+						// height: 2.17rem;
+						height: 100%;
 						background: #ffffff;
 						border-radius: 0.32rem;
 						display: flex;
@@ -990,7 +995,8 @@ export default {
 						padding-top: 0.4rem;
 						box-sizing: border-box;
 						margin-top: 0.16rem;
-						margin-bottom: 0.34rem;
+						// margin-bottom: 0.34rem;
+    				padding-bottom: 0.34rem;
 
 						.step_title {
 							// width: 2.79rem;
@@ -1043,7 +1049,8 @@ export default {
 								// color: #333333;
 								// width: 4.87rem;
 								width: 5.55rem;
-								height: 0.4rem;
+								// height: 0.4rem;
+								height: 100%;
 								font-family: PingFangSC-Regular;
 								font-weight: 400;
 								font-size: 0.14rem;
