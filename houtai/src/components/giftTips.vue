@@ -11,12 +11,21 @@
                 v-if="type === 'luckDraw'"
                 class="luck_draw"
             >
-                <div class="top_title_luck" :style="{ 'margin-bottom': $store.state.language === 'CN' ? '0.2rem' : '-0.02rem'}">
-                    <span class="title_text_luck" v-if="$store.state.language === 'CN'">
-											<!-- 已参与成功！ -->
-											{{i18n.gift_successfully}}
-										</span>
-										<span class="title_text_luck" v-if="$store.state.language === 'EN'"></span>
+                <div
+                    class="top_title_luck"
+                    :style="{ 'margin-bottom': $store.state.language === 'CN' ? '0.2rem' : '-0.02rem'}"
+                >
+                    <span
+                        class="title_text_luck"
+                        v-if="$store.state.language === 'CN'"
+                    >
+                        <!-- 已参与成功！ -->
+                        {{i18n.gift_successfully}}
+                    </span>
+                    <span
+                        class="title_text_luck"
+                        v-if="$store.state.language === 'EN'"
+                    ></span>
                     <img
                         :src="partakePng"
                         alt=""
@@ -29,31 +38,37 @@
                         @click="closeIconBtn"
                     >
                 </div>
-								<div class="top_title_luck" v-if="$store.state.language === 'EN'">
-										<span style="width:100%;font-family: Futura-Bold;width: 4.33rem;height: 0.41rem;font-weight: Bold;font-size: 0.32rem;color: #80469D; margin: auto;,margin-bottom:0.25rem">
-											<!-- 已参与成功！EN -->
-											{{i18n.gift_successfully}}
-										</span>
-								 </div>
-                <div class="input_bsc_luck" :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start', 'height': $store.state.language === 'CN' ? '0.7rem' : '1rem',}">
+                <div
+                    class="top_title_luck"
+                    v-if="$store.state.language === 'EN'"
+                >
+                    <span style="width:100%;font-family: Futura-Bold;width: 4.33rem;height: 0.41rem;font-weight: Bold;font-size: 0.32rem;color: #80469D; margin: auto;,margin-bottom:0.25rem">
+                        <!-- 已参与成功！EN -->
+                        {{i18n.gift_successfully}}
+                    </span>
+                </div>
+                <div
+                    class="input_bsc_luck"
+                    :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start', 'height': $store.state.language === 'CN' ? '0.7rem' : '1rem',}"
+                >
                     <p class="left_bsc">
                         <!-- 本期幸运儿：57892680.bsc -->
-												{{i18n.lucky_this}}57892680.bsc
+                        {{i18n.lucky_this}}57892680.bsc
                     </p>
                     <p class="right_bsc">
                         <!-- 本期奖品：889988.bsc -->
-												{{i18n.prize_this}}889988.bsc
+                        {{i18n.prize_this}}889988.bsc
                     </p>
                 </div>
                 <div :class="$store.state.language === 'CN' ? 'pre_bsc_luck' : 'pre_bsc_luck_en'">
-									<!--  class="pre_bsc_luck" :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start',}" -->
+                    <!--  class="pre_bsc_luck" :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start',}" -->
                     <p class="left_bsc">
                         <!-- 上期幸运儿：wow.bsc -->
-												{{i18n.lucky_the_last}}wow.bsc
+                        {{i18n.lucky_the_last}}wow.bsc
                     </p>
                     <p class="right_bsc">
                         <!-- 上期奖品：really.bsc -->
-												{{i18n.prize_the_last}}really.bsc
+                        {{i18n.prize_the_last}}really.bsc
                     </p>
                 </div>
                 <p class="bottom_logo_luck">
@@ -71,9 +86,9 @@
             >
                 <div class="top_title_luck_result">
                     <span :class="$store.state.language === 'CN' ? 'title_text_luck_result' : 'title_text_luck_result_en'">
-											<!-- 恭喜你中奖了！ -->
-											{{i18n.congratulations}}
-											</span>
+                        <!-- 恭喜你中奖了！ -->
+                        {{i18n.congratulations}}
+                    </span>
                     <img
                         :src="prizePng"
                         alt=""
@@ -86,21 +101,24 @@
                         @click="closeIconBtn"
                     >
                 </div>
-								
-                <div class="input_bsc_luck_result" :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start', 'height': $store.state.language === 'CN' ? '0.7rem' : '1rem',}">
+
+                <div
+                    class="input_bsc_luck_result"
+                    :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start', 'height': $store.state.language === 'CN' ? '0.7rem' : '1rem',}"
+                >
                     <p :class="$store.state.language === 'CN' ? 'left_bsc_result':'left_bsc_result_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
-												{{i18n.lucky_this}}57892680.bsc
+                        {{i18n.lucky_this}}57892680.bsc
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc_result':'right_bsc_result_en'">
                         <!-- 本期奖品：889988.bsc -->
-												{{i18n.prize_this}}889988.bsc
+                        {{i18n.prize_this}}889988.bsc
                     </p>
                 </div>
                 <div class="pre_bsc_luck_result">
                     <p>
                         <!-- 请联系TG @Gon9tou -->
-												{{i18n.contactTG}}
+                        {{i18n.contactTG}}
                     </p>
                 </div>
                 <p class="bottom_logo_luck_result">
@@ -117,9 +135,9 @@
                 v-if="type === 'viewResult' && luckOrNot === 'NO'"
             >
                 <span class="title_text">
-									<!-- 很遗憾没中奖 -->
-									{{i18n.sorry_prize}}
-								</span>
+                    <!-- 很遗憾没中奖 -->
+                    {{i18n.sorry_prize}}
+                </span>
 
                 <img
                     :src="disprizePng"
@@ -139,11 +157,11 @@
             >
                 <p class="left_bsc">
                     <!-- 本期幸运儿：57892680.bsc -->
-										{{i18n.lucky_this}}57892680.bsc
+                    {{i18n.lucky_this}}57892680.bsc
                 </p>
                 <p class="right_bsc">
                     <!-- 本期奖品：889988.bsc -->
-										{{i18n.prize_this}}889988.bsc
+                    {{i18n.prize_this}}889988.bsc
                 </p>
             </div>
             <p
@@ -254,7 +272,7 @@ export default {
 			margin: 0 0.66rem;
 			// margin: 0 0.66rem 0.3rem;
 			box-sizing: border-box;
-			p{
+			p {
 				margin: 0;
 			}
 			.left_bsc {
@@ -264,7 +282,7 @@ export default {
 				font-weight: B;
 				font-size: 0.16rem;
 				color: #000000;
-    		margin: 0.24rem 0 0.08rem 0;
+				margin: 0.24rem 0 0.08rem 0;
 			}
 			.right_bsc {
 				// width: 1.67rem;
@@ -273,7 +291,7 @@ export default {
 				font-weight: B;
 				font-size: 0.16rem;
 				color: #000000;
-    		margin: 0 0 0.24rem 0;
+				margin: 0 0 0.24rem 0;
 			}
 		}
 		.pre_bsc_luck {
@@ -298,7 +316,7 @@ export default {
 				margin: 0.16rem 0.9rem 0.32rem 0;
 			}
 		}
-		.pre_bsc_luck_en{
+		.pre_bsc_luck_en {
 			display: flex;
 			flex-direction: column;
 			// justify-content: space-between;
@@ -319,7 +337,6 @@ export default {
 				color: #666666;
 				margin: 0 0 0.32rem 0.9rem;
 			}
-
 		}
 
 		.bottom_logo_luck {
@@ -372,7 +389,7 @@ export default {
 				font-family: Futura-Bold;
 				font-weight: Bold;
 				font-size: 0.32rem;
-				color: #FF870B;
+				color: #ff870b;
 			}
 		}
 
@@ -393,7 +410,7 @@ export default {
 			margin: 0 0.66rem;
 			// margin: 0 0.66rem 0.3rem;
 			box-sizing: border-box;
-			p{
+			p {
 				margin: 0;
 			}
 			.left_bsc_result {
@@ -412,10 +429,10 @@ export default {
 				font-size: 0.16rem;
 				color: #000000;
 			}
-			.left_bsc_result_en{
-    		margin: 0.24rem 0 0.08rem 0;
+			.left_bsc_result_en {
+				margin: 0.24rem 0 0.08rem 0;
 			}
-			.right_bsc_result_en{
+			.right_bsc_result_en {
 				margin: 0 0 0.24rem 0;
 			}
 		}
@@ -546,8 +563,7 @@ export default {
 	}
 	/deep/.el-dialog__body {
 		padding: 0;
-    padding-bottom: 0.4rem;
-
+		padding-bottom: 0.4rem;
 	}
 	/deep/.el-dialog__header {
 		padding: 0;
