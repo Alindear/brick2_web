@@ -131,49 +131,86 @@
             </div>
 
             <div
-                class="top_title"
+                class="sorry_result"
                 v-if="type === 'viewResult' && luckOrNot === 'NO'"
             >
-                <span class="title_text">
-                    <!-- 很遗憾没中奖 -->
-                    {{i18n.sorry_prize}}
-                </span>
+                <div
+                    :class="$store.state.language === 'CN' ? 'top_title' : 'top_title_en'"
+                    v-if="type === 'viewResult' && luckOrNot === 'NO'"
+                >
+                    <span
+                        class="title_text"
+                        v-if="$store.state.language === 'CN'"
+                    >
+                        <!-- 很遗憾没中奖 -->
+                        {{i18n.sorry_prize}}
+                    </span>
+                    <span
+                        class="title_text"
+                        v-if="$store.state.language === 'EN'"
+                    ></span>
 
-                <img
-                    :src="disprizePng"
-                    alt=""
-                    class="img_icon"
+                    <img
+                        :src="disprizePng"
+                        alt=""
+                        class="img_icon"
+                    >
+                    <img
+                        :src="search2Png"
+                        alt=""
+                        class="close_icon"
+                        @click="closeIconBtn"
+                    >
+                </div>
+                <div
+                    class="title_text"
+                    v-if="$store.state.language === 'EN'"
                 >
-                <img
-                    :src="search2Png"
-                    alt=""
-                    class="close_icon"
-                    @click="closeIconBtn"
+                    <span>
+                        <!-- 很遗憾没中奖 -->
+                        {{i18n.sorry_prize}}
+                    </span>
+                </div>
+                <div
+                    :class="$store.state.language === 'CN' ? 'input_bsc' : 'input_bsc_en'"
+                    v-if="type === 'viewResult' && luckOrNot === 'NO'"
                 >
-            </div>
-            <div
-                class="input_bsc"
+                    <p :class="$store.state.language === 'CN' ? 'left_bsc':'left_bsc_en'">
+                        <!-- 本期幸运儿：57892680.bsc -->
+                        {{i18n.lucky_this}}57892680.bsc
+                    </p>
+                    <p :class="$store.state.language === 'CN' ? 'right_bsc':'right_bsc_en'">
+                        <!-- 本期奖品：889988.bsc -->
+                        {{i18n.prize_this}}889988.bsc
+                    </p>
+                </div>
+                <!-- <div
+                :class="$store.state.language === 'CN' ? 'input_bsc':'input_bsc_en'"
                 v-if="type === 'viewResult' && luckOrNot === 'NO'"
+                :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start', 'height': $store.state.language === 'CN' ? '0.7rem' : '1rem',}"
             >
-                <p class="left_bsc">
-                    <!-- 本期幸运儿：57892680.bsc -->
+                <p :class="$store.state.language === 'CN' ? 'left_bsc_result':'left_bsc_result_en'">
                     {{i18n.lucky_this}}57892680.bsc
                 </p>
-                <p class="right_bsc">
-                    <!-- 本期奖品：889988.bsc -->
+                <p
+                    class="right_bsc"
+                    :class="$store.state.language === 'CN' ? 'right_bsc_result':'right_bsc_result_en'"
+                >
                     {{i18n.prize_this}}889988.bsc
                 </p>
-            </div>
-            <p
-                class="bottom_logo"
-                v-if="type === 'viewResult' && luckOrNot === 'NO'"
-            >
-                <img
-                    :src="logoPng"
-                    alt=""
+            </div> -->
+                <p
+                    class="bottom_logo"
+                    v-if="type === 'viewResult' && luckOrNot === 'NO'"
                 >
-                <span>Powered by Chainlink！</span>
-            </p>
+                    <img
+                        :src="logoPng"
+                        alt=""
+                    >
+                    <span>Powered by Chainlink！</span>
+                </p>
+
+            </div>
 
         </el-dialog>
 
@@ -474,83 +511,159 @@ export default {
 		}
 	}
 
-	.top_title {
-		display: flex;
-		flex-direction: row;
-		margin-bottom: 0.2rem;
+	.sorry_result {
+		.top_title {
+			display: flex;
+			flex-direction: row;
+			margin-bottom: 0.2rem;
+			.title_text {
+				width: 2.65rem;
+				height: 0.62rem;
+				font-family: YouSheBiaoTiYuan;
+				font-size: 0.48rem;
+				color: #000000;
+				margin: 0.82rem 0 0.22rem 0.9rem;
+			}
+			.img_icon {
+				width: 1.7rem;
+				height: 1.7rem;
+				margin-top: -0.65rem;
+			}
+			.close_icon {
+				width: 0.4rem;
+				height: 0.4rem;
+				background: #d8d8d8;
+				margin: 0.4rem 0.4rem 0 0.25rem;
+			}
+		}
 		.title_text {
-			width: 2.65rem;
-			height: 0.62rem;
-			font-family: YouSheBiaoTiYuan;
-			font-size: 0.48rem;
+			width: 3.26rem;
+			height: 0.82rem;
+			font-size: 0.32rem;
 			color: #000000;
-			margin: 0.82rem 0 0.22rem 0.9rem;
+			margin: 0 0 0.22rem 0.9rem;
+			font-family: Futura-Bold;
+			font-weight: Bold;
 		}
-		.img_icon {
-			width: 1.7rem;
-			height: 1.7rem;
-			margin-top: -0.65rem;
+
+		.input_bsc {
+			width: 5.08rem;
+			height: 0.7rem;
+			background: rgba(237, 237, 237, 0.21);
+			border: 0.01rem solid #d8d8d8;
+			border-radius: 0.12rem;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			// margin: auto;
+			padding: 0 0.25rem;
+			margin: 0 0.66rem 0.3rem;
+			box-sizing: border-box;
+
+			.left_bsc {
+				// width: 2.02rem;
+				height: 0.22rem;
+				font-family: Alibaba-PuHuiTi-B;
+				font-weight: B;
+				font-size: 0.16rem;
+				color: #000000;
+				// margin: 0.16rem 0 0.08rem 0.9rem;
+			}
+			.right_bsc {
+				// width: 1.67rem;
+				height: 0.22rem;
+				font-family: Alibaba-PuHuiTi-B;
+				font-weight: B;
+				font-size: 0.16rem;
+				color: #000000;
+				// margin: 0.16rem 0 0.32rem 0.9rem;
+			}
 		}
-		.close_icon {
-			width: 0.4rem;
-			height: 0.4rem;
-			background: #d8d8d8;
-			margin: 0.4rem 0.4rem 0 0.25rem;
+
+		.top_title_en {
+			display: flex;
+			flex-direction: row;
+			justify-content: end;
+			margin-bottom: -0.02rem;
+			.title_text {
+				// width: 2.65rem;
+				// height: 0.62rem;
+				// font-family: YouSheBiaoTiYuan;
+				// font-size: 0.48rem;
+				// color: #000000;
+				// margin: 0.82rem 0 0.22rem 0.9rem;
+				margin: 0;
+			}
+			.img_icon {
+				width: 1.7rem;
+				height: 1.7rem;
+				margin-top: -0.65rem;
+			}
+			.close_icon {
+				width: 0.4rem;
+				height: 0.4rem;
+				background: #d8d8d8;
+				margin: 0.4rem 0.4rem 0 0.25rem;
+			}
+		}
+
+		.input_bsc_en {
+			width: 5.08rem;
+			background: rgba(255, 220, 0, 0.03);
+			border: 0.01rem solid #ffdc00;
+			border-radius: 0.12rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding: 0 0.25rem;
+			margin: 0 0.66rem;
+			box-sizing: border-box;
+			margin-bottom: 0.24rem;
+			p {
+				margin: 0;
+			}
+			.left_bsc {
+				height: 0.22rem;
+				font-family: Alibaba-PuHuiTi-B;
+				font-weight: B;
+				font-size: 0.16rem;
+				color: #000000;
+			}
+			.right_bsc {
+				height: 0.22rem;
+				font-family: Alibaba-PuHuiTi-B;
+				font-weight: B;
+				font-size: 0.16rem;
+				color: #000000;
+			}
+			.left_bsc_en {
+				margin: 0.24rem 0 0.08rem 0;
+			}
+			.right_bsc_en {
+				margin: 0 0 0.24rem 0;
+			}
+		}
+		.bottom_logo {
+			display: flex;
+			justify-content: center;
+			margin: 0 0.66rem 0;
+			img {
+				width: 0.22rem;
+				height: 0.22rem;
+				margin-right: 0.08rem;
+			}
+			span {
+				// width: 1.8rem;
+				height: 0.22rem;
+				font-family: Alibaba-PuHuiTi-R;
+				font-weight: R;
+				font-size: 0.16rem;
+				color: #999999;
+			}
 		}
 	}
 
-	.input_bsc {
-		width: 5.08rem;
-		height: 0.7rem;
-		background: rgba(237, 237, 237, 0.21);
-		border: 0.01rem solid #d8d8d8;
-		border-radius: 0.12rem;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		// margin: auto;
-		padding: 0 0.25rem;
-		margin: 0 0.66rem 0.3rem;
-		box-sizing: border-box;
-
-		.left_bsc {
-			// width: 2.02rem;
-			height: 0.22rem;
-			font-family: Alibaba-PuHuiTi-B;
-			font-weight: B;
-			font-size: 0.16rem;
-			color: #000000;
-			margin: 0.16rem 0 0.08rem 0.9rem;
-		}
-		.right_bsc {
-			// width: 1.67rem;
-			height: 0.22rem;
-			font-family: Alibaba-PuHuiTi-B;
-			font-weight: B;
-			font-size: 0.16rem;
-			color: #000000;
-			margin: 0.16rem 0 0.32rem 0.9rem;
-		}
-	}
-	.bottom_logo {
-		display: flex;
-		justify-content: center;
-		margin: 0 0.66rem 0;
-		img {
-			width: 0.22rem;
-			height: 0.22rem;
-			margin-right: 0.08rem;
-		}
-		span {
-			// width: 1.8rem;
-			height: 0.22rem;
-			font-family: Alibaba-PuHuiTi-R;
-			font-weight: R;
-			font-size: 0.16rem;
-			color: #999999;
-		}
-	}
 	// #6e7071
 	// #4b4b4b
 	/deep/.el-dialog {

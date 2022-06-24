@@ -31,9 +31,12 @@
             <div class="index_left">
                 <div class="left_top">
                     <span v-if="$store.state.language === 'EN'">BNS</span>
-                    <el-button v-if="$store.state.language === 'EN'" @click="onConnect">Go and link</el-button>
+                    <el-button
+                        v-if="$store.state.language === 'EN'"
+                        @click="onConnect"
+                    >Go and link</el-button>
                     <img
-												v-if="$store.state.language === 'CN'"
+                        v-if="$store.state.language === 'CN'"
                         :src="bnsClickPng"
                         alt=""
                         @click="onConnect"
@@ -164,7 +167,10 @@
 
         <div class="bns_compose_module">
             <p class="the_text">The</p>
-            <div class="title_text" :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold','font-weight': $store.state.language === 'CN' ? '' : 'Bold'}">
+            <div
+                class="title_text"
+                :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold','font-weight': $store.state.language === 'CN' ? '' : 'Bold'}"
+            >
                 <!-- Bns生态构成 -->
                 {{i18n.bns}}
             </div>
@@ -178,7 +184,10 @@
         <div class="back_right_center_img"></div>
 
         <div class="share_module">
-            <div class="title_text" :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold'}">
+            <div
+                class="title_text"
+                :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold'}"
+            >
                 <!-- 分享赚取收益 -->
                 {{i18n.share}}
             </div>
@@ -202,7 +211,7 @@
                     <!-- v-if="!changeStatusShowFlag && !linkShowFlag" -->
                     <p
                         class="dis_link"
-												:style="{ 'font-size': $store.state.language === 'CN' ? '0.46rem' : '0.4rem',}"
+                        :style="{ 'font-size': $store.state.language === 'CN' ? '0.46rem' : '0.4rem',}"
                     >
                         <!-- 点击生成专属链接 -->
                         {{i18n.click_text}}
@@ -234,7 +243,10 @@
         </div>
 
         <div class="express_module">
-            <p class="title_text" :style="{ 'font-family': $store.state.language === 'CN' ? 'Alibaba-PuHuiTi-M' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold', 'width': $store.state.language === 'CN' ? '' : '13rem',}">
+            <p
+                class="title_text"
+                :style="{ 'font-family': $store.state.language === 'CN' ? 'Alibaba-PuHuiTi-M' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold', 'width': $store.state.language === 'CN' ? '' : '13rem',}"
+            >
                 <!-- 个性化是表达自我的第一步，而不是： -->
                 {{i18n.first_step}}
             </p>
@@ -272,7 +284,10 @@
         </div>
 
         <div class="gift_module">
-            <div class="title_text_gift" :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold'}">
+            <div
+                class="title_text_gift"
+                :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold'}"
+            >
                 <!-- web3的第一份礼物请收下 -->
                 {{i18n.first_gift}}
             </div>
@@ -320,7 +335,10 @@
         </div>
 
         <div class="partner_module">
-            <p class="partner_title" :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold'}">
+            <p
+                class="partner_title"
+                :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold'}"
+            >
                 <!-- 合作伙伴 -->
                 {{i18n.partners}}
             </p>
@@ -344,7 +362,10 @@
         </div>
 
         <div class="contact_us_module">
-            <p class="contanct_title" :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold'}">
+            <p
+                class="contanct_title"
+                :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold'}"
+            >
                 <!-- 联系我们 -->
                 {{i18n.contact_us}}
             </p>
@@ -459,7 +480,7 @@ export default {
 			luckDrawShowFlag: false, // 参与抽奖
 			viewResultShowFlag: false, // 查看结果
 			luckOrNot: 'NO', //是否中奖
-			// luckOrNot: 'YES', //是否中奖
+			luckOrNot: 'YES', //是否中奖
 			openLinkShowFlag: false,
 			searchEnsLoading: false,
 			changeStatusShowFlag: false,
@@ -931,9 +952,10 @@ export default {
 			if (selectedAccount == null) {
 				// alert('请先链接钱包');
 				alert(
-					this.$store.state.i18n[this.$store.state.language].please_connect_wallet
-					
-				)
+					this.$store.state.i18n[
+						this.$store.state.language
+					].please_connect_wallet,
+				);
 				return;
 			}
 			this.linkShowFlag = true;
@@ -1636,7 +1658,7 @@ export default {
 				.address_price_desc {
 					// width: 5.52rem;
 					// height: 0.22rem;
-    			width: 8.78rem;
+					width: 8.78rem;
 					font-family: Alibaba-PuHuiTi-R;
 					font-weight: R;
 					font-size: 0.16rem;
