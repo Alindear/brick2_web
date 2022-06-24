@@ -12,7 +12,10 @@
                 class="luck_draw"
             >
                 <div class="top_title_luck">
-                    <span class="title_text_luck">已参与成功！</span>
+                    <span class="title_text_luck">
+											<!-- 已参与成功！ -->
+											{{i18n.gift_successfully}}
+										</span>
                     <img
                         :src="partakePng"
                         alt=""
@@ -27,18 +30,22 @@
                 </div>
                 <div class="input_bsc_luck">
                     <p class="left_bsc">
-                        本期幸运儿：57892680.bsc
+                        <!-- 本期幸运儿：57892680.bsc -->
+												{{i18n.lucky_this}}57892680.bsc
                     </p>
                     <p class="right_bsc">
-                        本期奖品：889988.bsc
+                        <!-- 本期奖品：889988.bsc -->
+												{{i18n.prize_this}}889988.bsc
                     </p>
                 </div>
                 <div class="pre_bsc_luck">
                     <p class="left_bsc">
-                        上期幸运儿：wow.bsc
+                        <!-- 上期幸运儿：wow.bsc -->
+												{{i18n.lucky_the_last}}wow.bsc
                     </p>
                     <p class="right_bsc">
-                        上期奖品：really.bsc
+                        <!-- 上期奖品：really.bsc -->
+												{{i18n.prize_the_last}}really.bsc
                     </p>
                 </div>
                 <p class="bottom_logo_luck">
@@ -55,7 +62,10 @@
                 class="luck_result"
             >
                 <div class="top_title_luck_result">
-                    <span class="title_text_luck_result">恭喜你中奖了！</span>
+                    <span class="title_text_luck_result">
+											<!-- 恭喜你中奖了！ -->
+											{{i18n.congratulations}}
+											</span>
                     <img
                         :src="prizePng"
                         alt=""
@@ -70,15 +80,18 @@
                 </div>
                 <div class="input_bsc_luck_result">
                     <p class="left_bsc">
-                        本期幸运儿：57892680.bsc
+                        <!-- 本期幸运儿：57892680.bsc -->
+												{{i18n.lucky_this}}57892680.bsc
                     </p>
                     <p class="right_bsc">
-                        本期奖品：889988.bsc
+                        <!-- 本期奖品：889988.bsc -->
+												{{i18n.prize_this}}889988.bsc
                     </p>
                 </div>
                 <div class="pre_bsc_luck_result">
                     <p>
-                        请联系TG @Gon9tou
+                        <!-- 请联系TG @Gon9tou -->
+												{{i18n.contactTG}}
                     </p>
                 </div>
                 <p class="bottom_logo_luck_result">
@@ -94,7 +107,10 @@
                 class="top_title"
                 v-if="type === 'viewResult' && luckOrNot === 'NO'"
             >
-                <span class="title_text">很遗憾没中奖</span>
+                <span class="title_text">
+									<!-- 很遗憾没中奖 -->
+									{{i18n.sorry_prize}}
+								</span>
 
                 <img
                     :src="disprizePng"
@@ -113,10 +129,12 @@
                 v-if="type === 'viewResult' && luckOrNot === 'NO'"
             >
                 <p class="left_bsc">
-                    本期幸运儿：57892680.bsc
+                    <!-- 本期幸运儿：57892680.bsc -->
+										{{i18n.lucky_this}}57892680.bsc
                 </p>
                 <p class="right_bsc">
-                    本期奖品：889988.bsc
+                    <!-- 本期奖品：889988.bsc -->
+										{{i18n.prize_this}}889988.bsc
                 </p>
             </div>
             <p
@@ -153,6 +171,13 @@ export default {
 			logoPng,
 			dialogVisible: false,
 		};
+	},
+	computed: {
+		i18n: function () {
+			return this.$store.state.i18n[
+				this.$store.state.language
+			];
+		},
 	},
 
 	mounted() {

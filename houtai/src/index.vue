@@ -288,13 +288,13 @@
                 {{i18n.connect_wallet_btn}}
             </el-button>
             <el-button
-                v-if="changeStatusShowFlag && !isShowDraw"
+                v-if="!changeStatusShowFlag && !isShowDraw"
                 @click="luckDrawBtn(true)"
             >
                 参与抽奖
             </el-button>
             <el-button
-                v-if="changeStatusShowFlag && isShowDraw"
+                v-if="!changeStatusShowFlag && isShowDraw"
                 @click="viewResultBtn(true)"
             >查看结果</el-button>
             <div class="four_gift_bottom">
