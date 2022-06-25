@@ -15,7 +15,7 @@
                         :index="index.toString()"
                         :key="index"
                         @click="itemDeal(item)"
-												:style="{ 'margin': $store.state.language === 'CN' ? '0.4rem 0.8rem' : '0.4rem 0.3rem' }"
+                        :style="{ 'margin': $store.state.language === 'CN' ? '0.4rem 0.8rem' : '0.4rem 0.3rem' }"
                     >
                         <img
                             class="icon_img"
@@ -203,6 +203,7 @@ export default {
 		flex-direction: row;
 		justify-content: space-around;
 		.config_left {
+			display: block;
 			ul {
 				padding-top: 0.2rem;
 				box-sizing: border-box;
@@ -263,6 +264,11 @@ export default {
 				outline: 0;
 				background-color: initial;
 				position: relative;
+			}
+		}
+		@media (max-width: 750px) {
+			.config_left {
+				display: none;
 			}
 		}
 		.config_right {

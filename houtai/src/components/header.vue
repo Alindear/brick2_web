@@ -83,6 +83,12 @@
                     </el-button>
                 </div>
             </div>
+            <div class="title_right_mb">
+                <img
+                    :src="logoPng"
+                    alt=""
+                >
+            </div>
         </div>
         <div v-if="showSearchContainer">
             <div class="search_container">
@@ -489,6 +495,7 @@ export default {
 	width: 100%;
 	height: 1rem;
 	background-color: #ffffff;
+
 	.header_pc {
 		display: flex;
 		flex-direction: row;
@@ -632,6 +639,27 @@ export default {
 					color: transparent;
 				}
 			}
+		}
+		.title_right_mb {
+			display: none;
+		}
+		@media (max-width: 750px) {
+			.title_right {
+				display: none;
+			}
+			.title_right_mb {
+				display: block;
+				img {
+					width: 0.5115rem;
+					height: 0.48rem;
+					vertical-align: middle;
+				}
+			}
+		}
+	}
+	@media (max-width: 750px) {
+		.header_pc {
+			padding: 0.4683rem 0.46rem;
 		}
 	}
 	.mask_dialog {
@@ -786,6 +814,11 @@ export default {
 				flex-direction: row;
 			}
 		}
+	}
+}
+@media (max-width: 750px) {
+	.header_web {
+		height: 1.28rem;
 	}
 }
 </style>
