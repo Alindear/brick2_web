@@ -70,22 +70,26 @@ export default {
 				'0x56789098765482345678987654367890876545643232123122346789090987',
 			bodyHeight: '',
 			myEnsNameList: [
-				// {
-				// 	ensName: 'benxiong.brick',
-				// 	endTime: '到期时间：2023.05.05',
-				// },
-				// {
-				// 	ensName: 'benxiong.brick',
-				// 	endTime: '到期时间：2023.05.05',
-				// },
-				// {
-				// 	ensName: 'benxiong.brick',
-				// 	endTime: '到期时间：2023.05.05',
-				// },
-				// {
-				// 	ensName: 'benxiong.brick',
-				// 	endTime: '到期时间：2023.05.05',
-				// },
+				{
+					ensName: 'benxiong.brick',
+					endTime: '2023.05.05',
+				},
+				{
+					ensName: 'benxiong.brick',
+					endTime: '2023.05.05',
+				},
+				{
+					ensName: 'benxiong.brick',
+					endTime: '2023.05.05',
+				},
+				{
+					ensName: 'benxiong.brick',
+					endTime: '2023.05.05',
+				},
+				{
+					ensName: 'benxiong.brick',
+					endTime: '2023.05.05',
+				},
 			],
 		};
 	},
@@ -164,6 +168,36 @@ export default {
 					margin-left: 0.24rem;
 				}
 			}
+			@media (max-width: 750px) {
+				.title_name {
+					height: 100%;
+					line-height: 0.5rem;
+					margin-top: 0;
+					border-bottom: 0.01rem solid #d8d8d8;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.2rem;
+					color: #333333;
+					display: flex;
+					flex-direction: row;
+					margin: 0.32rem 0.32rem 0;
+					padding-bottom: 0.32rem;
+					.title_name_img {
+						vertical-align: middle;
+						height: 0.6rem;
+						width: 0.6rem;
+						margin: auto 0;
+						// margin-left: 0.32rem;
+					}
+					.title_name_text {
+						width: 5.4rem;
+						height: 100%;
+						word-break: break-all;
+						font-size: 0.32rem;
+						margin-left: 0.16rem;
+					}
+				}
+			}
 			.list_tab_content {
 				padding: 0.32rem 0 0 0.34rem;
 				width: 1.2rem;
@@ -181,6 +215,9 @@ export default {
 			}
 			.ens_list {
 				padding: 0.16rem 0.34rem;
+				box-sizing: border-box;
+				height: 6.38rem;
+				overflow: scroll;
 				.ens_name_time {
 					display: flex;
 					flex-direction: row;
@@ -190,15 +227,17 @@ export default {
 					font-weight: 400;
 					color: #000000;
 					height: 0.7515rem;
-					line-height: 0.7515rem;
+					// line-height: 0.7515rem;
 					font-size: 0.2rem;
 					.ens_name {
 						height: 0.28rem;
 						color: #000000;
+						margin-top: 0.2358rem;
 					}
 					.ens_time {
 						height: 0.28rem;
 						color: #999999;
+						margin-top: 0.2358rem;
 					}
 				}
 				.no_data_img {
@@ -220,6 +259,67 @@ export default {
 					}
 				}
 			}
+			@media (max-width: 750px) {
+				.ens_list {
+					padding-top: 0;
+					height: 8.46rem;
+					overflow: scroll;
+					.ens_name_time {
+						display: block;
+						height: 1.492rem;
+						font-size: 0.32rem;
+						padding-top: 0.32rem;
+						box-sizing: border-box;
+						overflow: scroll;
+						.ens_name {
+							height: 0.45rem;
+							color: #000000;
+							margin-bottom: 0.16rem;
+							display: block;
+							font-family: PingFangSC-Semibold;
+							font-weight: 600;
+							font-size: 0.32rem;
+							margin-top: 0;
+						}
+						.ens_time {
+							height: 0.4rem;
+							color: #999999;
+							margin-bottom: 0.158rem;
+							font-family: PingFangSC-Regular;
+							font-weight: 400;
+							font-size: 0.28rem;
+							color: #999999;
+							margin-top: 0;
+						}
+					}
+					.no_data_img {
+						text-align: center;
+						margin: 1.47rem auto;
+						img {
+							width: 4.73rem;
+							height: 1.83rem;
+						}
+						p {
+							// width: 1.2rem;
+							height: 0.28rem;
+							font-family: PingFangSC-Regular;
+							font-weight: 400;
+							font-size: 0.2rem;
+							color: #000000;
+							margin: 0 auto;
+							margin-top: 0.32rem;
+						}
+					}
+				}
+			}
+		}
+	}
+	@media (max-width: 750px) {
+		.ens_name_list {
+			height: 11.22rem;
+			width: 6.86rem;
+			// margin: 0.32rem 0.32rem 0.52rem;
+			margin: 0.32rem auto 0.52rem;
 		}
 	}
 }
