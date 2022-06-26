@@ -212,6 +212,11 @@ export default {
 					font-size: 0.16rem;
 					color: #850099;
 				}
+				@media (max-width: 750px) {
+					.list_tab {
+						font-size: 0.28rem;
+					}
+				}
 			}
 			.ens_list {
 				padding: 0.16rem 0.34rem;

@@ -142,15 +142,15 @@ export default new Vuex.Store({
                 team_4: 'Business communication Polimi硕士学位，2年AECOM工作经历，任项目负责人 目前负责商务沟通',
                 team_5: 'UI Designer前字节跳动UI设计师 负责bns UE设计',
 
-                gift_successfully:"已参与成功！",
-                lucky_this:'本期幸运儿：',
-                prize_this:'本期奖品：',
-                lucky_the_last:'上期幸运儿：',
-                prize_the_last:'上期奖品：',
+                gift_successfully: "已参与成功！",
+                lucky_this: '本期幸运儿：',
+                prize_this: '本期奖品：',
+                lucky_the_last: '上期幸运儿：',
+                prize_the_last: '上期奖品：',
 
-                congratulations:'恭喜你中奖了！',
-                contactTG:'请联系TG @Gon9tou',
-                sorry_prize:'很遗憾没中奖',
+                congratulations: '恭喜你中奖了！',
+                contactTG: '请联系TG @Gon9tou',
+                sorry_prize: '很遗憾没中奖',
 
             },
             EN: {
@@ -305,15 +305,15 @@ export default new Vuex.Store({
                 team_4: 'Graduated from Polimi with a Master degree; 2 years’ experience in AECOM as a project leader;Responsible for business communication',
                 team_5: 'Former UI designer in Byte Dancer; Now responsible for UE design of BNS',
 
-                gift_successfully:'Participated Successfully!',
-                lucky_this:'Lucky user in this round：',
-                prize_this:'Prize in this round：',
-                lucky_the_last:'Lucky user in the last round：',
-                prize_the_last:'Prize in the last round：',
+                gift_successfully: 'Participated Successfully!',
+                lucky_this: 'Lucky user in this round：',
+                prize_this: 'Prize in this round：',
+                lucky_the_last: 'Lucky user in the last round：',
+                prize_the_last: 'Prize in the last round：',
 
-                congratulations:'Congratulations!',
-                contactTG:'Please contact TG@Gon9tou',
-                sorry_prize:'Sorry, you didn’t win the prize.',
+                congratulations: 'Congratulations!',
+                contactTG: 'Please contact TG@Gon9tou',
+                sorry_prize: 'Sorry, you didn’t win the prize.',
 
             }
         },
