@@ -78,7 +78,7 @@
                                 <div class="reg_number_right">
                                     <p class="number_right_top">
                                         <span class="number_brick">{{price}}</span>
-                                        <span>{{currencyUnit}}</span>
+                                        <span class="number_unit">{{currencyUnit}}</span>
                                     </p>
                                     <span class="number_right_bottom">
                                         <!-- 注册费用 -->
@@ -121,6 +121,7 @@
                                 >
                                     <!-- 请求授权 -->
                                     {{i18n.approval_btn}}
+                                    <!-- {{ $store.state.language === 'CN' ? i18n.approval_btn : i18n.approval_mb_btn}} -->
                                 </el-button>
                                 <!-- :loading="approveBtnLoading" -->
                                 <el-button
@@ -132,6 +133,7 @@
                                 >
                                     <!-- 请求注册 -->
                                     {{i18n.register_btn}}
+                                    <!-- {{ $store.state.language === 'CN' ? i18n.register_btn : i18n.register_mb_btn}} -->
                                 </el-button>
 
                             </div>
@@ -547,7 +549,7 @@ export default {
 		flex-direction: column;
 		justify-content: center;
 		.ens_text {
-			width: 0.44rem;
+			// width: 0.44rem;
 			height: 0.3rem;
 			font-family: PingFangSC-Medium;
 			font-weight: 500;
@@ -706,6 +708,7 @@ export default {
 								}
 							}
 							.reg_number_center {
+								display: block;
 								margin-right: 0.2444rem;
 								.number_center_top {
 									padding-bottom: 0.064rem;
@@ -872,7 +875,7 @@ export default {
 				box-sizing: border-box;
 				margin-top: 0.16rem;
 				// margin-bottom: 0.34rem;
-    		padding-bottom: 0.34rem;
+				padding-bottom: 0.34rem;
 				.step_title {
 					// width: 2.79rem;
 					height: 0.33rem;
@@ -943,6 +946,286 @@ export default {
 				}
 			}
 		}
+		@media (max-width: 750px) {
+			.ens_text {
+				width: 6.86rem;
+				height: 0.42rem;
+				font-family: PingFangSC-Medium;
+				font-weight: 400;
+				font-size: 0.3rem;
+				margin: 0 0.32rem;
+				margin: 0.4rem 0 0.24rem 0.32rem;
+			}
+			.domian_name_search {
+				.domian_name_content {
+					width: 6.86rem;
+					height: 10.13rem;
+					margin: 0 0.32rem;
+					.right_content {
+						.title_name {
+							height: 0.96rem;
+							line-height: 0.96rem;
+							font-family: PingFangSC-Regular;
+							font-weight: 400;
+							font-size: 0.3rem;
+							color: #333333;
+							border-bottom: 0.01rem
+								solid #dedede;
+							margin: 0;
+							padding-left: 0.34rem;
+							margin-bottom: 0.32rem;
+						}
+						.number_content {
+							display: flex;
+							flex-direction: column;
+							.number_top_content {
+								display: flex;
+								flex-direction: column;
+								img {
+									vertical-align: middle;
+								}
+								.reg_payment_left_select {
+									width: 6.22rem;
+									margin-bottom: 0.4rem;
+									.payment_top {
+										font-size: 0.32rem;
+										font-family: PingFangSC-Semibold;
+										font-weight: 600;
+										color: #000000;
+										margin: 0;
+										padding-bottom: 0.16rem;
+										margin-bottom: 0.16rem;
+										border-bottom: 0.02rem
+											solid
+											#ededed;
+										/deep/.el-input__inner {
+											height: 0.45rem;
+											line-height: 0.45rem;
+											font-size: 0.32rem;
+											padding: 0;
+										}
+									}
+									.number_left_bottom {
+										height: 0.37rem;
+										font-family: PingFangSC-Regular;
+										font-weight: 400;
+										font-size: 0.26rem;
+										color: #999999;
+									}
+								}
+								.reg_number_left {
+									width: 6.22rem;
+									margin: 0;
+									margin-bottom: 0.4rem;
+									.number_left_top {
+										height: 0.45rem;
+										font-size: 0.32rem;
+										justify-content: space-between;
+										padding-bottom: 0.16rem;
+										margin-bottom: 0.16rem;
+										.left_top_year {
+											font-size: 0.32rem;
+											margin-right: 0.27rem;
+										}
+										.left_top_year_unit {
+											font-size: 0.32rem;
+										}
+										img {
+											height: 0.44rem;
+										}
+									}
+									.number_left_bottom {
+										font-size: 0.26rem;
+									}
+								}
+								.reg_number_center {
+									//移动端不展示 链接 图标
+									display: none;
+								}
+								.reg_number_right {
+									flex: 1;
+									.number_right_top {
+										font-size: 0.32rem;
+										padding-bottom: 0.16rem;
+										margin-bottom: 0.16rem;
+										.number_brick {
+											font-size: 0.32rem;
+											margin-right: 0.16rem;
+										}
+										.number_unit {
+											font-family: PingFangSC-Regular;
+											font-weight: 400;
+											height: 0.45rem;
+											font-size: 0.32rem;
+										}
+									}
+									.number_right_bottom {
+										font-size: 0.26rem;
+									}
+								}
+							}
+							.number_bottom_content {
+								.number_bottom_title {
+									margin: 0;
+									padding-bottom: 0.16rem;
+									margin-bottom: 0.16rem;
+									.number_count {
+										height: 0.45rem;
+										font-size: 0.32rem;
+										margin-right: 0.16rem;
+									}
+									.number_unit {
+										font-family: PingFangSC-Regular;
+										font-weight: 400;
+										height: 0.45rem;
+										font-size: 0.32rem;
+									}
+								}
+								.number_bottom_desc {
+									height: 0.37rem;
+									font-size: 0.26rem;
+								}
+							}
+						}
+
+						.bottom_right {
+							width: 6.68rem;
+							flex-direction: column;
+							position: relative;
+							right: 0;
+							span {
+								width: 5.78rem;
+								height: 100%;
+								font-size: 0.26rem;
+								color: #ff6e11;
+								img {
+									margin-left: 0.32rem;
+									width: 0.28rem;
+									height: 0.28rem;
+									vertical-align: middle;
+									margin-right: 0.16rem;
+								}
+							}
+							.footer_btn {
+								display: flex;
+								flex-direction: row;
+								justify-content: center;
+								align-items: center;
+								margin: 0;
+								margin-top: 0.4rem;
+								.approve_btn {
+									// border-radius: 0.05rem;
+									width: 3.03rem;
+									height: 1rem;
+									border-radius: 1.5484rem;
+									font-size: 0.36rem;
+									color: #999999;
+									line-height: 0.46rem;
+									background-image: linear-gradient(
+										to
+											right,
+										#e5b3fd,
+										#7de7ec
+									);
+									-webkit-background-clip: text;
+									color: transparent;
+									// border-radius: 0.32rem;
+									// background-clip: padding-box,
+									// 	border-box;
+									// background-origin: padding-box,
+									// 	border-box;
+									// background-image: linear-gradient(
+									// 		to
+									// 			right,
+									// 		#ffffff,
+									// 		#ffffff
+									// 	),
+									// 	linear-gradient(
+									// 		90deg,
+									// 		#e5b3fd,
+									// 		#7de7ec
+									// 	);
+								}
+								.regist_btn {
+									width: 3.03rem;
+									height: 1rem;
+									font-size: 0.36rem;
+									color: #ffffff;
+									letter-spacing: 0.0112rem;
+									border-radius: 1.5484rem;
+								}
+								.el-button
+									+ .el-button {
+									margin-left: 0.16rem;
+								}
+							}
+						}
+					}
+				}
+				.step_content {
+					width: 6.86rem;
+					// height: 5.96rem;
+					padding: 0.32rem;
+					margin-top: 0.16rem;
+					margin-bottom: 0.55rem;
+					.step_title {
+						height: 0.5rem;
+						font-size: 0.36rem;
+					}
+					.step_process {
+						display: flex;
+						flex-direction: column;
+						.step_text_title {
+							height: 0.45rem;
+							font-size: 0.32rem;
+							margin-bottom: 0.16rem;
+						}
+						.step_text_desc {
+							width: 5.38rem;
+							height: 100%;
+							font-size: 0.28rem;
+						}
+						.left_circle {
+							color: #d8d8d8;
+							height: 0.68rem;
+							width: 0.68rem;
+							line-height: 0.68rem;
+							margin-right: 0.16rem;
+							p {
+								margin: 0;
+								text-align: center;
+								font-family: PingFangSC-Regular;
+								font-weight: 400;
+								height: 0.68rem;
+								line-height: 0.68rem;
+								width: 0.68rem;
+								border: 0.02rem
+									solid
+									#ccc;
+								border-radius: 50%;
+								font-size: 0.3rem;
+							}
+						}
+						.step_left_process {
+							// width: 43%;
+							// display: flex;
+							// flex-direction: row;
+							// .step_text {
+							// }
+							// margin-right: 1rem;
+							margin-bottom: 0.4rem;
+						}
+						.step_center_process {
+							// width: 43%;
+							display: flex;
+							flex-direction: row;
+							.step_text {
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 	.search_ens_step {
 		display: flex;
@@ -984,6 +1267,7 @@ export default {
 						margin-bottom: 0.32rem;
 					}
 					.step_content {
+						display: none;
 						width: 15.3rem;
 						// height: 2.17rem;
 						height: 100%;
@@ -996,7 +1280,7 @@ export default {
 						box-sizing: border-box;
 						margin-top: 0.16rem;
 						// margin-bottom: 0.34rem;
-    				padding-bottom: 0.34rem;
+						padding-bottom: 0.34rem;
 
 						.step_title {
 							// width: 2.79rem;
