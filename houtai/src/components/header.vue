@@ -167,22 +167,27 @@
                         </el-button>
                     </div>
                 </div>
-
-                <el-input
-                    class="input_search"
-                    :placeholder="i18n.placeholder"
-                    v-model="searchText"
-                >
-                    <!-- <i
+                <el-form action="javascript:return true">
+                    <el-input
+                        class="input_search"
+                        :placeholder="i18n.placeholder"
+                        v-model="searchText"
+                        type="search"
+                        :autocomplete="off"
+                        @input="searchTextChange"
+                        @keyup.13.native="searchEns"
+                    >
+                        <!-- <i
                     slot="suffix"
                     class="el-input__icon el-icon-date"
                 ></i> -->
-                    <img
-                        slot="suffix"
-                        :src="searchblack"
-                        alt=""
-                    >
-                </el-input>
+                        <img
+                            slot="suffix"
+                            :src="searchblack"
+                            alt=""
+                        >
+                    </el-input>
+                </el-form>
             </div>
 
             <p @click="goRouter('/index')">
