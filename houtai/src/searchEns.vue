@@ -1089,7 +1089,6 @@ export default {
 						}
 
 						.bottom_right {
-							width: 6.68rem;
 							flex-direction: column;
 							position: relative;
 							right: 0;
@@ -1104,6 +1103,7 @@ export default {
 									height: 0.28rem;
 									vertical-align: middle;
 									margin-right: 0.16rem;
+									margin-top: -0.06rem;
 								}
 							}
 							.footer_btn {
