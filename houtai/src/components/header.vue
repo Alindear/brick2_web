@@ -91,7 +91,7 @@
 
             <div class="title_right_mb">
                 <img
-                    :src="menu"
+                    :src="moremenu"
                     alt=""
                     v-if="menuFlag"
                     @click="openMenu"
@@ -125,48 +125,66 @@
             class="menu_list"
             v-if="!menuFlag"
         >
-            <div class="connect_status">
-                <!-- 未连接 -->
-                <div
-                    v-if="!selectedAccount"
-                    class="on_connect"
-                >
-                    <span class="connect_text">
-                        <!-- 链接钱包（只读状态） -->
-                        {{i18n.connectwallet}}
-                    </span>
-                    <el-button @click="connectWallet">
-                        <!-- 连接 -->
-                        {{i18n.connect}}
-                    </el-button>
-                </div>
-
-                <!-- 已连接 可断开 -->
-                <div
-                    v-if="selectedAccount"
-                    class="dis_connect"
-                >
-                    <span class="connect_text">
-                        {{(selectedAccount && selectedAccount.length > 8) ? (selectedAccount.slice(0,4) + '...' + selectedAccount.slice(-4)) : selectedAccount}}
-                    </span>
-                    <span
-                        class="connect_main"
-                        :style="{'margin-right': $store.state.language === 'CN' ? '0.48rem' : '0.32rem'}"
+            <div class="menu_connect_search">
+                <div class="connect_status">
+                    <!-- 未连接 -->
+                    <div
+                        v-if="!selectedAccount"
+                        class="on_connect"
                     >
-                        <span class="coin_main"></span>
-                        <span>
-                            <!-- Main 网络 -->
-                            {{i18n.main_net}}
-
+                        <span class="connect_text">
+                            <!-- 链接钱包（只读状态） -->
+                            {{i18n.connectwallet}}
                         </span>
-                    </span>
-                    <el-button @click="disconnectWallet">
-                        <!-- 断开连接 -->
-                        {{i18n.connected}}
-                    </el-button>
+                        <el-button @click="connectWallet">
+                            <!-- 连接 -->
+                            {{i18n.connect}}
+                        </el-button>
+                    </div>
+
+                    <!-- 已连接 可断开 -->
+                    <div
+                        v-if="selectedAccount"
+                        class="dis_connect"
+                    >
+                        <span class="connect_text">
+                            {{(selectedAccount && selectedAccount.length > 8) ? (selectedAccount.slice(0,4) + '...' + selectedAccount.slice(-4)) : selectedAccount}}
+                        </span>
+                        <span
+                            class="connect_main"
+                            :style="{'margin-right': $store.state.language === 'CN' ? '0.48rem' : '0.32rem'}"
+                        >
+                            <span class="coin_main"></span>
+                            <span>
+                                <!-- Main 网络 -->
+                                {{i18n.main_net}}
+
+                            </span>
+                        </span>
+                        <el-button @click="disconnectWallet">
+                            <!-- 断开连接 -->
+                            {{i18n.connected}}
+                        </el-button>
+                    </div>
                 </div>
 
+                <el-input
+                    class="input_search"
+                    :placeholder="i18n.placeholder"
+                    v-model="searchText"
+                >
+                    <!-- <i
+                    slot="suffix"
+                    class="el-input__icon el-icon-date"
+                ></i> -->
+                    <img
+                        slot="suffix"
+                        :src="searchblack"
+                        alt=""
+                    >
+                </el-input>
             </div>
+
             <p @click="goRouter('/index')">
                 <!-- 首页 -->
                 {{i18n.index_menu}}
@@ -285,10 +303,11 @@
 <script>
 import registered from './registered.vue';
 import anglesign from 'img/角标.png';
-import menu from 'img/菜单.png';
+import moremenu from 'img/更多.png';
 import closemenu from 'img/关闭菜单.png';
 import searchPng from 'img/icon/编组.png';
 import search2Png from 'img/icon/编组 2.png';
+import searchblack from 'img/searchblack.png';
 // import logoPng from 'img/首页/BNS_logo@2x.png';
 import logoPng from 'img/logoleft.png';
 import {
@@ -311,11 +330,12 @@ export default {
 			language: false,
 			isconnect: false,
 			anglesign,
-			menu,
+			moremenu,
 			closemenu,
 			logoPng,
 			searchPng,
 			search2Png,
+			searchblack,
 			menuFlag: true,
 			showSearchContainer: false,
 
@@ -750,8 +770,10 @@ export default {
 			.title_right_mb {
 				display: block;
 				img {
-					width: 0.5115rem;
-					height: 0.48rem;
+					// width: 0.5115rem;
+					// height: 0.48rem;
+					height: 0.3rem;
+					width: 0.3rem;
 					vertical-align: middle;
 				}
 			}
@@ -788,73 +810,101 @@ export default {
 		color: #000000;
 		padding: 0.19rem 0.32rem;
 		box-sizing: border-box;
-		.connect_status {
-			display: flex;
-			flex-direction: row;
-			height: 0.77rem;
-			// line-height: 0.77rem;
-			.on_connect {
+		.menu_connect_search {
+			.connect_status {
 				display: flex;
 				flex-direction: row;
-				.el-button {
-					// color: #ffffff;
-					border: none;
-				}
-			}
-			.dis_connect {
-				display: flex;
-				flex-direction: row;
-				.connect_main {
+				height: 0.77rem;
+				// line-height: 0.77rem;
+				.on_connect {
 					display: flex;
 					flex-direction: row;
-					justify-content: center;
-					align-items: center;
-					color: #999999;
-					margin-right: 0.48rem;
-					font-size: 0.28rem;
-					font-family: PingFangSC-Regular;
-					font-weight: 400;
-					.coin_main {
-						width: 0.08rem;
-						height: 0.08rem;
-						background: #21dc3f;
-						border-radius: 50%;
-						margin-right: 0.12rem;
+					.el-button {
+						// color: #ffffff;
+						padding: 0.16rem 0.6rem;
+						border: none;
 					}
 				}
+				.dis_connect {
+					display: flex;
+					flex-direction: row;
+					.connect_main {
+						display: flex;
+						flex-direction: row;
+						justify-content: center;
+						align-items: center;
+						color: #999999;
+						margin-right: 0.48rem;
+						font-size: 0.28rem;
+						font-family: PingFangSC-Regular;
+						font-weight: 400;
+						.coin_main {
+							width: 0.08rem;
+							height: 0.08rem;
+							background: #21dc3f;
+							border-radius: 50%;
+							margin-right: 0.12rem;
+						}
+					}
+					.el-button {
+						color: #ffffff;
+						border: none;
+					}
+				}
+				.connect_text {
+					// width: 1.8rem;
+					height: 0.45rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.32rem;
+					margin: auto;
+					margin-right: 0.16rem;
+					color: #666666;
+				}
 				.el-button {
+					// width: 1.86rem;
+					height: 0.77rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.32rem;
 					color: #ffffff;
-					border: none;
+					background-image: linear-gradient(
+						-60deg,
+						#6af0e9 0%,
+						#edafff 100%
+					);
+					border-radius: 0.0533rem;
+					text-align: center;
+					padding: 0.16rem 0.29rem;
+					// border: none;
 				}
 			}
-			.connect_text {
-				// width: 1.8rem;
-				height: 0.45rem;
-				font-family: PingFangSC-Regular;
-				font-weight: 400;
-				font-size: 0.32rem;
-				margin: auto;
-				margin-right: 0.16rem;
-				color: #666666;
-			}
-			.el-button {
-				// width: 1.86rem;
-				height: 0.77rem;
-				font-family: PingFangSC-Regular;
-				font-weight: 400;
-				font-size: 0.32rem;
-				color: #ffffff;
-				background-image: linear-gradient(
-					-60deg,
-					#6af0e9 0%,
-					#edafff 100%
-				);
-				border-radius: 0.0533rem;
-				text-align: center;
-				padding: 0.16rem 0.29rem;
-				// border: none;
+			.input_search {
+				/deep/.el-input__inner {
+					width: 5.8rem;
+					height: 0.96rem;
+					opacity: 0.2;
+					background-image: linear-gradient(
+						-60deg,
+						rgb(106, 240, 233, 0.2) 0%,
+						rgb(237, 175, 255, 0.2) 100%
+					);
+					border-radius: 0.48rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.32rem;
+					color: #999999;
+					opacity: 1;
+					border: none;
+				}
+				img {
+					height: 0.32rem;
+					margin: 0.32rem;
+					margin-right: 0.52rem;
+				}
 			}
 		}
+
 		p {
 			margin: 0;
 			height: 0.45rem;
