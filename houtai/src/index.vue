@@ -165,6 +165,102 @@
             </div>
         </div>
 
+        <div class="mb_index_content">
+            <img
+                :src="topImg"
+                alt=""
+            >
+            <div class="index_left">
+                <div class="left_top">
+                    <span v-if="$store.state.language === 'EN'">BNS</span>
+                    <el-button
+                        v-if="$store.state.language === 'EN'"
+                        @click="onConnect"
+                    >Go and link</el-button>
+                    <img
+                        v-if="$store.state.language === 'CN'"
+                        :src="bnsClickPng"
+                        alt=""
+                        @click="onConnect"
+                    >
+                </div>
+                <div class="left_center">
+                    <div class="text_list">
+                        <span class="list_icon"></span>
+                        <span>
+                            <!-- 链接每一个web3用户 -->
+                            {{i18n.index_text1}}
+                        </span>
+                    </div>
+                    <div class="text_list">
+                        <span class="list_icon list_icon2"></span>
+                        <span>
+                            <!-- 链接每一个主流平台场景 -->
+                            {{i18n.index_text2}}
+
+                        </span>
+                    </div>
+                    <div class="text_list">
+                        <span class="list_icon list_icon3"></span>
+                        <span>
+                            <!-- 帮助每一个用户链接他的身份和资产 -->
+                            {{i18n.index_text3}}
+                        </span>
+                    </div>
+                    <div class="text_list">
+                        <span class="list_icon list_icon4"></span>
+                        <span>
+                            <!-- 帮助bsc链接更大的增量客户 -->
+                            {{i18n.index_text4}}
+                        </span>
+                    </div>
+                </div>
+                <div class="left_bottom">
+                    <el-button
+                        class="pc_top_search"
+                        type="primary"
+                    >
+                        <div class="search_module">
+                            <el-select
+                                class="select_lang"
+                                v-model="select"
+                                slot="suffix"
+                                placeholder=""
+                                @change="selectLanageChange"
+                            >
+                                <el-option
+                                    v-for="item in lanageListOpts"
+                                    :key="item.value"
+                                    :label="item.value"
+                                    :value="item.label"
+                                >
+                                    <el-radio
+                                        v-model="selectRadio"
+                                        :label="item.label"
+                                    > </el-radio>
+                                </el-option>
+
+                            </el-select>
+                            <div class="cut_border"></div>
+                            <el-input
+                                class="input_search"
+                                :placeholder="i18n.placeholder"
+                                v-model="searchText"
+                                @input="searchTextChange"
+                            >
+                            </el-input>
+                        </div>
+                    </el-button>
+                    <img
+                        @click="searchEns"
+                        :src="searchBtnPng"
+                        alt=""
+                    >
+                </div>
+            </div>
+
+        </div>
+
         <div class="bns_compose_module">
             <p class="the_text">The</p>
             <div
@@ -420,6 +516,7 @@ import {
 	selectedAccount,
 } from 'houtai/web3_eth.js';
 
+import topImg from 'img/imgmb/首页/顶部.png';
 import searchBtnPng from 'img/首页/search.png';
 import bnsClickPng from 'img/首页/bnsClick.png';
 import top1Png from 'img/首页/rodion-kutsaev--tgTipG2t_g-unsplash@2x.png';
@@ -510,6 +607,7 @@ export default {
 			giftImg2,
 			giftImg3,
 			giftImg4,
+			topImg,
 
 			icon1,
 			icon2,
@@ -1009,6 +1107,7 @@ export default {
 		z-index: 1;
 	}
 	.back_top_img {
+		display: block;
 		width: 4.34rem;
 		height: 7.84rem;
 		opacity: 0.12;
@@ -1367,6 +1466,232 @@ export default {
 			bottom: 0;
 		}
 	}
+	.mb_index_content {
+		display: none;
+	}
+	@media (max-width: 750px) {
+		.mb_index_content {
+			display: block;
+			width: 100%;
+			margin-top: -1.28rem;
+			position: relative;
+			img {
+				width: 100%;
+				position: absolute;
+			}
+			.index_left {
+				// margin-top: 0.62rem;
+				// margin-left: 0.61rem;
+				box-sizing: border-box;
+				position: relative;
+				padding-top: 8.56rem;
+				.left_top {
+					margin-bottom: 0.32rem;
+					margin-top: 0.62rem;
+					margin-left: 0.61rem;
+					img {
+						width: 3.33rem;
+						height: 0.95rem;
+						position: relative;
+					}
+					span {
+						width: 1.69rem;
+						height: 1.03rem;
+						font-family: Womby-Regular;
+						font-weight: 400;
+						font-size: 0.86rem;
+						// color: #ffffff;
+						letter-spacing: 0.04rem;
+						background-image: linear-gradient(
+							to right,
+							#e5b3fd,
+							#7de7ec
+						);
+						-webkit-background-clip: text;
+						color: transparent;
+						margin-right: 0.24rem;
+					}
+					.el-button {
+						width: 5.63rem;
+						height: 1.48rem;
+						background-image: linear-gradient(
+							-60deg,
+							#6af0e9 0%,
+							#edafff 100%
+						);
+						border-radius: 0.24rem;
+						// width: 443px;
+						// height: 86px;
+						font-family: Womby-Regular;
+						font-weight: 400;
+						font-size: 0.72rem;
+						color: #ffffff;
+						border: none;
+					}
+				}
+				.left_center {
+					display: flex;
+					flex-direction: column;
+					margin-left: 0.61rem;
+					.text_list {
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						margin-bottom: 0.16rem;
+						.list_icon {
+							width: 0.08rem;
+							height: 0.08rem;
+							background: #e4b3fd;
+							border-radius: 50%;
+							margin-right: 0.16rem;
+						}
+						.list_icon2 {
+							background: #c3c3f8;
+						}
+						.list_icon3 {
+							background: #a8d1f3;
+						}
+						.list_icon4 {
+							background: #86e2ee;
+						}
+						span {
+							font-family: Alibaba-PuHuiTi-R;
+							font-weight: R;
+							font-size: 0.28rem;
+							color: #666666;
+							line-height: 0.36rem;
+						}
+					}
+				}
+				.left_bottom {
+					margin-left: 0.61rem;
+					margin-top: 0.22rem;
+					display: flex;
+					flex-direction: row;
+					// justify-content: space-between;
+					/deep/.el-input__inner {
+						width: 5.56rem;
+						height: 1.09rem;
+						opacity: 0.8;
+						background: #f1f1f1;
+						border-radius: 0.32rem;
+					}
+					/deep/.el-input__inner:focus {
+						border-color: #f1f1f1 !important;
+						outline: 0;
+					}
+					img {
+						width: 1.24rem;
+						height: 1.09rem;
+						margin-left: 0.0567rem;
+						position: relative;
+					}
+					.pc_top_search {
+						display: flex;
+						flex-direction: row;
+						padding: 0;
+						border: none;
+						width: 5.56rem;
+						height: 1.09rem;
+						line-height: 1.09rem;
+						opacity: 0.8;
+						background: #f1f1f1;
+						border-radius: 0.32rem;
+						.search_module {
+							display: flex;
+							flex-direction: row;
+							align-items: center;
+							width: 5.56rem;
+							.select_lang {
+								margin-right: 0.21rem;
+								/deep/.el-input__inner {
+									height: 1.09rem;
+									line-height: 1.09rem;
+									border: none;
+									border-radius: 0.32rem;
+									font-family: PingFangSC-Medium;
+									font-weight: 500;
+									font-size: 0.32rem;
+									color: #999999;
+									margin: 0;
+									margin-left: 0.32rem;
+									padding: 0;
+									width: 0.85rem;
+								}
+								/deep/.el-input__suffix {
+									right: -0.06rem;
+								}
+								/deep/.el-button--primary.is-active {
+									background: #999999;
+									border-color: #999999;
+								}
+							}
+							.cut_border {
+								width: 0.01rem;
+								height: 0.38rem;
+								border-left: 0.02rem
+									solid
+									#cdcdcd;
+								margin-right: 0.32rem;
+							}
+							.input_search {
+								width: 5rem;
+								/deep/.el-input__inner {
+									width: 3.8rem;
+									height: 1.09rem;
+									line-height: 1.09rem;
+									border: none;
+									border-radius: 0.32rem;
+									font-family: PingFangSC-Medium;
+									font-weight: 500;
+									font-size: 0.32rem;
+									color: #999999;
+									margin: 0;
+									padding: 0;
+								}
+							}
+							.el-button {
+								width: 1.73rem;
+								background-image: linear-gradient(
+									-60deg,
+									#6af0e9
+										0%,
+									#edafff
+										100%
+								);
+								border-radius: 0.32rem;
+								box-sizing: border-box;
+								height: 0.98rem;
+								margin-top: -0.02rem;
+								font-family: PingFangSC-Semibold;
+								font-weight: 600;
+								font-size: 0.32rem;
+								color: #ffffff;
+							}
+							img {
+								width: 0.29rem;
+								height: 0.32rem;
+								vertical-align: middle;
+								margin-right: 0.16rem;
+							}
+						}
+					}
+				}
+			}
+		}
+		.header_top {
+			background: none;
+		}
+		.header_web {
+			background: none;
+		}
+		.back_top_img {
+			display: none;
+		}
+		.index_content {
+			display: none;
+		}
+	}
 	.bns_compose_module {
 		display: flex;
 		flex-direction: column;
@@ -1374,6 +1699,7 @@ export default {
 		align-items: center;
 		position: relative;
 		.the_text {
+			display: block;
 			width: 0.32rem;
 			height: 0.26rem;
 			font-family: Futura-Medium;
@@ -1393,19 +1719,36 @@ export default {
 		}
 		img {
 			width: 10rem;
-			// height: 9.9rem;
 		}
 		.back_right_center_img {
 			width: 6.69rem;
 			height: 6.83rem;
 			opacity: 0.07;
 			background: #78b5ff;
-			// background: #000000;
 			filter: blur(0.5rem);
 			position: absolute;
 			top: 7.5rem;
 			right: -2.17rem;
 			float: right;
+			display: block;
+		}
+	}
+	@media (max-width: 750px) {
+		.bns_compose_module {
+			.the_text {
+				display: none;
+			}
+			.title_text {
+				height: 0.7rem;
+				margin-top: 1.125rem;
+				font-size: 0.54rem;
+			}
+			img {
+				width: 7.5rem;
+			}
+			.back_right_center_img {
+				display: none;
+			}
 		}
 	}
 
@@ -1562,6 +1905,109 @@ export default {
 			}
 		}
 	}
+	@media (max-width: 750px) {
+		.share_module {
+			margin-bottom: 1.07rem;
+			.title_text {
+				height: 0.7rem;
+				font-family: YouSheBiaoTiYuan;
+				font-size: 0.54rem;
+				margin-top: 0.2417rem;
+				margin-bottom: 0.16rem;
+			}
+			.span_text {
+				height: 100%;
+				width: 4.2rem;
+				text-align: center;
+				font-weight: 400;
+				font-size: 0.32rem;
+				margin-bottom: 0.5632rem;
+			}
+			.share_img {
+				flex-direction: column;
+				align-items: center;
+				.left_img {
+					width: 5.68rem;
+					height: 2.606rem;
+					border: 0.13rem solid;
+					border-image: linear-gradient(
+							to right,
+							#e5b3fd,
+							#7de7ec
+						)
+						1 10;
+					box-sizing: border-box;
+					.on_link {
+						font-family: Alibaba-PuHuiTi-B;
+						font-weight: B;
+						font-size: 0.36rem;
+						// background-image: linear-gradient(
+						// 	to right,
+						// 	#e5b3fd,
+						// 	#7de7ec
+						// );
+						// -webkit-background-clip: text;
+						// color: transparent;
+						// word-break: break-all;
+						// margin: 3.61rem 0.57rem 0.44rem 0.55rem;
+						margin: 1.05rem 1.42rem;
+					}
+					.dis_link {
+						font-size: 0.36rem;
+						margin: 0;
+						height: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+					}
+				}
+				.right_img {
+					width: 5.68rem;
+					height: 3.2rem;
+					.now_profit {
+						margin-left: 0.69rem;
+						margin-bottom: 1.95rem;
+						.profit_text {
+							// width: 0.95rem;
+							height: 0.33rem;
+							font-family: Alibaba-PuHuiTi-R;
+							font-weight: R;
+							font-size: 0.24rem;
+							color: #000000;
+							margin: 0.99rem 0
+								0.32rem;
+						}
+						.profit_num {
+							width: 5.69rem;
+							height: 0.6rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.64rem;
+							color: #000000;
+							letter-spacing: 0.04rem;
+						}
+					}
+					.dis_content {
+						// width: 2.84rem;
+						height: 0.35rem;
+						font-size: 0.26rem;
+						margin: 0;
+						margin-top: 1.18rem;
+						margin-bottom: 0.46rem;
+						text-align: center;
+					}
+					.el-button {
+						margin-left: 0.69rem;
+						margin-bottom: 0.92rem;
+						width: 4.48rem;
+						height: 0.94rem;
+						padding: 0 0.75rem;
+						font-size: 0.32rem;
+					}
+				}
+			}
+		}
+	}
 
 	.express_module {
 		display: flex;
@@ -1607,6 +2053,38 @@ export default {
 				border: 0.05rem dashed #ffffff;
 				border-radius: 0.32rem;
 				margin: 0;
+			}
+		}
+	}
+	@media (max-width: 750px) {
+		.express_module {
+			margin-bottom: 0.68rem;
+			.title_text {
+				font-size: 0.32rem;
+				margin-bottom: 0.3249rem;
+			}
+			.button_text {
+				width: 6.86rem;
+				height: 1.58rem;
+				line-height: 1.58rem;
+				background-image: linear-gradient(
+					-60deg,
+					#6af0e9 0%,
+					#edafff 100%
+				);
+				border-radius: 0.32rem;
+				p {
+					font-family: Alibaba-PuHuiTi-M;
+					font-weight: M;
+					font-size: 0.32rem;
+					color: #ffffff;
+					height: 1.1615rem;
+					line-height: 1.1615rem;
+					border: 0.05rem dashed #ffffff;
+					border-radius: 0.32rem;
+					margin: 0;
+					margin-top: -0.1rem;
+				}
 			}
 		}
 	}
