@@ -101,7 +101,7 @@
 
 				<div class="mb_card_four">
 					<div class="card_four">
-							 	<div @click="cardClick1" class="card_list">
+							 	<div @click="cardClick1" class="card_list" :style="{ 'background': popoverClick1 ? '#F8FCFF' : '#e3f2ff'}">
 										<div class="card_list_text">
 												<span>使用指南</span>
 												<img :src="popoverClick1 ? arrow2Png : arrow1Png" alt="">
@@ -114,7 +114,7 @@
 										</div>
 								</div>
 
-								<div class="list_detail">
+								<div class="list_detail1">
 									 <div
                         class="bottom_popover1"
                         v-if="popoverClick1"
@@ -135,7 +135,7 @@
 
 								</div>
 
-								<div @click="cardClick2" class="card_list">
+								<div @click="cardClick2" class="card_list" :style="{ 'background': popoverClick1 ? '#F8FCFF' : '#e3f2ff'}">
 									<div class="card_list_text">
 											<span>代币经济学</span>
 											<img :src="popoverClick2 ? arrow2Png : arrow1Png" alt="">
@@ -148,7 +148,19 @@
 									</div>
 								</div>
 
-								<div @click="cardClick3" class="card_list">
+								<div class="list_detail2">
+									 <div
+                        class="bottom_popover2"
+                        v-if="popoverClick2"
+                    >
+                       <p>
+													文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性
+                        </p>
+                    </div>
+
+								</div>
+
+								<div @click="cardClick3" class="card_list" :style="{ 'background': popoverClick1 ? '#F8FCFF' : '#e3f2ff'}">
 									<div class="card_list_text">
 											<span>开发人员使用</span>
 											<img :src="popoverClick3 ? arrow2Png : arrow1Png" alt="">
@@ -160,8 +172,16 @@
 											>
 									</div>
 								</div>
+								<div class="list_detail3">
+									<div
+											class="bottom_popover3"
+											v-if="popoverClick3"
+									>
+											<!-- 这里什么都没有～ -->
+									</div>
+								</div>
 
-								<div @click="cardClick4" class="card_list">
+								<div @click="cardClick4" class="card_list" :style="{ 'background': popoverClick1 ? '#F8FCFF' : '#e3f2ff'}">
 									<div class="card_list_text">
 											<span>团队成员</span>
 											<img :src="popoverClick4 ? arrow2Png : arrow1Png" alt="">
@@ -173,9 +193,42 @@
 											>
 									</div>
 								</div>
+
+								<div class="list_detail4">
+                    <div
+                        class="bottom_popover4"
+                        v-if="popoverClick4"
+                    >
+                        <div
+                            v-for="(item,index) in teamList"
+                            :key="index"
+                            class="team_list"
+                        >
+                            <img
+                                class="team_title"
+                                :src="item.img"
+                                alt=""
+                            >
+                            <p class="team_name">{{item.name}}</p>
+                            <p class="team_level">{{item.level}}</p>
+                            <div class="team_desc" :style="{ height: $store.state.language === 'CN' ? '1.2rem' : '2.3rem'}">
+                                <p>{{item.descaname}}</p>
+                                <span>{{item.desc}}</span>
+                            </div>
+                            <img
+                                v-if="item.icon"
+                                class="team_icon"
+                                :src="item.icon"
+                                alt=""
+                            >
+
+                        </div>
+
+                    </div>
+                </div>
 								
-						</div>
-          </div>
+					</div>
+				</div>
     </div>
 </template>
 
@@ -215,6 +268,7 @@ export default {
 			popoverClick2: false,
 			popoverClick3: false,
 			popoverClick4: false,
+			popoverClick4: true,
 			videoSrc: 'http://v.xiaohongshu.com/pre_post/01e2ac32c6786921018370038170a7d9c9_259.mp4?sign=b87a02cffa7f793816c7453426064a1e&t=62af4800',
 			cardList: [
 				{
@@ -597,10 +651,10 @@ export default {
 			margin-bottom: 0.495rem;
 			.card_four {
 				display: flex;
-				flex-direction: column;
-				// justify-content: space-between;
-				// margin: 0 0.4rem 0;
-				// padding-top: 0.4rem;
+				flex-direction: column;    
+				justify-content: center;
+    		align-items: center;
+				
 				.card_list {
 					width: 6.86rem;
 					height: 2.73rem;
@@ -623,7 +677,7 @@ export default {
 							width: 0.171rem;
 							height: 0.10rem;
 							margin-left: 0.16rem;
-							margin-top: 0.07rem;
+							vertical-align: middle;
 						}
 					}
 
@@ -640,6 +694,107 @@ export default {
 				}
 				.card_list:active {
 					background: #F8FCFF;
+				}
+				.bottom_popover1 {
+					margin-bottom: 0.37rem;
+					video {
+						width: 6.8622rem;
+						height: 3.86rem;
+					}
+					.video_btn {
+						.el-button {
+							margin-top: 0.16rem;
+							width: 6.86rem;
+							height: 1rem;
+							background: #5c70ff;
+							border: none;
+							border-radius: 0.5rem;
+							font-family: PingFangSC-Semibold;
+							font-weight: 600;
+							font-size: 0.32rem;
+							color: #ffffff;
+						}
+					}
+				}
+				.bottom_popover2 {
+					width: 6.86rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.32rem;
+					color: #000000;
+					p {
+						margin: 0;
+						margin-bottom: 0.16rem;
+					}
+				}
+				.bottom_popover4 {
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: center;
+					.team_list {
+						width: 3.35rem;
+						min-height: 5.59rem;
+						background: #ffffff;
+						border-radius: 0.16rem;
+						text-align: center;
+						margin-right: 0.16rem;
+						margin-bottom: 0.16rem;
+						p {
+							margin: 0;
+						}
+						.team_title {
+							width: 1.3rem;
+							height: 1.3rem;
+							margin: 0.2rem 0 0.32rem;
+						}
+						.team_name {
+							height: 0.45rem;
+							font-family: PingFangSC-Semibold;
+							font-weight: 600;
+							font-size: 0.32rem;
+							color: #000000;
+							text-align: center;
+							margin-bottom: 0.08rem;
+						}
+						.team_level {
+							height: 0.4rem;
+							font-family: PingFangSC-Regular;
+							font-weight: 400;
+							font-size: 0.28rem;
+							color: #000000;
+							text-align: center;
+							margin-bottom: 0.18rem;
+						}
+						.team_desc {
+							margin: 0 0.16rem;
+							height: 2.22rem;
+							span {
+								height: 0.96rem;
+								font-family: PingFangSC-Regular;
+								font-weight: 400;
+								font-size: 0.26rem;
+								color: #999999;
+								text-align: center;
+								line-height: 0.24rem;
+							}
+							p {
+								font-family: PingFangSC-Regular;
+								font-weight: 400;
+								font-size: 0.16rem;
+								color: #999999;
+								text-align: center;
+								line-height: 0.24rem;
+							}
+						}
+						.team_icon {
+							width: 0.1875rem;
+							height: 0.1875rem;
+							margin-bottom: 0.2462rem;
+						}
+					}
+					.team_list:nth-child(2n) {
+						margin-right: 0;
+					}
 				}
 			}
 		}
