@@ -954,7 +954,7 @@ export default {
 				font-weight: 400;
 				font-size: 0.3rem;
 				margin: 0 0.32rem;
-				margin: 0.4rem 0 0.24rem 0.32rem;
+				margin: 0.4rem 0 0.24rem 0.5rem;
 			}
 			.domian_name_search {
 				.domian_name_content {

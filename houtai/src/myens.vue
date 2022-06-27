@@ -13,7 +13,16 @@
                     </div>
                     <div
                         class="list_tab_content"
-                        :style="{ 'padding-bottom': (!myEnsNameList || myEnsNameList.length == 0) ? '0.01rem' : 0 } "
+                        :style="{ 'padding-bottom': (!myEnsNameList || myEnsNameList.length == 0) ? '0.01rem' : 0, 'width':$store.state.language === 'CN' ? '1rem' : '1.5rem' } "
+                    >
+                        <span class="list_tab">
+                            <!-- 有效期 -->
+                            {{i18n.validity_period}}
+                        </span>
+                    </div>
+                    <div
+                        class="list_tab_content_mb"
+                        :style="{ 'padding-bottom': (!myEnsNameList || myEnsNameList.length == 0) ? '0.01rem' : 0, 'width':$store.state.language === 'CN' ? '1.2rem' : '2.2rem' } "
                     >
                         <span class="list_tab">
                             <!-- 有效期 -->
@@ -199,6 +208,7 @@ export default {
 				}
 			}
 			.list_tab_content {
+				display: block;
 				padding: 0.32rem 0 0 0.34rem;
 				width: 1.2rem;
 				.list_tab {
@@ -215,6 +225,35 @@ export default {
 				@media (max-width: 750px) {
 					.list_tab {
 						font-size: 0.28rem;
+					}
+				}
+			}
+			.list_tab_content_mb {
+				display: none;
+			}
+			@media (max-width: 750px) {
+				.list_tab_content {
+					display: none;
+				}
+				.list_tab_content_mb {
+					display: block;
+					padding: 0.32rem 0 0 0.34rem;
+					width: 2.2rem;
+					.list_tab {
+						text-align: center;
+						display: block;
+						padding-bottom: 0.09rem;
+						border-bottom: 0.01rem solid
+							#850099;
+						font-family: PingFangSC-Semibold;
+						font-weight: 600;
+						font-size: 0.16rem;
+						color: #850099;
+					}
+					@media (max-width: 750px) {
+						.list_tab {
+							font-size: 0.28rem;
+						}
 					}
 				}
 			}
