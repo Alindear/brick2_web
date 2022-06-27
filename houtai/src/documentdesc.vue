@@ -97,8 +97,31 @@
                     </div>
                 </div>
             </div>
-
         </div>
+
+				<div class="mb_card_four">
+					<div class="card_four">
+                <div
+                    class="card_list"
+                    v-for="(item,index) in cardList"
+                    :key="index"
+                >
+                    <div @click="cardClick(index)">
+                        <div class="card_list_img">
+                            <img
+                                :src="item.img"
+                                class="image"
+                            >
+                        </div>
+                        <div class="card_list_text">
+                            <span>{{item.text}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+				</div>
     </div>
 </template>
 
@@ -297,6 +320,7 @@ export default {
 	height: 100%;
 	width: 100%;
 	.desc_content {
+		display: block;
 		width: 15.3rem;
 		// height: 13.5rem;
 		height: 100%;
@@ -484,6 +508,63 @@ export default {
 				}
 			}
 		}
+	}
+	.mb_card_four{
+		display: none;
+	}
+	@media (max-width:750px) {
+		.desc_content {
+			display: none;
+		}
+		.mb_card_four{
+			display: block;
+			margin: 0.32rem;
+			margin-bottom: 0.495rem;
+			.card_four {
+				display: flex;
+				flex-direction: column;
+				// justify-content: space-between;
+				// margin: 0 0.4rem 0;
+				// padding-top: 0.4rem;
+				.card_list {
+					width: 6.86rem;
+					height: 2.73rem;
+					border-radius: 0.16rem;
+					// background: #e3f2ff;
+					background: #F8FCFF;
+					border-radius: 0.32rem;
+
+					.card_list_img {
+						img {
+							width: 2.505rem;
+							margin: 0.6rem 0.5rem 0;
+							height: 2.68rem;
+							vertical-align: middle;
+						}
+					}
+					.card_list_text {
+						width: 3.505rem;
+						height: 0.87rem;
+						line-height: 0.87rem;
+						opacity: 0.66;
+						background-image: linear-gradient(
+							-60deg,
+							#6af0e9 0%,
+							#edafff 100%
+						);
+						font-family: PingFangSC-Semibold;
+						font-weight: 600;
+						font-size: 0.2rem;
+						color: #000000;
+						text-align: center;
+						border-bottom-right-radius: 0.16rem;
+						border-bottom-left-radius: 0.16rem;
+					}
+				}
+			}
+		}
+
+		
 	}
 }
 </style>
