@@ -101,27 +101,81 @@
 
 				<div class="mb_card_four">
 					<div class="card_four">
-                <div
-                    class="card_list"
-                    v-for="(item,index) in cardList"
-                    :key="index"
-                >
-                    <div @click="cardClick(index)">
-                        <div class="card_list_img">
-                            <img
-                                :src="item.img"
-                                class="image"
+							 	<div @click="cardClick1" class="card_list">
+										<div class="card_list_text">
+												<span>使用指南</span>
+												<img :src="popoverClick1 ? arrow2Png : arrow1Png" alt="">
+										</div>
+										<div class="card_list_img">
+												<img
+														:src="img1"
+														class="image"
+												>
+										</div>
+								</div>
+
+								<div class="list_detail">
+									 <div
+                        class="bottom_popover1"
+                        v-if="popoverClick1"
+                    >
+                        <video controls>
+                            <source
+                                :src="videoSrc"
+                                type="video/mp4"
                             >
-                        </div>
-                        <div class="card_list_text">
-                            <span>{{item.text}}</span>
+                            您的浏览器不支持 HTML5 video 标签。
+                        </video>
+                        <div class="video_btn">
+                            <el-button @click="registerBtn">
+                                注册域名
+                            </el-button>
                         </div>
                     </div>
-                </div>
-            </div>
 
+								</div>
 
-				</div>
+								<div @click="cardClick2" class="card_list">
+									<div class="card_list_text">
+											<span>代币经济学</span>
+											<img :src="popoverClick2 ? arrow2Png : arrow1Png" alt="">
+									</div>
+									<div class="card_list_img">
+											<img
+													:src="img2"
+													class="image"
+											>
+									</div>
+								</div>
+
+								<div @click="cardClick3" class="card_list">
+									<div class="card_list_text">
+											<span>开发人员使用</span>
+											<img :src="popoverClick3 ? arrow2Png : arrow1Png" alt="">
+									</div>
+									<div class="card_list_img">
+											<img
+													:src="img3"
+													class="image"
+											>
+									</div>
+								</div>
+
+								<div @click="cardClick4" class="card_list">
+									<div class="card_list_text">
+											<span>团队成员</span>
+											<img :src="popoverClick4 ? arrow2Png : arrow1Png" alt="">
+									</div>
+									<div class="card_list_img">
+											<img
+													:src="img4"
+													class="image"
+											>
+									</div>
+								</div>
+								
+						</div>
+          </div>
     </div>
 </template>
 
@@ -137,6 +191,9 @@ import teamImg3 from 'img/头像/椭圆形3.png';
 import teamImg4 from 'img/头像/椭圆形4.png';
 import teamImg5 from 'img/头像/椭圆形5.png';
 import linkedinIcon from 'img/icon/linkedin.png';
+import arrow1Png from 'img/箭头1.png';
+import arrow2Png from 'img/箭头2.png';
+
 
 export default {
 	components: { headEr },
@@ -151,7 +208,13 @@ export default {
 			teamImg3,
 			teamImg4,
 			teamImg5,
+			arrow1Png,
+			arrow2Png,
 			popoverClick: 0,
+			popoverClick1: false,
+			popoverClick2: false,
+			popoverClick3: false,
+			popoverClick4: false,
 			videoSrc: 'http://v.xiaohongshu.com/pre_post/01e2ac32c6786921018370038170a7d9c9_259.mp4?sign=b87a02cffa7f793816c7453426064a1e&t=62af4800',
 			cardList: [
 				{
@@ -302,6 +365,18 @@ export default {
 	},
 
 	methods: {
+		cardClick1(){
+			this.popoverClick1 = !this.popoverClick1;
+		},
+		cardClick2(){
+			this.popoverClick2 = !this.popoverClick2;
+		},
+		cardClick3(){
+			this.popoverClick3 = !this.popoverClick3;
+		},
+		cardClick4(){
+			this.popoverClick4 = !this.popoverClick4;
+		},
 		cardClick(index) {
 			console.log('122');
 			console.log('index', index);
@@ -529,37 +604,42 @@ export default {
 				.card_list {
 					width: 6.86rem;
 					height: 2.73rem;
-					border-radius: 0.16rem;
-					// background: #e3f2ff;
-					background: #F8FCFF;
+					background: #e3f2ff;
+					// background: #F8FCFF;
 					border-radius: 0.32rem;
-
-					.card_list_img {
-						img {
-							width: 2.505rem;
-							margin: 0.6rem 0.5rem 0;
-							height: 2.68rem;
-							vertical-align: middle;
-						}
-					}
+					margin-bottom: 0.165rem;
+					display: flex;
+					flex-direction: row;
+					align-items: center;
 					.card_list_text {
-						width: 3.505rem;
-						height: 0.87rem;
-						line-height: 0.87rem;
-						opacity: 0.66;
-						background-image: linear-gradient(
-							-60deg,
-							#6af0e9 0%,
-							#edafff 100%
-						);
 						font-family: PingFangSC-Semibold;
 						font-weight: 600;
-						font-size: 0.2rem;
+						font-size: 0.36rem;
 						color: #000000;
-						text-align: center;
-						border-bottom-right-radius: 0.16rem;
-						border-bottom-left-radius: 0.16rem;
+						margin: auto ;
+						margin-left: 0.6rem;
+    				// margin-right: 0.94rem;
+						img{
+							width: 0.171rem;
+							height: 0.10rem;
+							margin-left: 0.16rem;
+							margin-top: 0.07rem;
+						}
 					}
+
+					.card_list_img {
+						.image {
+							// width: 3.48rem;
+							// height: 2.6rem;
+							margin: 0.35rem 0.5rem 0;
+							width: 2.2rem;
+    					height: 2.2rem;
+							vertical-align: middle;
+						}
+						}
+				}
+				.card_list:active {
+					background: #F8FCFF;
 				}
 			}
 		}
