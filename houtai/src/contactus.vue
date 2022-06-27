@@ -186,6 +186,40 @@ export default {
 			border-radius: 0.32rem;
 			color: #5ecdb2;
 		}
+		@media (max-width:750px) {
+				.color1 {
+					// background: rgba(123, 87, 246, 0.1);
+					// border: 0.01rem solid rgba(123, 87, 246, 0.3);
+					// box-shadow: 0 0.12rem 0.1rem 0 rgba(211, 211, 211, 0.27);
+					// color: #7b57f6;
+					background: url('img/imgmb/dis.png');
+					background-size: 100% 100%;
+				}
+				.color2 {
+					// background: rgba(255, 189, 102, 0.1);
+					// border: 0.011rem solid #ffbd66;
+					// border-radius: 0.32rem;
+					// color: #e0942f;
+					background: url('img/imgmb/miu.png');
+					background-size: 100% 100%;
+				}
+				.color3 {
+					// background: rgba(66, 116, 255, 0.1);
+					// border: 0.01rem solid rgba(66, 116, 255, 0.3);
+					// border-radius: 0.32rem;
+					// color: #4274ff;
+					background: url('img/imgmb/twi.png');
+					background-size: 100% 100%;
+				}
+				.color4 {
+					// background: rgba(7, 209, 177, 0.1);
+					// border: 0.01rem solid rgba(38, 190, 255, 0.3);
+					// border-radius: 0.32rem;
+					// color: #5ecdb2;
+					background: url('img/imgmb/tel.png');
+					background-size: 100% 100%;
+				}
+		}
 	}
 	@media (max-width: 750px) {
 		.contact_module {
