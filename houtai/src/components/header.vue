@@ -173,7 +173,6 @@
                         :placeholder="i18n.placeholder"
                         v-model="searchText"
                         type="search"
-                        :autocomplete="off"
                         @input="searchTextChange"
                         @keyup.13.native="searchEns"
                     >

@@ -81,7 +81,10 @@
                             >
                             <p class="team_name">{{item.name}}</p>
                             <p class="team_level">{{item.level}}</p>
-                            <div class="team_desc" :style="{ height: $store.state.language === 'CN' ? '1.2rem' : '2.3rem'}">
+                            <div
+                                class="team_desc"
+                                :style="{ height: $store.state.language === 'CN' ? '1.2rem' : '2.3rem'}"
+                            >
                                 <p>{{item.descaname}}</p>
                                 <span>{{item.desc}}</span>
                             </div>
@@ -99,23 +102,30 @@
             </div>
         </div>
 
-				<div class="mb_card_four">
-					<div class="card_four">
-							 	<div @click="cardClick1" class="card_list" :style="{ 'background': popoverClick1 ? '#F8FCFF' : '#e3f2ff'}">
-										<div class="card_list_text">
-												<span>使用指南</span>
-												<img :src="popoverClick1 ? arrow2Png : arrow1Png" alt="">
-										</div>
-										<div class="card_list_img">
-												<img
-														:src="img1"
-														class="image"
-												>
-										</div>
-								</div>
+        <div class="mb_card_four">
+            <div class="card_four">
+                <div
+                    @click="cardClick1"
+                    class="card_list"
+                    :style="{ 'background': popoverClick1 ? '#F8FCFF' : '#e3f2ff'}"
+                >
+                    <div class="card_list_text">
+                        <span>使用指南</span>
+                        <img
+                            :src="popoverClick1 ? arrow2Png : arrow1Png"
+                            alt=""
+                        >
+                    </div>
+                    <div class="card_list_img">
+                        <img
+                            :src="img1"
+                            class="image"
+                        >
+                    </div>
+                </div>
 
-								<div class="list_detail1">
-									 <div
+                <div class="list_detail1">
+                    <div
                         class="bottom_popover1"
                         v-if="popoverClick1"
                     >
@@ -133,68 +143,89 @@
                         </div>
                     </div>
 
-								</div>
+                </div>
 
-								<div @click="cardClick2" class="card_list" :style="{ 'background': popoverClick1 ? '#F8FCFF' : '#e3f2ff'}">
-									<div class="card_list_text">
-											<span>代币经济学</span>
-											<img :src="popoverClick2 ? arrow2Png : arrow1Png" alt="">
-									</div>
-									<div class="card_list_img">
-											<img
-													:src="img2"
-													class="image"
-											>
-									</div>
-								</div>
+                <div
+                    @click="cardClick2"
+                    class="card_list"
+                    :style="{ 'background': popoverClick2 ? '#F8FCFF' : '#e3f2ff'}"
+                >
+                    <div class="card_list_text">
+                        <span>代币经济学</span>
+                        <img
+                            :src="popoverClick2 ? arrow2Png : arrow1Png"
+                            alt=""
+                        >
+                    </div>
+                    <div class="card_list_img">
+                        <img
+                            :src="img2"
+                            class="image"
+                        >
+                    </div>
+                </div>
 
-								<div class="list_detail2">
-									 <div
+                <div class="list_detail2">
+                    <div
                         class="bottom_popover2"
                         v-if="popoverClick2"
                     >
-                       <p>
-													文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性
+                        <p>
+                            文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性内容文字叙述性
                         </p>
                     </div>
 
-								</div>
+                </div>
 
-								<div @click="cardClick3" class="card_list" :style="{ 'background': popoverClick1 ? '#F8FCFF' : '#e3f2ff'}">
-									<div class="card_list_text">
-											<span>开发人员使用</span>
-											<img :src="popoverClick3 ? arrow2Png : arrow1Png" alt="">
-									</div>
-									<div class="card_list_img">
-											<img
-													:src="img3"
-													class="image"
-											>
-									</div>
-								</div>
-								<div class="list_detail3">
-									<div
-											class="bottom_popover3"
-											v-if="popoverClick3"
-									>
-											<!-- 这里什么都没有～ -->
-									</div>
-								</div>
+                <div
+                    @click="cardClick3"
+                    class="card_list"
+                    :style="{ 'background': popoverClick3 ? '#F8FCFF' : '#e3f2ff'}"
+                >
+                    <div class="card_list_text">
+                        <span>开发人员使用</span>
+                        <img
+                            :src="popoverClick3 ? arrow2Png : arrow1Png"
+                            alt=""
+                        >
+                    </div>
+                    <div class="card_list_img">
+                        <img
+                            :src="img3"
+                            class="image"
+                        >
+                    </div>
+                </div>
+                <div class="list_detail3">
+                    <div
+                        class="bottom_popover3"
+                        v-if="popoverClick3"
+                    >
+                        <!-- 这里什么都没有～ -->
+                    </div>
+                </div>
 
-								<div @click="cardClick4" class="card_list" :style="{ 'background': popoverClick1 ? '#F8FCFF' : '#e3f2ff'}">
-									<div class="card_list_text">
-											<span>团队成员</span>
-											<img :src="popoverClick4 ? arrow2Png : arrow1Png" alt="">
-									</div>
-									<div class="card_list_img">
-											<img
-													:src="img4"
-													class="image"
-											>
-									</div>
-								</div>
+                <div
+                    @click="cardClick4"
+                    class="card_list"
+                    :style="{ 'background': popoverClick4 ? '#F8FCFF' : '#e3f2ff'}"
+                >
+                    <div class="card_list_text">
+                        <span>团队成员</span>
+                        <img
+                            :src="popoverClick4 ? arrow2Png : arrow1Png"
+                            alt=""
+                        >
+                    </div>
+                    <div class="card_list_img">
+                        <img
+                            :src="img4"
+                            class="image"
+                        >
+                    </div>
+                </div>
 
-								<div class="list_detail4">
+                <div class="list_detail4">
                     <div
                         class="bottom_popover4"
                         v-if="popoverClick4"
@@ -211,7 +242,10 @@
                             >
                             <p class="team_name">{{item.name}}</p>
                             <p class="team_level">{{item.level}}</p>
-                            <div class="team_desc" :style="{ height: $store.state.language === 'CN' ? '1.2rem' : '2.3rem'}">
+                            <div
+                                class="team_desc"
+                                :style="{ height: $store.state.language === 'CN' ? '2.22rem' : '4.2rem'}"
+                            >
                                 <p>{{item.descaname}}</p>
                                 <span>{{item.desc}}</span>
                             </div>
@@ -226,9 +260,9 @@
 
                     </div>
                 </div>
-								
-					</div>
-				</div>
+
+            </div>
+        </div>
     </div>
 </template>
 
@@ -246,7 +280,6 @@ import teamImg5 from 'img/头像/椭圆形5.png';
 import linkedinIcon from 'img/icon/linkedin.png';
 import arrow1Png from 'img/箭头1.png';
 import arrow2Png from 'img/箭头2.png';
-
 
 export default {
 	components: { headEr },
@@ -268,7 +301,6 @@ export default {
 			popoverClick2: false,
 			popoverClick3: false,
 			popoverClick4: false,
-			popoverClick4: true,
 			videoSrc: 'http://v.xiaohongshu.com/pre_post/01e2ac32c6786921018370038170a7d9c9_259.mp4?sign=b87a02cffa7f793816c7453426064a1e&t=62af4800',
 			cardList: [
 				{
@@ -419,16 +451,16 @@ export default {
 	},
 
 	methods: {
-		cardClick1(){
+		cardClick1() {
 			this.popoverClick1 = !this.popoverClick1;
 		},
-		cardClick2(){
+		cardClick2() {
 			this.popoverClick2 = !this.popoverClick2;
 		},
-		cardClick3(){
+		cardClick3() {
 			this.popoverClick3 = !this.popoverClick3;
 		},
-		cardClick4(){
+		cardClick4() {
 			this.popoverClick4 = !this.popoverClick4;
 		},
 		cardClick(index) {
@@ -610,7 +642,7 @@ export default {
 					}
 					.team_desc {
 						margin: 0 0.16rem;
-						height: 1.2rem;
+						height: 2.22rem;
 						span {
 							height: 0.96rem;
 							font-family: PingFangSC-Regular;
@@ -638,23 +670,23 @@ export default {
 			}
 		}
 	}
-	.mb_card_four{
+	.mb_card_four {
 		display: none;
 	}
-	@media (max-width:750px) {
+	@media (max-width: 750px) {
 		.desc_content {
 			display: none;
 		}
-		.mb_card_four{
+		.mb_card_four {
 			display: block;
 			margin: 0.32rem;
 			margin-bottom: 0.495rem;
 			.card_four {
 				display: flex;
-				flex-direction: column;    
+				flex-direction: column;
 				justify-content: center;
-    		align-items: center;
-				
+				align-items: center;
+
 				.card_list {
 					width: 6.86rem;
 					height: 2.73rem;
@@ -670,12 +702,12 @@ export default {
 						font-weight: 600;
 						font-size: 0.36rem;
 						color: #000000;
-						margin: auto ;
+						margin: auto;
 						margin-left: 0.6rem;
-    				// margin-right: 0.94rem;
-						img{
+						// margin-right: 0.94rem;
+						img {
 							width: 0.171rem;
-							height: 0.10rem;
+							height: 0.1rem;
 							margin-left: 0.16rem;
 							vertical-align: middle;
 						}
@@ -687,13 +719,13 @@ export default {
 							// height: 2.6rem;
 							margin: 0.35rem 0.5rem 0;
 							width: 2.2rem;
-    					height: 2.2rem;
+							height: 2.2rem;
 							vertical-align: middle;
 						}
-						}
+					}
 				}
 				.card_list:active {
-					background: #F8FCFF;
+					background: #f8fcff;
 				}
 				.bottom_popover1 {
 					margin-bottom: 0.37rem;
@@ -727,10 +759,16 @@ export default {
 						margin-bottom: 0.16rem;
 					}
 				}
+				.list_detail4 {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 6.88rem;
+				}
 				.bottom_popover4 {
 					display: flex;
 					flex-wrap: wrap;
-					justify-content: center;
+					// justify-content: center;
 					.team_list {
 						width: 3.35rem;
 						min-height: 5.59rem;
@@ -775,21 +813,22 @@ export default {
 								font-size: 0.26rem;
 								color: #999999;
 								text-align: center;
-								line-height: 0.24rem;
+								line-height: 0.4rem;
+								word-break: break-all;
 							}
 							p {
 								font-family: PingFangSC-Regular;
 								font-weight: 400;
-								font-size: 0.16rem;
+								font-size: 0.26rem;
 								color: #999999;
 								text-align: center;
-								line-height: 0.24rem;
+								line-height: 0.4rem;
 							}
 						}
 						.team_icon {
-							width: 0.1875rem;
-							height: 0.1875rem;
-							margin-bottom: 0.2462rem;
+							width: 0.25rem;
+							height: 0.25rem;
+							margin-bottom: 0.235rem;
 						}
 					}
 					.team_list:nth-child(2n) {
@@ -798,8 +837,6 @@ export default {
 				}
 			}
 		}
-
-		
 	}
 }
 </style>

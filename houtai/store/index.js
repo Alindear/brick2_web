@@ -138,8 +138,8 @@ export default new Vuex.Store({
                 text_1: '请至少输入三个字符',
                 team_1: '前阿里产品经理，web2连续创业者。负责bns整体方向和设计把控',
                 team_2: '在韩国延世大学读的软件工程研究生，在 probit globall做上币和投研',
-                team_3: 'Market Development 兼职麦肯锡的营销助理，三年腾讯营销经验目前负责营销和应用场景洽谈，如小狐狸、Chainlink 等',
-                team_4: 'Business communication Polimi硕士学位，2年AECOM工作经历，任项目负责人 目前负责商务沟通',
+                team_3: '兼职麦肯锡的营销助理，三年腾讯营销经验目前负责营销和应用场景洽谈，如小狐狸、Chainlink 等',
+                team_4: 'Polimi硕士学位，2年AECOM工作经历，任项目负责人 目前负责商务沟通',
                 team_5: 'UI Designer前字节跳动UI设计师 负责bns UE设计',
 
                 gift_successfully: "已参与成功！",
