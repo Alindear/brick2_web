@@ -244,7 +244,7 @@
                             <div class="cut_border"></div>
                             <el-input
                                 class="input_search"
-                                :placeholder="i18n.placeholder"
+                                :placeholder="i18n.placeholder_mb_en"
                                 v-model="searchText"
                                 @input="searchTextChange"
                             >
@@ -306,9 +306,9 @@
                 >
                     <!-- v-if="!changeStatusShowFlag && !linkShowFlag" -->
                     <p
-                        class="dis_link"
-                        :style="{ 'font-size': $store.state.language === 'CN' ? '0.46rem' : '0.4rem',}"
+                        :class="$store.state.language === 'CN' ? 'dis_link' : 'dis_link_en'"
                     >
+                        <!-- :style="{ 'font-size': $store.state.language === 'CN' ? '0.46rem' : '0.4rem',}" -->
                         <!-- 点击生成专属链接 -->
                         {{i18n.click_text}}
                     </p>
@@ -643,10 +643,15 @@ export default {
 			luckDrawShowFlag: false, // 参与抽奖
 			viewResultShowFlag: false, // 查看结果
 			luckOrNot: 'NO', //是否中奖
-			// luckOrNot: 'YES', //是否中奖
+			
+			luckOrNot: 'YES', //是否中奖
+			
 			openLinkShowFlag: false,
 			searchEnsLoading: false,
 			changeStatusShowFlag: false,
+
+			changeStatusShowFlag: true,
+
 			linkShowFlag: false,
 			refAddress: '',
 			bnbCps: 0,
@@ -1168,13 +1173,16 @@ export default {
 	height: 100%;
 	width: 100%;
 	font-size: 0.16rem;
-	// background: #ffffff;
+	background: #ffffff;
 	position: relative;
 	.header_top {
 		position: relative;
 		// position: absolute;
 		z-index: 1;
 	}
+	.header_web {
+			background: none;
+		}
 	.back_top_img {
 		display: block;
 		width: 4.34rem;
@@ -1564,12 +1572,11 @@ export default {
 						position: relative;
 					}
 					span {
+						font-size: 0.56rem;
 						width: 1.69rem;
 						height: 1.03rem;
 						font-family: Womby-Regular;
 						font-weight: 400;
-						font-size: 0.86rem;
-						// color: #ffffff;
 						letter-spacing: 0.04rem;
 						background-image: linear-gradient(
 							to right,
@@ -1581,19 +1588,15 @@ export default {
 						margin-right: 0.24rem;
 					}
 					.el-button {
-						width: 5.63rem;
-						height: 1.48rem;
+						font-size: 0.52rem;
 						background-image: linear-gradient(
 							-60deg,
 							#6af0e9 0%,
 							#edafff 100%
 						);
 						border-radius: 0.24rem;
-						// width: 443px;
-						// height: 86px;
 						font-family: Womby-Regular;
 						font-weight: 400;
-						font-size: 0.72rem;
 						color: #ffffff;
 						border: none;
 					}
@@ -1889,6 +1892,21 @@ export default {
 					margin: 4.72rem 0 1.25rem 0.88rem;
 					// box-sizing: border-box;
 				}
+				.dis_link_en {
+						font-family: Alibaba-PuHuiTi-B;
+						font-weight: B;
+						font-size: 0.4rem;
+						background-image: linear-gradient(
+							to right,
+							#e5b3fd,
+							#7de7ec
+						);
+						-webkit-background-clip: text;
+						color: transparent;
+						// padding: 4.39rem 0 1.59rem 0.55rem;
+						margin: 4.72rem 0 1.25rem 0.88rem;
+						// box-sizing: border-box;
+					}
 			}
 			.left_img:hover {
 				border: 0.34rem solid;
@@ -1970,6 +1988,7 @@ export default {
 					font-size: 0.46rem;
 					color: #ffffff;
 					padding: 0 0.75rem;
+					border: none;
 				}
 			}
 		}
@@ -2010,19 +2029,18 @@ export default {
 						font-family: Alibaba-PuHuiTi-B;
 						font-weight: B;
 						font-size: 0.36rem;
-						// background-image: linear-gradient(
-						// 	to right,
-						// 	#e5b3fd,
-						// 	#7de7ec
-						// );
-						// -webkit-background-clip: text;
-						// color: transparent;
-						// word-break: break-all;
-						// margin: 3.61rem 0.57rem 0.44rem 0.55rem;
 						margin: 1.05rem 1.42rem;
 					}
 					.dis_link {
 						font-size: 0.36rem;
+						margin: 0;
+						height: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+					}
+					.dis_link_en {
+						font-size: 0.32rem;
 						margin: 0;
 						height: 100%;
 						display: flex;
@@ -2135,6 +2153,7 @@ export default {
 			.title_text {
 				font-size: 0.32rem;
 				margin-bottom: 0.3249rem;
+    		width: 7.5rem !important;
 			}
 			.button_text {
 				width: 6.86rem;
@@ -2193,6 +2212,7 @@ export default {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
+			border: 0.01px solid #EDEDED;
 			.address_price_left_desc {
 				margin-left: 0.73rem;
 				img {
@@ -2246,7 +2266,8 @@ export default {
 			}
 			.address_price_module {
 				width: 6.86rem;
-				height: 6.78rem;
+				// height: 6.78rem;
+				height: 100%;
 				background: #FFFFFF;
 				margin-bottom: 0.4rem;
 				display: flex;
@@ -2261,7 +2282,7 @@ export default {
 					img {
 						width: 4.7923rem;
 						height: 4.7923rem;
-						transform: rotate(-7deg);
+						transform: rotate(-1deg);
 						margin-bottom: 0.2472rem;
 					}
 				}
@@ -2295,6 +2316,7 @@ export default {
 						font-size: 0.28rem;
 						color: #999999;
 						margin: 0;
+						word-break: break-all;
 					}
 				}
 			
@@ -2328,7 +2350,7 @@ export default {
 			margin: 0.32rem 0 0.8rem 0;
 		}
 		.el-button {
-			width: 4.03rem;
+			// width: 4.03rem;
 			height: 0.92rem;
 			background-image: linear-gradient(
 				-60deg,
@@ -2341,6 +2363,7 @@ export default {
 			font-size: 0.24rem;
 			color: #ffffff;
 			border: none;
+			padding: 0 1.42rem;
 		}
 		.four_gift_bottom {
 			margin-top: 1.92rem;
@@ -2387,11 +2410,14 @@ export default {
 				margin: 0;
 			}
 			.title_text_gift {
-				height: 0.7rem;
 				font-size: 0.54rem;
+				width: 5.9rem;
+				height: 100%;
+				text-align: center;
 			}
 			.span_text_gift {
-				height: 0.9rem;
+				// height: 0.9rem;
+				height: 100%;
 				font-family: PingFangSC-Regular;
 				font-weight: 400;
 				font-size: 0.32rem;
@@ -2399,10 +2425,12 @@ export default {
 				margin: 0.16rem 0.32rem 0.4rem;
 			}
 			.el-button {
-				width: 4.48rem;
+				// width: 4.48rem;
+				// width: 100%;
 				height: 0.94rem;
 				border-radius: 0.47rem;
 				font-size: 0.32rem;
+				padding: 0 1.42rem;
 			}
 			.four_gift_bottom {
 				margin-top: 1.23rem;
@@ -2425,9 +2453,11 @@ export default {
 					}
 
 					.item_desc {
-						height: 1.2rem;
+						width: 3.36rem;
+						height: 1.3rem;
 						margin-bottom: 0.62rem;
 						font-size: 0.28rem;
+						word-break: break-all;
 					}
 				}
 			}
@@ -2683,5 +2713,11 @@ export default {
 			}
 		}
 	}
+}
+@media (max-width:750px) {
+	.app_main {
+		background: #f8f8f8;
+	}
+	
 }
 </style>

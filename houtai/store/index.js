@@ -8,6 +8,7 @@ export default new Vuex.Store({
         i18n: {
             CN: {
                 placeholder: "请输入域名或地址",
+                placeholder_mb_en: "请输入域名或地址",
                 search: '查询',
                 register: '注册',
                 details: '详情',
@@ -233,6 +234,7 @@ export default new Vuex.Store({
                 index_text4: 'Help Bnb Smart Chain(BSC) link with more customers',
 
                 placeholder: 'Please enter your Domain Names or Addresses',
+                placeholder_mb_en: 'Enter Domain or Addresses',
                 bns: 'BNS Ecological Structure',
                 share: 'Share To Get Gains',
                 share_desc: 'You will get gains for recommending friends to register domain names! Come on to create your own link!',
@@ -248,9 +250,9 @@ export default new Vuex.Store({
                 first_gift_desc: 'The lucky draw of Domain Names is held once a week. The results will be announced on Friday. The new round of draw will start on Saturday and end on Thursday.',
                 connect_wallet_btn: 'Please connect your wallet',
                 gift_one_desc1: 'Start the financing plan',
-                gift_one_desc2: 'Start the financing plan',
-                gift_two_desc1: 'Launch on the test website ',
-                gift_two_desc2: 'Launch on the main website',
+                gift_one_desc2: '',
+                gift_two_desc1: 'Launch on the test website Launch on the main website',
+                gift_two_desc2: '',
                 gift_two_desc3: ' Open the Domain Names trading market',
                 gift_three_desc1: 'Launch the BNS tokens',
                 gift_three_desc2: 'Achieve 90% coverage of scenarios',

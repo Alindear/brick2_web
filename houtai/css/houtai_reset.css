@@ -133,6 +133,16 @@ html body {
     border-radius: .32rem;
     border: none;
 }
+@media (max-width:750px) {
+    .el-select-dropdown {
+        width: 2.44rem;
+    }
+    .el-radio__label{
+        width: 1.68rem;
+        font-size: 0.26rem;
+        margin-right: 0.16rem;
+    }
+}
 .el-popper .popper__arrow {
     border-width: 0;
 }
@@ -258,3 +268,5 @@ html body {
 .el-select {
     -webkit-tap-highlight-color: #ffffff !important;
 }
+
+
