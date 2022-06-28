@@ -525,32 +525,34 @@
             </div>
 
 						 <div class="mb_contact_input">
-                <span class="email">E-mail: admin@bnsdid.io </span>
-                <span class="bottom_img">
+                <p class="email_top">E-mail: admin@bnsdid.io </p>
+								<div class="input_center">
+									<span class="img_center">SAY HI HERE</span>
+									<img
+											class="img_right"
+											:src="enterIcon"
+											alt=""
+									>
+								</div>
+               
+                <!-- <span class="img_left"></span> -->
+								 <span class="bottom_img">
                     <img
                         class="bottom_icon1"
-                        :src="twitterPng"
+                        :src="twitterMBPng"
                         alt=""
                     >
                     <img
                         class="bottom_icon2"
-                        :src="discordPng"
+                        :src="discordMBPng"
                         alt=""
                     >
                     <img
                         class="bottom_icon3"
-                        :src="lastIconPng"
+                        :src="lastIconMBPng"
                         alt=""
                     >
-                    <!-- <div class="img_left"></div> -->
                 </span>
-                <span class="img_left"></span>
-                <span class="img_center">SAY HI HERE</span>
-                <img
-                    class="img_right"
-                    :src="enterIcon"
-                    alt=""
-                >
 
             </div>
         </div>
@@ -593,6 +595,11 @@ import partnerImg from 'img/首页/编组 39@2x.png';
 import twitterPng from 'img/首页/推特_twitter44@2x.png';
 import discordPng from 'img/首页/discord@2x.png';
 import lastIconPng from 'img/首页/编组 56@2x.png';
+
+import twitterMBPng from 'img/imgmb/首页/推特_twitter44.png';
+import discordMBPng from 'img/imgmb/首页/discord.png';
+import lastIconMBPng from 'img/imgmb/首页/编组 56.png';
+
 import giftImg1 from 'img/gift/编组 30.png';
 import giftImg2 from 'img/gift/编组 31.png';
 import giftImg3 from 'img/gift/编组 32.png';
@@ -662,6 +669,9 @@ export default {
 			twitterPng,
 			discordPng,
 			lastIconPng,
+			twitterMBPng,
+			discordMBPng,
+			lastIconMBPng,
 			giftImg1,
 			giftImg2,
 			giftImg3,
@@ -2569,7 +2579,7 @@ export default {
 	}
 	@media (max-width:750px) {
 		.contact_us_module {
-			width:7.5rem;
+			width: 100%;
 			height: 4.58rem;
 			background-image: linear-gradient(
 				-60deg,
@@ -2580,81 +2590,95 @@ export default {
 			flex-direction: column;
 			align-items: center;
 			.contanct_title {
-				// width: 2.89rem;
-				height: 1.04rem;
-				font-family: YouSheBiaoTiYuan;
-				font-size: 0.8rem;
-				color: #ffffff;
-				letter-spacing: -0.0156rem;
 				margin: 0;
-				margin: 0.6rem 0;
+				margin: 0.4rem 0 0.16rem;
+				height: 0.70rem;
+				font-size: 0.54rem;
+				letter-spacing: -0.0105px;
+
 			}
 			.contact_input {
 				display: none;
 			}
 			.mb_contact_input {
 				display: block;
-				width: 16rem;
+				width: 5.83rem;
 				height: 1.47rem;
-				line-height: 1.47rem;
-				background: #ffffff;
+				// line-height: 1.47rem;
+				// background: #ffffff;
 				border-radius: 0.12rem;
-				.email {
-					width: 0.332rem;
-					height: 0.4rem;
-					font-family: PingFangSC-Semibold;
-					font-weight: 600;
-					font-size: 0.28rem;
-					color: #000000;
-					letter-spacing: -0.0054rem;
-					margin-left: 0.84rem;
-					margin-right: 1.58rem;
-				}
-				.bottom_img {
-					img {
-						height: 0.33rem;
-						width: 0.33rem;
-						margin-right: 0.24rem;
-						vertical-align: middle;
-						margin-top: -0.1rem;
-					}
-					.bottom_icon3 {
-						margin-right: 0.6rem;
-					}
-				}
-				.img_left {
-					// border-left: 0.02rem solid #6af0e9;
-					margin: auto 0;
-					margin-right: 1.77rem;
-					height: 0.6rem;
-					display: inline-block;
-				}
-
-				.img_center {
-					width: 1.54rem;
-					height: 0.34rem;
-					font-family: Womby-Regular;
+				display: flex;
+				flex-direction: column;
+				.email_top {
+					width: 5.83rem;
+					height: 0.90rem;
+					line-height: 0.90rem;
+					background: rgba(255,255,255,0.10);
+					border: 0.005rem solid #FFFFFF;
+					border-radius: 0.12rem;
+					font-family: PingFangSC-Regular;
 					font-weight: 400;
-					font-size: 0.28rem;
-					color: #000000;
-					letter-spacing: -0.0054rem;
-					background-image: linear-gradient(
-						to right,
-						#edafff,
-						#6af0e9
-					);
-					-webkit-background-clip: text;
-					color: transparent;
-					margin-right: 3.6813rem;
+					font-size: 0.30rem;
+					letter-spacing: 0;
+					margin: 0;
+					padding-left: 0.24rem;
+    			box-sizing: border-box;
+					margin-bottom: 0.14rem;
 				}
-				.img_right {
-					// margin-right: 0.932rem;
-					width: 0.49rem;
-					height: 0.49rem;
-					vertical-align: middle;
-					margin-top: -0.12rem;
-					// opacity: 0;
-					// background: #000000;
+				.input_center{
+					width: 5.84rem;
+					height: 0.90rem;
+					line-height: 0.9rem;
+					background: #FFFFFF;
+					border-radius: 0.12rem;
+					padding-left: 0.24rem;
+    			box-sizing: border-box;
+					margin-bottom: 0.4rem;
+						.img_center {
+							width: 1.76rem;
+							height: 0.38rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.32rem;
+							color: #000000;
+							letter-spacing: -0.0054rem;
+							background-image: linear-gradient(
+								to right,
+								#edafff,
+								#6af0e9
+							);
+							-webkit-background-clip: text;
+							color: transparent;
+							margin-right: 3.15rem;
+						}
+						.img_right {
+							width: 0.44rem;
+							height: 0.44rem;
+							vertical-align: middle;
+							margin-top: -0.12rem;
+							margin: 0 0.24rem 0.23rem 0.23rem 0;
+						}
+					}
+				
+
+				.bottom_img {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: center;
+					img {
+						height: 0.6rem;
+						width: 0.6rem;
+						margin-right: 0.4rem;
+						vertical-align: middle;
+						// margin-top: -0.1rem;
+					}
+					img:last-child {
+						margin-right: 0rem;
+					}
+					// .bottom_icon3 {
+					// 	margin-right: 0.6rem;
+					// }
 				}
 			}
 		}
