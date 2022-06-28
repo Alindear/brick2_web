@@ -378,6 +378,35 @@
             </div>
 
         </div>
+				 <div class="mb_back_address_price_module">
+            <div class="back_left_center_img"></div>
+            <div
+                v-for="(item,index) in addressPriceList"
+                :key="index"
+                class="address_price_module"
+								:style="{ 'background' : index === 0 ? '#ffffff' : '#f8f8f8'}"
+            >
+								<div class="address_price_right_img">
+                    <img
+                        :src="item.img"
+                        alt=""
+                    >
+                </div>
+                <div class="address_price_left_desc">
+                    <div class="mb_price_title">
+											<img
+                        :src="item.icon"
+                        alt=""
+											>
+											<div class="address_price_title web-font">{{item.title}}</div>
+										</div>
+                    <p class="address_price_desc">{{item.desc}}</p>
+                </div>
+                
+
+            </div>
+
+        </div>
 
         <div class="gift_module">
             <div
@@ -419,7 +448,7 @@
                         alt=""
                     >
                     <p class="item_title">{{item.title}}</p>
-                    <div :class="`item_desc${index+1}`">
+                    <div class="item_desc">
                         <p>{{item.desc1}}</p>
                         <p>{{item.desc2}}</p>
                         <p v-if="item.desc3">{{item.desc3}}</p>
@@ -466,6 +495,36 @@
                 {{i18n.contact_us}}
             </p>
             <div class="contact_input">
+                <span class="email">E-mail: admin@bnsdid.io </span>
+                <span class="bottom_img">
+                    <img
+                        class="bottom_icon1"
+                        :src="twitterPng"
+                        alt=""
+                    >
+                    <img
+                        class="bottom_icon2"
+                        :src="discordPng"
+                        alt=""
+                    >
+                    <img
+                        class="bottom_icon3"
+                        :src="lastIconPng"
+                        alt=""
+                    >
+                    <!-- <div class="img_left"></div> -->
+                </span>
+                <span class="img_left"></span>
+                <span class="img_center">SAY HI HERE</span>
+                <img
+                    class="img_right"
+                    :src="enterIcon"
+                    alt=""
+                >
+
+            </div>
+
+						 <div class="mb_contact_input">
                 <span class="email">E-mail: admin@bnsdid.io </span>
                 <span class="bottom_img">
                     <img
@@ -1099,7 +1158,7 @@ export default {
 	height: 100%;
 	width: 100%;
 	font-size: 0.16rem;
-	background: #ffffff;
+	// background: #ffffff;
 	position: relative;
 	.header_top {
 		position: relative;
@@ -1964,6 +2023,9 @@ export default {
 				.right_img {
 					width: 5.68rem;
 					height: 3.2rem;
+					// display: flex;
+					// flex-direction: column;
+					// align-items: center;
 					.now_profit {
 						margin-left: 0.69rem;
 						margin-bottom: 1.95rem;
@@ -2003,6 +2065,7 @@ export default {
 						height: 0.94rem;
 						padding: 0 0.75rem;
 						font-size: 0.32rem;
+						border: none;
 					}
 				}
 			}
@@ -2073,6 +2136,7 @@ export default {
 					#edafff 100%
 				);
 				border-radius: 0.32rem;
+				border: none;
 				p {
 					font-family: Alibaba-PuHuiTi-M;
 					font-weight: M;
@@ -2093,7 +2157,10 @@ export default {
 		position: relative;
 		// margin-bottom: 0.16rem;
 		margin-bottom: 2rem;
+		display: block;
 		.back_left_center_img {
+
+			display: block;
 			width: 7.15rem;
 			height: 7.84rem;
 			opacity: 0.07;
@@ -2150,6 +2217,77 @@ export default {
 					transform: rotate(-7deg);
 					margin: 0.4992rem 1.059rem 0.2206rem 0;
 				}
+			}
+		}
+	}
+	.mb_back_address_price_module{
+		display: none;
+	}
+	@media (max-width:750px) {
+		.back_address_price_module {
+			display: none;
+		}
+		.mb_back_address_price_module {
+			display: block;
+			position: relative;
+			margin-bottom: 1.6018rem;
+			.back_left_center_img {
+				display: none;
+			}
+			.address_price_module {
+				width: 6.86rem;
+				height: 6.78rem;
+				background: #FFFFFF;
+				margin-bottom: 0.4rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				border-radius: 0.32rem;
+				margin: 0 auto;
+				margin-bottom: 0.98rem;
+				padding-bottom: 0.1739rem;
+				.address_price_right_img {
+					img {
+						width: 4.7923rem;
+						height: 4.7923rem;
+						transform: rotate(-7deg);
+						margin-bottom: 0.2472rem;
+					}
+				}
+				.address_price_left_desc {
+					// margin-left: 0.73rem;
+					.mb_price_title{
+						display: flex;
+						flex-direction:row;
+						img {
+							width: 0.44rem;
+							height: 0.44rem;
+							margin-right: 0.16rem;
+						}
+						.address_price_title {
+							width:5.62rem;
+							word-break: break-all;
+							// height: 0.5rem;
+							font-family: Alibaba-PuHuiTi-B;
+							font-weight: B;
+							font-size: 0.36rem;
+							color: #000000;
+							margin-bottom: 0.1266rem;
+						}
+
+					}
+					
+					.address_price_desc {
+						width: 6.22rem;
+						font-family: Alibaba-PuHuiTi-R;
+						font-weight: R;
+						font-size: 0.28rem;
+						color: #999999;
+						margin: 0;
+					}
+				}
+			
 			}
 		}
 	}
@@ -2220,8 +2358,7 @@ export default {
 					margin-bottom: 0.32rem;
 				}
 
-				.item_desc1 {
-					// width: 1.08rem;
+				.item_desc {
 					height: 0.5rem;
 					font-family: PingFangSC-Regular;
 					font-weight: 400;
@@ -2229,32 +2366,59 @@ export default {
 					color: #666666;
 					text-align: center;
 				}
-				.item_desc2 {
-					// width: 1.44rem;
-					height: 0.5rem;
-					font-family: PingFangSC-Regular;
-					font-weight: 400;
-					font-size: 0.18rem;
-					color: #666666;
-					text-align: center;
-				}
-				.item_desc3 {
-					// width: 1.66rem;
-					height: 0.5rem;
-					font-family: PingFangSC-Regular;
-					font-weight: 400;
-					font-size: 0.18rem;
-					color: #666666;
-					text-align: center;
-				}
-				.item_desc4 {
-					// width: 1.48rem;
-					height: 0.5rem;
-					font-family: PingFangSC-Regular;
-					font-weight: 400;
-					font-size: 0.18rem;
-					color: #666666;
-					text-align: center;
+			}
+		}
+	}
+
+	@media (max-width:750px) {
+		.gift_module {
+			padding-bottom: 0.01rem;
+			p {
+				margin: 0;
+			}
+			.title_text_gift {
+				height: 0.7rem;
+				font-size: 0.54rem;
+			}
+			.span_text_gift {
+				height: 0.9rem;
+				font-family: PingFangSC-Regular;
+				font-weight: 400;
+				font-size: 0.32rem;
+				text-align: center;
+				margin: 0.16rem 0.32rem 0.4rem;
+			}
+			.el-button {
+				width: 4.48rem;
+				height: 0.94rem;
+				border-radius: 0.47rem;
+				font-size: 0.32rem;
+			}
+			.four_gift_bottom {
+				margin-top: 1.23rem;
+				width: 6.86;
+				flex-wrap: wrap;
+				.four_gift_item {
+					margin-right: 0.14rem;
+					img {
+						width: 3.36rem;
+						margin-bottom: 0.24rem;
+					}
+					.item_title {
+						height: 0.38rem;
+						font-family: Womby-Regular;
+						font-weight: 400;
+						font-size: 0.32rem;
+						color: #000000;
+						letter-spacing: 0.01rem;
+						margin-bottom: 0.32rem;
+					}
+
+					.item_desc {
+						height: 1.2rem;
+						margin-bottom: 0.62rem;
+						font-size: 0.28rem;
+					}
 				}
 			}
 		}
@@ -2296,6 +2460,22 @@ export default {
 			// }
 		}
 	}
+	@media (max-width:750px) {
+		.partner_module {
+			margin-bottom: 0.42rem;
+			.partner_title {
+				height: 0.7rem;
+				font-size: 0.54rem;
+				margin-bottom: 0.45rem;
+			}
+			.partner_img {
+				img {
+					width: 3.11rem;
+					// height: 1.46rem;
+				}
+			}
+		}
+	}
 
 	.contact_us_module {
 		width: 19.2rem;
@@ -2324,6 +2504,7 @@ export default {
 			line-height: 1.47rem;
 			background: #ffffff;
 			border-radius: 0.12rem;
+			display: block;
 			.email {
 				width: 0.332rem;
 				height: 0.4rem;
@@ -2380,6 +2561,101 @@ export default {
 				margin-top: -0.12rem;
 				// opacity: 0;
 				// background: #000000;
+			}
+		}
+		.mb_contact_input {
+			display: none;
+		}
+	}
+	@media (max-width:750px) {
+		.contact_us_module {
+			width:7.5rem;
+			height: 4.58rem;
+			background-image: linear-gradient(
+				-60deg,
+				#6af0e9 0%,
+				#edafff 100%
+			);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			.contanct_title {
+				// width: 2.89rem;
+				height: 1.04rem;
+				font-family: YouSheBiaoTiYuan;
+				font-size: 0.8rem;
+				color: #ffffff;
+				letter-spacing: -0.0156rem;
+				margin: 0;
+				margin: 0.6rem 0;
+			}
+			.contact_input {
+				display: none;
+			}
+			.mb_contact_input {
+				display: block;
+				width: 16rem;
+				height: 1.47rem;
+				line-height: 1.47rem;
+				background: #ffffff;
+				border-radius: 0.12rem;
+				.email {
+					width: 0.332rem;
+					height: 0.4rem;
+					font-family: PingFangSC-Semibold;
+					font-weight: 600;
+					font-size: 0.28rem;
+					color: #000000;
+					letter-spacing: -0.0054rem;
+					margin-left: 0.84rem;
+					margin-right: 1.58rem;
+				}
+				.bottom_img {
+					img {
+						height: 0.33rem;
+						width: 0.33rem;
+						margin-right: 0.24rem;
+						vertical-align: middle;
+						margin-top: -0.1rem;
+					}
+					.bottom_icon3 {
+						margin-right: 0.6rem;
+					}
+				}
+				.img_left {
+					// border-left: 0.02rem solid #6af0e9;
+					margin: auto 0;
+					margin-right: 1.77rem;
+					height: 0.6rem;
+					display: inline-block;
+				}
+
+				.img_center {
+					width: 1.54rem;
+					height: 0.34rem;
+					font-family: Womby-Regular;
+					font-weight: 400;
+					font-size: 0.28rem;
+					color: #000000;
+					letter-spacing: -0.0054rem;
+					background-image: linear-gradient(
+						to right,
+						#edafff,
+						#6af0e9
+					);
+					-webkit-background-clip: text;
+					color: transparent;
+					margin-right: 3.6813rem;
+				}
+				.img_right {
+					// margin-right: 0.932rem;
+					width: 0.49rem;
+					height: 0.49rem;
+					vertical-align: middle;
+					margin-top: -0.12rem;
+					// opacity: 0;
+					// background: #000000;
+				}
 			}
 		}
 	}
