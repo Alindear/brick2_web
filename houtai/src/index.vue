@@ -305,9 +305,7 @@
                     v-if="!linkShowFlag"
                 >
                     <!-- v-if="!changeStatusShowFlag && !linkShowFlag" -->
-                    <p
-                        :class="$store.state.language === 'CN' ? 'dis_link' : 'dis_link_en'"
-                    >
+                    <p :class="$store.state.language === 'CN' ? 'dis_link' : 'dis_link_en'">
                         <!-- :style="{ 'font-size': $store.state.language === 'CN' ? '0.46rem' : '0.4rem',}" -->
                         <!-- 点击生成专属链接 -->
                         {{i18n.click_text}}
@@ -378,15 +376,15 @@
             </div>
 
         </div>
-				 <div class="mb_back_address_price_module">
+        <div class="mb_back_address_price_module">
             <div class="back_left_center_img"></div>
             <div
                 v-for="(item,index) in addressPriceList"
                 :key="index"
                 class="address_price_module"
-								:style="{ 'background' : index === 0 ? '#ffffff' : '#f8f8f8'}"
+                :style="{ 'background' : index === 0 ? '#ffffff' : '#f8f8f8'}"
             >
-								<div class="address_price_right_img">
+                <div class="address_price_right_img">
                     <img
                         :src="item.img"
                         alt=""
@@ -394,15 +392,14 @@
                 </div>
                 <div class="address_price_left_desc">
                     <div class="mb_price_title">
-											<img
-                        :src="item.icon"
-                        alt=""
-											>
-											<div class="address_price_title web-font">{{item.title}}</div>
-										</div>
+                        <img
+                            :src="item.icon"
+                            alt=""
+                        >
+                        <div class="address_price_title web-font">{{item.title}}</div>
+                    </div>
                     <p class="address_price_desc">{{item.desc}}</p>
                 </div>
-                
 
             </div>
 
@@ -524,19 +521,19 @@
 
             </div>
 
-						 <div class="mb_contact_input">
+            <div class="mb_contact_input">
                 <p class="email_top">E-mail: admin@bnsdid.io </p>
-								<div class="input_center">
-									<span class="img_center">SAY HI HERE</span>
-									<img
-											class="img_right"
-											:src="enterIcon"
-											alt=""
-									>
-								</div>
-               
+                <div class="input_center">
+                    <span class="img_center">SAY HI HERE</span>
+                    <img
+                        class="img_right"
+                        :src="enterIcon"
+                        alt=""
+                    >
+                </div>
+
                 <!-- <span class="img_left"></span> -->
-								 <span class="bottom_img">
+                <span class="bottom_img">
                     <img
                         class="bottom_icon1"
                         :src="twitterMBPng"
@@ -643,9 +640,8 @@ export default {
 			luckDrawShowFlag: false, // 参与抽奖
 			viewResultShowFlag: false, // 查看结果
 			luckOrNot: 'NO', //是否中奖
-			
-			luckOrNot: 'YES', //是否中奖
-			
+			// luckOrNot: 'YES', //是否中奖
+
 			openLinkShowFlag: false,
 			searchEnsLoading: false,
 			changeStatusShowFlag: false,
@@ -1181,8 +1177,8 @@ export default {
 		z-index: 1;
 	}
 	.header_web {
-			background: none;
-		}
+		background: none;
+	}
 	.back_top_img {
 		display: block;
 		width: 4.34rem;
@@ -1893,20 +1889,20 @@ export default {
 					// box-sizing: border-box;
 				}
 				.dis_link_en {
-						font-family: Alibaba-PuHuiTi-B;
-						font-weight: B;
-						font-size: 0.4rem;
-						background-image: linear-gradient(
-							to right,
-							#e5b3fd,
-							#7de7ec
-						);
-						-webkit-background-clip: text;
-						color: transparent;
-						// padding: 4.39rem 0 1.59rem 0.55rem;
-						margin: 4.72rem 0 1.25rem 0.88rem;
-						// box-sizing: border-box;
-					}
+					font-family: Alibaba-PuHuiTi-B;
+					font-weight: B;
+					font-size: 0.4rem;
+					background-image: linear-gradient(
+						to right,
+						#e5b3fd,
+						#7de7ec
+					);
+					-webkit-background-clip: text;
+					color: transparent;
+					// padding: 4.39rem 0 1.59rem 0.55rem;
+					margin: 4.72rem 0 1.25rem 0.88rem;
+					// box-sizing: border-box;
+				}
 			}
 			.left_img:hover {
 				border: 0.34rem solid;
@@ -2153,7 +2149,7 @@ export default {
 			.title_text {
 				font-size: 0.32rem;
 				margin-bottom: 0.3249rem;
-    		width: 7.5rem !important;
+				width: 7.5rem !important;
 			}
 			.button_text {
 				width: 6.86rem;
@@ -2188,7 +2184,6 @@ export default {
 		margin-bottom: 2rem;
 		display: block;
 		.back_left_center_img {
-
 			display: block;
 			width: 7.15rem;
 			height: 7.84rem;
@@ -2212,7 +2207,7 @@ export default {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
-			border: 0.01px solid #EDEDED;
+			border: 0.01px solid #ededed;
 			.address_price_left_desc {
 				margin-left: 0.73rem;
 				img {
@@ -2250,10 +2245,10 @@ export default {
 			}
 		}
 	}
-	.mb_back_address_price_module{
+	.mb_back_address_price_module {
 		display: none;
 	}
-	@media (max-width:750px) {
+	@media (max-width: 750px) {
 		.back_address_price_module {
 			display: none;
 		}
@@ -2268,7 +2263,7 @@ export default {
 				width: 6.86rem;
 				// height: 6.78rem;
 				height: 100%;
-				background: #FFFFFF;
+				background: #ffffff;
 				margin-bottom: 0.4rem;
 				display: flex;
 				flex-direction: column;
@@ -2288,16 +2283,16 @@ export default {
 				}
 				.address_price_left_desc {
 					// margin-left: 0.73rem;
-					.mb_price_title{
+					.mb_price_title {
 						display: flex;
-						flex-direction:row;
+						flex-direction: row;
 						img {
 							width: 0.44rem;
 							height: 0.44rem;
 							margin-right: 0.16rem;
 						}
 						.address_price_title {
-							width:5.62rem;
+							width: 5.62rem;
 							word-break: break-all;
 							// height: 0.5rem;
 							font-family: Alibaba-PuHuiTi-B;
@@ -2306,9 +2301,8 @@ export default {
 							color: #000000;
 							margin-bottom: 0.1266rem;
 						}
-
 					}
-					
+
 					.address_price_desc {
 						width: 6.22rem;
 						font-family: Alibaba-PuHuiTi-R;
@@ -2319,7 +2313,6 @@ export default {
 						word-break: break-all;
 					}
 				}
-			
 			}
 		}
 	}
@@ -2403,7 +2396,7 @@ export default {
 		}
 	}
 
-	@media (max-width:750px) {
+	@media (max-width: 750px) {
 		.gift_module {
 			padding-bottom: 0.01rem;
 			p {
@@ -2500,7 +2493,7 @@ export default {
 			// }
 		}
 	}
-	@media (max-width:750px) {
+	@media (max-width: 750px) {
 		.partner_module {
 			margin-bottom: 0.42rem;
 			.partner_title {
@@ -2607,7 +2600,7 @@ export default {
 			display: none;
 		}
 	}
-	@media (max-width:750px) {
+	@media (max-width: 750px) {
 		.contact_us_module {
 			width: 100%;
 			height: 4.58rem;
@@ -2622,10 +2615,9 @@ export default {
 			.contanct_title {
 				margin: 0;
 				margin: 0.4rem 0 0.16rem;
-				height: 0.70rem;
+				height: 0.7rem;
 				font-size: 0.54rem;
 				letter-spacing: -0.0105px;
-
 			}
 			.contact_input {
 				display: none;
@@ -2641,55 +2633,55 @@ export default {
 				flex-direction: column;
 				.email_top {
 					width: 5.83rem;
-					height: 0.90rem;
-					line-height: 0.90rem;
-					background: rgba(255,255,255,0.10);
-					border: 0.005rem solid #FFFFFF;
+					height: 0.9rem;
+					line-height: 0.9rem;
+					background: rgba(255, 255, 255, 0.1);
+					border: 0.005rem solid #ffffff;
 					border-radius: 0.12rem;
 					font-family: PingFangSC-Regular;
 					font-weight: 400;
-					font-size: 0.30rem;
+					font-size: 0.3rem;
 					letter-spacing: 0;
 					margin: 0;
 					padding-left: 0.24rem;
-    			box-sizing: border-box;
+					box-sizing: border-box;
 					margin-bottom: 0.14rem;
 				}
-				.input_center{
+				.input_center {
 					width: 5.84rem;
-					height: 0.90rem;
+					height: 0.9rem;
 					line-height: 0.9rem;
-					background: #FFFFFF;
+					background: #ffffff;
 					border-radius: 0.12rem;
 					padding-left: 0.24rem;
-    			box-sizing: border-box;
+					box-sizing: border-box;
 					margin-bottom: 0.4rem;
-						.img_center {
-							width: 1.76rem;
-							height: 0.38rem;
-							font-family: Womby-Regular;
-							font-weight: 400;
-							font-size: 0.32rem;
-							color: #000000;
-							letter-spacing: -0.0054rem;
-							background-image: linear-gradient(
-								to right,
-								#edafff,
-								#6af0e9
-							);
-							-webkit-background-clip: text;
-							color: transparent;
-							margin-right: 3.15rem;
-						}
-						.img_right {
-							width: 0.44rem;
-							height: 0.44rem;
-							vertical-align: middle;
-							margin-top: -0.12rem;
-							margin: 0 0.24rem 0.23rem 0.23rem 0;
-						}
+					.img_center {
+						width: 1.76rem;
+						height: 0.38rem;
+						font-family: Womby-Regular;
+						font-weight: 400;
+						font-size: 0.32rem;
+						color: #000000;
+						letter-spacing: -0.0054rem;
+						background-image: linear-gradient(
+							to right,
+							#edafff,
+							#6af0e9
+						);
+						-webkit-background-clip: text;
+						color: transparent;
+						margin-right: 3.15rem;
 					}
-				
+					.img_right {
+						width: 0.44rem;
+						height: 0.44rem;
+						vertical-align: middle;
+						margin-top: -0.12rem;
+						margin: 0 0.24rem 0.23rem
+							0.23rem 0;
+					}
+				}
 
 				.bottom_img {
 					display: flex;
@@ -2714,10 +2706,9 @@ export default {
 		}
 	}
 }
-@media (max-width:750px) {
+@media (max-width: 750px) {
 	.app_main {
 		background: #f8f8f8;
 	}
-	
 }
 </style>

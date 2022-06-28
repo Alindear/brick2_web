@@ -8,7 +8,7 @@
             :close-on-click-modal="false"
         >
 
-				<!-- pc -->
+            <!-- pc -->
             <div
                 v-if="type === 'luckDraw'"
                 class="luck_draw"
@@ -49,19 +49,17 @@
                         {{i18n.gift_successfully}}
                     </span>
                 </div>
-                <div
-                    :class="$store.state.language === 'CN' ? 'input_bsc_luck' :'input_bsc_luck_en'"
-                >
+                <div :class="$store.state.language === 'CN' ? 'input_bsc_luck' :'input_bsc_luck_en'">
                     <!-- :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start', 'height': $store.state.language === 'CN' ? '0.7rem' : '1rem',}" -->
                     <p :class="$store.state.language === 'CN' ? 'left_bsc':'left_bsc_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
                         {{i18n.lucky_this}}
-												57892680.bsc
+                        578920.bsc
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc':'right_bsc_en'">
                         <!-- 本期奖品：889988.bsc -->
                         {{i18n.prize_this}}
-												889988.bsc
+                        889988.bsc
                     </p>
                 </div>
                 <div :class="$store.state.language === 'CN' ? 'pre_bsc_luck' : 'pre_bsc_luck_en'">
@@ -112,7 +110,7 @@
                 >
                     <p :class="$store.state.language === 'CN' ? 'left_bsc_result':'left_bsc_result_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
-                        {{i18n.lucky_this}}57892680.bsc
+                        {{i18n.lucky_this}}578680.bsc
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc_result':'right_bsc_result_en'">
                         <!-- 本期奖品：889988.bsc -->
@@ -181,7 +179,7 @@
                 >
                     <p :class="$store.state.language === 'CN' ? 'left_bsc':'left_bsc_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
-                        {{i18n.lucky_this}}57892680.bsc
+                        {{i18n.lucky_this}}578680.bsc
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc':'right_bsc_en'">
                         <!-- 本期奖品：889988.bsc -->
@@ -216,9 +214,9 @@
 
             </div>
 
-					<!-- mb -->
+            <!-- mb -->
 
- 						<div
+            <div
                 v-if="type === 'luckDraw'"
                 class="luck_mb_draw"
             >
@@ -226,17 +224,11 @@
                     class="top_title_luck"
                     :style="{ 'margin-bottom': $store.state.language === 'CN' ? '0.2rem' : '-0.02rem'}"
                 >
-                    <span
-                        class="title_text_luck"
-                        v-if="$store.state.language === 'CN'"
-                    >
-                        <!-- 已参与成功！ -->
-                        {{i18n.gift_successfully}}
+                    <span class="title_text_luck">
+                        <!-- {{i18n.gift_successfully}} -->
                     </span>
-                    <span
-                        class="title_text_luck"
-                        v-if="$store.state.language === 'EN'"
-                    ></span>
+
+                    <!-- 已参与成功！ -->
                     <img
                         :src="partakePng"
                         alt=""
@@ -249,28 +241,23 @@
                         @click="closeIconBtn"
                     >
                 </div>
-                <div
-                    class="top_title_luck"
-                    v-if="$store.state.language === 'EN'"
-                >
-                    <span style="width:100%;font-family: Futura-Bold;width: 4.33rem;height: 0.41rem;font-weight: Bold;font-size: 0.32rem;color: #80469D; margin: auto;,margin-bottom:0.25rem">
-                        <!-- 已参与成功！EN -->
+                <div :class="$store.state.language === 'CN' ? 'mb_title_text' :'mb_title_text_en'">
+                    <span class="title_text_luck">
                         {{i18n.gift_successfully}}
                     </span>
                 </div>
-                <div
-                    :class="$store.state.language === 'CN' ? 'input_bsc_luck' :'input_bsc_luck_en'"
-                >
+
+                <div :class="$store.state.language === 'CN' ? 'input_bsc_luck' :'input_bsc_luck_en'">
                     <!-- :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start', 'height': $store.state.language === 'CN' ? '0.7rem' : '1rem',}" -->
                     <p :class="$store.state.language === 'CN' ? 'left_bsc':'left_bsc_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
                         {{i18n.lucky_this}}
-												57892680.bsc
+                        578680.bsc
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc':'right_bsc_en'">
                         <!-- 本期奖品：889988.bsc -->
                         {{i18n.prize_this}}
-												889988.bsc
+                        889988.bsc
                     </p>
                 </div>
                 <div :class="$store.state.language === 'CN' ? 'pre_bsc_luck' : 'pre_bsc_luck_en'">
@@ -314,20 +301,17 @@
                         @click="closeIconBtn"
                     >
                 </div>
-								<div>
-									 <span :class="$store.state.language === 'CN' ? 'title_text_luck_result' : 'title_text_luck_result_en'">
+                <div class="en_and_mb_luck_result">
+                    <span :class="$store.state.language === 'CN' ? 'title_text_luck_result' : 'title_text_luck_result_en'">
                         <!-- 恭喜你中奖了！ -->
                         {{i18n.congratulations}}
                     </span>
-								</div>
+                </div>
 
-                <div
-                    class="input_bsc_luck_result"
-                    :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start', 'height': $store.state.language === 'CN' ? '0.7rem' : '1rem',}"
-                >
+                <div class="input_bsc_luck_result">
                     <p :class="$store.state.language === 'CN' ? 'left_bsc_result':'left_bsc_result_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
-                        {{i18n.lucky_this}}57892680.bsc
+                        {{i18n.lucky_this}}578680.bsc
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc_result':'right_bsc_result_en'">
                         <!-- 本期奖品：889988.bsc -->
@@ -357,17 +341,10 @@
                     :class="$store.state.language === 'CN' ? 'top_title' : 'top_title_en'"
                     v-if="type === 'viewResult' && luckOrNot === 'NO'"
                 >
-                    <span
-                        class="title_text"
-                        v-if="$store.state.language === 'CN'"
-                    >
+                    <span class="title_text">
                         <!-- 很遗憾没中奖 -->
-                        {{i18n.sorry_prize}}
+                        <!-- {{i18n.sorry_prize}} -->
                     </span>
-                    <span
-                        class="title_text"
-                        v-if="$store.state.language === 'EN'"
-                    ></span>
 
                     <img
                         :src="disprizePng"
@@ -381,11 +358,9 @@
                         @click="closeIconBtn"
                     >
                 </div>
-                <div
-                    class="title_text"
-                    v-if="$store.state.language === 'EN'"
-                >
-                    <span>
+
+                <div class="title_text_mb">
+                    <span class="title_text">
                         <!-- 很遗憾没中奖 -->
                         {{i18n.sorry_prize}}
                     </span>
@@ -396,7 +371,7 @@
                 >
                     <p :class="$store.state.language === 'CN' ? 'left_bsc':'left_bsc_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
-                        {{i18n.lucky_this}}57892680.bsc
+                        {{i18n.lucky_this}}572680.bsc
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc':'right_bsc_en'">
                         <!-- 本期奖品：889988.bsc -->
@@ -415,7 +390,6 @@
                 </p>
 
             </div>
-
 
         </el-dialog>
 
@@ -642,11 +616,11 @@ export default {
 			}
 		}
 	}
-	.luck_mb_draw{
+	.luck_mb_draw {
 		display: none;
 	}
-	@media (max-width:750px) {
-		.luck_draw{
+	@media (max-width: 750px) {
+		.luck_draw {
 			display: none;
 		}
 		.luck_mb_draw {
@@ -658,14 +632,15 @@ export default {
 				.title_text_luck {
 					width: 3.69rem;
 					font-family: YouSheBiaoTiYuan;
-					font-size: 0.6rem;
+					font-size: 0.68rem;
 					color: #80469d;
 					margin: 0.62rem 0 0 0.9rem;
+					margin-bottom: 0.16rem;
 				}
 				.img_icon_luck {
-					width: 2.0784rem;
-					height: 2.21rem;
-					margin-top: -1.2299rem;
+					width: 2.37rem;
+					height: 2.53rem;
+					margin-top: -1.79rem;
 				}
 				.close_icon_luck {
 					width: 0.4rem;
@@ -674,48 +649,75 @@ export default {
 					margin: 0.4rem 0.4rem 0 -0.25rem;
 				}
 			}
+			.mb_title_text {
+				margin-bottom: 0.16rem;
+				.title_text_luck {
+					width: 3.69rem;
+					font-family: YouSheBiaoTiYuan;
+					font-size: 0.68rem;
+					color: #80469d;
+					margin: 0.62rem 0 0 0.9rem;
+					margin-bottom: 0.16rem;
+					word-break: break-word;
+				}
+			}
+			.mb_title_text_en {
+				margin-bottom: 0.16rem;
+				text-align: center;
+				.title_text_luck {
+					width: 3.69rem;
+					font-family: YouSheBiaoTiYuan;
+					font-size: 0.68rem;
+					color: #80469d;
+					margin: 0.62rem 0 0 0rem;
+					margin-bottom: 0.16rem;
+					word-break: break-word;
+				}
+			}
 			.input_bsc_luck {
-					width: 5.08rem;
-					height: 1.1rem;
-					background: rgba(138, 62, 162, 0.03);
-					border: 0.01rem solid rgba(138, 62, 162, 0.55);
-					border-radius: 0.12rem;
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					align-items: flex-start;
-					// margin: auto;
-					padding: 0 0.25rem;
-					margin: 0 0.66rem;
-					// margin: 0 0.66rem 0.3rem;
-					box-sizing: border-box;
-					p {
-						margin: 0;
-					}
-					.left_bsc {
-						// width: 2.02rem;
-						height: 0.42rem;
-    				line-height: 0.42rem;
-						font-family: Alibaba-PuHuiTi-B;
-						font-weight: B;
-						font-size: 0.3rem;
-						color: #000000;
-					}
-					.right_bsc {
-						// width: 1.67rem;
-						height: 0.42rem;
-    				line-height: 0.42rem;
-						font-family: Alibaba-PuHuiTi-B;
-						font-weight: B;
-						font-size: 0.3rem;
-						color: #000000;
-					}
-					.left_bsc_en {
-						margin: 0.24rem 0 0.08rem 0;
-					}
-					.right_bsc_en {
-						margin: 0 0 0.24rem 0;
-					}
+				width: 5.08rem;
+				height: 1.86rem;
+				background: rgba(138, 62, 162, 0.03);
+				border: 0.01rem solid rgba(138, 62, 162, 0.55);
+				border-radius: 0.12rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: flex-start;
+				// margin: auto;
+				// padding: 0 0.25rem;
+				margin: 0 0.66rem;
+				// margin: 0 0.66rem 0.3rem;
+				box-sizing: border-box;
+				p {
+					margin: 0;
+				}
+				.left_bsc {
+					// width: 2.02rem;
+					height: 0.42rem;
+					line-height: 0.42rem;
+					font-family: Alibaba-PuHuiTi-M;
+					font-weight: M;
+					font-size: 0.3rem;
+					color: #000000;
+					margin: 0.4rem 0 0.22rem 0.4rem;
+				}
+				.right_bsc {
+					// width: 1.67rem;
+					height: 0.42rem;
+					line-height: 0.42rem;
+					font-family: Alibaba-PuHuiTi-M;
+					font-weight: M;
+					font-size: 0.3rem;
+					color: #000000;
+					margin: 0 0 0.4rem 0.4rem;
+				}
+				.left_bsc_en {
+					margin: 0.24rem 0 0.08rem 0;
+				}
+				.right_bsc_en {
+					margin: 0 0 0.24rem 0;
+				}
 			}
 			.input_bsc_luck_en {
 				width: 5.08rem;
@@ -732,27 +734,29 @@ export default {
 				padding: 0 0.25rem;
 				margin: 0 0.66rem;
 				// margin: 0 0.66rem 0.3rem;
-				box-sizing: border-box;
+				// box-sizing: border-box;
 				p {
 					margin: 0;
 				}
 				.left_bsc {
 					// width: 2.02rem;
-    			height: 0.42rem;
-    			line-height: 0.42rem;
-					font-family: Alibaba-PuHuiTi-B;
-					font-weight: B;
+					height: 0.42rem;
+					line-height: 0.42rem;
+					font-family: Alibaba-PuHuiTi-M;
+					font-weight: M;
 					font-size: 0.3rem;
 					color: #000000;
+					margin: 0.24rem 0 0.22rem 0.9rem;
 				}
 				.right_bsc {
 					// width: 1.67rem;
-    			height: 0.42rem;
-    			line-height: 0.42rem;
-					font-family: Alibaba-PuHuiTi-B;
-					font-weight: B;
+					height: 0.42rem;
+					line-height: 0.42rem;
+					font-family: Alibaba-PuHuiTi-M;
+					font-weight: M;
 					font-size: 0.3rem;
 					color: #000000;
+					margin: 0 0 0.43rem 0.9rem;
 				}
 				.left_bsc_en {
 					margin: 0.24rem 0 0.08rem 0;
@@ -766,7 +770,7 @@ export default {
 				flex-direction: column;
 				justify-content: center;
 				align-items: flex-start;
-				.left_bsc {    
+				.left_bsc {
 					height: 0.42rem;
 					font-family: Alibaba-PuHuiTi-R;
 					font-weight: R;
@@ -811,16 +815,16 @@ export default {
 				justify-content: center;
 				margin: 0 0.66rem 0;
 				img {
-					width: 0.22rem;
-					height: 0.22rem;
-					margin-right: 0.08rem;
+					width: 0.44rem;
+					height: 0.44rem;
+					margin-right: 0.16rem;
 				}
 				span {
 					// width: 1.8rem;
-					height: 0.22rem;
+					height: 0.38rem;
 					font-family: Alibaba-PuHuiTi-R;
 					font-weight: R;
-					font-size: 0.16rem;
+					font-size: 0.28rem;
 					color: #999999;
 				}
 			}
@@ -944,12 +948,12 @@ export default {
 			}
 		}
 	}
-	.luck_mb_result{
+	.luck_mb_result {
 		display: none;
 	}
 
-	@media (max-width:750px) {
-		.luck_result{
+	@media (max-width: 750px) {
+		.luck_result {
 			display: none;
 		}
 		.luck_mb_result {
@@ -958,7 +962,25 @@ export default {
 				display: flex;
 				flex-direction: row;
 				margin-bottom: 0.2rem;
-			
+
+				.title_text_luck_result {
+					width: 4.44rem;
+					font-family: YouSheBiaoTiYuan;
+					font-size: 0.68rem;
+					color: #ff870b;
+					margin: 0.62rem 0 0.16rem 0.9rem;
+				}
+				.title_text_luck_result_en {
+					margin: 0.62rem 0 0 0.9rem;
+					width: 2.86rem;
+					height: 0.41rem;
+					font-family: Futura-Bold;
+					font-weight: Bold;
+					font-size: 0.56rem;
+					color: #ff870b;
+					margin-bottom: 0.16rem;
+				}
+
 				.img_icon_luck_result {
 					width: 1.8978rem;
 					height: 2.04rem;
@@ -970,8 +992,9 @@ export default {
 					background: #d8d8d8;
 					margin: 0.4rem 0.4rem 0 -0.05rem;
 				}
-			
 			}
+			.en_and_mb_luck_result {
+				margin-bottom: 0.16rem;
 				.title_text_luck_result {
 					width: 4.44rem;
 					font-family: YouSheBiaoTiYuan;
@@ -979,15 +1002,17 @@ export default {
 					color: #ff870b;
 					margin: 0.62rem 0 0.16rem 0.9rem;
 				}
-					.title_text_luck_result_en {
-					margin: 0.82rem 0 0 0.9rem;
+				.title_text_luck_result_en {
+					margin: 0.62rem 0 0 0.85rem;
 					width: 2.86rem;
 					height: 0.41rem;
 					font-family: Futura-Bold;
 					font-weight: Bold;
-					font-size: 0.32rem;
+					font-size: 0.6rem;
 					color: #ff870b;
+					margin-bottom: 0.16rem;
 				}
+			}
 
 			.input_bsc_luck_result {
 				width: 5.86rem;
@@ -999,35 +1024,35 @@ export default {
 				flex-direction: column;
 				justify-content: center;
 				align-items: flex-start;
-				// margin: auto;
-				padding: 0 0.25rem;
-				margin: 0 0.66rem;
-				// margin: 0 0.66rem 0.3rem;
+				padding: 0;
+				margin: 0 0.5rem;
 				box-sizing: border-box;
 				p {
 					margin: 0;
 				}
 				.left_bsc_result {
-					// width: 2.02rem;
-					height: 0.22rem;
-					font-family: Alibaba-PuHuiTi-B;
-					font-weight: B;
-					font-size: 0.16rem;
+					height: 0.42rem;
+					font-family: Alibaba-PuHuiTi-M;
+					font-weight: M;
+					font-size: 0.3rem;
 					color: #000000;
+					margin: 0.4rem 0 0.22rem 0.4rem;
 				}
 				.right_bsc_result {
-					// width: 1.67rem;
-					height: 0.22rem;
-					font-family: Alibaba-PuHuiTi-B;
-					font-weight: B;
-					font-size: 0.16rem;
+					height: 0.42rem;
+					font-family: Alibaba-PuHuiTi-M;
+					font-weight: M;
+					font-size: 0.3rem;
 					color: #000000;
+					margin: 0 0 0.4rem 0.4rem;
 				}
 				.left_bsc_result_en {
-					margin: 0.24rem 0 0.08rem 0;
+					// height: 0.42rem;
+					margin: 0.4rem 0 0.22rem 0.4rem;
 				}
 				.right_bsc_result_en {
-					margin: 0 0 0.24rem 0;
+					// height: 0.42rem;
+					margin: 0 0 0.4rem 0.4rem;
 				}
 			}
 			.pre_bsc_luck_result {
@@ -1039,12 +1064,12 @@ export default {
 					text-align: center;
 					margin: 0;
 					// width: 150rem;
-					height: 0.22rem;
+					height: 0.38rem;
 					font-family: Alibaba-PuHuiTi-R;
 					font-weight: R;
-					font-size: 0.16rem;
+					font-size: 0.28rem;
 					color: #ff0000;
-					margin: 0.16rem 0 0.32rem;
+					margin: 0.4rem 0 0.35rem;
 				}
 			}
 
@@ -1053,23 +1078,25 @@ export default {
 				justify-content: center;
 				margin: 0 0.66rem 0;
 				img {
-					width: 0.22rem;
-					height: 0.22rem;
-					margin-right: 0.08rem;
+					width: 0.44rem;
+					height: 0.44rem;
+					margin-right: 0.16rem;
 				}
 				span {
 					// width: 1.8rem;
-					height: 0.22rem;
+					height: 0.38rem;
 					font-family: Alibaba-PuHuiTi-R;
 					font-weight: R;
-					font-size: 0.16rem;
+					font-size: 0.28rem;
 					color: #999999;
 				}
 			}
 		}
 	}
 
+	// 查看结果 很遗憾 ///
 	.sorry_result {
+		display: block;
 		.top_title {
 			display: flex;
 			flex-direction: row;
@@ -1221,7 +1248,176 @@ export default {
 			}
 		}
 	}
+	.sorry_mb_result {
+		display: none;
+	}
+	@media (max-width: 750px) {
+		.sorry_result {
+			display: none;
+		}
+		.sorry_mb_result {
+			display: block;
+			.top_title {
+				display: flex;
+				flex-direction: row;
+				margin-bottom: 0rem;
+				.title_text {
+					width: 2.65rem;
+					height: 0.02rem;
+					font-family: YouSheBiaoTiYuan;
+					font-size: 0.68rem;
+					color: #000000;
+					margin: 0.02rem 0 0 0.9rem;
+				}
+				.img_icon {
+					width: 1.91rem;
+					height: 1.91rem;
+					margin-top: -1.06rem;
+				}
+				.close_icon {
+					width: 0.48rem;
+					height: 0.48rem;
+					background: #d8d8d8;
+					margin: 0.4rem 0.4rem 0 0.25rem;
+				}
+			}
+			.title_text_mb {
+				.title_text {
+					width: 3.76rem;
+					// height: 0.88rem;
+					font-family: YouSheBiaoTiYuan;
+					font-size: 0.68rem;
+					color: #000000;
+					margin: 0.62rem 0 0.22rem 0.9rem;
+				}
+			}
+			.title_text {
+				width: 3.26rem;
+				height: 0.82rem;
+				font-size: 0.32rem;
+				color: #000000;
+				margin: 0 0 0.22rem 0.9rem;
+				font-family: Futura-Bold;
+				font-weight: Bold;
+			}
 
+			.input_bsc {
+				width: 5.86rem;
+				height: 1.86rem;
+				background: rgba(237, 237, 237, 0.21);
+				border: 0.01rem solid #d8d8d8;
+				border-radius: 0.12rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0;
+				margin: 0 0.66rem 0.3rem;
+				box-sizing: border-box;
+
+				.left_bsc {
+					// width: 2.02rem;
+					height: 0.22rem;
+					font-family: Alibaba-PuHuiTi-B;
+					font-weight: B;
+					font-size: 0.16rem;
+					color: #000000;
+					// margin: 0.16rem 0 0.08rem 0.9rem;
+				}
+				.right_bsc {
+					// width: 1.67rem;
+					height: 0.22rem;
+					font-family: Alibaba-PuHuiTi-B;
+					font-weight: B;
+					font-size: 0.16rem;
+					color: #000000;
+					// margin: 0.16rem 0 0.32rem 0.9rem;
+				}
+			}
+
+			.top_title_en {
+				display: flex;
+				flex-direction: row;
+				justify-content: end;
+				margin-bottom: -0.02rem;
+				.title_text {
+					// width: 2.65rem;
+					// height: 0.62rem;
+					// font-family: YouSheBiaoTiYuan;
+					// font-size: 0.48rem;
+					// color: #000000;
+					// margin: 0.82rem 0 0.22rem 0.9rem;
+					margin: 0;
+				}
+				.img_icon {
+					width: 1.7rem;
+					height: 1.7rem;
+					margin-top: -0.65rem;
+				}
+				.close_icon {
+					width: 0.4rem;
+					height: 0.4rem;
+					background: #d8d8d8;
+					margin: 0.4rem 0.4rem 0 0.25rem;
+				}
+			}
+
+			.input_bsc_en {
+				width: 5.08rem;
+				background: rgba(255, 220, 0, 0.03);
+				border: 0.01rem solid #ffdc00;
+				border-radius: 0.12rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				padding: 0 0.25rem;
+				margin: 0 0.66rem;
+				box-sizing: border-box;
+				margin-bottom: 0.24rem;
+				p {
+					margin: 0;
+				}
+				.left_bsc {
+					height: 0.22rem;
+					font-family: Alibaba-PuHuiTi-B;
+					font-weight: B;
+					font-size: 0.16rem;
+					color: #000000;
+				}
+				.right_bsc {
+					height: 0.22rem;
+					font-family: Alibaba-PuHuiTi-B;
+					font-weight: B;
+					font-size: 0.16rem;
+					color: #000000;
+				}
+				.left_bsc_en {
+					margin: 0.24rem 0 0.08rem 0;
+				}
+				.right_bsc_en {
+					margin: 0 0 0.24rem 0;
+				}
+			}
+			.bottom_logo {
+				display: flex;
+				justify-content: center;
+				margin: 0 0.66rem 0;
+				img {
+					width: 0.22rem;
+					height: 0.22rem;
+					margin-right: 0.08rem;
+				}
+				span {
+					// width: 1.8rem;
+					height: 0.22rem;
+					font-family: Alibaba-PuHuiTi-R;
+					font-weight: R;
+					font-size: 0.16rem;
+					color: #999999;
+				}
+			}
+		}
+	}
 	// #6e7071
 	// #4b4b4b
 	/deep/.el-dialog {
@@ -1232,8 +1428,8 @@ export default {
 		border-radius: 0.32rem;
 		margin-top: 3.78rem !important;
 	}
-	@media (max-width:750px) {
-			/deep/.el-dialog {
+	@media (max-width: 750px) {
+		/deep/.el-dialog {
 			width: 6.88rem;
 			// height: 3.68rem;
 			min-height: 3.68rem;
@@ -1252,6 +1448,5 @@ export default {
 	/deep/.el-dialog__wrapper {
 		background: #4b4b4b;
 	}
-
 }
 </style>
