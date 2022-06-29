@@ -360,7 +360,7 @@
                 </div>
 
                 <div class="title_text_mb">
-                    <span class="title_text">
+                    <span :class="$store.state.language === 'CN' ? 'title_text' : 'title_text_en'">
                         <!-- 很遗憾没中奖 -->
                         {{i18n.sorry_prize}}
                     </span>
@@ -1282,6 +1282,7 @@ export default {
 				}
 			}
 			.title_text_mb {
+				margin-bottom: 0.16rem;
 				.title_text {
 					width: 3.76rem;
 					// height: 0.88rem;
@@ -1289,6 +1290,16 @@ export default {
 					font-size: 0.68rem;
 					color: #000000;
 					margin: 0.62rem 0 0.22rem 0.9rem;
+				}
+				.title_text_en{
+						width: 100%;
+						font-family: Futura-Bold;
+						font-weight: Bold;
+						font-size: 0.68rem;
+						color: #000000;
+						margin: 0;
+						display: block;
+						text-align: center;
 				}
 			}
 			.title_text {
@@ -1310,28 +1321,26 @@ export default {
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
-				align-items: center;
+				align-items: flex-start;
 				padding: 0;
 				margin: 0 0.66rem 0.3rem;
 				box-sizing: border-box;
 
 				.left_bsc {
-					// width: 2.02rem;
-					height: 0.22rem;
-					font-family: Alibaba-PuHuiTi-B;
-					font-weight: B;
-					font-size: 0.16rem;
+					height: 0.42rem;
+					font-family: Alibaba-PuHuiTi-M;
+					font-weight: M;
+					font-size: 0.3rem;
 					color: #000000;
-					// margin: 0.16rem 0 0.08rem 0.9rem;
+					margin: 0.4rem 0 0.22rem 0.4rem;
 				}
 				.right_bsc {
-					// width: 1.67rem;
-					height: 0.22rem;
-					font-family: Alibaba-PuHuiTi-B;
-					font-weight: B;
-					font-size: 0.16rem;
+					height: 0.42rem;
+					font-family: Alibaba-PuHuiTi-M;
+					font-weight: M;
+					font-size: 0.3rem;
 					color: #000000;
-					// margin: 0.16rem 0 0.32rem 0.9rem;
+					margin: 0rem 0 0.4rem 0.4rem;
 				}
 			}
 
@@ -1341,12 +1350,13 @@ export default {
 				justify-content: end;
 				margin-bottom: -0.02rem;
 				.title_text {
-					// width: 2.65rem;
-					// height: 0.62rem;
-					// font-family: YouSheBiaoTiYuan;
-					// font-size: 0.48rem;
-					// color: #000000;
-					// margin: 0.82rem 0 0.22rem 0.9rem;
+					width: 2.65rem;
+					height: 0.62rem;
+					font-family: Futura-Bold;
+    			font-weight: Bold;
+					font-size: 0.48rem;
+					color: #000000;
+					margin: 0.82rem 0 0.22rem 0.9rem;
 					margin: 0;
 				}
 				.img_icon {
@@ -1401,18 +1411,19 @@ export default {
 			.bottom_logo {
 				display: flex;
 				justify-content: center;
-				margin: 0 0.66rem 0;
+				align-items: center;
+    		margin: 0;
 				img {
-					width: 0.22rem;
-					height: 0.22rem;
-					margin-right: 0.08rem;
+					width: 0.44rem;
+					height: 0.44rem;
+					margin-right: 0.16rem;
 				}
 				span {
 					// width: 1.8rem;
-					height: 0.22rem;
+					height: 0.38rem;
 					font-family: Alibaba-PuHuiTi-R;
 					font-weight: R;
-					font-size: 0.16rem;
+					font-size: 0.28rem;
 					color: #999999;
 				}
 			}

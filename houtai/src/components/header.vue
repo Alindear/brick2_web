@@ -167,7 +167,28 @@
                         </el-button>
                     </div>
                 </div>
-                <el-form action="javascript:return true">
+								<div class="input_module">
+									<div class="input_back">
+									</div>
+									<el-form action="javascript:return true"  class="input_form">
+											<el-input
+													class="input_search"
+													:placeholder="i18n.placeholder"
+													v-model="searchText"
+													type="search"
+													@input="searchTextChange"
+													@keyup.13.native="searchEns"
+											>
+													<i></i>
+													<img
+															slot="suffix"
+															:src="searchblack"
+															alt=""
+													>
+											</el-input>
+									</el-form>
+								</div>
+                <!-- <el-form action="javascript:return true" class="input_form">
                     <el-input
                         class="input_search"
                         :placeholder="i18n.placeholder"
@@ -176,17 +197,14 @@
                         @input="searchTextChange"
                         @keyup.13.native="searchEns"
                     >
-                        <!-- <i
-                    slot="suffix"
-                    class="el-input__icon el-icon-date"
-                ></i> -->
+                        <i></i>
                         <img
                             slot="suffix"
                             :src="searchblack"
                             alt=""
                         >
                     </el-input>
-                </el-form>
+                </el-form> -->
             </div>
 
             <p @click="goRouter('/index')">
@@ -458,7 +476,6 @@ export default {
 				path: type,
 			});
 		},
-
 		searchTextChange() {
 			console.log('域名发生变化');
 			this.isExist = null;
@@ -815,10 +832,13 @@ export default {
 		padding: 0.19rem 0.32rem;
 		box-sizing: border-box;
 		.menu_connect_search {
+			  display: flex;
+    		flex-direction: column;
 			.connect_status {
 				display: flex;
 				flex-direction: row;
 				height: 0.77rem;
+    		margin-bottom: 0.32rem;
 				// line-height: 0.77rem;
 				.on_connect {
 					display: flex;
@@ -857,7 +877,8 @@ export default {
 				}
 				.connect_text {
 					// width: 1.8rem;
-					height: 0.45rem;
+					// height: 0.45rem;
+					// height: 100%;
 					font-family: PingFangSC-Regular;
 					font-weight: 400;
 					font-size: 0.32rem;
@@ -883,30 +904,74 @@ export default {
 					// border: none;
 				}
 			}
-			.input_search {
-				/deep/.el-input__inner {
+			.input_module{
+				position: relative;
+				.input_back{
+					position: absolute;
 					width: 5.8rem;
 					height: 0.96rem;
+					border-radius: 0.48rem;
 					opacity: 0.2;
 					background-image: linear-gradient(
 						-60deg,
 						rgb(106, 240, 233, 0.2) 0%,
 						rgb(237, 175, 255, 0.2) 100%
 					);
-					border-radius: 0.48rem;
-					font-family: PingFangSC-Regular;
-					font-weight: 400;
-					font-size: 0.32rem;
-					color: #999999;
-					opacity: 1;
-					border: none;
 				}
-				img {
-					height: 0.32rem;
-					margin: 0.32rem;
-					margin-right: 0.52rem;
+				.input_form{
+						// opacity: 0.2;
+						// background-image: linear-gradient(
+						// 	-60deg,
+						// 	rgb(106, 240, 233, 0.2) 0%,
+						// 	rgb(237, 175, 255, 0.2) 100%
+						// );
+					.input_search {
+						/deep/.el-input__inner {
+							width: 5.8rem;
+							height: 0.96rem;
+							border-radius: 0.48rem;
+							font-family: PingFangSC-Regular;
+							font-weight: 400;
+							font-size: 0.32rem;
+							color: #999999;
+							// opacity: 1;
+							border: none;
+   						 background: none;
+						}
+						img {
+							height: 0.32rem;
+							margin: 0.32rem;
+							margin-right: 0.52rem;
+						}
+					}
+
 				}
 			}
+		
+			// .input_search {
+			// 	/deep/.el-input__inner {
+			// 		width: 5.8rem;
+			// 		height: 0.96rem;
+			// 		opacity: 0.2;
+			// 		background-image: linear-gradient(
+			// 			-60deg,
+			// 			rgb(106, 240, 233, 0.2) 0%,
+			// 			rgb(237, 175, 255, 0.2) 100%
+			// 		);
+			// 		border-radius: 0.48rem;
+			// 		font-family: PingFangSC-Regular;
+			// 		font-weight: 400;
+			// 		font-size: 0.32rem;
+			// 		color: #999999;
+			// 		opacity: 1;
+			// 		border: none;
+			// 	}
+			// 	img {
+			// 		height: 0.32rem;
+			// 		margin: 0.32rem;
+			// 		margin-right: 0.52rem;
+			// 	}
+			// }
 		}
 
 		p {
@@ -1081,11 +1146,7 @@ export default {
 				}
 			}
 		}
-		// .el-input {
-		// 	width: 14rem;
-		// 	height: 0.96rem;
-		// 	border-radius: 0.32rem;
-		// }
+	
 		.his_list {
 			display: flex;
 			flex-direction: row;

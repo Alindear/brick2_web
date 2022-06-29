@@ -1923,6 +1923,19 @@ export default {
 					// padding: 4.72rem 0 1.25rem 0.88rem;
 					// box-sizing: border-box;
 				}
+				.dis_link_en {
+					font-family: Alibaba-PuHuiTi-B;
+					font-weight: B;
+					font-size: 0.4rem;
+					background-image: linear-gradient(
+						to right,
+						#e5b3fd,
+						#7de7ec
+					);
+					-webkit-background-clip: text;
+					color: transparent;
+					margin: 4.39rem 0 1.59rem 0.55rem;
+				}
 			}
 			.right_img {
 				width: 8rem;
@@ -1939,7 +1952,8 @@ export default {
 				box-sizing: border-box;
 				.now_profit {
 					margin-left: 0.69rem;
-					margin-bottom: 1.95rem;
+					// margin-bottom: 1.95rem;
+					margin-bottom: 0.95rem;
 					.profit_text {
 						// width: 0.95rem;
 						height: 0.33rem;
@@ -2047,30 +2061,26 @@ export default {
 				.right_img {
 					width: 5.68rem;
 					height: 3.2rem;
-					// display: flex;
-					// flex-direction: column;
-					// align-items: center;
 					.now_profit {
-						margin-left: 0.69rem;
-						margin-bottom: 1.95rem;
+						margin-left: 0.4rem;
+						margin-bottom: 0.16rem;
 						.profit_text {
-							// width: 0.95rem;
 							height: 0.33rem;
 							font-family: Alibaba-PuHuiTi-R;
 							font-weight: R;
-							font-size: 0.24rem;
+							font-size: 0.28rem;
 							color: #000000;
-							margin: 0.99rem 0
-								0.32rem;
+							margin: 0.16rem 0;
+							text-align: center;
 						}
 						.profit_num {
 							width: 5.69rem;
-							height: 0.6rem;
+							height: 0.44rem;
 							font-family: Womby-Regular;
 							font-weight: 400;
-							font-size: 0.64rem;
+							font-size: 0.32rem;
 							color: #000000;
-							letter-spacing: 0.04rem;
+							letter-spacing: 0.01rem;
 						}
 					}
 					.dis_content {
@@ -2090,6 +2100,8 @@ export default {
 						padding: 0 0.75rem;
 						font-size: 0.32rem;
 						border: none;
+						margin: 0 auto;
+    				display: block;
 					}
 				}
 			}
@@ -2372,6 +2384,7 @@ export default {
 				margin-right: 0.16rem;
 				img {
 					width: 3.88rem;
+    			height: 2.0913rem;
 					margin-bottom: 0.1787rem;
 				}
 				.item_title {
@@ -2385,7 +2398,7 @@ export default {
 				}
 
 				.item_desc {
-					height: 0.5rem;
+					height: 0.75rem;
 					font-family: PingFangSC-Regular;
 					font-weight: 400;
 					font-size: 0.18rem;

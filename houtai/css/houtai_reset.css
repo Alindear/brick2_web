@@ -142,6 +142,16 @@ html body {
         font-size: 0.26rem;
         margin-right: 0.16rem;
     }
+    .el-input {
+        display: block;
+    }
+    .el-radio__inner::after{
+        width: 0.2rem;
+        height: 0.2rem;
+        background-image: url('houtai/img/首页/编组 12@3x.png');
+        background-size: 100% 100%;
+        border: none;
+    }
 }
 .el-popper .popper__arrow {
     border-width: 0;
@@ -177,6 +187,7 @@ html body {
   /* border-bottom: 1px solid #EEEEEE;*/
     border-bottom: none;
 }
+
 /* .web-font {
   font-family: "PangMenZhengDao" !important;
   font-size: 1rem;
@@ -242,13 +253,14 @@ html body {
 
 .el-radio__input.is-checked .el-radio__inner {
     background-color: inherit;
+    border-color: inherit;
+    background: inherit;
 }
 
 .el-radio__input.is-checked + .el-radio__label {
     color: #999999 !important;
 }
 .el-radio__inner::after{
-
     width: 0.2rem;
     height: 0.2rem;
     background-image: url('houtai/img/首页/编组 12@3x.png');
