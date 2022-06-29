@@ -15,8 +15,7 @@ contract Lottery is VRFConsumerBaseV2 {
     // TODO 测试配置
     address vrfCoordinator = 	0x6A2AAd07396B36Fe02a22b33cf443582f682c82f;
     bytes32 keyHash = 0xd4bb89654db74673a187bd804519e65e3f71a52bc55f11da7601a13dcf505314;
-    address public BNSAddress = 0x6A2AAd07396B36Fe02a22b33cf443582f682c82f;
-    BNSRegistry public _bns = BNSRegistry(BNSAddress);
+    BNSRegistry public _bns = BNSRegistry(0x6A2AAd07396B36Fe02a22b33cf443582f682c82f);
     uint32 callbackGasLimit = 1000000;
     uint16 requestConfirmations = 3;
     uint32 numWords =  1;
@@ -56,8 +55,8 @@ contract Lottery is VRFConsumerBaseV2 {
         cycles[index].lotteryPool  = _lotteryPool;
     }
 
-    constructor(uint64 subscriptionId) VRFConsumerBaseV2(vrfCoordinator) {
-        initCycle(block.timestamp,true,7,new bytes32[](0));
+    constructor(uint64 subscriptionId,uint256 _dayNum) VRFConsumerBaseV2(vrfCoordinator) {
+        initCycle(block.timestamp,true,_dayNum,new bytes32[](0));
         COORDINATOR = VRFCoordinatorV2Interface(vrfCoordinator);
         s_owner = msg.sender;
         s_subscriptionId = subscriptionId;
@@ -105,7 +104,7 @@ contract Lottery is VRFConsumerBaseV2 {
     }
 
     function getMyLottery() public view returns (bytes32) {
-        if(!checkEnable()) return 0;
+        if(checkEnable()) return 0;
         return cycles[index].holderLottery[msg.sender];
     }
 
@@ -116,11 +115,14 @@ contract Lottery is VRFConsumerBaseV2 {
     // TODO 临时替换奖池的方法
 
     function openLottery(bytes32[] memory _lotteryPool,uint256 _startTime,uint256 _dayNum) public onlyOwner{
+        require(!checkEnable(),"not end");
+        requestRandomWords();
         initCycle(_startTime,false,_dayNum,_lotteryPool);
     }
 
     function closLottery() public onlyOwner{
         // TODO 1. 关闭cycle
+        require(!checkEnable(),"not end");
         // 2. 分发奖池nft
         if(cycles[index].holders.length==0) return;
         bytes32[] memory nodes = new bytes32[](cycles[index].holders.length);
@@ -132,8 +134,7 @@ contract Lottery is VRFConsumerBaseV2 {
     }
 
     function setBns(address _bnsAddr) public onlyOwner{
-        BNSAddress = _bnsAddr;
-        _bns = BNSRegistry(BNSAddress);
+        _bns = BNSRegistry(_bnsAddr);
     }
 
 }
