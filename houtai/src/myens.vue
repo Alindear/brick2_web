@@ -79,26 +79,26 @@ export default {
 				'0x56789098765482345678987654367890876545643232123122346789090987',
 			bodyHeight: '',
 			myEnsNameList: [
-				{
-					ensName: 'benxiong.brick',
-					endTime: '2023.05.05',
-				},
-				{
-					ensName: 'benxiong.brick',
-					endTime: '2023.05.05',
-				},
-				{
-					ensName: 'benxiong.brick',
-					endTime: '2023.05.05',
-				},
-				{
-					ensName: 'benxiong.brick',
-					endTime: '2023.05.05',
-				},
-				{
-					ensName: 'benxiong.brick',
-					endTime: '2023.05.05',
-				},
+				// {
+				// 	ensName: 'benxiong.brick',
+				// 	endTime: '2023.05.05',
+				// },
+				// {
+				// 	ensName: 'benxiong.brick',
+				// 	endTime: '2023.05.05',
+				// },
+				// {
+				// 	ensName: 'benxiong.brick',
+				// 	endTime: '2023.05.05',
+				// },
+				// {
+				// 	ensName: 'benxiong.brick',
+				// 	endTime: '2023.05.05',
+				// },
+				// {
+				// 	ensName: 'benxiong.brick',
+				// 	endTime: '2023.05.05',
+				// },
 			],
 		};
 	},

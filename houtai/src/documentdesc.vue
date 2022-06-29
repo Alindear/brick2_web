@@ -38,7 +38,8 @@
                         </video>
                         <div class="video_btn">
                             <el-button @click="registerBtn">
-                                注册域名
+                                <!-- 注册域名 -->
+                                {{i18n.register_domain_names}}
                             </el-button>
                         </div>
                     </div>
@@ -110,7 +111,10 @@
                     :style="{ 'background': popoverClick1 ? '#F8FCFF' : '#e3f2ff'}"
                 >
                     <div class="card_list_text">
-                        <span>使用指南</span>
+                        <span>
+                            <!-- 使用指南 -->
+                            {{i18n.user_guide}}
+                        </span>
                         <img
                             :src="popoverClick1 ? arrow2Png : arrow1Png"
                             alt=""
@@ -138,7 +142,8 @@
                         </video>
                         <div class="video_btn">
                             <el-button @click="registerBtn">
-                                注册域名
+                                <!-- 注册域名 -->
+                                {{i18n.register_domain_names}}
                             </el-button>
                         </div>
                     </div>
@@ -151,7 +156,10 @@
                     :style="{ 'background': popoverClick2 ? '#F8FCFF' : '#e3f2ff'}"
                 >
                     <div class="card_list_text">
-                        <span>代币经济学</span>
+                        <span>
+                            <!-- 代币经济学 -->
+                            {{i18n.token_economy}}
+                        </span>
                         <img
                             :src="popoverClick2 ? arrow2Png : arrow1Png"
                             alt=""
@@ -183,7 +191,10 @@
                     :style="{ 'background': popoverClick3 ? '#F8FCFF' : '#e3f2ff'}"
                 >
                     <div class="card_list_text">
-                        <span>开发人员使用</span>
+                        <span>
+                            <!-- 开发人员使用 -->
+                            {{i18n.developer_use}}
+                        </span>
                         <img
                             :src="popoverClick3 ? arrow2Png : arrow1Png"
                             alt=""
@@ -211,7 +222,10 @@
                     :style="{ 'background': popoverClick4 ? '#F8FCFF' : '#e3f2ff'}"
                 >
                     <div class="card_list_text">
-                        <span>团队成员</span>
+                        <span>
+                            <!-- 团队成员 -->
+                            {{i18n.team_members}}
+                        </span>
                         <img
                             :src="popoverClick4 ? arrow2Png : arrow1Png"
                             alt=""
@@ -305,19 +319,31 @@ export default {
 			cardList: [
 				{
 					img: img1,
-					text: '使用指南',
+					// text: '使用指南',
+					text: this.$store.state.i18n[
+						this.$store.state.language
+					].user_guide,
 				},
 				{
 					img: img2,
-					text: '代币经济学',
+					// text: '代币经济学',
+					text: this.$store.state.i18n[
+						this.$store.state.language
+					].token_economy,
 				},
 				{
 					img: img3,
-					text: '开发人员使用',
+					// text: '开发人员使用',
+					text: this.$store.state.i18n[
+						this.$store.state.language
+					].developer_use,
 				},
 				{
 					img: img4,
-					text: '团队成员',
+					// text: '团队成员',
+					text: this.$store.state.i18n[
+						this.$store.state.language
+					].team_members,
 				},
 			],
 			teamList: [
@@ -445,6 +471,36 @@ export default {
 						this.$store.state.language
 					].team_5,
 					icon: '',
+				},
+			];
+			this.cardList = [
+				{
+					img: img1,
+					// text: '使用指南',
+					text: this.$store.state.i18n[
+						this.$store.state.language
+					].user_guide,
+				},
+				{
+					img: img2,
+					// text: '代币经济学',
+					text: this.$store.state.i18n[
+						this.$store.state.language
+					].token_economy,
+				},
+				{
+					img: img3,
+					// text: '开发人员使用',
+					text: this.$store.state.i18n[
+						this.$store.state.language
+					].developer_use,
+				},
+				{
+					img: img4,
+					// text: '团队成员',
+					text: this.$store.state.i18n[
+						this.$store.state.language
+					].team_members,
 				},
 			];
 		},
@@ -582,7 +638,7 @@ export default {
 					top: 6.5rem;
 					// bottom: 0.38rem;
 					.el-button {
-						width: 1.44rem;
+						// width: 1.44rem;
 						height: 0.7rem;
 						background: #5c70ff;
 						border: 1px solid #5c70ff;
@@ -717,7 +773,8 @@ export default {
 						.image {
 							// width: 3.48rem;
 							// height: 2.6rem;
-							margin: 0.35rem 0.5rem 0;
+							margin: 0.35rem 0.5rem 0
+								0;
 							width: 2.2rem;
 							height: 2.2rem;
 							vertical-align: middle;

@@ -153,6 +153,17 @@ export default new Vuex.Store({
                 contactTG: '请联系TG @Gon9tou',
                 sorry_prize: '很遗憾没中奖',
 
+                user_guide: '使用指南',
+                token_economy: '代币经济学',
+                developer_use: '开发人员使用',
+                team_members: '团队成员',
+
+                current_gains: '当前收益',
+                view_results: '查看结果',
+                participate_draw: '参与抽奖',
+
+                register_domain_names: '注册域名',
+
             },
             EN: {
 
@@ -317,11 +328,20 @@ export default new Vuex.Store({
                 contactTG: 'Please contact TG@Gon9tou',
                 sorry_prize: 'Sorry, you didn’t win the prize.',
 
+                user_guide: 'User Guide',
+                token_economy: 'Token Economy',
+                participate_draw: 'Participate in the draw',
+                developer_use: 'Developer use',
+                team_members: 'Team Members',
+                current_gains: 'Current Gains',
+                view_results: 'View results',
+                register_domain_names: 'Register Domain Names',
             }
         },
-        language: 'CN',
-        // language: 'EN',
-        languageSelect: '简体中文 (CN)',
+        // language: 'CN',
+        // languageSelect: '简体中文 (CN)',
+        language: 'EN',
+        languageSelect: 'English (EN)',
         cpsFee: []
     },
     mutations: {

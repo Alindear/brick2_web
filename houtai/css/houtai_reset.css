@@ -133,26 +133,7 @@ html body {
     border-radius: .32rem;
     border: none;
 }
-@media (max-width:750px) {
-    .el-select-dropdown {
-        width: 2.44rem;
-    }
-    .el-radio__label{
-        width: 1.68rem;
-        font-size: 0.26rem;
-        margin-right: 0.16rem;
-    }
-    .el-input {
-        display: block;
-    }
-    .el-radio__inner::after{
-        width: 0.2rem;
-        height: 0.2rem;
-        background-image: url('houtai/img/首页/编组 12@3x.png');
-        background-size: 100% 100%;
-        border: none;
-    }
-}
+
 .el-popper .popper__arrow {
     border-width: 0;
 }
@@ -242,10 +223,10 @@ html body {
     font-size: 0.32rem; */
     font-family:PingFangSC-Regular;
     width: 1.30rem;
-    height: .28re,;
+    height: 0.28rem;
     font-family: PingFangSC-Semibold;
     font-weight: 600;
-    font-size: .20rem;
+    font-size: 0.20rem;
     color: #999999;
     margin-right: 0.4rem;
     padding: 0;
@@ -281,4 +262,43 @@ html body {
     -webkit-tap-highlight-color: #ffffff !important;
 }
 
+@media (max-width:750px) {
+    .el-select-dropdown {
+        width: 2.44rem;
+    }
+    .el-radio__label{
+        width: 1.68rem;
+        height: 0.37rem;
+        font-size: 0.26rem;
+        margin-right: 0.16rem;
+    }
+    .el-input {
+        display: block;
+    }
+    .el-radio__inner::after{
+        width: 0.32rem;
+        height: 0.32rem;
+        background-image: url('houtai/img/首页/编组 12@3x.png');
+        background-size: 100% 100%;
+        border: none;
+        margin-top: 0.02rem;
+    }
+    .el-radio, .el-radio__input {
+        line-height: normal;
+        height: 0.765rem;
+    }
+    .el-select-dropdown__item{
+        height: 0.765rem;
+        line-height: 0.765rem;
+        border-bottom: 0.01rem solid #eeeeee;
+        padding: 0.2rem 0 0.2rem 0.2rem;
+    }
+    .el-radio__input.is-checked .el-radio__inner {
+        /* background-color: inherit;
+        border-color: inherit;
+        background: inherit; */
+        border-color: #ffffff;
+        background: #ffffff;
+    }
+}
 

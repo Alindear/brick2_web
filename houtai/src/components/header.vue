@@ -8,6 +8,7 @@
             <img
                 :src="logoPng"
                 alt=""
+                @click="goRouter('/index')"
             >
             <div class="title_right">
                 <div
@@ -167,27 +168,30 @@
                         </el-button>
                     </div>
                 </div>
-								<div class="input_module">
-									<div class="input_back">
-									</div>
-									<el-form action="javascript:return true"  class="input_form">
-											<el-input
-													class="input_search"
-													:placeholder="i18n.placeholder"
-													v-model="searchText"
-													type="search"
-													@input="searchTextChange"
-													@keyup.13.native="searchEns"
-											>
-													<i></i>
-													<img
-															slot="suffix"
-															:src="searchblack"
-															alt=""
-													>
-											</el-input>
-									</el-form>
-								</div>
+                <div class="input_module">
+                    <div class="input_back">
+                    </div>
+                    <el-form
+                        action="javascript:return true"
+                        class="input_form"
+                    >
+                        <el-input
+                            class="input_search"
+                            :placeholder="i18n.placeholder_mb_en"
+                            v-model="searchText"
+                            type="search"
+                            @input="searchTextChange"
+                            @keyup.13.native="searchEns"
+                        >
+                            <i></i>
+                            <img
+                                slot="suffix"
+                                :src="searchblack"
+                                alt=""
+                            >
+                        </el-input>
+                    </el-form>
+                </div>
                 <!-- <el-form action="javascript:return true" class="input_form">
                     <el-input
                         class="input_search"
@@ -464,6 +468,7 @@ export default {
 		openMenu() {
 			console.log('打开菜单');
 			this.menuFlag = false;
+			console.log('this.menuFlag', this.menuFlag);
 		},
 		//关闭菜单
 		closeMenu() {
@@ -475,6 +480,7 @@ export default {
 			this.$router.push({
 				path: type,
 			});
+			this.menuFlag = true;
 		},
 		searchTextChange() {
 			console.log('域名发生变化');
@@ -832,13 +838,13 @@ export default {
 		padding: 0.19rem 0.32rem;
 		box-sizing: border-box;
 		.menu_connect_search {
-			  display: flex;
-    		flex-direction: column;
+			display: flex;
+			flex-direction: column;
 			.connect_status {
 				display: flex;
 				flex-direction: row;
 				height: 0.77rem;
-    		margin-bottom: 0.32rem;
+				margin-bottom: 0.32rem;
 				// line-height: 0.77rem;
 				.on_connect {
 					display: flex;
@@ -904,9 +910,9 @@ export default {
 					// border: none;
 				}
 			}
-			.input_module{
+			.input_module {
 				position: relative;
-				.input_back{
+				.input_back {
 					position: absolute;
 					width: 5.8rem;
 					height: 0.96rem;
@@ -918,13 +924,13 @@ export default {
 						rgb(237, 175, 255, 0.2) 100%
 					);
 				}
-				.input_form{
-						// opacity: 0.2;
-						// background-image: linear-gradient(
-						// 	-60deg,
-						// 	rgb(106, 240, 233, 0.2) 0%,
-						// 	rgb(237, 175, 255, 0.2) 100%
-						// );
+				.input_form {
+					// opacity: 0.2;
+					// background-image: linear-gradient(
+					// 	-60deg,
+					// 	rgb(106, 240, 233, 0.2) 0%,
+					// 	rgb(237, 175, 255, 0.2) 100%
+					// );
 					.input_search {
 						/deep/.el-input__inner {
 							width: 5.8rem;
@@ -936,7 +942,7 @@ export default {
 							color: #999999;
 							// opacity: 1;
 							border: none;
-   						 background: none;
+							background: none;
 						}
 						img {
 							height: 0.32rem;
@@ -944,10 +950,9 @@ export default {
 							margin-right: 0.52rem;
 						}
 					}
-
 				}
 			}
-		
+
 			// .input_search {
 			// 	/deep/.el-input__inner {
 			// 		width: 5.8rem;
@@ -1005,7 +1010,7 @@ export default {
 			letter-spacing: 0.0049rem;
 		}
 		.list_border {
-			height: 1px;
+			height: 0.01rem;
 			// opacity: 0.4;
 			background: #ededed;
 			margin: auto;
@@ -1122,7 +1127,7 @@ export default {
 					}
 				}
 				.el-button {
-					width: 1.73rem;
+					// width: 1.73rem;
 					background-image: linear-gradient(
 						-60deg,
 						#6af0e9 0%,
@@ -1134,19 +1139,21 @@ export default {
 					margin-top: -0.02rem;
 					font-family: PingFangSC-Semibold;
 					font-weight: 600;
-					font-size: 0.2rem;
+					font-size: 0.24rem;
 					color: #ffffff;
 					border: none;
+					letter-spacing: 0.01rem;
 				}
 				img {
 					width: 0.29rem;
 					height: 0.32rem;
 					vertical-align: middle;
 					margin-right: 0.16rem;
+					margin-top: -0.06rem;
 				}
 			}
 		}
-	
+
 		.his_list {
 			display: flex;
 			flex-direction: row;

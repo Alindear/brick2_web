@@ -242,13 +242,23 @@
 
                             </el-select>
                             <div class="cut_border"></div>
-                            <el-input
-                                class="input_search"
-                                :placeholder="i18n.placeholder_mb_en"
-                                v-model="searchText"
-                                @input="searchTextChange"
-                            >
-                            </el-input>
+                            <el-form action="javascript:return true">
+                                <el-input
+                                    class="input_search"
+                                    :placeholder="i18n.placeholder_mb_en"
+                                    v-model="searchText"
+                                    type="search"
+                                    @input="searchTextChange"
+                                    @keyup.13.native="searchEns"
+                                >
+                                    <i></i>
+                                    <img
+                                        slot="suffix"
+                                        :src="searchblack"
+                                        alt=""
+                                    >
+                                </el-input>
+                            </el-form>
                         </div>
                     </el-button>
                     <img
@@ -287,7 +297,7 @@
                 <!-- 分享赚取收益 -->
                 {{i18n.share}}
             </div>
-            <p class="span_text">
+            <p :class="$store.state.language === 'CN' ? 'span_text' : 'span_text_en'">
                 <!-- 推荐好友注册域名有奖励！赶紧生成自己的专属链接吧！ -->
                 {{i18n.share_desc}}
             </p>
@@ -296,7 +306,6 @@
                     class="left_img"
                     v-if="linkShowFlag"
                 >
-                    <!-- v-if="!changeStatusShowFlag && linkShowFlag" -->
                     <p class="on_link">{{this.refAddress}}</p>
                 </div>
                 <div
@@ -304,9 +313,7 @@
                     @click="linkClick"
                     v-if="!linkShowFlag"
                 >
-                    <!-- v-if="!changeStatusShowFlag && !linkShowFlag" -->
                     <p :class="$store.state.language === 'CN' ? 'dis_link' : 'dis_link_en'">
-                        <!-- :style="{ 'font-size': $store.state.language === 'CN' ? '0.46rem' : '0.4rem',}" -->
                         <!-- 点击生成专属链接 -->
                         {{i18n.click_text}}
                     </p>
@@ -316,7 +323,10 @@
                         class="now_profit"
                         v-if="changeStatusShowFlag"
                     >
-                        <p class="profit_text">当前收益</p>
+                        <p class="profit_text">
+                            <!-- 当前收益 -->
+                            {{i18n.current_gains}}
+                        </p>
                         <div class="profit_num">BRICK: {{brickCps }}</div>
                         <div class="profit_num">USDT:{{usdtCps}}</div>
                         <div class="profit_num">BNB:{{bnbCps}}</div>
@@ -428,12 +438,16 @@
                 v-if="changeStatusShowFlag && !isShowDraw"
                 @click="luckDrawBtn(true)"
             >
-                参与抽奖
+                <!-- 参与抽奖 -->
+                {{i18n.participate_draw}}
             </el-button>
             <el-button
                 v-if="changeStatusShowFlag && isShowDraw"
                 @click="viewResultBtn(true)"
-            >查看结果</el-button>
+            >
+                <!-- 查看结果 -->
+                {{i18n.view_results}}
+            </el-button>
             <div class="four_gift_bottom">
                 <div
                     v-for="(item,index) in giftList"
@@ -646,7 +660,7 @@ export default {
 			searchEnsLoading: false,
 			changeStatusShowFlag: false,
 
-			changeStatusShowFlag: true,
+			// changeStatusShowFlag: true,
 
 			linkShowFlag: false,
 			refAddress: '',
@@ -1348,13 +1362,15 @@ export default {
 								height: 1.28rem;
 								line-height: 1.28rem;
 								border: none;
-								border-radius: 0.32rem;
+								border-radius: 0;
 								font-family: PingFangSC-Medium;
 								font-weight: 500;
 								font-size: 0.2rem;
 								color: #999999;
 								margin: 0;
 								padding: 0;
+								border-top-right-radius: 0.32rem;
+								border-bottom-right-radius: 0.32rem;
 							}
 						}
 						.el-button {
@@ -1431,6 +1447,12 @@ export default {
 						}
 						span {
 							margin-left: 0.28rem;
+							font-size: 0.2764rem;
+							height: 0.38rem;
+							font-family: Alibaba-PuHuiTi-R;
+							font-weight: R;
+							font-size: 0.2764rem;
+							color: #000000;
 						}
 					}
 				}
@@ -1705,7 +1727,8 @@ export default {
 							.input_search {
 								width: 5rem;
 								/deep/.el-input__inner {
-									width: 3.8rem;
+									// width: 3.8rem;
+									width: 4.8rem;
 									height: 1.09rem;
 									line-height: 1.09rem;
 									border: none;
@@ -1842,6 +1865,14 @@ export default {
 			margin: 0;
 			margin-bottom: 0.6rem;
 		}
+		// .span_text_en {
+		// 	height: 100%;
+		// 	width: 6.2rem;
+		// 	text-align: center;
+		// 	font-weight: 400;
+		// 	font-size: 0.32rem;
+		// 	margin-bottom: 0.5632rem;
+		// }
 		.share_img {
 			display: flex;
 			flex-direction: row;
@@ -2021,6 +2052,14 @@ export default {
 				font-size: 0.32rem;
 				margin-bottom: 0.5632rem;
 			}
+			.span_text_en {
+				height: 100%;
+				width: 6.2rem;
+				text-align: center;
+				font-weight: 400;
+				font-size: 0.32rem;
+				margin-bottom: 0.5632rem;
+			}
 			.share_img {
 				flex-direction: column;
 				align-items: center;
@@ -2039,25 +2078,65 @@ export default {
 						font-family: Alibaba-PuHuiTi-B;
 						font-weight: B;
 						font-size: 0.36rem;
+						// margin: 1.05rem 1.42rem;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin: 0;
+						text-align: center;
+					}
+					.dis_link {
+						font-size: 0.36rem;
+						height: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin: 0;
+						text-align: center;
+					}
+					.dis_link_en {
+						font-size: 0.32rem;
+						height: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin: 0;
+					}
+				}
+
+				.left_img:hover {
+					border: 0.13rem solid;
+					border-image: linear-gradient(
+							to right,
+							#e5b3fd,
+							#7de7ec
+						)
+						1 10;
+					box-sizing: border-box;
+					.on_link {
+						font-family: Alibaba-PuHuiTi-B;
+						font-weight: B;
+						font-size: 0.36rem;
 						margin: 1.05rem 1.42rem;
 					}
 					.dis_link {
 						font-size: 0.36rem;
-						margin: 0;
 						height: 100%;
 						display: flex;
 						align-items: center;
 						justify-content: center;
+						margin: 0;
 					}
 					.dis_link_en {
 						font-size: 0.32rem;
-						margin: 0;
 						height: 100%;
 						display: flex;
 						align-items: center;
 						justify-content: center;
+						margin: 0;
 					}
 				}
+
 				.right_img {
 					width: 5.68rem;
 					height: 3.2rem;
@@ -2101,7 +2180,7 @@ export default {
 						font-size: 0.32rem;
 						border: none;
 						margin: 0 auto;
-    				display: block;
+						display: block;
 					}
 				}
 			}
@@ -2384,7 +2463,7 @@ export default {
 				margin-right: 0.16rem;
 				img {
 					width: 3.88rem;
-    			height: 2.0913rem;
+					height: 2.0913rem;
 					margin-bottom: 0.1787rem;
 				}
 				.item_title {
@@ -2446,6 +2525,7 @@ export default {
 					margin-right: 0.14rem;
 					img {
 						width: 3.36rem;
+						height: 100%;
 						margin-bottom: 0.24rem;
 					}
 					.item_title {
@@ -2460,9 +2540,9 @@ export default {
 
 					.item_desc {
 						width: 3.36rem;
-						height: 1.3rem;
+						min-height: 1.3rem;
 						margin-bottom: 0.62rem;
-						font-size: 0.28rem;
+						font-size: 0.25rem;
 						word-break: break-all;
 					}
 				}

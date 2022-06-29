@@ -5,42 +5,44 @@
                 <img
                     :src="icon1"
                     alt=""
+                    class="image_icon"
                 >
                 <p>
-                    DISCORD
-                    <span>
-                        <img
-                            :src="enterPng"
-                            alt=""
-                        >
-                    </span>
+                    <span>DISCORD</span>
+                    <img
+                        :src="enterPng"
+                        alt=""
+                        class="enter_png"
+                    >
                 </p>
             </div>
             <div class="comm_list color2">
                 <img
                     :src="icon2"
                     alt=""
+                    class="image_icon"
                 >
                 <p>
-                    MEDIUM
-                    <span>
-                        <img
-                            :src="enterPng"
-                            alt=""
-                        >
-                    </span>
+                    <span>MEDIUM</span>
+                    <img
+                        :src="enterPng"
+                        alt=""
+                        class="enter_png"
+                    >
                 </p>
             </div>
             <div class="comm_list color3">
                 <img
                     :src="icon3"
                     alt=""
+                    class="image_icon"
                 >
                 <p>
-                    TWITTER
+                    <span>TWITTER</span>
                     <img
                         :src="enterPng"
                         alt=""
+                        class="enter_png"
                     >
                 </p>
             </div>
@@ -48,12 +50,14 @@
                 <img
                     :src="icon4"
                     alt=""
+                    class="image_icon"
                 >
                 <p>
-                    TELEGRAM PERSONAL
+                    <span> TELEGRAM PERSONAL </span>
                     <img
                         :src="enterPng"
                         alt=""
+                        class="enter_png"
                     >
                 </p>
             </div>
@@ -112,6 +116,9 @@ export default {
 			flex-direction: column;
 			padding-left: 0.4rem;
 			padding-top: 0.4rem;
+			.image_icon {
+				display: inline-block;
+			}
 			img {
 				width: 0.44rem;
 				height: 0.44rem;
@@ -124,8 +131,11 @@ export default {
 				font-family: Womby-Regular;
 				font-weight: 400;
 				font-size: 0.34rem;
-				img {
+				.enter_png {
 					display: none; //PC没有箭头
+				}
+				span {
+					display: block;
 				}
 			}
 		}
@@ -137,6 +147,9 @@ export default {
 				padding: 0.32rem 0.32rem 0.335rem;
 				margin-bottom: 0.165rem;
 				box-sizing: border-box;
+				.image_icon {
+					display: none;
+				}
 				img {
 					width: 0.44rem;
 					height: 0.44rem;
@@ -151,9 +164,18 @@ export default {
 					display: flex;
 					justify-content: space-between;
 					box-sizing: border-box;
-					img {
-						display: block;
-						margin-right: 0.382rem;
+					// img {
+					// 	display: block;
+					// 	margin-right: 0.382rem;
+					// }
+					.enter_png {
+						display: block; // mb 有箭头
+						margin: 0;
+						margin-left: 5rem;
+						margin-top: 1.44rem;
+					}
+					span {
+						display: none;
 					}
 				}
 			}
@@ -186,39 +208,23 @@ export default {
 			border-radius: 0.32rem;
 			color: #5ecdb2;
 		}
-		@media (max-width:750px) {
-				.color1 {
-					// background: rgba(123, 87, 246, 0.1);
-					// border: 0.01rem solid rgba(123, 87, 246, 0.3);
-					// box-shadow: 0 0.12rem 0.1rem 0 rgba(211, 211, 211, 0.27);
-					// color: #7b57f6;
-					background: url('img/imgmb/dis.png');
-					background-size: 100% 100%;
-				}
-				.color2 {
-					// background: rgba(255, 189, 102, 0.1);
-					// border: 0.011rem solid #ffbd66;
-					// border-radius: 0.32rem;
-					// color: #e0942f;
-					background: url('img/imgmb/miu.png');
-					background-size: 100% 100%;
-				}
-				.color3 {
-					// background: rgba(66, 116, 255, 0.1);
-					// border: 0.01rem solid rgba(66, 116, 255, 0.3);
-					// border-radius: 0.32rem;
-					// color: #4274ff;
-					background: url('img/imgmb/twi.png');
-					background-size: 100% 100%;
-				}
-				.color4 {
-					// background: rgba(7, 209, 177, 0.1);
-					// border: 0.01rem solid rgba(38, 190, 255, 0.3);
-					// border-radius: 0.32rem;
-					// color: #5ecdb2;
-					background: url('img/imgmb/tel.png');
-					background-size: 100% 100%;
-				}
+		@media (max-width: 750px) {
+			.color1 {
+				background: url('img/imgmb/dis.png');
+				background-size: 100% 100%;
+			}
+			.color2 {
+				background: url('img/imgmb/miu.png');
+				background-size: 100% 100%;
+			}
+			.color3 {
+				background: url('img/imgmb/twi.png');
+				background-size: 100% 100%;
+			}
+			.color4 {
+				background: url('img/imgmb/tel.png');
+				background-size: 100% 100%;
+			}
 		}
 	}
 	@media (max-width: 750px) {

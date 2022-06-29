@@ -53,7 +53,7 @@ export default {
 			myensIcon,
 			documentdescIcon,
 			contanctusIcon,
-			activeMenu: '1',
+			activeMenu: 0,
 
 			myensSelect,
 			documentdescSelect,
@@ -117,14 +117,12 @@ export default {
 	},
 	mounted: function () {
 		console.log(this.configData);
-		console.log('this.$route************', this.$route);
-		// activeMenu
-		if (this.$route === '/brick/myens') {
+		if (this.$route.fullPath == '/brick/myens') {
+			this.activeMenu = '1';
+		} else if (this.$route.fullPath == '/brick/documentdesc') {
 			this.activeMenu = '2';
-		} else if (this.$route === '/brick/documentdesc') {
+		} else if (this.$route.fullPath == '/brick/contactus') {
 			this.activeMenu = '3';
-		} else if (this.$route === '/brick/contactus') {
-			this.activeMenu = '4';
 		}
 	},
 	computed: {

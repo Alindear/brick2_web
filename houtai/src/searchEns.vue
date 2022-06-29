@@ -108,7 +108,13 @@
                                     alt=""
                                 >
                                 <span>
-                                    {{tips}}
+                                    <!-- {{tips}} -->
+                                    <span v-if="!approveBtnDisabled">
+                                        {{ i18n.attention_approval}}
+                                    </span>
+                                    <span v-if="approveBtnDisabled">
+                                        {{ i18n.approved}}
+                                    </span>
                                     <!-- 您钱包上的余额不足，请向您的钱包充值并重新加载页面 -->
                                 </span>
                             </span>

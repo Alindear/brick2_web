@@ -34,7 +34,7 @@
                         class="img_icon_luck"
                     >
                     <img
-                        :src="search2Png"
+                        :src="closePng"
                         alt=""
                         class="close_icon_luck"
                         @click="closeIconBtn"
@@ -97,7 +97,7 @@
                         class="img_icon_luck_result"
                     >
                     <img
-                        :src="search2Png"
+                        :src="closePng"
                         alt=""
                         class="close_icon_luck_result"
                         @click="closeIconBtn"
@@ -158,7 +158,7 @@
                         class="img_icon"
                     >
                     <img
-                        :src="search2Png"
+                        :src="closePng"
                         alt=""
                         class="close_icon"
                         @click="closeIconBtn"
@@ -235,7 +235,7 @@
                         class="img_icon_luck"
                     >
                     <img
-                        :src="search2Png"
+                        :src="closePng"
                         alt=""
                         class="close_icon_luck"
                         @click="closeIconBtn"
@@ -295,7 +295,7 @@
                         class="img_icon_luck_result"
                     >
                     <img
-                        :src="search2Png"
+                        :src="closePng"
                         alt=""
                         class="close_icon_luck_result"
                         @click="closeIconBtn"
@@ -352,7 +352,7 @@
                         class="img_icon"
                     >
                     <img
-                        :src="search2Png"
+                        :src="closePng"
                         alt=""
                         class="close_icon"
                         @click="closeIconBtn"
@@ -397,7 +397,7 @@
 </template>
 
 <script>
-import search2Png from 'img/icon/编组 2.png';
+import closePng from 'img/关闭菜单.png';
 import disprizePng from 'img/gift/未中奖.png';
 import partakePng from 'img/gift/位图.png';
 import prizePng from 'img/gift/中奖.png';
@@ -407,7 +407,7 @@ export default {
 	props: ['type', 'luckDrawShowFlag', 'viewResultShowFlag', 'luckOrNot'],
 	data() {
 		return {
-			search2Png,
+			closePng,
 			disprizePng,
 			partakePng,
 			prizePng,
@@ -469,7 +469,7 @@ export default {
 			.close_icon_luck {
 				width: 0.4rem;
 				height: 0.4rem;
-				background: #d8d8d8;
+				// background: #d8d8d8;
 				margin: 0.4rem 0.4rem 0 -0.25rem;
 			}
 		}
@@ -645,7 +645,7 @@ export default {
 				.close_icon_luck {
 					width: 0.4rem;
 					height: 0.4rem;
-					background: #d8d8d8;
+					// background: #d8d8d8;
 					margin: 0.4rem 0.4rem 0 -0.25rem;
 				}
 			}
@@ -854,7 +854,7 @@ export default {
 			.close_icon_luck_result {
 				width: 0.4rem;
 				height: 0.4rem;
-				background: #d8d8d8;
+				// background: #d8d8d8;
 				margin: 0.4rem 0.4rem 0 -0.05rem;
 			}
 			.title_text_luck_result_en {
@@ -989,7 +989,7 @@ export default {
 				.close_icon_luck_result {
 					width: 0.4rem;
 					height: 0.4rem;
-					background: #d8d8d8;
+					// background: #d8d8d8;
 					margin: 0.4rem 0.4rem 0 -0.05rem;
 				}
 			}
@@ -1117,7 +1117,7 @@ export default {
 			.close_icon {
 				width: 0.4rem;
 				height: 0.4rem;
-				background: #d8d8d8;
+				// background: #d8d8d8;
 				margin: 0.4rem 0.4rem 0 0.25rem;
 			}
 		}
@@ -1188,7 +1188,7 @@ export default {
 			.close_icon {
 				width: 0.4rem;
 				height: 0.4rem;
-				background: #d8d8d8;
+				// background: #d8d8d8;
 				margin: 0.4rem 0.4rem 0 0.25rem;
 			}
 		}
@@ -1277,7 +1277,7 @@ export default {
 				.close_icon {
 					width: 0.48rem;
 					height: 0.48rem;
-					background: #d8d8d8;
+					// background: #d8d8d8;
 					margin: 0.4rem 0.4rem 0 0.25rem;
 				}
 			}
@@ -1291,15 +1291,15 @@ export default {
 					color: #000000;
 					margin: 0.62rem 0 0.22rem 0.9rem;
 				}
-				.title_text_en{
-						width: 100%;
-						font-family: Futura-Bold;
-						font-weight: Bold;
-						font-size: 0.68rem;
-						color: #000000;
-						margin: 0;
-						display: block;
-						text-align: center;
+				.title_text_en {
+					width: 100%;
+					font-family: Futura-Bold;
+					font-weight: Bold;
+					font-size: 0.68rem;
+					color: #000000;
+					margin: 0;
+					display: block;
+					text-align: center;
 				}
 			}
 			.title_text {
@@ -1353,7 +1353,7 @@ export default {
 					width: 2.65rem;
 					height: 0.62rem;
 					font-family: Futura-Bold;
-    			font-weight: Bold;
+					font-weight: Bold;
 					font-size: 0.48rem;
 					color: #000000;
 					margin: 0.82rem 0 0.22rem 0.9rem;
@@ -1367,7 +1367,7 @@ export default {
 				.close_icon {
 					width: 0.4rem;
 					height: 0.4rem;
-					background: #d8d8d8;
+					// background: #d8d8d8;
 					margin: 0.4rem 0.4rem 0 0.25rem;
 				}
 			}
@@ -1412,7 +1412,7 @@ export default {
 				display: flex;
 				justify-content: center;
 				align-items: center;
-    		margin: 0;
+				margin: 0;
 				img {
 					width: 0.44rem;
 					height: 0.44rem;
