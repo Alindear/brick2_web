@@ -254,11 +254,11 @@
                                     @keyup.13.native="searchEns"
                                 >
                                     <i></i>
-                                    <img
+                                    <!-- <img
                                         slot="suffix"
                                         :src="searchblack"
                                         alt=""
-                                    >
+                                    > -->
                                 </el-input>
                             </el-form>
                         </div>
@@ -323,19 +323,20 @@
                 <div class="right_img">
                     <div
                         class="now_profit"
-                        v-if="changeStatusShowFlag"
+                        v-if="!changeStatusShowFlag"
                     >
                         <p class="profit_text">
                             <!-- 当前收益 -->
                             {{i18n.current_gains}}
                         </p>
-                        <div class="profit_num">BRICK: {{brickCps }}</div>
+                        <div class="profit_num">{{usdtCps}}</div>
+                        <!-- <div class="profit_num">BRICK: {{brickCps }}</div>
                         <div class="profit_num">USDT:{{usdtCps}}</div>
-                        <div class="profit_num">BNB:{{bnbCps}}</div>
+                        <div class="profit_num">BNB:{{bnbCps}}</div> -->
                     </div>
                     <p
                         class="dis_content"
-                        v-if="!changeStatusShowFlag"
+                        v-if="changeStatusShowFlag"
                     >
                         <!-- 请链接钱包后查看当前收益 -->
                         {{i18n.please_link_wallet}}
@@ -2034,12 +2035,13 @@ export default {
 					}
 					.profit_num {
 						width: 5.69rem;
-						height: 0.6rem;
+						height: 100%;
 						font-family: Womby-Regular;
 						font-weight: 400;
 						font-size: 0.64rem;
 						color: #000000;
 						letter-spacing: 0.04rem;
+						word-break: break-all;
 					}
 				}
 				.dis_content {
@@ -2053,7 +2055,8 @@ export default {
 				}
 				.el-button {
 					margin-left: 0.69rem;
-					margin-bottom: 0.92rem;
+					// margin-bottom: 0.92rem;
+					margin-bottom: 1.25rem;
 					// width: 3.32rem;
 					height: 1.28rem;
 					background-image: linear-gradient(
@@ -2075,7 +2078,7 @@ export default {
 				height: 6.6rem;
 				background-image: url('houtai/img/首页/收益.png');
 				background-size: 100% 100%;
-				border: 0.01rem solid;
+				border: 0.33rem solid;
 				border-image: linear-gradient(
 						to bottom,
 						#e5b3fd,
@@ -2084,56 +2087,60 @@ export default {
 					1 10;
 				box-sizing: border-box;
 				cursor: default;
-				.now_profit {
-					margin-left: 0.69rem;
-					// margin-bottom: 1.95rem;
-					margin-bottom: 0.95rem;
-					.profit_text {
-						// width: 0.95rem;
-						height: 0.33rem;
-						font-family: Alibaba-PuHuiTi-R;
-						font-weight: R;
-						font-size: 0.24rem;
-						color: #000000;
-						margin: 0.99rem 0 0.32rem;
-					}
-					.profit_num {
-						width: 5.69rem;
-						height: 0.6rem;
-						font-family: Womby-Regular;
-						font-weight: 400;
-						font-size: 0.64rem;
-						color: #000000;
-						letter-spacing: 0.04rem;
-					}
-				}
-				.dis_content {
-					// width: 2.84rem;
-					height: 0.33rem;
-					font-family: Alibaba-PuHuiTi-M;
-					font-weight: M;
-					font-size: 0.24rem;
-					color: #000000;
-					margin: 3.14rem 0 0.93rem 0.81rem;
-				}
-				.el-button {
-					margin-left: 0.69rem;
-					margin-bottom: 0.92rem;
-					// width: 3.32rem;
-					height: 1.28rem;
-					background-image: linear-gradient(
-						-60deg,
-						#6af0e9 0%,
-						#edafff 100%
-					);
-					border-radius: 0.64rem;
-					font-family: Alibaba-PuHuiTi-B;
-					font-weight: B;
-					font-size: 0.46rem;
-					color: #ffffff;
-					padding: 0 0.75rem;
-					border: none;
-				}
+				// .now_profit {
+				// 	margin-left: 0.36rem;
+				// 	// margin-bottom: 1.95rem;
+				// 	// margin-bottom: 0.95rem;
+				// 	margin-bottom: 0.62rem;
+				// 	.profit_text {
+				// 		// width: 0.95rem;
+				// 		height: 0.33rem;
+				// 		font-family: Alibaba-PuHuiTi-R;
+				// 		font-weight: R;
+				// 		font-size: 0.24rem;
+				// 		color: #000000;
+				// 		// margin: 0.66rem 0 0.32rem;
+				// 	}
+				// 	.profit_num {
+				// 		width: 5.69rem;
+				// 		// height: 0.6rem;
+				// 		font-family: Womby-Regular;
+				// 		font-weight: 400;
+				// 		font-size: 0.64rem;
+				// 		color: #000000;
+				// 		letter-spacing: 0.04rem;
+				// 		word-break: break-all;
+				// 	}
+				// }
+				// .dis_content {
+				// 	// width: 2.84rem;
+				// 	height: 0.33rem;
+				// 	font-family: Alibaba-PuHuiTi-M;
+				// 	font-weight: M;
+				// 	font-size: 0.24rem;
+				// 	color: #000000;
+				// 	// margin: 3.14rem 0 0.93rem 0.81rem;
+				// }
+				// .el-button {
+				// 	// margin-left: 0.69rem;
+				// 	margin-left: 0.36rem;
+				// 	// margin-bottom: 0.92rem;
+				// 	margin-bottom: 1.25rem;
+				// 	// width: 3.32rem;
+				// 	height: 1.28rem;
+				// 	background-image: linear-gradient(
+				// 		-60deg,
+				// 		#6af0e9 0%,
+				// 		#edafff 100%
+				// 	);
+				// 	border-radius: 0.64rem;
+				// 	font-family: Alibaba-PuHuiTi-B;
+				// 	font-weight: B;
+				// 	font-size: 0.46rem;
+				// 	color: #ffffff;
+				// 	padding: 0 0.75rem;
+				// 	border: none;
+				// }
 			}
 		}
 	}
@@ -2267,6 +2274,7 @@ export default {
 							font-size: 0.32rem;
 							color: #000000;
 							letter-spacing: 0.01rem;
+							word-break: break-all;
 						}
 					}
 					.dis_content {
@@ -2328,6 +2336,7 @@ export default {
 				#edafff 100%
 			);
 			border-radius: 0.32rem;
+			border: none;
 			p {
 				font-family: Alibaba-PuHuiTi-M;
 				font-weight: M;
