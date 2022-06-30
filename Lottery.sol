@@ -35,13 +35,17 @@ contract Lottery is VRFConsumerBaseV2 {
     uint256 public dayNum; // 全局配置：一次循环的天数
     Cycle[] public cycles; // 历史记录
     uint256 index=0; // 当前周期的下标
-    uint256 rangeRate = 10; // 抽奖范围为奖池的10倍
+    uint256 rangeRate = 2; // 抽奖范围为奖池的2倍
 
 
     function setDayNum(uint256 _dayNum) public onlyOwner{
         dayNum = _dayNum;
         cycles[index].dayNum = _dayNum;
     }
+    function setRangeRate(uint256 _dayNum) public onlyOwner{
+        rangeRate = _dayNum;
+    }
+
     function setStartTime(uint256 _start) public onlyOwner{
         cycles[index].startTime = _start;
     }
