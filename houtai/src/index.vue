@@ -962,11 +962,12 @@ export default {
 		//参与抽奖
 		async luckDrawBtn(flag) {
 			//var alreay = await checkAlready();
-			var _fun = function(){
-				this.luckDrawShowFlag = flag;
-				this.isShowDraw = true;
+			var _this = this;
+			var _fun = function(_this){
+				_this.luckDrawShowFlag = true;
+				_this.isShowDraw = true;
 			}
-			randomLottery(_fun);
+			randomLottery(_fun,_this);
 
 		},
 		// 查看结果
