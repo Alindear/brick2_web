@@ -323,7 +323,7 @@
                 <div class="right_img">
                     <div
                         class="now_profit"
-                        v-if="!changeStatusShowFlag"
+                        v-if="changeStatusShowFlag"
                     >
                         <p class="profit_text">
                             <!-- 当前收益 -->
@@ -336,7 +336,7 @@
                     </div>
                     <p
                         class="dis_content"
-                        v-if="changeStatusShowFlag"
+                        v-if="!changeStatusShowFlag"
                     >
                         <!-- 请链接钱包后查看当前收益 -->
                         {{i18n.please_link_wallet}}

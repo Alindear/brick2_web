@@ -324,7 +324,8 @@ export default {
 			registBtnLoading: false,
 			years: 2,
 			price: 99999999999,
-			currencyUnit: 'BRICK',
+			// currencyUnit: 'BRICK',
+			currencyUnit: 'USDT',
 			currencyPrice: '999999999',
 			toUsdtPrice: '0',
 			searchText: '',
@@ -335,7 +336,8 @@ export default {
 			// tips: '请注意! 使用brick,usdt购买时需要先授权',
 			tips: this.$store.state.i18n[this.$store.state.language]
 				.attention_approval,
-			paymentMethod: 'BRICK',
+			// paymentMethod: 'BRICK',
+			paymentMethod: 'USDT',
 			paymentMethodOpts: [
 				{
 					value: 'BNB',
@@ -345,10 +347,10 @@ export default {
 					value: 'USDT',
 					label: 'USDT',
 				},
-				{
-					value: 'BRICK',
-					label: 'BRICK',
-				},
+				// {
+				// 	value: 'BRICK',
+				// 	label: 'BRICK',
+				// },
 			],
 		};
 	},
@@ -643,6 +645,8 @@ export default {
 											center
 											center
 											no-repeat;
+										// width: 0.1133rem;
+										// height: 0.0653rem;
 									}
 									/deep/.el-select
 										.el-input
