@@ -2340,8 +2340,14 @@ export async function checkAlready() {
     return alreay;
 }
 
-export async function checkEnable() {
-    var enable = await lotteryContract.methods.checkEnable().call();
+export async function checkEnable(_func,_this) {
+    console.log(lotteryContract)
+    var enable = lotteryContract.methods.checkEnable().call().then(result => {
+        alert("参与成功，请等待开奖！")
+        _func(_this);
+    }).catch((err) => {
+        alert("参与失败，请查看交易失败原因")
+    });
     console.log("checkEnable: ", enable);
     return enable;
 }
@@ -2376,6 +2382,7 @@ async function fetchAccountData() {
 
     //brickEnsContract.methods.totalSupply().send(xxx);
     console.log("Web3 instance is", web3);
+    console.log(lotteryContract)
 
     // Get connected chain id from Ethereum node
     const chainId = await web3.eth.getChainId();

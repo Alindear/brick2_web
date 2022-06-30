@@ -575,7 +575,7 @@ import {
 	checkEachLength,
 	init,
 	drawMine,
-	selectedAccount, checkAlready, randomLottery,
+	selectedAccount, checkAlready, randomLottery, checkEnable,
 } from 'houtai/web3_eth.js';
 
 import topImg from 'img/imgmb/首页/顶部.png';
@@ -971,7 +971,7 @@ export default {
 
 		},
 		// 查看结果
-		viewResultBtn(flag) {
+		async viewResultBtn(flag) {
 			this.viewResultShowFlag = flag;
 			this.luckOrNot = this.luckOrNot;
 		},
@@ -1171,6 +1171,25 @@ export default {
 			}
 		},
 	},
+	mounted() {
+		window.addEventListener('load', async () => {
+			// init();
+			// if (localStorage.getItem('STATUS')) {
+			// 	await this.connectWallet();
+			// }
+			let _this=this;
+			let _f = function(_this,enable){
+				if(enable){
+					_this.viewResultShowFlag = true;
+					// this.luckOrNot = "YES";
+				}
+			}
+			var enable = checkEnable(_f,_this);
+
+
+			//
+		});
+	}
 };
 </script>
 

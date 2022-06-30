@@ -765,7 +765,6 @@ export async  function connectWallet(callback){
             //tokenContract = await new web3.eth.Contract(tokenAbi, tokenAddr)
             usdtContract = await new web3.eth.Contract(tokenAbi, usdtAddr)
             presaleContract =  await new web3.eth.Contract(presaleAbi, presaleAddr)
-
             let accounts = await web3.eth.getAccounts()
             currentAddr = accounts[0]
             console.log("connected account:",currentAddr);
