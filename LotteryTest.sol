@@ -15,10 +15,10 @@ contract Lottery is VRFConsumerBaseV2 {
     // TODO 测试配置
     address vrfCoordinator = 	0x6A2AAd07396B36Fe02a22b33cf443582f682c82f;
     bytes32 keyHash = 0xd4bb89654db74673a187bd804519e65e3f71a52bc55f11da7601a13dcf505314;
-    BNSRegistry public _bns = BNSRegistry(0x6A2AAd07396B36Fe02a22b33cf443582f682c82f);
-    uint32 callbackGasLimit = 1000000;
+    BNSRegistry public _bns = BNSRegistry(0xdA79595F6bFF81321B136017E638CA847340919f);
+    uint32 callbackGasLimit = 100000;
     uint16 requestConfirmations = 3;
-    uint32 numWords =  1;
+    uint32 numWords =  2;
     uint256[] public s_randomWords;
     uint256 public s_requestId;
     address s_owner;
@@ -45,6 +45,10 @@ contract Lottery is VRFConsumerBaseV2 {
     }
     function setStartTime(uint256 _start) public onlyOwner{
         cycles[index].startTime = _start;
+    }
+
+    function setNumWords(uint32 _start) public onlyOwner{
+        numWords = _start;
     }
 
     function initCycle(uint256 _startTime,bool init,uint256 _dayNum,bytes32[] memory _lotteryPool) internal{
@@ -79,6 +83,13 @@ contract Lottery is VRFConsumerBaseV2 {
         s_randomWords = randomWords;
     }
 
+    function setfulfillRandomWords(
+        uint256, /* requestId */
+        uint256[] memory randomWords
+    ) public {
+        s_randomWords = randomWords;
+    }
+
     modifier onlyOwner() {
         require(msg.sender == s_owner);
         _;
@@ -87,12 +98,13 @@ contract Lottery is VRFConsumerBaseV2 {
 
     function randomLottery() public{
         // 0. 校验用户是否已参与
-        require(cycles[index].palyers[msg.sender],"address already lottery");
+        require(!cycles[index].palyers[msg.sender],"address already lottery");
         // 1. 校验时间是否已经过期,提前一小时关闭奖池
         require(checkEnable(),"lottery is ending");
         // 2. 拿到random seek,加上当前时间进行range*奖池大小取余数
         uint256 lottertRange =cycles[index].lotteryPool.length + rangeRate;
-        uint256 myIndex= (s_randomWords[0]+block.timestamp)%lottertRange;
+        //uint256 myIndex= (s_randomWords[block.timestamp%numWords]+block.timestamp)%lottertRange;
+        uint256 myIndex= 0;// TODO
         if(myIndex<cycles[index].lotteryPool.length
             && cycles[index].lotteryHolder[cycles[index].lotteryPool[myIndex]]==address(0x0) ){
             cycles[index].lotteryHolder[cycles[index].lotteryPool[myIndex]] = msg.sender;
@@ -106,6 +118,14 @@ contract Lottery is VRFConsumerBaseV2 {
     function getMyLottery() public view returns (bytes32) {
         if(checkEnable()) return 0;
         return cycles[index].holderLottery[msg.sender];
+    }
+
+    function getMyRealLottery() public view returns (bytes32) {
+        return cycles[index].holderLottery[msg.sender];
+    }
+
+    function checkAlready() public view returns (bool) {
+        return cycles[index].palyers[msg.sender];
     }
 
 
