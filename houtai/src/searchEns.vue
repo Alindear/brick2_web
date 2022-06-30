@@ -391,7 +391,7 @@ export default {
 				0.85;
 		},
 		async changeText(text) {
-			console.log('changeText', text);
+			console.log('changeText----', text);
 			this.searchText = text;
 			if (this.paymentMethod == 'BNB') {
 				this.approveBtnDisabled = true;
