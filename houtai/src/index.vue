@@ -417,7 +417,7 @@ import {
 	checkEachLength,
 	init,
 	drawMine,
-	selectedAccount,
+	selectedAccount, checkAlready, randomLottery,
 } from 'houtai/web3_eth.js';
 
 import searchBtnPng from 'img/首页/search.png';
@@ -788,9 +788,14 @@ export default {
 
 	methods: {
 		//参与抽奖
-		luckDrawBtn(flag) {
-			this.luckDrawShowFlag = flag;
-			this.isShowDraw = true;
+		async luckDrawBtn(flag) {
+			//var alreay = await checkAlready();
+			var _fun = function(){
+				this.luckDrawShowFlag = flag;
+				this.isShowDraw = true;
+			}
+			randomLottery(_fun);
+
 		},
 		// 查看结果
 		viewResultBtn(flag) {

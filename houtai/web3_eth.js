@@ -1619,11 +1619,313 @@ const PRICE_ABI = [
         "type": "function"
     }
 ]
+const LOTTERY_ABI =[
+    {
+        "inputs": [
+            {
+                "internalType": "uint64",
+                "name": "subscriptionId",
+                "type": "uint64"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_dayNum",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "have",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "want",
+                "type": "address"
+            }
+        ],
+        "name": "OnlyCoordinatorCanFulfill",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "_bns",
+        "outputs": [
+            {
+                "internalType": "contract BNSRegistry",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "checkAlready",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "checkEnable",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "closLottery",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "cycles",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "startTime",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "dayNum",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "dayNum",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getMyLottery",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getMyRealLottery",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes32[]",
+                "name": "_lotteryPool",
+                "type": "bytes32[]"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_startTime",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_dayNum",
+                "type": "uint256"
+            }
+        ],
+        "name": "openLottery",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "randomLottery",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "requestId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "randomWords",
+                "type": "uint256[]"
+            }
+        ],
+        "name": "rawFulfillRandomWords",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "requestRandomWords",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "s_randomWords",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "s_requestId",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_bnsAddr",
+                "type": "address"
+            }
+        ],
+        "name": "setBns",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_dayNum",
+                "type": "uint256"
+            }
+        ],
+        "name": "setDayNum",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint32",
+                "name": "_start",
+                "type": "uint32"
+            }
+        ],
+        "name": "setNumWords",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_start",
+                "type": "uint256"
+            }
+        ],
+        "name": "setStartTime",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "randomWords",
+                "type": "uint256[]"
+            }
+        ],
+        "name": "setfulfillRandomWords",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+];
 
-const BRICK_ENS_ADDRESS = "0x2630BC31c906F31db511ACB089602a7D941Cd1B6"
-// const PRICE_ADDRESS = "0x544a564D666e5fED69b0f7F481c92A8862139B26"
-// const BRICK_ENS_ADDRESS =  "0xdA79595F6bFF81321B136017E638CA847340919f" // TODO ceshi
-const PRICE_ADDRESS = "0x3c55B43195Bad23F834c92b5104dc76863EE787c"
+
+// const BRICK_ENS_ADDRESS = "0x2630BC31c906F31db511ACB089602a7D941Cd1B6"
+const PRICE_ADDRESS = "0x544a564D666e5fED69b0f7F481c92A8862139B26" // TODO ceshi
+const BRICK_ENS_ADDRESS =  "0xdA79595F6bFF81321B136017E638CA847340919f" // TODO ceshi
+const LOTTERY_ADDRESS = "0x1C94cc0c1457EdFD0A2CB56dDc0a41aCC193FBEd" // TODO ceshi
+// const PRICE_ADDRESS = "0x3c55B43195Bad23F834c92b5104dc76863EE787c"
 
 const brickAddr = '0xc4893fEa8547Fb1A4D860518285AF6655424645f';
 const usdtAddr = '0x55d398326f99059fF775485246999027B3197955';
@@ -1641,6 +1943,7 @@ export let selectedAccount;
 
 let web3;
 
+let lotteryContract;
 let brickEnsContract;
 let usdtContract;
 let brickContract;
@@ -2029,6 +2332,28 @@ export async function checkEachLength(name) {
     return true;
 }
 
+export async function checkAlready() {
+    var alreay = await lotteryContract.methods.checkAlready().call();
+    console.log("checkAlready: ", alreay);
+    return alreay;
+}
+
+export async function checkEnable() {
+    var enable = await lotteryContract.methods.checkEnable().call();
+    console.log("checkEnable: ", enable);
+    return enable;
+}
+
+
+export async function randomLottery(_func) {
+    lotteryContract.methods.randomLottery().send({ from: selectedAccount }).then(result => {
+        //alert("参与成功，请等待开奖！")
+        _func();
+    }).catch((err) => {
+        alert("参与失败，请查看交易失败原因")
+    });
+}
+
 /**
  * Kick in the UI action after Web3modal dialog has chosen a provider
  */
@@ -2044,7 +2369,8 @@ async function fetchAccountData() {
     brickEnsContract = new web3.eth.Contract(BRICK_ENS_ABI, BRICK_ENS_ADDRESS);
     usdtContract = new web3.eth.Contract(TOKEN_ABI, usdtAddr);
     brickContract = new web3.eth.Contract(TOKEN_ABI, brickAddr);
-    priceContract = new web3.eth.Contract(PRICE_ABI, PRICE_ADDRESS)
+    priceContract = new web3.eth.Contract(PRICE_ABI, PRICE_ADDRESS);
+    lotteryContract = new web3.eth.Contract(LOTTERY_ABI, LOTTERY_ADDRESS);
 
     //brickEnsContract.methods.totalSupply().send(xxx);
     console.log("Web3 instance is", web3);
