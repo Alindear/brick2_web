@@ -342,7 +342,9 @@ export default new Vuex.Store({
         // languageSelect: '简体中文 (CN)',
         language: 'EN',
         languageSelect: 'English (EN)',
-        cpsFee: []
+        cpsFee: [],
+        myLottery: '',
+        selectedAccount:''
     },
     mutations: {
         showENLanage(state) {

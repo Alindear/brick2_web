@@ -2341,17 +2341,16 @@ export async function checkAlready() {
 }
 
 export async function checkEnable(_func,_this) {
-    console.log(lotteryContract)
-    var enable = lotteryContract.methods.checkEnable().call().then(result => {
-        alert("参与成功，请等待开奖！")
-        _func(_this);
-    }).catch((err) => {
-        alert("参与失败，请查看交易失败原因")
-    });
-    console.log("checkEnable: ", enable);
+    var enable = await lotteryContract.methods.checkEnable().call();
     return enable;
 }
+export async function getMyLottery() {
+    return await lotteryContract.methods.getMyLottery().call();
+}
 
+export function hexToUtf8(b) {
+    return web3.utils.hexToUtf8(b);
+}
 
 export async function randomLottery(_func,_this) {
     lotteryContract.methods.randomLottery().send({ from: selectedAccount }).then(result => {

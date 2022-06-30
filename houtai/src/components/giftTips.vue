@@ -110,11 +110,11 @@
                 >
                     <p :class="$store.state.language === 'CN' ? 'left_bsc_result':'left_bsc_result_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
-                        {{i18n.lucky_this}}578680.bsc
+                        {{i18n.lucky_this}}  {{this.selectedAccount}}
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc_result':'right_bsc_result_en'">
                         <!-- 本期奖品：889988.bsc -->
-                        {{i18n.prize_this}}889988.bsc
+                        {{i18n.prize_this}} {{this.myLottery}}
                     </p>
                 </div>
                 <div class="pre_bsc_luck_result">
@@ -311,11 +311,11 @@
                 <div class="input_bsc_luck_result">
                     <p :class="$store.state.language === 'CN' ? 'left_bsc_result':'left_bsc_result_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
-                        {{i18n.lucky_this}}578680.bsc
+                        {{i18n.lucky_this}} {{this.selectedAccount}}
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc_result':'right_bsc_result_en'">
                         <!-- 本期奖品：889988.bsc -->
-                        {{i18n.prize_this}}889988.bsc
+                        {{i18n.prize_this}} {{this.myLottery}}
                     </p>
                 </div>
                 <div class="pre_bsc_luck_result">
@@ -413,6 +413,8 @@ export default {
 			prizePng,
 			logoPng,
 			dialogVisible: false,
+			myLottery:'',
+			selectedAccount:'',
 		};
 	},
 	computed: {
@@ -442,6 +444,14 @@ export default {
 			}
 		},
 	},
+	watch: {
+		'$store.state.myLottery': async function(val, old) {
+			this.myLottery = val;
+		},
+		'$store.state.selectedAccount': async function(val, old) {
+			this.selectedAccount = val;
+		}
+	}
 };
 </script>
 

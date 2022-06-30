@@ -575,7 +575,7 @@ import {
 	checkEachLength,
 	init,
 	drawMine,
-	selectedAccount, checkAlready, randomLottery, checkEnable,
+	selectedAccount, checkAlready, randomLottery, checkEnable, getMyLottery, hexToUtf8,
 } from 'houtai/web3_eth.js';
 
 import topImg from 'img/imgmb/首页/顶部.png';
@@ -853,12 +853,32 @@ export default {
 			);
 			this.searchText = this.searchText.toLowerCase();
 		},
-		'$store.state.cpsFee': function (val, old) {
+		'$store.state.cpsFee': async function(val, old) {
 			console.log(val);
 			console.log('监听');
 			this.bnbCps = val[0];
 			this.brickCps = val[1];
 			this.usdtCps = val[2];
+			var _this = this;
+			var _fun = function(_this) {
+				_this.luckDrawShowFlag = true;
+				_this.isShowDraw = true;
+			}
+
+			var enable = await checkEnable();
+			if(enable===true){
+			 // if(enable===false){
+			 	// TODO
+				//_this.viewResultShowFlag = true;
+				// 判断是否中奖
+				this.changeStatusShowFlag =true;
+				this.isShowDraw = true;
+			}
+
+			var alreay = await checkAlready();
+			if(alreay){
+			   _fun(_this);
+			}
 		},
 		'$store.state.language': function (val, old) {
 			console.log(val);
@@ -973,7 +993,17 @@ export default {
 		// 查看结果
 		async viewResultBtn(flag) {
 			this.viewResultShowFlag = flag;
-			this.luckOrNot = this.luckOrNot;
+			var myLottery = await getMyLottery();
+			if(myLottery==0x0000000000000000000000000000000000000000000000000000000000000000){
+				this.luckOrNot = "YES"; // TODO 回复成no，是否需要查询别的中奖人
+				this.$store.state.selectedAccount = selectedAccount;
+				this.$store.state.myLottery = hexToUtf8(myLottery);
+			}else{
+				this.$store.state.selectedAccount = selectedAccount;
+				this.$store.state.myLottery = hexToUtf8(myLottery);
+				this.luckOrNot = "YES";
+			}
+			//this.luckOrNot = this.luckOrNot;
 		},
 		searchTextChange() {
 			console.log('域名发生变化');
@@ -1172,23 +1202,7 @@ export default {
 		},
 	},
 	mounted() {
-		window.addEventListener('load', async () => {
-			// init();
-			// if (localStorage.getItem('STATUS')) {
-			// 	await this.connectWallet();
-			// }
-			let _this=this;
-			let _f = function(_this,enable){
-				if(enable){
-					_this.viewResultShowFlag = true;
-					// this.luckOrNot = "YES";
-				}
-			}
-			var enable = checkEnable(_f,_this);
 
-
-			//
-		});
 	}
 };
 </script>
