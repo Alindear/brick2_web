@@ -15,7 +15,7 @@
                         :index="index.toString()"
                         :key="index"
                         @click="itemDeal(item)"
-												:style="{ 'margin': $store.state.language === 'CN' ? '0.4rem 0.8rem' : '0.4rem 0.3rem' }"
+                        :style="{ 'margin': $store.state.language === 'CN' ? '0.4rem 0.8rem' : '0.4rem 0.3rem' }"
                     >
                         <img
                             class="icon_img"
@@ -53,7 +53,7 @@ export default {
 			myensIcon,
 			documentdescIcon,
 			contanctusIcon,
-			activeMenu: '1',
+			activeMenu: 0,
 
 			myensSelect,
 			documentdescSelect,
@@ -117,14 +117,12 @@ export default {
 	},
 	mounted: function () {
 		console.log(this.configData);
-		console.log('this.$route************', this.$route);
-		// activeMenu
-		if (this.$route === '/brick/myens') {
+		if (this.$route.fullPath == '/brick/myens') {
+			this.activeMenu = '1';
+		} else if (this.$route.fullPath == '/brick/documentdesc') {
 			this.activeMenu = '2';
-		} else if (this.$route === '/brick/documentdesc') {
+		} else if (this.$route.fullPath == '/brick/contactus') {
 			this.activeMenu = '3';
-		} else if (this.$route === '/brick/contactus') {
-			this.activeMenu = '4';
 		}
 	},
 	computed: {
@@ -203,6 +201,7 @@ export default {
 		flex-direction: row;
 		justify-content: space-around;
 		.config_left {
+			display: block;
 			ul {
 				padding-top: 0.2rem;
 				box-sizing: border-box;
@@ -263,6 +262,11 @@ export default {
 				outline: 0;
 				background-color: initial;
 				position: relative;
+			}
+		}
+		@media (max-width: 750px) {
+			.config_left {
+				display: none;
 			}
 		}
 		.config_right {

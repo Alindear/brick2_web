@@ -52,14 +52,27 @@
         document.documentElement.style.fontSize = (deviceWidth / 7.5) + 'px'
         console.log('document.documentElement.style.fontSize------2222', document.documentElement.style.fontSize);
     }
-    getRem(1920, 100)
-    window.onresize = function () {
+
+
+    var deviceWidth = document.documentElement.clientWidth || window.innerWidth
+    if (deviceWidth >= 750) {
         getRem(1920, 100)
+    } else {
+        getRem(750, 100)
+    }
+    window.onresize = function () {
+        // var deviceWidth = document.documentElement.clientWidth || window.innerWidth
+        if (deviceWidth >= 750) {
+            getRem(1920, 100)
+        } else {
+            getRem(750, 100)
+        }
     }
     function getRem(pwidth, prem) {
         var html = document.getElementsByTagName('html')[0]
         var oWidth =
             document.body.clientWidth || document.documentElement.clientWidth
+
         html.style.fontSize = (oWidth / pwidth) * prem + 'px'
     }
 </script>

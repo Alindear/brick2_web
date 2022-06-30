@@ -8,6 +8,7 @@
             <img
                 :src="logoPng"
                 alt=""
+                @click="goRouter('/index')"
             >
             <div class="title_right">
                 <div
@@ -31,6 +32,7 @@
 
                 </div>
 
+                <!-- 未连接 -->
                 <div
                     v-if="!selectedAccount"
                     class="on_connect"
@@ -44,6 +46,8 @@
                         {{i18n.connect}}
                     </el-button>
                 </div>
+
+                <!-- 已连接 可断开 -->
                 <div
                     v-if="selectedAccount"
                     class="dis_connect"
@@ -64,6 +68,8 @@
                         {{i18n.connected}}
                     </el-button>
                 </div>
+
+                <!-- 顶部搜索按钮 （首页不展示）-->
                 <div
                     class="secrch_title"
                     v-if="$route.fullPath !== '/index'"
@@ -83,7 +89,164 @@
                     </el-button>
                 </div>
             </div>
+
+            <div class="title_right_mb">
+                <img
+                    :src="moremenu"
+                    alt=""
+                    v-if="menuFlag"
+                    @click="openMenu"
+                >
+                <img
+                    :src="closemenu"
+                    alt=""
+                    v-if="!menuFlag"
+                    @click="closeMenu"
+                >
+            </div>
         </div>
+
+        <div
+            class="back_menu"
+            v-if="!menuFlag"
+            @click="menuFlag = !menuFlag"
+        >
+            <img
+                src=""
+                alt=""
+            >
+        </div>
+
+        <!-- mb 搜索面板 -->
+        <!-- <transition
+            enter-active-class="animate_bounceIn"
+            leave-active-class="animate_bounceOut"
+        > -->
+        <div
+            class="menu_list"
+            v-if="!menuFlag"
+        >
+            <div class="menu_connect_search">
+                <div class="connect_status">
+                    <!-- 未连接 -->
+                    <div
+                        v-if="!selectedAccount"
+                        class="on_connect"
+                    >
+                        <span class="connect_text">
+                            <!-- 链接钱包（只读状态） -->
+                            {{i18n.connectwallet}}
+                        </span>
+                        <el-button @click="connectWallet">
+                            <!-- 连接 -->
+                            {{i18n.connect}}
+                        </el-button>
+                    </div>
+
+                    <!-- 已连接 可断开 -->
+                    <div
+                        v-if="selectedAccount"
+                        class="dis_connect"
+                    >
+                        <span class="connect_text">
+                            {{(selectedAccount && selectedAccount.length > 8) ? (selectedAccount.slice(0,4) + '...' + selectedAccount.slice(-4)) : selectedAccount}}
+                        </span>
+                        <span
+                            class="connect_main"
+                            :style="{'margin-right': $store.state.language === 'CN' ? '0.48rem' : '0.32rem'}"
+                        >
+                            <span class="coin_main"></span>
+                            <span>
+                                <!-- Main 网络 -->
+                                {{i18n.main_net}}
+
+                            </span>
+                        </span>
+                        <el-button @click="disconnectWallet">
+                            <!-- 断开连接 -->
+                            {{i18n.connected}}
+                        </el-button>
+                    </div>
+                </div>
+                <div class="input_module">
+                    <div class="input_back">
+                    </div>
+                    <el-form
+                        action="javascript:return true"
+                        class="input_form"
+                    >
+                        <el-input
+                            class="input_search"
+                            :placeholder="i18n.placeholder_mb_en"
+                            v-model="searchText"
+                            type="search"
+                            @input="searchTextChange"
+                            @keyup.13.native="searchEns"
+                        >
+                            <i></i>
+                            <img
+                                slot="suffix"
+                                :src="searchblack"
+                                alt=""
+                            >
+                        </el-input>
+                    </el-form>
+                </div>
+                <!-- <el-form action="javascript:return true" class="input_form">
+                    <el-input
+                        class="input_search"
+                        :placeholder="i18n.placeholder"
+                        v-model="searchText"
+                        type="search"
+                        @input="searchTextChange"
+                        @keyup.13.native="searchEns"
+                    >
+                        <i></i>
+                        <img
+                            slot="suffix"
+                            :src="searchblack"
+                            alt=""
+                        >
+                    </el-input>
+                </el-form> -->
+            </div>
+
+            <p @click="goRouter('/index')">
+                <!-- 首页 -->
+                {{i18n.index_menu}}
+            </p>
+            <div class="list_border"></div>
+            <p @click="goRouter('/brick/myens')">
+                <!-- 我的域名 -->
+                {{i18n.my_domain}}
+            </p>
+            <div class="list_border"></div>
+            <p @click="goRouter('/brick/documentdesc')">
+                <!-- 文档说明 -->
+                {{i18n.document_desc}}
+            </p>
+            <div class="list_border"></div>
+            <p @click="goRouter('/brick/contactus')">
+                <!-- 联系社区 -->
+                {{i18n.contact_community}}
+            </p>
+
+            <div class="list_border"></div>
+            <p>
+                <span
+                    :class="$store.state.language === 'CN' ? 'yes_lang' : 'no_lang'"
+                    @click="selectLanageChange('简体中文 (CN)')"
+                >中文</span>
+                <span> / </span>
+                <span
+                    :class="$store.state.language === 'EN' ? 'yes_lang' : 'no_lang'"
+                    @click="selectLanageChange('English (EN)')"
+                > EN </span>
+            </p>
+        </div>
+        <!-- </transition> -->
+
+        <!-- pc搜索面板 -->
         <div v-if="showSearchContainer">
             <div class="search_container">
                 <p class="search_text">
@@ -166,20 +329,13 @@
 <script>
 import registered from './registered.vue';
 import anglesign from 'img/角标.png';
-import menu from 'img/菜单.png';
+import moremenu from 'img/更多.png';
+import closemenu from 'img/关闭菜单.png';
 import searchPng from 'img/icon/编组.png';
 import search2Png from 'img/icon/编组 2.png';
-
-import closemenu from 'img/关闭菜单.png';
+import searchblack from 'img/searchblack.png';
 // import logoPng from 'img/首页/BNS_logo@2x.png';
 import logoPng from 'img/logoleft.png';
-// import 'houtai/web3.min.js';
-// import {
-// 	connectWallet,
-// 	disconnectWallet,
-// 	currentAddr,
-// 	alert,
-// } from 'houtai/web3_eth.js';
 import {
 	onConnect,
 	onDisconnect,
@@ -200,19 +356,18 @@ export default {
 			language: false,
 			isconnect: false,
 			anglesign,
-			menu,
+			moremenu,
 			closemenu,
 			logoPng,
 			searchPng,
 			search2Png,
-			selectedAccount: '',
+			searchblack,
 			menuFlag: true,
 			showSearchContainer: false,
 
 			histroys: [],
 
 			selectedAccount: '',
-			moreCloseShowFlag: false,
 			isExist: null,
 			openLinkShowFlag: false,
 			searchEnsLoading: false,
@@ -310,22 +465,23 @@ export default {
 		},
 
 		// //打开菜单
-		// openMenu() {
-		// 	console.log('打开菜单');
-		// 	this.menuFlag = false;
-		// },
-		// //关闭菜单
-		// closeMenu() {
-		// 	console.log('关闭菜单');
-		// 	this.menuFlag = true;
-		// },
+		openMenu() {
+			console.log('打开菜单');
+			this.menuFlag = false;
+			console.log('this.menuFlag', this.menuFlag);
+		},
+		//关闭菜单
+		closeMenu() {
+			console.log('关闭菜单');
+			this.menuFlag = true;
+		},
 		//跳转路由
 		goRouter(type) {
 			this.$router.push({
 				path: type,
 			});
+			this.menuFlag = true;
 		},
-
 		searchTextChange() {
 			console.log('域名发生变化');
 			this.isExist = null;
@@ -401,10 +557,7 @@ export default {
 				);
 			}
 		},
-		//点击更多图标
-		moreCloseChange(flag) {
-			this.moreCloseShowFlag = flag;
-		},
+
 		//查询
 		async searchEns() {
 			if (!this.searchText) {
@@ -489,6 +642,7 @@ export default {
 	width: 100%;
 	height: 1rem;
 	background-color: #ffffff;
+
 	.header_pc {
 		display: flex;
 		flex-direction: row;
@@ -633,6 +787,241 @@ export default {
 				}
 			}
 		}
+		.title_right_mb {
+			display: none;
+		}
+		@media (max-width: 750px) {
+			.title_right {
+				display: none;
+			}
+			.title_right_mb {
+				display: block;
+				img {
+					// width: 0.5115rem;
+					// height: 0.48rem;
+					height: 0.3rem;
+					width: 0.3rem;
+					vertical-align: middle;
+				}
+			}
+		}
+	}
+	.back_menu {
+		width: 100%;
+		// height: 100%;
+		height: 12.07rem;
+		position: fixed;
+		left: 0;
+		// top: 0;
+		top: 1.28rem;
+		background: rgba(0, 0, 0, 0.21);
+		// filter: blur(10px);
+		// background-color: rgba(113, 115, 139, 0.4117647059);
+		-webkit-backdrop-filter: blur(5px);
+		backdrop-filter: blur(10px);
+		z-index: 999;
+	}
+	// .menu_content {
+	// 	width: 7.5rem;
+	// 	height: 13.34rem;
+	// 	position: relative;
+	// 	z-index: 1;
+	.menu_list {
+		height: 12.07rem;
+		width: 6.66rem;
+		position: fixed;
+		right: 0;
+		top: 1.28rem;
+		z-index: 9999;
+		background-color: #ffffff;
+		color: #000000;
+		padding: 0.19rem 0.32rem;
+		box-sizing: border-box;
+		.menu_connect_search {
+			display: flex;
+			flex-direction: column;
+			.connect_status {
+				display: flex;
+				flex-direction: row;
+				height: 0.77rem;
+				margin-bottom: 0.32rem;
+				// line-height: 0.77rem;
+				.on_connect {
+					display: flex;
+					flex-direction: row;
+					.el-button {
+						// color: #ffffff;
+						padding: 0.16rem 0.6rem;
+						border: none;
+					}
+				}
+				.dis_connect {
+					display: flex;
+					flex-direction: row;
+					.connect_main {
+						display: flex;
+						flex-direction: row;
+						justify-content: center;
+						align-items: center;
+						color: #999999;
+						margin-right: 0.48rem;
+						font-size: 0.28rem;
+						font-family: PingFangSC-Regular;
+						font-weight: 400;
+						.coin_main {
+							width: 0.08rem;
+							height: 0.08rem;
+							background: #21dc3f;
+							border-radius: 50%;
+							margin-right: 0.12rem;
+						}
+					}
+					.el-button {
+						color: #ffffff;
+						border: none;
+					}
+				}
+				.connect_text {
+					// width: 1.8rem;
+					// height: 0.45rem;
+					// height: 100%;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.32rem;
+					margin: auto;
+					margin-right: 0.16rem;
+					color: #666666;
+				}
+				.el-button {
+					// width: 1.86rem;
+					height: 0.77rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.32rem;
+					color: #ffffff;
+					background-image: linear-gradient(
+						-60deg,
+						#6af0e9 0%,
+						#edafff 100%
+					);
+					border-radius: 0.0533rem;
+					text-align: center;
+					padding: 0.16rem 0.29rem;
+					// border: none;
+				}
+			}
+			.input_module {
+				position: relative;
+				.input_back {
+					position: absolute;
+					width: 5.8rem;
+					height: 0.96rem;
+					border-radius: 0.48rem;
+					opacity: 0.2;
+					background-image: linear-gradient(
+						-60deg,
+						rgb(106, 240, 233, 0.2) 0%,
+						rgb(237, 175, 255, 0.2) 100%
+					);
+				}
+				.input_form {
+					// opacity: 0.2;
+					// background-image: linear-gradient(
+					// 	-60deg,
+					// 	rgb(106, 240, 233, 0.2) 0%,
+					// 	rgb(237, 175, 255, 0.2) 100%
+					// );
+					.input_search {
+						/deep/.el-input__inner {
+							width: 5.8rem;
+							height: 0.96rem;
+							border-radius: 0.48rem;
+							font-family: PingFangSC-Regular;
+							font-weight: 400;
+							font-size: 0.32rem;
+							color: #999999;
+							// opacity: 1;
+							border: none;
+							background: none;
+						}
+						img {
+							height: 0.32rem;
+							margin: 0.32rem;
+							margin-right: 0.52rem;
+						}
+					}
+				}
+			}
+
+			// .input_search {
+			// 	/deep/.el-input__inner {
+			// 		width: 5.8rem;
+			// 		height: 0.96rem;
+			// 		opacity: 0.2;
+			// 		background-image: linear-gradient(
+			// 			-60deg,
+			// 			rgb(106, 240, 233, 0.2) 0%,
+			// 			rgb(237, 175, 255, 0.2) 100%
+			// 		);
+			// 		border-radius: 0.48rem;
+			// 		font-family: PingFangSC-Regular;
+			// 		font-weight: 400;
+			// 		font-size: 0.32rem;
+			// 		color: #999999;
+			// 		opacity: 1;
+			// 		border: none;
+			// 	}
+			// 	img {
+			// 		height: 0.32rem;
+			// 		margin: 0.32rem;
+			// 		margin-right: 0.52rem;
+			// 	}
+			// }
+		}
+
+		p {
+			margin: 0;
+			height: 0.45rem;
+			line-height: 0.45rem;
+			color: #000000;
+			letter-spacing: 0.096rem;
+			margin: 0.32rem;
+			font-family: PingFangSC-Regular;
+			font-weight: 400;
+			color: #000000;
+			letter-spacing: 0.01rem;
+			text-align: center;
+			font-size: 0.32rem;
+		}
+		// 选中的语言
+		.yes_lang {
+			font-family: PingFangSC-Medium;
+			font-weight: 500;
+			font-size: 0.3rem;
+			color: #000000;
+			letter-spacing: 0.0053rem;
+		}
+		//未选中的语言
+		.no_lang {
+			font-family: PingFangSC-Medium;
+			font-weight: 500;
+			font-size: 0.28rem;
+			color: #999999;
+			letter-spacing: 0.0049rem;
+		}
+		.list_border {
+			height: 0.01rem;
+			// opacity: 0.4;
+			background: #ededed;
+			margin: auto;
+		}
+
+		// }
+	}
+	@media (max-width: 750px) {
+		.header_pc {
+			padding: 0.4683rem 0.46rem;
+		}
 	}
 	.mask_dialog {
 		width: 100%;
@@ -738,7 +1127,7 @@ export default {
 					}
 				}
 				.el-button {
-					width: 1.73rem;
+					// width: 1.73rem;
 					background-image: linear-gradient(
 						-60deg,
 						#6af0e9 0%,
@@ -750,23 +1139,21 @@ export default {
 					margin-top: -0.02rem;
 					font-family: PingFangSC-Semibold;
 					font-weight: 600;
-					font-size: 0.2rem;
+					font-size: 0.24rem;
 					color: #ffffff;
 					border: none;
+					letter-spacing: 0.01rem;
 				}
 				img {
 					width: 0.29rem;
 					height: 0.32rem;
 					vertical-align: middle;
 					margin-right: 0.16rem;
+					margin-top: -0.06rem;
 				}
 			}
 		}
-		// .el-input {
-		// 	width: 14rem;
-		// 	height: 0.96rem;
-		// 	border-radius: 0.32rem;
-		// }
+
 		.his_list {
 			display: flex;
 			flex-direction: row;
@@ -786,6 +1173,11 @@ export default {
 				flex-direction: row;
 			}
 		}
+	}
+}
+@media (max-width: 750px) {
+	.header_web {
+		height: 1.28rem;
 	}
 }
 </style>

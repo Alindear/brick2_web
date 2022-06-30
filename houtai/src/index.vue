@@ -165,6 +165,112 @@
             </div>
         </div>
 
+        <div class="mb_index_content">
+            <img
+                :src="topImg"
+                alt=""
+            >
+            <div class="index_left">
+                <div class="left_top">
+                    <span v-if="$store.state.language === 'EN'">BNS</span>
+                    <el-button
+                        v-if="$store.state.language === 'EN'"
+                        @click="onConnect"
+                    >Go and link</el-button>
+                    <img
+                        v-if="$store.state.language === 'CN'"
+                        :src="bnsClickPng"
+                        alt=""
+                        @click="onConnect"
+                    >
+                </div>
+                <div class="left_center">
+                    <div class="text_list">
+                        <span class="list_icon"></span>
+                        <span>
+                            <!-- 链接每一个web3用户 -->
+                            {{i18n.index_text1}}
+                        </span>
+                    </div>
+                    <div class="text_list">
+                        <span class="list_icon list_icon2"></span>
+                        <span>
+                            <!-- 链接每一个主流平台场景 -->
+                            {{i18n.index_text2}}
+
+                        </span>
+                    </div>
+                    <div class="text_list">
+                        <span class="list_icon list_icon3"></span>
+                        <span>
+                            <!-- 帮助每一个用户链接他的身份和资产 -->
+                            {{i18n.index_text3}}
+                        </span>
+                    </div>
+                    <div class="text_list">
+                        <span class="list_icon list_icon4"></span>
+                        <span>
+                            <!-- 帮助bsc链接更大的增量客户 -->
+                            {{i18n.index_text4}}
+                        </span>
+                    </div>
+                </div>
+                <div class="left_bottom">
+                    <el-button
+                        class="pc_top_search"
+                        type="primary"
+                    >
+                        <div class="search_module">
+                            <el-select
+                                class="select_lang"
+                                v-model="select"
+                                slot="suffix"
+                                placeholder=""
+                                @change="selectLanageChange"
+                            >
+                                <el-option
+                                    v-for="item in lanageListOpts"
+                                    :key="item.value"
+                                    :label="item.value"
+                                    :value="item.label"
+                                >
+                                    <el-radio
+                                        v-model="selectRadio"
+                                        :label="item.label"
+                                    > </el-radio>
+                                </el-option>
+
+                            </el-select>
+                            <div class="cut_border"></div>
+                            <el-form action="javascript:return true">
+                                <el-input
+                                    class="input_search"
+                                    :placeholder="i18n.placeholder_mb_en"
+                                    v-model="searchText"
+                                    type="search"
+                                    @input="searchTextChange"
+                                    @keyup.13.native="searchEns"
+                                >
+                                    <i></i>
+                                    <img
+                                        slot="suffix"
+                                        :src="searchblack"
+                                        alt=""
+                                    >
+                                </el-input>
+                            </el-form>
+                        </div>
+                    </el-button>
+                    <img
+                        @click="searchEns"
+                        :src="searchBtnPng"
+                        alt=""
+                    >
+                </div>
+            </div>
+
+        </div>
+
         <div class="bns_compose_module">
             <p class="the_text">The</p>
             <div
@@ -191,7 +297,7 @@
                 <!-- 分享赚取收益 -->
                 {{i18n.share}}
             </div>
-            <p class="span_text">
+            <p :class="$store.state.language === 'CN' ? 'span_text' : 'span_text_en'">
                 <!-- 推荐好友注册域名有奖励！赶紧生成自己的专属链接吧！ -->
                 {{i18n.share_desc}}
             </p>
@@ -200,7 +306,6 @@
                     class="left_img"
                     v-if="linkShowFlag"
                 >
-                    <!-- v-if="!changeStatusShowFlag && linkShowFlag" -->
                     <p class="on_link">{{this.refAddress}}</p>
                 </div>
                 <div
@@ -208,11 +313,7 @@
                     @click="linkClick"
                     v-if="!linkShowFlag"
                 >
-                    <!-- v-if="!changeStatusShowFlag && !linkShowFlag" -->
-                    <p
-                        class="dis_link"
-                        :style="{ 'font-size': $store.state.language === 'CN' ? '0.46rem' : '0.4rem',}"
-                    >
+                    <p :class="$store.state.language === 'CN' ? 'dis_link' : 'dis_link_en'">
                         <!-- 点击生成专属链接 -->
                         {{i18n.click_text}}
                     </p>
@@ -222,7 +323,10 @@
                         class="now_profit"
                         v-if="changeStatusShowFlag"
                     >
-                        <p class="profit_text">当前收益</p>
+                        <p class="profit_text">
+                            <!-- 当前收益 -->
+                            {{i18n.current_gains}}
+                        </p>
                         <div class="profit_num">BRICK: {{brickCps }}</div>
                         <div class="profit_num">USDT:{{usdtCps}}</div>
                         <div class="profit_num">BNB:{{bnbCps}}</div>
@@ -282,6 +386,34 @@
             </div>
 
         </div>
+        <div class="mb_back_address_price_module">
+            <div class="back_left_center_img"></div>
+            <div
+                v-for="(item,index) in addressPriceList"
+                :key="index"
+                class="address_price_module"
+                :style="{ 'background' : index === 0 ? '#ffffff' : '#f8f8f8'}"
+            >
+                <div class="address_price_right_img">
+                    <img
+                        :src="item.img"
+                        alt=""
+                    >
+                </div>
+                <div class="address_price_left_desc">
+                    <div class="mb_price_title">
+                        <img
+                            :src="item.icon"
+                            alt=""
+                        >
+                        <div class="address_price_title web-font">{{item.title}}</div>
+                    </div>
+                    <p class="address_price_desc">{{item.desc}}</p>
+                </div>
+
+            </div>
+
+        </div>
 
         <div class="gift_module">
             <div
@@ -306,12 +438,16 @@
                 v-if="changeStatusShowFlag && !isShowDraw"
                 @click="luckDrawBtn(true)"
             >
-                参与抽奖
+                <!-- 参与抽奖 -->
+                {{i18n.participate_draw}}
             </el-button>
             <el-button
                 v-if="changeStatusShowFlag && isShowDraw"
                 @click="viewResultBtn(true)"
-            >查看结果</el-button>
+            >
+                <!-- 查看结果 -->
+                {{i18n.view_results}}
+            </el-button>
             <div class="four_gift_bottom">
                 <div
                     v-for="(item,index) in giftList"
@@ -323,7 +459,7 @@
                         alt=""
                     >
                     <p class="item_title">{{item.title}}</p>
-                    <div :class="`item_desc${index+1}`">
+                    <div class="item_desc">
                         <p>{{item.desc1}}</p>
                         <p>{{item.desc2}}</p>
                         <p v-if="item.desc3">{{item.desc3}}</p>
@@ -342,16 +478,6 @@
                 <!-- 合作伙伴 -->
                 {{i18n.partners}}
             </p>
-            <!-- <div class="partner_img">
-                <img
-                    v-for="(item,index) in imgList"
-                    :key="index"
-                    @mouseenter="changeImageSrc(index, 'hover')"
-                    @mouseleave="changeImageSrc(index, '')"
-                    :src="item.img"
-                    alt=""
-                >
-            </div> -->
 
             <div class="partner_img">
                 <img
@@ -398,6 +524,38 @@
                 >
 
             </div>
+
+            <div class="mb_contact_input">
+                <p class="email_top">E-mail: admin@bnsdid.io </p>
+                <div class="input_center">
+                    <span class="img_center">SAY HI HERE</span>
+                    <img
+                        class="img_right"
+                        :src="enterIcon"
+                        alt=""
+                    >
+                </div>
+
+                <!-- <span class="img_left"></span> -->
+                <span class="bottom_img">
+                    <img
+                        class="bottom_icon1"
+                        :src="twitterMBPng"
+                        alt=""
+                    >
+                    <img
+                        class="bottom_icon2"
+                        :src="discordMBPng"
+                        alt=""
+                    >
+                    <img
+                        class="bottom_icon3"
+                        :src="lastIconMBPng"
+                        alt=""
+                    >
+                </span>
+
+            </div>
         </div>
 
     </div>
@@ -420,6 +578,7 @@ import {
 	selectedAccount, checkAlready, randomLottery,
 } from 'houtai/web3_eth.js';
 
+import topImg from 'img/imgmb/首页/顶部.png';
 import searchBtnPng from 'img/首页/search.png';
 import bnsClickPng from 'img/首页/bnsClick.png';
 import top1Png from 'img/首页/rodion-kutsaev--tgTipG2t_g-unsplash@2x.png';
@@ -437,6 +596,11 @@ import partnerImg from 'img/首页/编组 39@2x.png';
 import twitterPng from 'img/首页/推特_twitter44@2x.png';
 import discordPng from 'img/首页/discord@2x.png';
 import lastIconPng from 'img/首页/编组 56@2x.png';
+
+import twitterMBPng from 'img/imgmb/首页/推特_twitter44.png';
+import discordMBPng from 'img/imgmb/首页/discord.png';
+import lastIconMBPng from 'img/imgmb/首页/编组 56.png';
+
 import giftImg1 from 'img/gift/编组 30.png';
 import giftImg2 from 'img/gift/编组 31.png';
 import giftImg3 from 'img/gift/编组 32.png';
@@ -481,9 +645,13 @@ export default {
 			viewResultShowFlag: false, // 查看结果
 			luckOrNot: 'NO', //是否中奖
 			// luckOrNot: 'YES', //是否中奖
+
 			openLinkShowFlag: false,
 			searchEnsLoading: false,
 			changeStatusShowFlag: false,
+
+			// changeStatusShowFlag: true,
+
 			linkShowFlag: false,
 			refAddress: '',
 			bnbCps: 0,
@@ -506,10 +674,14 @@ export default {
 			twitterPng,
 			discordPng,
 			lastIconPng,
+			twitterMBPng,
+			discordMBPng,
+			lastIconMBPng,
 			giftImg1,
 			giftImg2,
 			giftImg3,
 			giftImg4,
+			topImg,
 
 			icon1,
 			icon2,
@@ -1013,7 +1185,11 @@ export default {
 		// position: absolute;
 		z-index: 1;
 	}
+	.header_web {
+		background: none;
+	}
 	.back_top_img {
+		display: block;
 		width: 4.34rem;
 		height: 7.84rem;
 		opacity: 0.12;
@@ -1181,13 +1357,15 @@ export default {
 								height: 1.28rem;
 								line-height: 1.28rem;
 								border: none;
-								border-radius: 0.32rem;
+								border-radius: 0;
 								font-family: PingFangSC-Medium;
 								font-weight: 500;
 								font-size: 0.2rem;
 								color: #999999;
 								margin: 0;
 								padding: 0;
+								border-top-right-radius: 0.32rem;
+								border-bottom-right-radius: 0.32rem;
 							}
 						}
 						.el-button {
@@ -1264,6 +1442,12 @@ export default {
 						}
 						span {
 							margin-left: 0.28rem;
+							font-size: 0.2764rem;
+							height: 0.38rem;
+							font-family: Alibaba-PuHuiTi-R;
+							font-weight: R;
+							font-size: 0.2764rem;
+							color: #000000;
 						}
 					}
 				}
@@ -1372,6 +1556,228 @@ export default {
 			bottom: 0;
 		}
 	}
+	.mb_index_content {
+		display: none;
+	}
+	@media (max-width: 750px) {
+		.mb_index_content {
+			display: block;
+			width: 100%;
+			margin-top: -1.28rem;
+			position: relative;
+			img {
+				width: 100%;
+				position: absolute;
+			}
+			.index_left {
+				// margin-top: 0.62rem;
+				// margin-left: 0.61rem;
+				box-sizing: border-box;
+				position: relative;
+				padding-top: 8.56rem;
+				.left_top {
+					margin-bottom: 0.32rem;
+					margin-top: 0.62rem;
+					margin-left: 0.61rem;
+					img {
+						width: 3.33rem;
+						height: 0.95rem;
+						position: relative;
+					}
+					span {
+						font-size: 0.56rem;
+						width: 1.69rem;
+						height: 1.03rem;
+						font-family: Womby-Regular;
+						font-weight: 400;
+						letter-spacing: 0.04rem;
+						background-image: linear-gradient(
+							to right,
+							#e5b3fd,
+							#7de7ec
+						);
+						-webkit-background-clip: text;
+						color: transparent;
+						margin-right: 0.24rem;
+					}
+					.el-button {
+						font-size: 0.52rem;
+						background-image: linear-gradient(
+							-60deg,
+							#6af0e9 0%,
+							#edafff 100%
+						);
+						border-radius: 0.24rem;
+						font-family: Womby-Regular;
+						font-weight: 400;
+						color: #ffffff;
+						border: none;
+					}
+				}
+				.left_center {
+					display: flex;
+					flex-direction: column;
+					margin-left: 0.61rem;
+					.text_list {
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						margin-bottom: 0.16rem;
+						.list_icon {
+							width: 0.08rem;
+							height: 0.08rem;
+							background: #e4b3fd;
+							border-radius: 50%;
+							margin-right: 0.16rem;
+						}
+						.list_icon2 {
+							background: #c3c3f8;
+						}
+						.list_icon3 {
+							background: #a8d1f3;
+						}
+						.list_icon4 {
+							background: #86e2ee;
+						}
+						span {
+							font-family: Alibaba-PuHuiTi-R;
+							font-weight: R;
+							font-size: 0.28rem;
+							color: #666666;
+							line-height: 0.36rem;
+						}
+					}
+				}
+				.left_bottom {
+					margin-left: 0.61rem;
+					margin-top: 0.22rem;
+					display: flex;
+					flex-direction: row;
+					// justify-content: space-between;
+					/deep/.el-input__inner {
+						width: 5.56rem;
+						height: 1.09rem;
+						opacity: 0.8;
+						background: #f1f1f1;
+						border-radius: 0.32rem;
+					}
+					/deep/.el-input__inner:focus {
+						border-color: #f1f1f1 !important;
+						outline: 0;
+					}
+					img {
+						width: 1.24rem;
+						height: 1.09rem;
+						margin-left: 0.0567rem;
+						position: relative;
+					}
+					.pc_top_search {
+						display: flex;
+						flex-direction: row;
+						padding: 0;
+						border: none;
+						width: 5.56rem;
+						height: 1.09rem;
+						line-height: 1.09rem;
+						opacity: 0.8;
+						background: #f1f1f1;
+						border-radius: 0.32rem;
+						.search_module {
+							display: flex;
+							flex-direction: row;
+							align-items: center;
+							width: 5.56rem;
+							.select_lang {
+								margin-right: 0.21rem;
+								/deep/.el-input__inner {
+									height: 1.09rem;
+									line-height: 1.09rem;
+									border: none;
+									border-radius: 0.32rem;
+									font-family: PingFangSC-Medium;
+									font-weight: 500;
+									font-size: 0.32rem;
+									color: #999999;
+									margin: 0;
+									margin-left: 0.32rem;
+									padding: 0;
+									width: 0.85rem;
+								}
+								/deep/.el-input__suffix {
+									right: -0.06rem;
+								}
+								/deep/.el-button--primary.is-active {
+									background: #999999;
+									border-color: #999999;
+								}
+							}
+							.cut_border {
+								width: 0.01rem;
+								height: 0.38rem;
+								border-left: 0.02rem
+									solid
+									#cdcdcd;
+								margin-right: 0.32rem;
+							}
+							.input_search {
+								width: 5rem;
+								/deep/.el-input__inner {
+									// width: 3.8rem;
+									width: 4.8rem;
+									height: 1.09rem;
+									line-height: 1.09rem;
+									border: none;
+									border-radius: 0.32rem;
+									font-family: PingFangSC-Medium;
+									font-weight: 500;
+									font-size: 0.32rem;
+									color: #999999;
+									margin: 0;
+									padding: 0;
+								}
+							}
+							.el-button {
+								width: 1.73rem;
+								background-image: linear-gradient(
+									-60deg,
+									#6af0e9
+										0%,
+									#edafff
+										100%
+								);
+								border-radius: 0.32rem;
+								box-sizing: border-box;
+								height: 0.98rem;
+								margin-top: -0.02rem;
+								font-family: PingFangSC-Semibold;
+								font-weight: 600;
+								font-size: 0.32rem;
+								color: #ffffff;
+							}
+							img {
+								width: 0.29rem;
+								height: 0.32rem;
+								vertical-align: middle;
+								margin-right: 0.16rem;
+							}
+						}
+					}
+				}
+			}
+		}
+		.header_top {
+			background: none;
+		}
+		.header_web {
+			background: none;
+		}
+		.back_top_img {
+			display: none;
+		}
+		.index_content {
+			display: none;
+		}
+	}
 	.bns_compose_module {
 		display: flex;
 		flex-direction: column;
@@ -1379,6 +1785,7 @@ export default {
 		align-items: center;
 		position: relative;
 		.the_text {
+			display: block;
 			width: 0.32rem;
 			height: 0.26rem;
 			font-family: Futura-Medium;
@@ -1398,19 +1805,36 @@ export default {
 		}
 		img {
 			width: 10rem;
-			// height: 9.9rem;
 		}
 		.back_right_center_img {
 			width: 6.69rem;
 			height: 6.83rem;
 			opacity: 0.07;
 			background: #78b5ff;
-			// background: #000000;
 			filter: blur(0.5rem);
 			position: absolute;
 			top: 7.5rem;
 			right: -2.17rem;
 			float: right;
+			display: block;
+		}
+	}
+	@media (max-width: 750px) {
+		.bns_compose_module {
+			.the_text {
+				display: none;
+			}
+			.title_text {
+				height: 0.7rem;
+				margin-top: 1.125rem;
+				font-size: 0.54rem;
+			}
+			img {
+				width: 7.5rem;
+			}
+			.back_right_center_img {
+				display: none;
+			}
 		}
 	}
 
@@ -1436,6 +1860,14 @@ export default {
 			margin: 0;
 			margin-bottom: 0.6rem;
 		}
+		// .span_text_en {
+		// 	height: 100%;
+		// 	width: 6.2rem;
+		// 	text-align: center;
+		// 	font-weight: 400;
+		// 	font-size: 0.32rem;
+		// 	margin-bottom: 0.5632rem;
+		// }
 		.share_img {
 			display: flex;
 			flex-direction: row;
@@ -1482,6 +1914,21 @@ export default {
 					margin: 4.72rem 0 1.25rem 0.88rem;
 					// box-sizing: border-box;
 				}
+				.dis_link_en {
+					font-family: Alibaba-PuHuiTi-B;
+					font-weight: B;
+					font-size: 0.4rem;
+					background-image: linear-gradient(
+						to right,
+						#e5b3fd,
+						#7de7ec
+					);
+					-webkit-background-clip: text;
+					color: transparent;
+					// padding: 4.39rem 0 1.59rem 0.55rem;
+					margin: 4.72rem 0 1.25rem 0.88rem;
+					// box-sizing: border-box;
+				}
 			}
 			.left_img:hover {
 				border: 0.34rem solid;
@@ -1502,6 +1949,19 @@ export default {
 					// padding: 4.72rem 0 1.25rem 0.88rem;
 					// box-sizing: border-box;
 				}
+				.dis_link_en {
+					font-family: Alibaba-PuHuiTi-B;
+					font-weight: B;
+					font-size: 0.4rem;
+					background-image: linear-gradient(
+						to right,
+						#e5b3fd,
+						#7de7ec
+					);
+					-webkit-background-clip: text;
+					color: transparent;
+					margin: 4.39rem 0 1.59rem 0.55rem;
+				}
 			}
 			.right_img {
 				width: 8rem;
@@ -1518,7 +1978,8 @@ export default {
 				box-sizing: border-box;
 				.now_profit {
 					margin-left: 0.69rem;
-					margin-bottom: 1.95rem;
+					// margin-bottom: 1.95rem;
+					margin-bottom: 0.95rem;
 					.profit_text {
 						// width: 0.95rem;
 						height: 0.33rem;
@@ -1563,6 +2024,163 @@ export default {
 					font-size: 0.46rem;
 					color: #ffffff;
 					padding: 0 0.75rem;
+					border: none;
+				}
+			}
+		}
+	}
+	@media (max-width: 750px) {
+		.share_module {
+			margin-bottom: 1.07rem;
+			.title_text {
+				height: 0.7rem;
+				font-family: YouSheBiaoTiYuan;
+				font-size: 0.54rem;
+				margin-top: 0.2417rem;
+				margin-bottom: 0.16rem;
+			}
+			.span_text {
+				height: 100%;
+				width: 4.2rem;
+				text-align: center;
+				font-weight: 400;
+				font-size: 0.32rem;
+				margin-bottom: 0.5632rem;
+				font-family: PingFangSC-Regular;
+			}
+			.span_text_en {
+				height: 100%;
+				width: 6.2rem;
+				text-align: center;
+				font-weight: 400;
+				font-size: 0.32rem;
+				margin-bottom: 0.5632rem;
+				font-family: PingFangSC-Regular;
+			}
+			.share_img {
+				flex-direction: column;
+				align-items: center;
+				.left_img {
+					width: 5.68rem;
+					height: 2.606rem;
+					border: 0.13rem solid;
+					border-image: linear-gradient(
+							to right,
+							#e5b3fd,
+							#7de7ec
+						)
+						1 10;
+					box-sizing: border-box;
+					.on_link {
+						font-family: Alibaba-PuHuiTi-B;
+						font-weight: B;
+						font-size: 0.36rem;
+						// margin: 1.05rem 1.42rem;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin: 0;
+						text-align: center;
+					}
+					.dis_link {
+						font-size: 0.36rem;
+						height: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin: 0;
+						text-align: center;
+					}
+					.dis_link_en {
+						font-size: 0.32rem;
+						height: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin: 0;
+					}
+				}
+
+				.left_img:hover {
+					border: 0.13rem solid;
+					border-image: linear-gradient(
+							to right,
+							#e5b3fd,
+							#7de7ec
+						)
+						1 10;
+					box-sizing: border-box;
+					.on_link {
+						font-family: Alibaba-PuHuiTi-B;
+						font-weight: B;
+						font-size: 0.36rem;
+						margin: 1.05rem 1.42rem;
+					}
+					.dis_link {
+						font-size: 0.36rem;
+						height: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin: 0;
+					}
+					.dis_link_en {
+						font-size: 0.32rem;
+						height: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin: 0;
+					}
+				}
+
+				.right_img {
+					width: 5.68rem;
+					height: 3.2rem;
+					background-image: url('houtai/img/imgmb/首页/收益.png');
+					background-size: 100% 100%;
+					.now_profit {
+						margin-left: 0.4rem;
+						margin-bottom: 0.16rem;
+						.profit_text {
+							height: 0.33rem;
+							font-family: Alibaba-PuHuiTi-R;
+							font-weight: R;
+							font-size: 0.28rem;
+							color: #000000;
+							margin: 0.16rem 0;
+							text-align: center;
+						}
+						.profit_num {
+							width: 5.69rem;
+							height: 0.44rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.32rem;
+							color: #000000;
+							letter-spacing: 0.01rem;
+						}
+					}
+					.dis_content {
+						// width: 2.84rem;
+						height: 0.35rem;
+						font-size: 0.26rem;
+						margin: 0;
+						margin-top: 1.18rem;
+						margin-bottom: 0.46rem;
+						text-align: center;
+					}
+					.el-button {
+						margin-left: 0.69rem;
+						margin-bottom: 0.92rem;
+						width: 4.48rem;
+						height: 0.94rem;
+						padding: 0 0.75rem;
+						font-size: 0.32rem;
+						border: none;
+						margin: 0 auto;
+						display: block;
+					}
 				}
 			}
 		}
@@ -1615,12 +2233,48 @@ export default {
 			}
 		}
 	}
+	@media (max-width: 750px) {
+		.express_module {
+			margin-bottom: 0.68rem;
+			.title_text {
+				font-size: 0.32rem;
+				margin-bottom: 0.3249rem;
+				width: 7.5rem !important;
+			}
+			.button_text {
+				width: 6.86rem;
+				height: 1.58rem;
+				line-height: 1.58rem;
+				background-image: linear-gradient(
+					-60deg,
+					#6af0e9 0%,
+					#edafff 100%
+				);
+				border-radius: 0.32rem;
+				border: none;
+				p {
+					font-family: Alibaba-PuHuiTi-M;
+					font-weight: M;
+					font-size: 0.32rem;
+					color: #ffffff;
+					height: 1.1615rem;
+					line-height: 1.1615rem;
+					border: 0.05rem dashed #ffffff;
+					border-radius: 0.32rem;
+					margin: 0;
+					margin-top: -0.1rem;
+				}
+			}
+		}
+	}
 
 	.back_address_price_module {
 		position: relative;
 		// margin-bottom: 0.16rem;
 		margin-bottom: 2rem;
+		display: block;
 		.back_left_center_img {
+			display: block;
 			width: 7.15rem;
 			height: 7.84rem;
 			opacity: 0.07;
@@ -1643,6 +2297,7 @@ export default {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
+			border: 0.01px solid #ededed;
 			.address_price_left_desc {
 				margin-left: 0.73rem;
 				img {
@@ -1680,6 +2335,77 @@ export default {
 			}
 		}
 	}
+	.mb_back_address_price_module {
+		display: none;
+	}
+	@media (max-width: 750px) {
+		.back_address_price_module {
+			display: none;
+		}
+		.mb_back_address_price_module {
+			display: block;
+			position: relative;
+			margin-bottom: 1.6018rem;
+			.back_left_center_img {
+				display: none;
+			}
+			.address_price_module {
+				width: 6.86rem;
+				// height: 6.78rem;
+				height: 100%;
+				background: #ffffff;
+				margin-bottom: 0.4rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				border-radius: 0.32rem;
+				margin: 0 auto;
+				margin-bottom: 0.98rem;
+				padding-bottom: 0.1739rem;
+				.address_price_right_img {
+					img {
+						width: 4.7923rem;
+						height: 4.7923rem;
+						transform: rotate(-1deg);
+						margin-bottom: 0.2472rem;
+					}
+				}
+				.address_price_left_desc {
+					// margin-left: 0.73rem;
+					.mb_price_title {
+						display: flex;
+						flex-direction: row;
+						img {
+							width: 0.44rem;
+							height: 0.44rem;
+							margin-right: 0.16rem;
+						}
+						.address_price_title {
+							width: 5.62rem;
+							word-break: break-all;
+							// height: 0.5rem;
+							font-family: Alibaba-PuHuiTi-B;
+							font-weight: B;
+							font-size: 0.36rem;
+							color: #000000;
+							margin-bottom: 0.1266rem;
+						}
+					}
+
+					.address_price_desc {
+						width: 6.22rem;
+						font-family: Alibaba-PuHuiTi-R;
+						font-weight: R;
+						font-size: 0.28rem;
+						color: #999999;
+						margin: 0;
+						word-break: break-all;
+					}
+				}
+			}
+		}
+	}
 
 	.gift_module {
 		display: flex;
@@ -1707,7 +2433,7 @@ export default {
 			margin: 0.32rem 0 0.8rem 0;
 		}
 		.el-button {
-			width: 4.03rem;
+			// width: 4.03rem;
 			height: 0.92rem;
 			background-image: linear-gradient(
 				-60deg,
@@ -1720,6 +2446,7 @@ export default {
 			font-size: 0.24rem;
 			color: #ffffff;
 			border: none;
+			padding: 0 1.42rem;
 		}
 		.four_gift_bottom {
 			margin-top: 1.92rem;
@@ -1735,6 +2462,7 @@ export default {
 				margin-right: 0.16rem;
 				img {
 					width: 3.88rem;
+					height: 2.0913rem;
 					margin-bottom: 0.1787rem;
 				}
 				.item_title {
@@ -1747,41 +2475,75 @@ export default {
 					margin-bottom: 0.32rem;
 				}
 
-				.item_desc1 {
-					// width: 1.08rem;
-					height: 0.5rem;
+				.item_desc {
+					height: 0.75rem;
 					font-family: PingFangSC-Regular;
 					font-weight: 400;
 					font-size: 0.18rem;
 					color: #666666;
 					text-align: center;
 				}
-				.item_desc2 {
-					// width: 1.44rem;
-					height: 0.5rem;
-					font-family: PingFangSC-Regular;
-					font-weight: 400;
-					font-size: 0.18rem;
-					color: #666666;
-					text-align: center;
-				}
-				.item_desc3 {
-					// width: 1.66rem;
-					height: 0.5rem;
-					font-family: PingFangSC-Regular;
-					font-weight: 400;
-					font-size: 0.18rem;
-					color: #666666;
-					text-align: center;
-				}
-				.item_desc4 {
-					// width: 1.48rem;
-					height: 0.5rem;
-					font-family: PingFangSC-Regular;
-					font-weight: 400;
-					font-size: 0.18rem;
-					color: #666666;
-					text-align: center;
+			}
+		}
+	}
+
+	@media (max-width: 750px) {
+		.gift_module {
+			padding-bottom: 0.01rem;
+			p {
+				margin: 0;
+			}
+			.title_text_gift {
+				font-size: 0.54rem;
+				width: 5.9rem;
+				height: 100%;
+				text-align: center;
+			}
+			.span_text_gift {
+				// height: 0.9rem;
+				height: 100%;
+				font-family: PingFangSC-Regular;
+				font-weight: 400;
+				font-size: 0.32rem;
+				text-align: center;
+				margin: 0.16rem 0.32rem 0.4rem;
+			}
+			.el-button {
+				// width: 4.48rem;
+				// width: 100%;
+				height: 0.94rem;
+				border-radius: 0.47rem;
+				font-size: 0.32rem;
+				padding: 0 1.42rem;
+			}
+			.four_gift_bottom {
+				margin-top: 1.23rem;
+				width: 6.86;
+				flex-wrap: wrap;
+				.four_gift_item {
+					margin-right: 0.14rem;
+					img {
+						width: 3.36rem;
+						height: 100%;
+						margin-bottom: 0.24rem;
+					}
+					.item_title {
+						height: 0.38rem;
+						font-family: Womby-Regular;
+						font-weight: 400;
+						font-size: 0.32rem;
+						color: #000000;
+						letter-spacing: 0.01rem;
+						margin-bottom: 0.32rem;
+					}
+
+					.item_desc {
+						width: 3.36rem;
+						min-height: 1.3rem;
+						margin-bottom: 0.62rem;
+						font-size: 0.25rem;
+						word-break: break-all;
+					}
 				}
 			}
 		}
@@ -1823,6 +2585,22 @@ export default {
 			// }
 		}
 	}
+	@media (max-width: 750px) {
+		.partner_module {
+			margin-bottom: 0.42rem;
+			.partner_title {
+				height: 0.7rem;
+				font-size: 0.54rem;
+				margin-bottom: 0.45rem;
+			}
+			.partner_img {
+				img {
+					width: 3.11rem;
+					// height: 1.46rem;
+				}
+			}
+		}
+	}
 
 	.contact_us_module {
 		width: 19.2rem;
@@ -1851,6 +2629,7 @@ export default {
 			line-height: 1.47rem;
 			background: #ffffff;
 			border-radius: 0.12rem;
+			display: block;
 			.email {
 				width: 0.332rem;
 				height: 0.4rem;
@@ -1875,11 +2654,11 @@ export default {
 				}
 			}
 			.img_left {
-				// border-left: 0.02rem solid #6af0e9;
+				border-left: 0.02rem solid #6af0e9;
 				margin: auto 0;
 				margin-right: 1.77rem;
-				height: 0.6rem;
-				display: inline-block;
+				// height: 0.6rem;
+				// display: inline-block;
 			}
 
 			.img_center {
@@ -1909,6 +2688,119 @@ export default {
 				// background: #000000;
 			}
 		}
+		.mb_contact_input {
+			display: none;
+		}
+	}
+	@media (max-width: 750px) {
+		.contact_us_module {
+			width: 100%;
+			height: 4.58rem;
+			background-image: linear-gradient(
+				-60deg,
+				#6af0e9 0%,
+				#edafff 100%
+			);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			.contanct_title {
+				margin: 0;
+				margin: 0.4rem 0 0.16rem;
+				height: 0.7rem;
+				font-size: 0.54rem;
+				letter-spacing: -0.0105px;
+			}
+			.contact_input {
+				display: none;
+			}
+			.mb_contact_input {
+				display: block;
+				width: 5.83rem;
+				height: 1.47rem;
+				// line-height: 1.47rem;
+				// background: #ffffff;
+				border-radius: 0.12rem;
+				display: flex;
+				flex-direction: column;
+				.email_top {
+					width: 5.83rem;
+					height: 0.9rem;
+					line-height: 0.9rem;
+					background: rgba(255, 255, 255, 0.1);
+					border: 0.005rem solid #ffffff;
+					border-radius: 0.12rem;
+					font-family: PingFangSC-Regular;
+					font-weight: 400;
+					font-size: 0.3rem;
+					letter-spacing: 0;
+					margin: 0;
+					padding-left: 0.24rem;
+					box-sizing: border-box;
+					margin-bottom: 0.14rem;
+				}
+				.input_center {
+					width: 5.84rem;
+					height: 0.9rem;
+					line-height: 0.9rem;
+					background: #ffffff;
+					border-radius: 0.12rem;
+					padding-left: 0.24rem;
+					box-sizing: border-box;
+					margin-bottom: 0.4rem;
+					.img_center {
+						width: 1.76rem;
+						height: 0.38rem;
+						font-family: Womby-Regular;
+						font-weight: 400;
+						font-size: 0.32rem;
+						color: #000000;
+						letter-spacing: -0.0054rem;
+						background-image: linear-gradient(
+							to right,
+							#edafff,
+							#6af0e9
+						);
+						-webkit-background-clip: text;
+						color: transparent;
+						margin-right: 3.15rem;
+					}
+					.img_right {
+						width: 0.44rem;
+						height: 0.44rem;
+						vertical-align: middle;
+						margin-top: -0.12rem;
+						margin: 0 0.24rem 0.23rem
+							0.23rem 0;
+					}
+				}
+
+				.bottom_img {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: center;
+					img {
+						height: 0.6rem;
+						width: 0.6rem;
+						margin-right: 0.4rem;
+						vertical-align: middle;
+						// margin-top: -0.1rem;
+					}
+					img:last-child {
+						margin-right: 0rem;
+					}
+					// .bottom_icon3 {
+					// 	margin-right: 0.6rem;
+					// }
+				}
+			}
+		}
+	}
+}
+@media (max-width: 750px) {
+	.app_main {
+		background: #f8f8f8;
 	}
 }
 </style>
