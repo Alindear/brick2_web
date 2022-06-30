@@ -102,12 +102,12 @@
                         </div>
 
                         <div class="bottom_right">
-                            <span>
+                            <span class="text_approve">
                                 <img
                                     :src="warnPng"
                                     alt=""
                                 >
-                                <span>
+                                <span class="text_approve_span">
                                     <!-- {{tips}} -->
                                     <span v-if="!approveBtnDisabled">
                                         {{ i18n.attention_approval}}
@@ -840,7 +840,7 @@ export default {
 						flex-direction: row;
 						position: absolute;
 						right: 0.6rem;
-						span {
+						.text_approve {
 							height: 0.2rem;
 							font-family: PingFangSC-Regular;
 							font-weight: 400;
@@ -852,6 +852,8 @@ export default {
 								height: 0.16rem;
 								vertical-align: middle;
 								margin-right: 0.04rem;
+							}
+							.text_approve_span {
 							}
 						}
 						.footer_btn {
@@ -995,7 +997,8 @@ export default {
 			.domian_name_search {
 				.domian_name_content {
 					width: 6.86rem;
-					height: 10.13rem;
+					// height: 10.13rem;
+					height: 10.53rem;
 					margin: 0 0.32rem;
 					.right_content {
 						.title_name {
@@ -1128,18 +1131,32 @@ export default {
 							flex-direction: column;
 							position: relative;
 							right: 0;
-							span {
+							margin-top: 0.4rem;
+							.text_approve {
 								width: 5.78rem;
-								height: 100%;
+								// height: 0.37rem;
+								min-height: 0.74rem;
+								line-height: 0.37rem;
 								font-size: 0.26rem;
 								color: #ff6e11;
+								display: flex;
+								flex-direction: row;
+								justify-content: center;
 								img {
 									margin-left: 0.32rem;
 									width: 0.28rem;
 									height: 0.28rem;
 									vertical-align: middle;
 									margin-right: 0.16rem;
-									margin-top: -0.06rem;
+									// margin-top: -0.06rem;
+									margin-top: 0.08rem;
+								}
+								.text_approve_span {
+									width: 5.78rem;
+									// min-height: 0.4rem;
+									span {
+										margin-bottom: 0.4rem;
+									}
 								}
 							}
 							.footer_btn {
@@ -1205,7 +1222,8 @@ export default {
 					margin-top: 0.16rem;
 					margin-bottom: 0.55rem;
 					.step_title {
-						height: 0.5rem;
+						// height: 0.5rem;
+						height: 100%;
 						font-size: 0.36rem;
 					}
 					.step_process {
