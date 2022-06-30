@@ -354,22 +354,47 @@ export default {
 			],
 		};
 	},
-	async mounted() {
-		this.bodyHeight =
-			document.documentElement.clientHeight ||
-			document.body.clientHeight;
-		this.searchText = this.$route.query.text || '';
-		console.log('this.$route.query.text', this.$route.query.text);
-		console.log('this.$routet', this.$route);
-		console.log('this.searchText', this.searchText);
-		let flag = localStorage.getItem('STATUS')
-			? localStorage.getItem('STATUS')
-			: '';
-		//钱包已连接 查询
-		if (flag) {
-			this.inIt();
-		}
+	watch: {
+		'$store.state.query_search_text': {
+			immediate: true,
+			deep: true,
+			handler(val) {
+				this.bodyHeight =
+					document.documentElement.clientHeight ||
+					document.body.clientHeight;
+				this.searchText = this.$route.query.text || '';
+				console.log(
+					'this.$route.query.text',
+					this.$route.query.text,
+				);
+				console.log('this.$routet', this.$route);
+				console.log('this.searchText', this.searchText);
+				let flag = localStorage.getItem('STATUS')
+					? localStorage.getItem('STATUS')
+					: '';
+				//钱包已连接 查询
+				if (flag) {
+					this.inIt();
+				}
+			},
+		},
 	},
+	// async mounted() {
+	// 	this.bodyHeight =
+	// 		document.documentElement.clientHeight ||
+	// 		document.body.clientHeight;
+	// 	this.searchText = this.$route.query.text || '';
+	// 	console.log('this.$route.query.text', this.$route.query.text);
+	// 	console.log('this.$routet', this.$route);
+	// 	console.log('this.searchText', this.searchText);
+	// 	let flag = localStorage.getItem('STATUS')
+	// 		? localStorage.getItem('STATUS')
+	// 		: '';
+	// 	//钱包已连接 查询
+	// 	if (flag) {
+	// 		this.inIt();
+	// 	}
+	// },
 	computed: {
 		i18n: function () {
 			return this.$store.state.i18n[
@@ -392,6 +417,7 @@ export default {
 				this.years *
 				0.85;
 		},
+		//999999999999
 		async changeText(text) {
 			console.log('changeText----', text);
 			this.searchText = text;

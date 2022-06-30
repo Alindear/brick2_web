@@ -342,7 +342,8 @@ export default new Vuex.Store({
         // languageSelect: '简体中文 (CN)',
         language: 'EN',
         languageSelect: 'English (EN)',
-        cpsFee: []
+        cpsFee: [],
+        query_search_text: ''
     },
     mutations: {
         showENLanage(state) {
@@ -360,5 +361,8 @@ export default new Vuex.Store({
             //     _this.$store.state.language
             // ].approved;
         },
+        setQuerySearchText(state, text) {
+            state.query_search_text = text
+        }
     },
 })

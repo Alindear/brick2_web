@@ -561,7 +561,7 @@ export default {
 			}
 		},
 
-		//查询
+		//查询 99999999
 		async searchEns() {
 			if (!this.searchText) {
 				alert('请输入查询的域名');
@@ -619,7 +619,12 @@ export default {
 					query: {
 						text: this.searchText,
 					},
+					force: true,
 				});
+				this.$store.commit(
+					'setQuerySearchText',
+					this.searchText,
+				);
 				this.searchEnsLoading = false;
 				this.showSearchContainer = false;
 			}
