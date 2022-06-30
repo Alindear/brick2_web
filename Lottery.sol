@@ -12,10 +12,9 @@ contract Lottery is VRFConsumerBaseV2 {
     VRFCoordinatorV2Interface COORDINATOR;
 
     uint64 s_subscriptionId;
-    // TODO 测试配置
-    address vrfCoordinator = 	0x6A2AAd07396B36Fe02a22b33cf443582f682c82f;
-    bytes32 keyHash = 0xd4bb89654db74673a187bd804519e65e3f71a52bc55f11da7601a13dcf505314;
-    BNSRegistry public _bns = BNSRegistry(0xdA79595F6bFF81321B136017E638CA847340919f);
+    address vrfCoordinator = 0xc587d9053cd1118f25F645F9E08BB98c9712A4EE;
+    bytes32 keyHash = 0x114f3da0a805b6a67d6e9cd2ec746f7028f1b7376365af575cfea3550dd1aa04;
+    BNSRegistry public _bns = BNSRegistry(0x2630BC31c906F31db511ACB089602a7D941Cd1B6);
     uint32 callbackGasLimit = 100000;
     uint16 requestConfirmations = 3;
     uint32 numWords =  2;
