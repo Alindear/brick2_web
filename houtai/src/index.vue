@@ -478,16 +478,6 @@
                 <!-- 合作伙伴 -->
                 {{i18n.partners}}
             </p>
-            <!-- <div class="partner_img">
-                <img
-                    v-for="(item,index) in imgList"
-                    :key="index"
-                    @mouseenter="changeImageSrc(index, 'hover')"
-                    @mouseleave="changeImageSrc(index, '')"
-                    :src="item.img"
-                    alt=""
-                >
-            </div> -->
 
             <div class="partner_img">
                 <img
@@ -2051,6 +2041,7 @@ export default {
 				font-weight: 400;
 				font-size: 0.32rem;
 				margin-bottom: 0.5632rem;
+				font-family: PingFangSC-Regular;
 			}
 			.span_text_en {
 				height: 100%;
@@ -2059,6 +2050,7 @@ export default {
 				font-weight: 400;
 				font-size: 0.32rem;
 				margin-bottom: 0.5632rem;
+				font-family: PingFangSC-Regular;
 			}
 			.share_img {
 				flex-direction: column;
@@ -2140,6 +2132,8 @@ export default {
 				.right_img {
 					width: 5.68rem;
 					height: 3.2rem;
+					background-image: url('houtai/img/imgmb/首页/收益.png');
+					background-size: 100% 100%;
 					.now_profit {
 						margin-left: 0.4rem;
 						margin-bottom: 0.16rem;
@@ -2655,11 +2649,11 @@ export default {
 				}
 			}
 			.img_left {
-				// border-left: 0.02rem solid #6af0e9;
+				border-left: 0.02rem solid #6af0e9;
 				margin: auto 0;
 				margin-right: 1.77rem;
-				height: 0.6rem;
-				display: inline-block;
+				// height: 0.6rem;
+				// display: inline-block;
 			}
 
 			.img_center {

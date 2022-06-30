@@ -397,7 +397,7 @@
 </template>
 
 <script>
-import closePng from 'img/关闭菜单.png';
+import closePng from 'img/首页/编组 60.png';
 import disprizePng from 'img/gift/未中奖.png';
 import partakePng from 'img/gift/位图.png';
 import prizePng from 'img/gift/中奖.png';
