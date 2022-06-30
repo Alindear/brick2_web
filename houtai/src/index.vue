@@ -2229,7 +2229,8 @@ export default {
 						font-family: Alibaba-PuHuiTi-B;
 						font-weight: B;
 						font-size: 0.36rem;
-						margin: 1.05rem 1.42rem;
+						// margin: 1.05rem 1.42rem;
+						margin: 0.32rem auto;
 					}
 					.dis_link {
 						font-size: 0.36rem;
@@ -2297,6 +2298,70 @@ export default {
 						margin: 0 auto;
 						display: block;
 					}
+				}
+				.right_img:hover {
+					width: 5.68rem;
+					height: 3.2rem;
+					background-image: url('houtai/img/imgmb/首页/收益.png');
+					background-size: 100% 100%;
+					.now_profit {
+						margin-left: 0.4rem;
+						margin-bottom: 0.16rem;
+						.profit_text {
+							height: 0.33rem;
+							font-family: Alibaba-PuHuiTi-R;
+							font-weight: R;
+							font-size: 0.28rem;
+							color: #000000;
+							margin: 0.16rem 0;
+							text-align: center;
+						}
+						.profit_num {
+							width: 5.69rem;
+							height: 0.44rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.32rem;
+							color: #000000;
+							letter-spacing: 0.01rem;
+							word-break: break-all;
+						}
+					}
+					.dis_content {
+						// width: 2.84rem;
+						height: 0.35rem;
+						font-size: 0.26rem;
+						margin: 0;
+						margin-top: 1.18rem;
+						margin-bottom: 0.46rem;
+						text-align: center;
+					}
+					.el-button {
+						margin-left: 0.69rem;
+						margin-bottom: 0.92rem;
+						width: 4.48rem;
+						height: 0.94rem;
+						padding: 0 0.75rem;
+						font-size: 0.32rem;
+						border: none;
+						margin: 0 auto;
+						display: block;
+					}
+				}
+				.right_img:hover {
+					width: 5.68rem;
+					height: 3.2rem;
+					background-image: url('houtai/img/imgmb/首页/收益.png');
+					background-size: 100% 100%;
+					border: 0.01rem solid;
+					border-image: linear-gradient(
+							to bottom,
+							#e5b3fd,
+							#7de7ec
+						)
+						1 10;
+					box-sizing: border-box;
+					cursor: default;
 				}
 			}
 		}
@@ -2379,7 +2444,8 @@ export default {
 					border: 0.05rem dashed #ffffff;
 					border-radius: 0.32rem;
 					margin: 0;
-					margin-top: -0.1rem;
+					// margin-top: -0.1rem;
+					margin-top: -0.08rem;
 				}
 			}
 		}
@@ -2736,9 +2802,35 @@ export default {
 				margin-bottom: 0.45rem;
 			}
 			.partner_img {
-				img {
-					width: 3.11rem;
-					// height: 1.46rem;
+				// img {
+				// 	width: 3.88rem;
+				// 	height: 2.14rem;
+				// }
+				.partner_img_div {
+					width: 1.56rem;
+					height: 1.56rem;
+					float: left;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					margin-bottom: 0.59rem;
+					margin-right: 0.16rem;
+				}
+				.partner_img_1 {
+					width: 2.5rem;
+					// height: 1.18rem;
+				}
+				.partner_img_2 {
+					width: 3.39rem;
+					// height: 0.9077rem;
+				}
+				.partner_img_3 {
+					// width: 0.93rem;
+					height: 1.31rem;
+				}
+				.partner_img_4 {
+					width: 2.5rem;
+					// height: 1.18rem;
 				}
 			}
 		}

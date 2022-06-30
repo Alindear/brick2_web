@@ -109,7 +109,7 @@ export default new Vuex.Store({
 
                 validity_period: '有效期',
                 no_data: '什么也没有哦～',
-                expiration: '过期：',
+                // expiration: '过期：',
 
                 search_title: '查询',
                 bns: '域名',
