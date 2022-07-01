@@ -367,7 +367,7 @@
                 >
                     <p :class="$store.state.language === 'CN' ? 'left_bsc':'left_bsc_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
-                        {{i18n.lucky_this}}572680.bsc
+                        {{i18n.lucky_this}}
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc':'right_bsc_en'">
                         <!-- 本期奖品：889988.bsc -->

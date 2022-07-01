@@ -743,7 +743,7 @@ export default {
 			searchEnsLoading: false,
 			changeStatusShowFlag: false,
 
-			changeStatusShowFlag: true,
+			// changeStatusShowFlag: true,
 
 			linkShowFlag: false,
 			refAddress: '',
@@ -1356,7 +1356,7 @@ export default {
 			margin-left: 1.61rem;
 			box-sizing: border-box;
 			.left_top {
-				margin-bottom: 0.32rem;
+				margin-bottom: 0.62rem;
 				img {
 					height: 1.48rem;
 				}
@@ -1431,7 +1431,7 @@ export default {
 				}
 			}
 			.left_bottom {
-				margin-top: 0.22rem;
+				margin-top: 0.72rem;
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
