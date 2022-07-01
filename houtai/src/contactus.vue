@@ -147,6 +147,9 @@ export default {
 				}
 			}
 		}
+		.comm_list:hover{
+			box-shadow: 0 0.2rem 0.3rem #cccccc;
+		}
 		@media (max-width: 750px) {
 			.comm_list {
 				width: 6.22rem;

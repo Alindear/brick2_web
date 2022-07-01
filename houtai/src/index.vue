@@ -2807,6 +2807,7 @@ export default {
 			color: #ffffff;
 			border: none;
 			padding: 0 1.42rem;
+			box-shadow: 0 0.2rem 0.3rem #cccccc;
 		}
 		.four_gift_bottom {
 			margin-top: 1.92rem;
