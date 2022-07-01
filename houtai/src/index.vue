@@ -2717,7 +2717,7 @@ export default {
 			}
 			.title_text_gift {
 				font-size: 0.54rem;
-				width: 5.9rem;
+				width: 6.3rem;
 				height: 100%;
 				text-align: center;
 			}

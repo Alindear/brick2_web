@@ -325,7 +325,7 @@ export default {
 			years: 2,
 			price: 99999999999,
 			// currencyUnit: 'BRICK',
-			currencyUnit: 'USDT',
+			currencyUnit: 'BNB',
 			currencyPrice: '999999999',
 			toUsdtPrice: '0',
 			searchText: '',
@@ -337,7 +337,7 @@ export default {
 			tips: this.$store.state.i18n[this.$store.state.language]
 				.attention_approval,
 			// paymentMethod: 'BRICK',
-			paymentMethod: 'USDT',
+			paymentMethod: 'BNB',
 			paymentMethodOpts: [
 				{
 					value: 'BNB',
@@ -1104,6 +1104,7 @@ export default {
 								}
 							}
 							.number_bottom_content {
+								margin-bottom: 0.4rem;
 								.number_bottom_title {
 									margin: 0;
 									padding-bottom: 0.16rem;
@@ -1121,7 +1122,8 @@ export default {
 									}
 								}
 								.number_bottom_desc {
-									height: 0.37rem;
+									// height: 0.37rem;
+									height: 100%;
 									font-size: 0.26rem;
 								}
 							}
@@ -1131,11 +1133,12 @@ export default {
 							flex-direction: column;
 							position: relative;
 							right: 0;
-							margin-top: 0.4rem;
+							// margin-top: 0.4rem;
 							.text_approve {
 								width: 5.78rem;
 								// height: 0.37rem;
-								min-height: 0.74rem;
+								// min-height: 0.74rem;
+    						height: 100%;
 								line-height: 0.37rem;
 								font-size: 0.26rem;
 								color: #ff6e11;
