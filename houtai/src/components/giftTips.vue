@@ -104,7 +104,7 @@
 
                 <div
                     class="input_bsc_luck_result"
-                    :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start', 'height': $store.state.language === 'CN' ? '0.7rem' : '1rem',}"
+								 		:style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start', 'min-height': $store.state.language === 'CN' ? '0.7rem' : '1rem',}"
                 >
                     <p :class="$store.state.language === 'CN' ? 'left_bsc_result':'left_bsc_result_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
@@ -411,6 +411,8 @@ export default {
 			dialogVisible: false,
 			myLottery:'',
 			selectedAccount:'',
+			// myLottery:'57892680.bsc57892680.bsc57892680.bsc57892680.bsc',
+			// selectedAccount:'57892680.bsc57892680.bsc57892680.bsc57892680.bsc',
 		};
 	},
 	computed: {
@@ -488,7 +490,7 @@ export default {
 
 		.input_bsc_luck {
 			width: 5.08rem;
-			height: 0.7rem;
+			min-height: 0.7rem;
 			background: rgba(138, 62, 162, 0.03);
 			border: 0.01rem solid rgba(138, 62, 162, 0.55);
 			border-radius: 0.12rem;
@@ -506,7 +508,7 @@ export default {
 			}
 			.left_bsc {
 				// width: 2.02rem;
-				height: 0.22rem;
+				min-height: 0.22rem;
 				font-family: Alibaba-PuHuiTi-B;
 				font-weight: B;
 				font-size: 0.16rem;
@@ -515,7 +517,7 @@ export default {
 			}
 			.right_bsc {
 				// width: 1.67rem;
-				height: 0.22rem;
+				min-height: 0.22rem;
 				font-family: Alibaba-PuHuiTi-B;
 				font-weight: B;
 				font-size: 0.16rem;
@@ -525,7 +527,7 @@ export default {
 		}
 		.input_bsc_luck_en {
 			width: 5.08rem;
-			height: 1rem;
+			min-height: 1rem;
 			background: rgba(138, 62, 162, 0.03);
 			border: 0.01rem solid rgba(138, 62, 162, 0.55);
 			border-radius: 0.12rem;
@@ -688,7 +690,7 @@ export default {
 			}
 			.input_bsc_luck {
 				width: 5.08rem;
-				height: 1.86rem;
+				min-height: 1.86rem;
 				background: rgba(138, 62, 162, 0.03);
 				border: 0.01rem solid rgba(138, 62, 162, 0.55);
 				border-radius: 0.12rem;
@@ -882,7 +884,7 @@ export default {
 
 		.input_bsc_luck_result {
 			width: 5.08rem;
-			height: 0.7rem;
+			min-height: 0.7rem;
 			// background: rgba(138, 62, 162, 0.03);
 			// border: 0.01rem solid rgba(138, 62, 162, 0.55);
 			background: rgba(255, 220, 0, 0.03);
@@ -902,7 +904,7 @@ export default {
 			}
 			.left_bsc_result {
 				// width: 2.02rem;
-				height: 0.22rem;
+				min-height: 0.22rem;
 				font-family: Alibaba-PuHuiTi-B;
 				font-weight: B;
 				font-size: 0.16rem;
@@ -910,7 +912,7 @@ export default {
 			}
 			.right_bsc_result {
 				// width: 1.67rem;
-				height: 0.22rem;
+				min-height: 0.22rem;
 				font-family: Alibaba-PuHuiTi-B;
 				font-weight: B;
 				font-size: 0.16rem;
@@ -1028,7 +1030,7 @@ export default {
 
 			.input_bsc_luck_result {
 				width: 5.86rem;
-				height: 1.86rem;
+				min-height: 1.86rem;
 				background: rgba(255, 220, 0, 0.03);
 				border: 0.01rem solid #ffdc00;
 				border-radius: 0.12rem;
@@ -1043,7 +1045,7 @@ export default {
 					margin: 0;
 				}
 				.left_bsc_result {
-					height: 0.42rem;
+					min-height: 0.42rem;
 					font-family: Alibaba-PuHuiTi-M;
 					font-weight: M;
 					font-size: 0.3rem;
@@ -1051,7 +1053,7 @@ export default {
 					margin: 0.4rem 0 0.22rem 0.4rem;
 				}
 				.right_bsc_result {
-					height: 0.42rem;
+					min-height: 0.42rem;
 					font-family: Alibaba-PuHuiTi-M;
 					font-weight: M;
 					font-size: 0.3rem;

@@ -1141,6 +1141,7 @@ export default {
 				}
 				.el-button {
 					// width: 1.73rem;
+					// width: 100%;
 					background-image: linear-gradient(
 						-60deg,
 						#6af0e9 0%,
@@ -1156,6 +1157,7 @@ export default {
 					color: #ffffff;
 					border: none;
 					letter-spacing: 0.01rem;
+					padding: 0 0.44rem;
 				}
 				img {
 					width: 0.29rem;

@@ -89,12 +89,14 @@
                                 <p>{{item.descaname}}</p>
                                 <span>{{item.desc}}</span>
                             </div>
-                            <img
-                                v-if="item.icon"
-                                class="team_icon"
-                                :src="item.icon"
-                                alt=""
-                            >
+														<a :href="item.url" v-if="item.icon">
+															<img
+																	v-if="item.icon"
+																	class="team_icon"
+																	:src="item.icon"
+																	alt=""
+															>
+														</a>
 
                         </div>
 
@@ -263,12 +265,14 @@
                                 <p>{{item.descaname}}</p>
                                 <span>{{item.desc}}</span>
                             </div>
-                            <img
-                                v-if="item.icon"
-                                class="team_icon"
-                                :src="item.icon"
-                                alt=""
-                            >
+														<a v-if="item.icon" :href="item.url">
+															<img
+																	v-if="item.icon"
+																	class="team_icon"
+																	:src="item.icon"
+																	alt=""
+															>
+														</a>
 
                         </div>
 
@@ -357,6 +361,7 @@ export default {
 						this.$store.state.language
 					].team_1,
 					icon: linkedinIcon,
+					url:'https://www.linkedin.com/in/tim-tong-79560b241',
 				},
 				{
 					img: teamImg2,
@@ -368,6 +373,7 @@ export default {
 						this.$store.state.language
 					].team_2,
 					icon: linkedinIcon,
+					url:'https://www.linkedin.com/in/joseph-price-137459241/',
 				},
 				{
 					img: teamImg3,
@@ -379,6 +385,7 @@ export default {
 						this.$store.state.language
 					].team_3,
 					icon: linkedinIcon,
+					url:'https://www.linkedin.com/in/berry-jon-299617241',
 				},
 				{
 					img: teamImg4,

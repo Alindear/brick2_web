@@ -214,13 +214,13 @@
 
                             <p
                                 class="step_title"
-                                v-if="registBtnLoading"
+                                v-if="!registBtnLoading"
                             >
                                 您很快就可以完成域名注册
                             </p>
                             <p
                                 class="step_title"
-                                v-if="!registBtnLoading"
+                                v-if="registBtnLoading"
                             >
                                 <img
                                     :src="successPng"
@@ -1333,7 +1333,8 @@ export default {
 						display: flex;
 						flex-direction: column;
 						padding-left: 0.34rem;
-						padding-top: 0.4rem;
+						// padding-top: 0.4rem;
+						padding-top: 0rem;
 						box-sizing: border-box;
 						margin-top: 0.16rem;
 						// margin-bottom: 0.34rem;
@@ -1362,7 +1363,7 @@ export default {
 							font-size: 0.14rem;
 							margin: 0;
 							color: #999999;
-							margin-bottom: 0.6rem;
+							margin-bottom: 0.4rem;
 						}
 						.step_process {
 							display: flex;
@@ -1436,6 +1437,7 @@ export default {
 							}
 						}
 						.process_img {
+							display: block;
 							width: 13.32rem;
 							// height: 4.72rem;
 							background: #ffffff;
@@ -1450,6 +1452,190 @@ export default {
 									#edafff
 										100%
 								);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	@media (max-width:750px) {
+		.search_ens_step {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			.ens_text {
+				width: 0.44rem;
+				height: 0.3rem;
+				font-family: PingFangSC-Medium;
+				font-weight: 500;
+				font-size: 0.22rem;
+				color: #000000;
+				margin: 0.4rem 0 0.2rem 0.6rem;
+				width: 0.60rem;
+				height: 0.42rem;
+				font-family: PingFangSC-Regular;
+				font-weight: 400;
+				font-size: 0.30rem;
+				color: #000000;
+				margin: 0.4rem 0 0.24rem 0.32rem;
+			}
+			.domian_name_search {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				.domian_name_content {
+					position: relative;
+					width: 6.86rem;
+					height: 10.68rem;
+					background: #FFFFFF;
+					border-radius: 0.32rem;
+					.right_content {
+						.title_name {
+							height: 1.09rem;
+							line-height: 1.09rem;
+							font-family: PingFangSC-Regular;
+							font-weight: 400;
+							font-size: 0.32rem;
+							color: #333333;
+							border-bottom: 0.01rem solid
+								#dedede;
+							margin: 0;
+							padding-left: 0.32rem;
+							margin-bottom: 0.32rem 0;
+						}
+						.step_content {
+							display: none;
+							width: 100%;
+							// height: 2.17rem;
+							height: 100%;
+							background: inherit;
+							border-radius: 0;
+							display: flex;
+							flex-direction: column;
+							padding-left: 0.32rem;
+							padding-top: 0;
+							box-sizing: border-box;
+							margin-top: 0.4rem;
+							// margin-bottom: 0.34rem;
+							padding-bottom: 0;
+
+							.step_title {
+								// width: 2.79rem;
+								height: 0.45rem;
+								font-family: PingFangSC-Regular;
+								font-weight: 400;
+								font-size: 0.36rem;
+								color: #000000;
+								margin: 0;
+								margin-bottom: 0.16rem;
+								img {
+									width: 0.44rem;
+									height: 0.44rem;
+									vertical-align: middle;
+									margin-top: -0.06rem;
+									margin-right: 0.02rem;
+								}
+							}
+							.step_title_desc {
+								height: 100%;
+								font-family: PingFangSC-Regular;
+								font-weight: 400;
+								font-size: 0.28rem;
+								margin: 0;
+								color: #999999;
+								margin-bottom: 0.4rem;
+							}
+							.step_process {
+								display: flex;
+								flex-direction: column;
+								margin-bottom: 0;
+								.step_text_title {
+									// height: 1.5rem;
+									// font-weight: 600;
+									// font-size: 1rem;
+									// color: #000000;
+									// padding-bottom: 0.5rem;
+									// width: 0.64rem;
+									height: 0.45rem;
+									font-family: PingFangSC-Semibold;
+									font-weight: 600;
+									font-size: 0.32rem;
+									color: #000000;
+									margin-bottom: 0.16rem;
+								}
+								.step_text_desc {
+									// width: 100%;
+									// // height: 80rem;
+									// font-weight: 400;
+									// font-size: 0.8rem;
+									// color: #333333;
+									// width: 4.87rem;
+									width: 5.38rem;
+									// height: 0.4rem;
+									height: 100%;
+									font-family: PingFangSC-Regular;
+									font-weight: 400;
+									font-size: 0.28rem;
+									color: #333333;
+								}
+								.left_circle {
+									color: #d8d8d8;
+									height: 0.68rem;
+									width: 0.68rem;
+									line-height: 0.68rem;
+									margin-right: 0.16rem;
+									box-sizing: border-box;
+									p {
+										margin: 0;
+										text-align: center;
+										font-family: PingFangSC-Regular;
+										font-weight: 400;
+										height: 0.68rem;
+										line-height: 0.68rem;
+										width: 0.68rem;
+										border: 0.02rem
+											solid
+											#ccc;
+										border-radius: 50%;
+										font-size: 0.24rem;
+									}
+								}
+								.step_left_process {
+									// width: 43%;
+									display: flex;
+									flex-direction: row;
+									margin-bottom: 0.4rem;
+									.step_text {
+									}
+									margin-right: 1rem;
+								}
+								.step_center_process {
+									// width: 43%;
+									display: flex;
+									flex-direction: row;
+									.step_text {
+									}
+								}
+							}
+							.process_img {
+								display: none;
+								width: 13.32rem;
+								// height: 4.72rem;
+								background: #ffffff;
+								border-radius: 0.32rem;
+								// height: 0.24rem;
+								/deep/.el-progress-bar__inner {
+									opacity: 0.66;
+									background-image: linear-gradient(
+										-60deg,
+										#6af0e9
+											0%,
+										#edafff
+											100%
+									);
+								}
 							}
 						}
 					}

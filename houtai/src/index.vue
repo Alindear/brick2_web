@@ -554,61 +554,82 @@
                 <div class="contact_input">
                     <span class="email">E-mail: admin@bnsdid.io </span>
                     <span class="bottom_img">
+
+												<a href="https://twitter.com/bnsdomains_">
                         <img
                             class="bottom_icon1"
                             :src="twitterPng"
                             alt=""
                         >
+												</a>
+                       <a href="https://discord.gg/FS2zwvPtEz">
                         <img
                             class="bottom_icon2"
                             :src="discordPng"
                             alt=""
                         >
+												</a>
+												<a href="https://t.me/brickcn">
                         <img
                             class="bottom_icon3"
                             :src="lastIconPng"
                             alt=""
                         >
+												</a>
                         <!-- <div class="img_left"></div> -->
                     </span>
                     <span class="img_left"></span>
-                    <span class="img_center">SAY HI HERE</span>
-                    <img
-                        class="img_right"
-                        :src="enterIcon"
-                        alt=""
-                    >
+											<span class="img_center">SAY HI HERE</span>
+											<a href="https://twitter.com/bnsdomains_">
+												<img
+														class="img_right"
+														:src="enterIcon"
+														alt=""
+												>
+											</a>
+                   
 
                 </div>
 
                 <div class="mb_contact_input">
                     <p class="email_top">E-mail: admin@bnsdid.io </p>
+										
                     <div class="input_center">
                         <span class="img_center">SAY HI HERE</span>
-                        <img
-                            class="img_right"
-                            :src="enterIcon"
-                            alt=""
-                        >
+												<a href="https://twitter.com/bnsdomains_">
+													<img
+															class="img_right"
+															:src="enterIcon"
+															alt=""
+													>
+												</a>
                     </div>
 
                     <!-- <span class="img_left"></span> -->
                     <span class="bottom_img">
-                        <img
-                            class="bottom_icon1"
-                            :src="twitterMBPng"
-                            alt=""
-                        >
-                        <img
-                            class="bottom_icon2"
-                            :src="discordMBPng"
-                            alt=""
-                        >
-                        <img
-                            class="bottom_icon3"
-                            :src="lastIconMBPng"
-                            alt=""
-                        >
+												<a href="https://twitter.com/bnsdomains_">
+													<img
+															class="bottom_icon1"
+															:src="twitterMBPng"
+															alt=""
+													>
+												</a>
+                       
+                       <a href="https://discord.gg/FS2zwvPtEz">
+													<img
+														class="bottom_icon2"
+														:src="discordMBPng"
+														alt=""
+													>
+												</a>
+												<a href="https://t.me/brickcn">
+													<img
+															class="bottom_icon3"
+															:src="lastIconMBPng"
+															alt=""
+													>
+												</a>
+                        
                     </span>
 
                 </div>
@@ -1059,11 +1080,11 @@ export default {
 		async luckDrawBtn(flag) {
 			//var alreay = await checkAlready();
 			var _this = this;
-			var _fun = function (_this) {
+			// var _fun = function (_this) {
 				_this.luckDrawShowFlag = true;
 				_this.isShowDraw = true;
-			};
-			randomLottery(_fun, _this);
+			// };
+			// randomLottery(_fun, _this);
 		},
 		// 查看结果
 		async viewResultBtn(flag) { // TODO

@@ -1,6 +1,7 @@
 <template>
     <div class="app_contact">
         <div class="contact_module">
+					<a href="https://discord.gg/FS2zwvPtEz">
             <div class="comm_list color1">
                 <img
                     :src="icon1"
@@ -16,6 +17,8 @@
                     >
                 </p>
             </div>
+					</a>
+					<a href="https://medium.com/@BNS_xxx.bsc">
             <div class="comm_list color2">
                 <img
                     :src="icon2"
@@ -31,6 +34,8 @@
                     >
                 </p>
             </div>
+					</a>
+					<a href="(4) BNS | xxx.bsc (@bnsdomains_) / Twitter">
             <div class="comm_list color3">
                 <img
                     :src="icon3"
@@ -46,6 +51,8 @@
                     >
                 </p>
             </div>
+					</a>
+					<a href="https://t.me/brickcn">
             <div class="comm_list color4">
                 <img
                     :src="icon4"
@@ -61,6 +68,7 @@
                     >
                 </p>
             </div>
+					</a>
         </div>
     </div>
 </template>
