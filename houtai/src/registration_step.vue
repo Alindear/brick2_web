@@ -214,7 +214,7 @@ export default {
 			var _loadingFalse = function () {
 				// loading转圈停止 进入disabled
 				_this.registBtnLoading = false;
-				_this.registBtnDisabled = true;
+				//_this.registBtnDisabled = true;
 			};
 			var _cb = function () {
 				_router.push({

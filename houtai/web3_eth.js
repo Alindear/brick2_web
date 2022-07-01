@@ -2002,13 +2002,16 @@ const LOTTERY_ABI =[
 // const PRICE_ADDRESS = "0x544a564D666e5fED69b0f7F481c92A8862139B26" // TODO ceshi
 // const BRICK_ENS_ADDRESS =  "0xdA79595F6bFF81321B136017E638CA847340919f" // TODO ceshi
 // const LOTTERY_ADDRESS = "0x1C94cc0c1457EdFD0A2CB56dDc0a41aCC193FBEd" // TODO ceshi
+// const usdtAddr =  '0xD99D1c33F9fC3444f8101754aBC46c52416550D1'; // TODO 测试
+
+const usdtAddr = '0x55d398326f99059fF775485246999027B3197955';
 const LOTTERY_ADDRESS = "0x17545E1d60773204aE7A6E5F5bB5Ff7906B1A642"
 const PRICE_ADDRESS = "0x3c55B43195Bad23F834c92b5104dc76863EE787c"
 const BRICK_ENS_ADDRESS = "0x2630BC31c906F31db511ACB089602a7D941Cd1B6"
 
 const brickAddr = '0xc4893fEa8547Fb1A4D860518285AF6655424645f';
-const usdtAddr = '0x55d398326f99059fF775485246999027B3197955';
-// const usdtAddr =  '0xD99D1c33F9fC3444f8101754aBC46c52416550D1'; // TODO 测试
+
+
 
 // Web3modal instance
 let web3Modal
@@ -2090,7 +2093,6 @@ export async function approve(token, loadingFuncT, loadingFuncF, callback) {
         callback()
         return;
     }
-
     if (token == "USDT") {
         usdtContract.methods.approve(BRICK_ENS_ADDRESS, "90000000000000000000000000000000000").send({ from: selectedAccount }).then(result => {
             callback();
