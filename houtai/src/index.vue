@@ -329,7 +329,10 @@
                             <!-- 当前收益 -->
                             {{i18n.current_gains}}
                         </p>
-                        <div class="profit_num">{{usdtCps}}</div>
+												<div class="profit_usdt">USDT</div>
+                        <div class="profit_num_usdt">{{usdtCps}}</div>
+												<div class="profit_bnb">BNB</div>
+                        <div class="profit_num_bnb">{{bnbCps}}</div>
                         <!-- <div class="profit_num">BRICK: {{brickCps }}</div>
                         <div class="profit_num">USDT:{{usdtCps}}</div>
                         <div class="profit_num">BNB:{{bnbCps}}</div> -->
@@ -395,8 +398,8 @@
                 v-for="(item,index) in addressPriceList"
                 :key="index"
                 class="address_price_module"
-                :style="{ 'background' : index === 0 ? '#ffffff' : '#f8f8f8'}"
             >
+                <!-- :style="{ 'background' : index === 0 ? '#ffffff' : '#f8f8f8'}" -->
                 <div class="address_price_right_img">
                     <img
                         :src="item.img"
@@ -2125,7 +2128,7 @@ export default {
 				.now_profit {
 					margin-left: 0.69rem;
 					// margin-bottom: 1.95rem;
-					margin-bottom: 0.95rem;
+					// margin-bottom: 0.95rem;
 					.profit_text {
 						// width: 0.95rem;
 						height: 0.33rem;
@@ -2133,10 +2136,40 @@ export default {
 						font-weight: R;
 						font-size: 0.24rem;
 						color: #000000;
-						margin: 0.99rem 0 0.32rem;
+						// margin: 0.99rem 0 0.32rem;
+    				margin: 0.69rem 0 0.48rem 0;
 					}
-					.profit_num {
-						width: 5.69rem;
+					.profit_usdt{
+							height: 0.29rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.24rem;
+							color: #999999;
+							letter-spacing: 0;
+							margin-bottom: 0.11rem;
+						}
+						.profit_bnb{
+							height: 0.29rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.24rem;
+							color: #999999;
+							letter-spacing: 0;
+							margin-bottom: 0.11rem;
+						}
+						// .profit_num {
+						// 	width: 5.68rem;
+						// 	height: 0.38rem;
+						// 	font-family: Womby-Regular;
+						// 	font-weight: 400;
+						// 	font-size: 0.32rem;
+						// 	color: #000000;
+						// 	letter-spacing: 0.02rem;
+						// 	word-break: break-all;
+						// 	margin-bottom: 0.24rem;
+						// }
+					.profit_num_usdt {
+						width: 7rem;
 						height: 100%;
 						font-family: Womby-Regular;
 						font-weight: 400;
@@ -2144,7 +2177,20 @@ export default {
 						color: #000000;
 						letter-spacing: 0.04rem;
 						word-break: break-all;
+						margin-bottom: 0.32rem;
 					}
+					.profit_num_bnb {
+						width: 7rem;
+						height: 100%;
+						font-family: Womby-Regular;
+						font-weight: 400;
+						font-size: 0.64rem;
+						color: #000000;
+						letter-spacing: 0.04rem;
+						word-break: break-all;
+						margin-bottom: 0.32rem;
+					}
+					
 				}
 				.dis_content {
 					// width: 2.84rem;
@@ -2354,7 +2400,86 @@ export default {
 
 				.right_img {
 					width: 5.68rem;
-					height: 3.2rem;
+					height: 4.19rem;
+					background-image: url('houtai/img/imgmb/首页/收益.png');
+					background-size: 100% 100%;
+					.now_profit {
+						margin-left: 0.4rem;
+						margin-bottom: 0.16rem;
+						.profit_text {
+							height: 0.35rem;
+							font-family: Alibaba-PuHuiTi-R;
+							font-weight: R;
+							font-size: 0.28rem;
+							color: #000000;
+							margin: 0.24rem 0;
+							// text-align: center;
+						}
+						.profit_usdt{
+							height: 0.34rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.28rem;
+							color: #999999;
+							letter-spacing: 0;
+							margin-bottom: 0.08rem;
+						}
+						.profit_bnb{
+							height: 0.34rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.28rem;
+							color: #999999;
+							letter-spacing: 0;
+							margin-bottom: 0.08rem;
+						}
+						.profit_num_usdt {
+							width: 5.68rem;
+							height: 0.38rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.32rem;
+							color: #000000;
+							letter-spacing: 0.02rem;
+							word-break: break-all;
+							margin-bottom: 0.24rem;
+						}
+						.profit_num_bnb {
+							width: 5.68rem;
+							height: 0.38rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.32rem;
+							color: #000000;
+							letter-spacing: 0.02rem;
+							word-break: break-all;
+							margin-bottom: 0.24rem;
+						}
+					}
+					.dis_content {
+						// width: 2.84rem;
+						height: 0.35rem;
+						font-size: 0.26rem;
+						margin: 0;
+						margin-top: 1.18rem;
+						margin-bottom: 0.46rem;
+						text-align: center;
+					}
+					.el-button {
+						margin-left: 0.69rem;
+						margin-bottom: 0.92rem;
+						width: 4.48rem;
+						height: 0.94rem;
+						padding: 0 0.75rem;
+						font-size: 0.32rem;
+						border: none;
+						margin: 0 auto;
+						display: block;
+					}
+				}
+				.right_img:hover {
+					width: 5.68rem;
+					height: 4.19rem;
 					background-image: url('houtai/img/imgmb/首页/收益.png');
 					background-size: 100% 100%;
 					.now_profit {
@@ -2367,7 +2492,7 @@ export default {
 							font-size: 0.28rem;
 							color: #000000;
 							margin: 0.16rem 0;
-							text-align: center;
+							// text-align: center;
 						}
 						.profit_num {
 							width: 5.69rem;
@@ -2403,56 +2528,7 @@ export default {
 				}
 				.right_img:hover {
 					width: 5.68rem;
-					height: 3.2rem;
-					background-image: url('houtai/img/imgmb/首页/收益.png');
-					background-size: 100% 100%;
-					.now_profit {
-						margin-left: 0.4rem;
-						margin-bottom: 0.16rem;
-						.profit_text {
-							height: 0.33rem;
-							font-family: Alibaba-PuHuiTi-R;
-							font-weight: R;
-							font-size: 0.28rem;
-							color: #000000;
-							margin: 0.16rem 0;
-							text-align: center;
-						}
-						.profit_num {
-							width: 5.69rem;
-							height: 0.44rem;
-							font-family: Womby-Regular;
-							font-weight: 400;
-							font-size: 0.32rem;
-							color: #000000;
-							letter-spacing: 0.01rem;
-							word-break: break-all;
-						}
-					}
-					.dis_content {
-						// width: 2.84rem;
-						height: 0.35rem;
-						font-size: 0.26rem;
-						margin: 0;
-						margin-top: 1.18rem;
-						margin-bottom: 0.46rem;
-						text-align: center;
-					}
-					.el-button {
-						margin-left: 0.69rem;
-						margin-bottom: 0.92rem;
-						width: 4.48rem;
-						height: 0.94rem;
-						padding: 0 0.75rem;
-						font-size: 0.32rem;
-						border: none;
-						margin: 0 auto;
-						display: block;
-					}
-				}
-				.right_img:hover {
-					width: 5.68rem;
-					height: 3.2rem;
+					height: 4.19rem;
 					background-image: url('houtai/img/imgmb/首页/收益.png');
 					background-size: 100% 100%;
 					border: 0.01rem solid;
@@ -3179,9 +3255,10 @@ export default {
 		}
 	}
 }
-@media (max-width: 750px) {
-	.app_main {
-		background: #f8f8f8;
-	}
-}
+// @media (max-width: 750px) {
+// 	.app_main {
+// 		// background: #f8f8f8;
+// 		background: #ffffff;
+// 	}
+// }
 </style>
