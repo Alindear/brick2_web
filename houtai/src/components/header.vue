@@ -314,7 +314,10 @@
                         class="his_text"
                         v-for="(his, i) in histroys"
                         :key="i"
-                    >{{ his }}</span>
+                    >
+                        {{ his && his.length > 14 ? his.slice(0,14) + '...' : his }}
+                        <!-- {{(his && his.length > 14) ? his.slice(0,14) + '...' : his}} -->
+                    </span>
                 </div>
             </div>
             <div
@@ -448,10 +451,10 @@ export default {
 			var items = this.histroys; //historys是在data中定义的一个数组
 			if (items.indexOf(keyword) == -1) {
 				//如果historys中没有，现在搜索的值
-				if (items.length >= 10) {
-					// 控制historys这个数组的长度不超过10
-					items.pop();
-				}
+				// if (items.length >= 10) {
+				// 	// 控制historys这个数组的长度不超过10
+				//     items.pop();
+				// }
 				items.unshift(keyword); //往数组的前面加上该值
 			}
 			localStorage.setItem(
@@ -558,7 +561,7 @@ export default {
 			}
 		},
 
-		//查询
+		//查询 99999999
 		async searchEns() {
 			if (!this.searchText) {
 				alert('请输入查询的域名');
@@ -591,30 +594,39 @@ export default {
 
 			this.searchEnsLoading = true;
 			let text = this.searchText.toLowerCase() + '.bsc';
-			this.isExist = await isExist(text);
-			if (!(await checkEachLength(this.searchText))) {
-				return;
-			}
+			this.isExist = false;
+			// this.isExist = await isExist(text);
+			// if (!(await checkEachLength(this.searchText))) {
+			// 	return;
+			// }
 			if (this.isExist) {
 				this.openLinkBtn(true);
 			} else if (!this.isExist && this.isExist !== null) {
 				// this.searchText = this.searchText + '.bsc';
+				// this.searchText = this.searchText;
 				console.log('this.$router', this.$router);
 				//注册页 刷新后处理默认值 （目的：防止刷新界面 需要重新链接钱包）
-				// if (
-				// 	this.$router.history.current.path ===
-				// 	'/brick/searchens'
-				// ) {
-				// 	this.$parent.changeText(
-				// 		this.searchText,
-				// 	);
-				// }
+				if (
+					this.$router.history.current.path ===
+					'/brick/searchens'
+				) {
+					this.$parent.changeText(
+						this.searchText,
+					);
+				}
 				this.$router.push({
 					path: '/brick/searchens',
 					query: {
 						text: this.searchText,
 					},
+					force: true,
 				});
+				this.$store.commit(
+					'setQuerySearchText',
+					this.searchText,
+				);
+				this.searchEnsLoading = false;
+				this.showSearchContainer = false;
 			}
 			if (this.isExist || !this.isExist) {
 				this.searchEnsLoading = false;
@@ -1036,7 +1048,7 @@ export default {
 	}
 	.search_container {
 		width: 16rem;
-		height: 4.1rem;
+		min-height: 4.1rem;
 		background: #ffffff;
 		// background: #000000;
 		border-radius: 0 0 0.32rem 0.32rem;
@@ -1088,10 +1100,10 @@ export default {
 				.select_lang {
 					margin-right: 0.28rem;
 					/deep/.el-input__inner {
-						height: 0.9rem;
+						height: 100%;
 						line-height: 0.96rem;
 						border: none;
-						border-radius: 0.32rem;
+						border-radius: 0;
 						font-family: PingFangSC-Medium;
 						font-weight: 500;
 						font-size: 0.2rem;
@@ -1113,7 +1125,7 @@ export default {
 					width: 11.09rem;
 					/deep/.el-input__inner {
 						// width: 11.09rem;
-						height: 0.9rem;
+						height: 100%;
 						line-height: 0.96rem;
 						border: none;
 						border-radius: 0.32rem;
@@ -1122,8 +1134,9 @@ export default {
 						font-size: 0.2rem;
 						color: #999999;
 						margin: 0;
-						// margin-left: 0.34rem;
 						padding: 0;
+						border-top-left-radius: 0;
+						border-bottom-left-radius: 0;
 					}
 				}
 				.el-button {
@@ -1135,8 +1148,8 @@ export default {
 					);
 					border-radius: 0.32rem;
 					box-sizing: border-box;
-					height: 0.98rem;
-					margin-top: -0.02rem;
+					height: 0.96rem;
+					// margin-top: -0.02rem;
 					font-family: PingFangSC-Semibold;
 					font-weight: 600;
 					font-size: 0.24rem;
@@ -1157,7 +1170,10 @@ export default {
 		.his_list {
 			display: flex;
 			flex-direction: row;
-			margin-top: 0.32rem;
+			flex-wrap: wrap;
+			margin-top: 0.16rem;
+			margin-bottom: 0.26rem;
+			height: 100%;
 			.his_text {
 				height: 0.58rem;
 				line-height: 0.58rem;
@@ -1171,6 +1187,7 @@ export default {
 				letter-spacing: 0;
 				display: flex;
 				flex-direction: row;
+				margin-top: 0.16rem;
 			}
 		}
 	}

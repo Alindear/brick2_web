@@ -102,12 +102,12 @@
                         </div>
 
                         <div class="bottom_right">
-                            <span>
+                            <span class="text_approve">
                                 <img
                                     :src="warnPng"
                                     alt=""
                                 >
-                                <span>
+                                <span class="text_approve_span">
                                     <!-- {{tips}} -->
                                     <span v-if="!approveBtnDisabled">
                                         {{ i18n.attention_approval}}
@@ -324,7 +324,8 @@ export default {
 			registBtnLoading: false,
 			years: 2,
 			price: 99999999999,
-			currencyUnit: 'BRICK',
+			// currencyUnit: 'BRICK',
+			currencyUnit: 'BNB',
 			currencyPrice: '999999999',
 			toUsdtPrice: '0',
 			searchText: '',
@@ -335,7 +336,8 @@ export default {
 			// tips: '请注意! 使用brick,usdt购买时需要先授权',
 			tips: this.$store.state.i18n[this.$store.state.language]
 				.attention_approval,
-			paymentMethod: 'BRICK',
+			// paymentMethod: 'BRICK',
+			paymentMethod: 'BNB',
 			paymentMethodOpts: [
 				{
 					value: 'BNB',
@@ -345,29 +347,54 @@ export default {
 					value: 'USDT',
 					label: 'USDT',
 				},
-				{
-					value: 'BRICK',
-					label: 'BRICK',
-				},
+				// {
+				// 	value: 'BRICK',
+				// 	label: 'BRICK',
+				// },
 			],
 		};
 	},
-	async mounted() {
-		this.bodyHeight =
-			document.documentElement.clientHeight ||
-			document.body.clientHeight;
-		this.searchText = this.$route.query.text || '';
-		console.log('this.$route.query.text', this.$route.query.text);
-		console.log('this.$routet', this.$route);
-		console.log('this.searchText', this.searchText);
-		let flag = localStorage.getItem('STATUS')
-			? localStorage.getItem('STATUS')
-			: '';
-		//钱包已连接 查询
-		if (flag) {
-			this.inIt();
-		}
+	watch: {
+		'$store.state.query_search_text': {
+			immediate: true,
+			deep: true,
+			handler(val) {
+				this.bodyHeight =
+					document.documentElement.clientHeight ||
+					document.body.clientHeight;
+				this.searchText = this.$route.query.text || '';
+				console.log(
+					'this.$route.query.text',
+					this.$route.query.text,
+				);
+				console.log('this.$routet', this.$route);
+				console.log('this.searchText', this.searchText);
+				let flag = localStorage.getItem('STATUS')
+					? localStorage.getItem('STATUS')
+					: '';
+				//钱包已连接 查询
+				if (flag) {
+					this.inIt();
+				}
+			},
+		},
 	},
+	// async mounted() {
+	// 	this.bodyHeight =
+	// 		document.documentElement.clientHeight ||
+	// 		document.body.clientHeight;
+	// 	this.searchText = this.$route.query.text || '';
+	// 	console.log('this.$route.query.text', this.$route.query.text);
+	// 	console.log('this.$routet', this.$route);
+	// 	console.log('this.searchText', this.searchText);
+	// 	let flag = localStorage.getItem('STATUS')
+	// 		? localStorage.getItem('STATUS')
+	// 		: '';
+	// 	//钱包已连接 查询
+	// 	if (flag) {
+	// 		this.inIt();
+	// 	}
+	// },
 	computed: {
 		i18n: function () {
 			return this.$store.state.i18n[
@@ -390,8 +417,9 @@ export default {
 				this.years *
 				0.85;
 		},
+		//999999999999
 		async changeText(text) {
-			console.log('changeText', text);
+			console.log('changeText----', text);
 			this.searchText = text;
 			if (this.paymentMethod == 'BNB') {
 				this.approveBtnDisabled = true;
@@ -643,6 +671,8 @@ export default {
 											center
 											center
 											no-repeat;
+										// width: 0.1133rem;
+										// height: 0.0653rem;
 									}
 									/deep/.el-select
 										.el-input
@@ -810,7 +840,7 @@ export default {
 						flex-direction: row;
 						position: absolute;
 						right: 0.6rem;
-						span {
+						.text_approve {
 							height: 0.2rem;
 							font-family: PingFangSC-Regular;
 							font-weight: 400;
@@ -822,6 +852,8 @@ export default {
 								height: 0.16rem;
 								vertical-align: middle;
 								margin-right: 0.04rem;
+							}
+							.text_approve_span {
 							}
 						}
 						.footer_btn {
@@ -965,7 +997,8 @@ export default {
 			.domian_name_search {
 				.domian_name_content {
 					width: 6.86rem;
-					height: 10.13rem;
+					// height: 10.13rem;
+					height: 10.53rem;
 					margin: 0 0.32rem;
 					.right_content {
 						.title_name {
@@ -1071,6 +1104,7 @@ export default {
 								}
 							}
 							.number_bottom_content {
+								margin-bottom: 0.4rem;
 								.number_bottom_title {
 									margin: 0;
 									padding-bottom: 0.16rem;
@@ -1088,7 +1122,8 @@ export default {
 									}
 								}
 								.number_bottom_desc {
-									height: 0.37rem;
+									// height: 0.37rem;
+									height: 100%;
 									font-size: 0.26rem;
 								}
 							}
@@ -1098,18 +1133,33 @@ export default {
 							flex-direction: column;
 							position: relative;
 							right: 0;
-							span {
+							// margin-top: 0.4rem;
+							.text_approve {
 								width: 5.78rem;
-								height: 100%;
+								// height: 0.37rem;
+								// min-height: 0.74rem;
+    						height: 100%;
+								line-height: 0.37rem;
 								font-size: 0.26rem;
 								color: #ff6e11;
+								display: flex;
+								flex-direction: row;
+								justify-content: center;
 								img {
 									margin-left: 0.32rem;
 									width: 0.28rem;
 									height: 0.28rem;
 									vertical-align: middle;
 									margin-right: 0.16rem;
-									margin-top: -0.06rem;
+									// margin-top: -0.06rem;
+									margin-top: 0.08rem;
+								}
+								.text_approve_span {
+									width: 5.78rem;
+									// min-height: 0.4rem;
+									span {
+										margin-bottom: 0.4rem;
+									}
 								}
 							}
 							.footer_btn {
@@ -1175,7 +1225,8 @@ export default {
 					margin-top: 0.16rem;
 					margin-bottom: 0.55rem;
 					.step_title {
-						height: 0.5rem;
+						// height: 0.5rem;
+						height: 100%;
 						font-size: 0.36rem;
 					}
 					.step_process {

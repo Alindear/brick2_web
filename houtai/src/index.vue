@@ -30,7 +30,9 @@
             <div class="back_bottom_img"></div>
             <div class="index_left">
                 <div class="left_top">
-                    <span v-if="$store.state.language === 'EN'">BNS</span>
+                    <span v-if="$store.state.language === 'EN'">
+                        BNS
+                    </span>
                     <el-button
                         v-if="$store.state.language === 'EN'"
                         @click="onConnect"
@@ -252,11 +254,11 @@
                                     @keyup.13.native="searchEns"
                                 >
                                     <i></i>
-                                    <img
+                                    <!-- <img
                                         slot="suffix"
                                         :src="searchblack"
                                         alt=""
-                                    >
+                                    > -->
                                 </el-input>
                             </el-form>
                         </div>
@@ -278,7 +280,7 @@
                 :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold','font-weight': $store.state.language === 'CN' ? '' : 'Bold'}"
             >
                 <!-- Bns生态构成 -->
-                {{i18n.bns}}
+                {{i18n.bns_ecological}}
             </div>
             <img
                 :src="bnsComposeImg"
@@ -327,9 +329,10 @@
                             <!-- 当前收益 -->
                             {{i18n.current_gains}}
                         </p>
-                        <div class="profit_num">BRICK: {{brickCps }}</div>
+                        <div class="profit_num">{{usdtCps}}</div>
+                        <!-- <div class="profit_num">BRICK: {{brickCps }}</div>
                         <div class="profit_num">USDT:{{usdtCps}}</div>
-                        <div class="profit_num">BNB:{{bnbCps}}</div>
+                        <div class="profit_num">BNB:{{bnbCps}}</div> -->
                     </div>
                     <p
                         class="dis_content"
@@ -480,84 +483,138 @@
             </p>
 
             <div class="partner_img">
-                <img
-                    :src="partnerImg"
-                    alt=""
-                >
+                <div class="partner_img_div">
+                    <img
+                        class="partner_img_1"
+                        :src="partnerImg1"
+                        alt=""
+                    >
+                </div>
+                <div class="partner_img_div">
+                    <img
+                        class="partner_img_2"
+                        :src="partnerImg2"
+                        alt=""
+                    >
+                </div>
+                <div class="partner_img_div">
+                    <img
+                        class="partner_img_3"
+                        :src="partnerImg3"
+                        alt=""
+                    >
+                </div>
+                <div class="partner_img_div">
+                    <img
+                        class="partner_img_4"
+                        :src="partnerImg4"
+                        alt=""
+                    >
+                </div>
             </div>
-        </div>
-
-        <div class="contact_us_module">
-            <p
-                class="contanct_title"
-                :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold'}"
-            >
-                <!-- 联系我们 -->
-                {{i18n.contact_us}}
-            </p>
-            <div class="contact_input">
-                <span class="email">E-mail: admin@bnsdid.io </span>
-                <span class="bottom_img">
+						<div class="mb_partner_img">
+                <div class="partner_img_div">
                     <img
-                        class="bottom_icon1"
-                        :src="twitterPng"
+                        class="partner_img_1"
+                        :src="mbpartnerImg1"
                         alt=""
                     >
+                </div>
+                <div class="partner_img_div">
                     <img
-                        class="bottom_icon2"
-                        :src="discordPng"
+                        class="partner_img_2"
+                        :src="mbpartnerImg2"
                         alt=""
                     >
+                </div>
+                <div class="partner_img_div">
                     <img
-                        class="bottom_icon3"
-                        :src="lastIconPng"
+                        class="partner_img_3"
+                        :src="mbpartnerImg3"
                         alt=""
                     >
-                    <!-- <div class="img_left"></div> -->
-                </span>
-                <span class="img_left"></span>
-                <span class="img_center">SAY HI HERE</span>
-                <img
-                    class="img_right"
-                    :src="enterIcon"
-                    alt=""
-                >
-
+                </div>
+                <div class="partner_img_div">
+                    <img
+                        class="partner_img_4"
+                        :src="mbpartnerImg4"
+                        alt=""
+                    >
+                </div>
             </div>
 
-            <div class="mb_contact_input">
-                <p class="email_top">E-mail: admin@bnsdid.io </p>
-                <div class="input_center">
+            <div class="contact_us_module">
+                <p
+                    class="contanct_title"
+                    :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Medium', 'font-weight': $store.state.language === 'CN' ? '' : ''}"
+                >
+                    <!-- 联系我们 -->
+                    {{i18n.contact_us}}
+                </p>
+                <div class="contact_input">
+                    <span class="email">E-mail: admin@bnsdid.io </span>
+                    <span class="bottom_img">
+                        <img
+                            class="bottom_icon1"
+                            :src="twitterPng"
+                            alt=""
+                        >
+                        <img
+                            class="bottom_icon2"
+                            :src="discordPng"
+                            alt=""
+                        >
+                        <img
+                            class="bottom_icon3"
+                            :src="lastIconPng"
+                            alt=""
+                        >
+                        <!-- <div class="img_left"></div> -->
+                    </span>
+                    <span class="img_left"></span>
                     <span class="img_center">SAY HI HERE</span>
                     <img
                         class="img_right"
                         :src="enterIcon"
                         alt=""
                     >
+
                 </div>
 
-                <!-- <span class="img_left"></span> -->
-                <span class="bottom_img">
-                    <img
-                        class="bottom_icon1"
-                        :src="twitterMBPng"
-                        alt=""
-                    >
-                    <img
-                        class="bottom_icon2"
-                        :src="discordMBPng"
-                        alt=""
-                    >
-                    <img
-                        class="bottom_icon3"
-                        :src="lastIconMBPng"
-                        alt=""
-                    >
-                </span>
+                <div class="mb_contact_input">
+                    <p class="email_top">E-mail: admin@bnsdid.io </p>
+                    <div class="input_center">
+                        <span class="img_center">SAY HI HERE</span>
+                        <img
+                            class="img_right"
+                            :src="enterIcon"
+                            alt=""
+                        >
+                    </div>
 
+                    <!-- <span class="img_left"></span> -->
+                    <span class="bottom_img">
+                        <img
+                            class="bottom_icon1"
+                            :src="twitterMBPng"
+                            alt=""
+                        >
+                        <img
+                            class="bottom_icon2"
+                            :src="discordMBPng"
+                            alt=""
+                        >
+                        <img
+                            class="bottom_icon3"
+                            :src="lastIconMBPng"
+                            alt=""
+                        >
+                    </span>
+
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </template>
 
@@ -575,6 +632,9 @@ import {
 	checkEachLength,
 	init,
 	drawMine,
+	selectedAccount,
+	checkAlready,
+	randomLottery,
 	selectedAccount, checkAlready, randomLottery, checkEnable, getMyLottery, hexToUtf8, getHolders, getLotteryPool,
 } from 'houtai/web3_eth.js';
 
@@ -585,14 +645,24 @@ import top1Png from 'img/首页/rodion-kutsaev--tgTipG2t_g-unsplash@2x.png';
 import top2Png from 'img/首页/位图@2x.png';
 import top3Png from 'img/首页/tezos-NN8ioR6Y88A-unsplash@2x.png';
 import top4Png from 'img/首页/tezos-N593T973hl0-unsplash@2x.png';
-import bnsComposeImg from 'img/首页/编组 37@2x.png';
+// import bnsComposeImg from 'img/首页/编组 37@2x.png';
+import bnsComposeImg from 'img/首页/编组 58.png';
 import addressIcon from 'img/首页/编组 18@2x.png';
 import priceIcon from 'img/首页/编组 19@2x.png';
 import img1 from 'img/首页/未标题-2.png';
 import img2 from 'img/首页/编组 20.png';
 import enterIcon from 'img/首页/编组 24@2x.png';
 import inputIcon from 'img/首页/椭圆形@2x.png';
-import partnerImg from 'img/首页/编组 39@2x.png';
+import partnerImg1 from 'img/首页/编组 36.png';
+import partnerImg2 from 'img/首页/编组 35.png';
+import partnerImg3 from 'img/首页/编组 34.png';
+import partnerImg4 from 'img/首页/编组 27.png';
+
+import mbpartnerImg1 from 'img/imgmb/首页/bottom1.png';
+import mbpartnerImg2 from 'img/imgmb/首页/bottom2.png';
+import mbpartnerImg3 from 'img/imgmb/首页/bottom3.png';
+import mbpartnerImg4 from 'img/imgmb/首页/bottom4.png';
+
 import twitterPng from 'img/首页/推特_twitter44@2x.png';
 import discordPng from 'img/首页/discord@2x.png';
 import lastIconPng from 'img/首页/编组 56@2x.png';
@@ -670,7 +740,14 @@ export default {
 			img2,
 			enterIcon,
 			inputIcon,
-			partnerImg,
+			partnerImg1,
+			partnerImg2,
+			partnerImg3,
+			partnerImg4,
+			mbpartnerImg1,
+			mbpartnerImg2,
+			mbpartnerImg3,
+			mbpartnerImg4,
 			twitterPng,
 			discordPng,
 			lastIconPng,
@@ -983,12 +1060,11 @@ export default {
 		async luckDrawBtn(flag) {
 			//var alreay = await checkAlready();
 			var _this = this;
-			var _fun = function(_this){
+			var _fun = function (_this) {
 				_this.luckDrawShowFlag = true;
 				_this.isShowDraw = true;
-			}
-			randomLottery(_fun,_this);
-
+			};
+			randomLottery(_fun, _this);
 		},
 		// 查看结果
 		async viewResultBtn(flag) { // TODO
@@ -1369,7 +1445,7 @@ export default {
 						align-items: center;
 						width: 6.64rem;
 						.select_lang {
-							margin-right: 0.21rem;
+							margin-right: 0.01rem;
 							/deep/.el-input__inner {
 								height: 1.28rem;
 								line-height: 1.28rem;
@@ -1390,7 +1466,8 @@ export default {
 							height: 0.38rem;
 							border-left: 0.02rem
 								solid #cdcdcd;
-							margin-right: 0.39rem;
+							// margin-right: 0.39rem;
+							margin-right: 0.1rem;
 						}
 						.input_search {
 							width: 5rem;
@@ -1403,7 +1480,7 @@ export default {
 								font-family: PingFangSC-Medium;
 								font-weight: 500;
 								font-size: 0.2rem;
-								color: #999999;
+								color: #333333;
 								margin: 0;
 								padding: 0;
 								border-top-right-radius: 0.32rem;
@@ -1484,11 +1561,10 @@ export default {
 						}
 						span {
 							margin-left: 0.28rem;
-							font-size: 0.2764rem;
 							height: 0.38rem;
 							font-family: Alibaba-PuHuiTi-R;
 							font-weight: R;
-							font-size: 0.2764rem;
+							font-size: 0.16rem;
 							color: #000000;
 						}
 					}
@@ -1549,7 +1625,8 @@ export default {
 						border-radius: 0.2764rem;
 						font-family: Alibaba-PuHuiTi-R;
 						font-weight: R;
-						font-size: 0.2764rem;
+						// font-size: 0.2764rem;
+						font-size: 0.16rem;
 						color: #ffffff;
 						border: none;
 						img {
@@ -1730,7 +1807,7 @@ export default {
 							align-items: center;
 							width: 5.56rem;
 							.select_lang {
-								margin-right: 0.21rem;
+								margin-right: 0.2rem;
 								/deep/.el-input__inner {
 									height: 1.09rem;
 									line-height: 1.09rem;
@@ -1759,7 +1836,7 @@ export default {
 								border-left: 0.02rem
 									solid
 									#cdcdcd;
-								margin-right: 0.32rem;
+								margin-right: 0.12rem;
 							}
 							.input_search {
 								width: 5rem;
@@ -1902,14 +1979,15 @@ export default {
 			margin: 0;
 			margin-bottom: 0.6rem;
 		}
-		// .span_text_en {
-		// 	height: 100%;
-		// 	width: 6.2rem;
-		// 	text-align: center;
-		// 	font-weight: 400;
-		// 	font-size: 0.32rem;
-		// 	margin-bottom: 0.5632rem;
-		// }
+		.span_text_en {
+			height: 0.3rem;
+			font-family: PingFangSC-Medium;
+			font-weight: 500;
+			font-size: 0.22rem;
+			color: #999999;
+			margin: 0;
+			margin-bottom: 0.6rem;
+		}
 		.share_img {
 			display: flex;
 			flex-direction: row;
@@ -1917,8 +1995,8 @@ export default {
 			.left_img {
 				width: 8rem;
 				height: 6.6rem;
-				// border: 0.33rem solid;
-				border: 0.01rem solid;
+				border: 0.33rem solid;
+				// border: 0.01rem solid;
 				border-image: linear-gradient(
 						to right,
 						#e5b3fd,
@@ -1926,6 +2004,7 @@ export default {
 					)
 					1 10;
 				box-sizing: border-box;
+				cursor: default;
 				.on_link {
 					font-family: Alibaba-PuHuiTi-B;
 					font-weight: B;
@@ -1938,8 +2017,8 @@ export default {
 					-webkit-background-clip: text;
 					color: transparent;
 					word-break: break-all;
-					// margin: 3.61rem 0.57rem 0.44rem 0.55rem;
-					margin: 3.94rem 0.9rem 0.77rem 0.88rem;
+					margin: 2.96rem 0.57rem 0.44rem 0.55rem;
+					// margin: 3.94rem 0.9rem 0.77rem 0.88rem;
 				}
 				.dis_link {
 					font-family: Alibaba-PuHuiTi-B;
@@ -1973,7 +2052,7 @@ export default {
 				}
 			}
 			.left_img:hover {
-				border: 0.34rem solid;
+				border: 0.33rem solid;
 				border-image: linear-gradient(
 						to right,
 						#e5b3fd,
@@ -1981,12 +2060,15 @@ export default {
 					)
 					1 10;
 				box-sizing: border-box;
+				cursor: default;
 				.on_link {
 					// margin: 3.94rem 0.9rem 0.77rem 0.88rem;
-					margin: 3.61rem 0.57rem 0.44rem 0.55rem;
+					// margin: 3.61rem 0.57rem 0.44rem 0.55rem;
+					margin: 2.96rem 0.57rem 0.44rem 0.55rem;
 				}
 				.dis_link {
-					margin: 4.39rem 0 1.59rem 0.55rem;
+					// margin: 4.39rem 0 1.59rem 0.55rem;
+					margin: 4.72rem 0 1.25rem 0.88rem;
 					box-sizing: border-box;
 					// padding: 4.72rem 0 1.25rem 0.88rem;
 					// box-sizing: border-box;
@@ -2002,7 +2084,8 @@ export default {
 					);
 					-webkit-background-clip: text;
 					color: transparent;
-					margin: 4.39rem 0 1.59rem 0.55rem;
+					// margin: 4.39rem 0 1.59rem 0.55rem;
+					margin: 4.72rem 0 1.25rem 0.88rem;
 				}
 			}
 			.right_img {
@@ -2018,6 +2101,7 @@ export default {
 					)
 					1 10;
 				box-sizing: border-box;
+				cursor: default;
 				.now_profit {
 					margin-left: 0.69rem;
 					// margin-bottom: 1.95rem;
@@ -2033,12 +2117,13 @@ export default {
 					}
 					.profit_num {
 						width: 5.69rem;
-						height: 0.6rem;
+						height: 100%;
 						font-family: Womby-Regular;
 						font-weight: 400;
 						font-size: 0.64rem;
 						color: #000000;
 						letter-spacing: 0.04rem;
+						word-break: break-all;
 					}
 				}
 				.dis_content {
@@ -2052,7 +2137,8 @@ export default {
 				}
 				.el-button {
 					margin-left: 0.69rem;
-					margin-bottom: 0.92rem;
+					// margin-bottom: 0.92rem;
+					margin-bottom: 1.25rem;
 					// width: 3.32rem;
 					height: 1.28rem;
 					background-image: linear-gradient(
@@ -2068,6 +2154,75 @@ export default {
 					padding: 0 0.75rem;
 					border: none;
 				}
+			}
+			.right_img:hover {
+				width: 8rem;
+				height: 6.6rem;
+				background-image: url('houtai/img/首页/收益.png');
+				background-size: 100% 100%;
+				border: 0.33rem solid;
+				border-image: linear-gradient(
+						to bottom,
+						#e5b3fd,
+						#7de7ec
+					)
+					1 10;
+				box-sizing: border-box;
+				cursor: default;
+				// .now_profit {
+				// 	margin-left: 0.36rem;
+				// 	// margin-bottom: 1.95rem;
+				// 	// margin-bottom: 0.95rem;
+				// 	margin-bottom: 0.62rem;
+				// 	.profit_text {
+				// 		// width: 0.95rem;
+				// 		height: 0.33rem;
+				// 		font-family: Alibaba-PuHuiTi-R;
+				// 		font-weight: R;
+				// 		font-size: 0.24rem;
+				// 		color: #000000;
+				// 		// margin: 0.66rem 0 0.32rem;
+				// 	}
+				// 	.profit_num {
+				// 		width: 5.69rem;
+				// 		// height: 0.6rem;
+				// 		font-family: Womby-Regular;
+				// 		font-weight: 400;
+				// 		font-size: 0.64rem;
+				// 		color: #000000;
+				// 		letter-spacing: 0.04rem;
+				// 		word-break: break-all;
+				// 	}
+				// }
+				// .dis_content {
+				// 	// width: 2.84rem;
+				// 	height: 0.33rem;
+				// 	font-family: Alibaba-PuHuiTi-M;
+				// 	font-weight: M;
+				// 	font-size: 0.24rem;
+				// 	color: #000000;
+				// 	// margin: 3.14rem 0 0.93rem 0.81rem;
+				// }
+				// .el-button {
+				// 	// margin-left: 0.69rem;
+				// 	margin-left: 0.36rem;
+				// 	// margin-bottom: 0.92rem;
+				// 	margin-bottom: 1.25rem;
+				// 	// width: 3.32rem;
+				// 	height: 1.28rem;
+				// 	background-image: linear-gradient(
+				// 		-60deg,
+				// 		#6af0e9 0%,
+				// 		#edafff 100%
+				// 	);
+				// 	border-radius: 0.64rem;
+				// 	font-family: Alibaba-PuHuiTi-B;
+				// 	font-weight: B;
+				// 	font-size: 0.46rem;
+				// 	color: #ffffff;
+				// 	padding: 0 0.75rem;
+				// 	border: none;
+				// }
 			}
 		}
 	}
@@ -2156,7 +2311,8 @@ export default {
 						font-family: Alibaba-PuHuiTi-B;
 						font-weight: B;
 						font-size: 0.36rem;
-						margin: 1.05rem 1.42rem;
+						// margin: 1.05rem 1.42rem;
+						margin: 0.32rem auto;
 					}
 					.dis_link {
 						font-size: 0.36rem;
@@ -2201,6 +2357,7 @@ export default {
 							font-size: 0.32rem;
 							color: #000000;
 							letter-spacing: 0.01rem;
+							word-break: break-all;
 						}
 					}
 					.dis_content {
@@ -2223,6 +2380,70 @@ export default {
 						margin: 0 auto;
 						display: block;
 					}
+				}
+				.right_img:hover {
+					width: 5.68rem;
+					height: 3.2rem;
+					background-image: url('houtai/img/imgmb/首页/收益.png');
+					background-size: 100% 100%;
+					.now_profit {
+						margin-left: 0.4rem;
+						margin-bottom: 0.16rem;
+						.profit_text {
+							height: 0.33rem;
+							font-family: Alibaba-PuHuiTi-R;
+							font-weight: R;
+							font-size: 0.28rem;
+							color: #000000;
+							margin: 0.16rem 0;
+							text-align: center;
+						}
+						.profit_num {
+							width: 5.69rem;
+							height: 0.44rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.32rem;
+							color: #000000;
+							letter-spacing: 0.01rem;
+							word-break: break-all;
+						}
+					}
+					.dis_content {
+						// width: 2.84rem;
+						height: 0.35rem;
+						font-size: 0.26rem;
+						margin: 0;
+						margin-top: 1.18rem;
+						margin-bottom: 0.46rem;
+						text-align: center;
+					}
+					.el-button {
+						margin-left: 0.69rem;
+						margin-bottom: 0.92rem;
+						width: 4.48rem;
+						height: 0.94rem;
+						padding: 0 0.75rem;
+						font-size: 0.32rem;
+						border: none;
+						margin: 0 auto;
+						display: block;
+					}
+				}
+				.right_img:hover {
+					width: 5.68rem;
+					height: 3.2rem;
+					background-image: url('houtai/img/imgmb/首页/收益.png');
+					background-size: 100% 100%;
+					border: 0.01rem solid;
+					border-image: linear-gradient(
+							to bottom,
+							#e5b3fd,
+							#7de7ec
+						)
+						1 10;
+					box-sizing: border-box;
+					cursor: default;
 				}
 			}
 		}
@@ -2262,6 +2483,7 @@ export default {
 				#edafff 100%
 			);
 			border-radius: 0.32rem;
+			border: none;
 			p {
 				font-family: Alibaba-PuHuiTi-M;
 				font-weight: M;
@@ -2304,7 +2526,8 @@ export default {
 					border: 0.05rem dashed #ffffff;
 					border-radius: 0.32rem;
 					margin: 0;
-					margin-top: -0.1rem;
+					// margin-top: -0.1rem;
+					margin-top: -0.08rem;
 				}
 			}
 		}
@@ -2345,7 +2568,6 @@ export default {
 				img {
 					width: 0.5rem;
 					height: 0.5rem;
-					background: #9c84df;
 					margin: 0.71rem 0 0.45rem 0;
 				}
 				.address_price_title {
@@ -2371,7 +2593,7 @@ export default {
 				img {
 					width: 4.1902rem;
 					height: 4.1902rem;
-					transform: rotate(-7deg);
+					// transform: rotate(-7deg);
 					margin: 0.4992rem 1.059rem 0.2206rem 0;
 				}
 			}
@@ -2537,7 +2759,7 @@ export default {
 			}
 			.title_text_gift {
 				font-size: 0.54rem;
-				width: 5.9rem;
+				width: 6.3rem;
 				height: 100%;
 				text-align: center;
 			}
@@ -2608,9 +2830,36 @@ export default {
 			margin-bottom: 1.22rem;
 		}
 		.partner_img {
-			img {
-				width: 3.09rem;
-				height: 1.46rem;
+			display: block;
+			// img {
+			// 	width: 3.88rem;
+			// 	height: 2.14rem;
+			// }
+			.partner_img_div {
+				width: 3.88rem;
+				height: 2.14rem;
+				float: left;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-bottom: 1.01rem;
+				margin-right: 0.16rem;
+			}
+			.partner_img_1 {
+				width: 2.5rem;
+				// height: 1.18rem;
+			}
+			.partner_img_2 {
+				width: 3.39rem;
+				// height: 0.9077rem;
+			}
+			.partner_img_3 {
+				// width: 0.93rem;
+				height: 1.31rem;
+			}
+			.partner_img_4 {
+				width: 2.5rem;
+				// height: 1.18rem;
 			}
 			// display: flex;
 			// flex-direction: row;
@@ -2626,23 +2875,93 @@ export default {
 			// 	margin-right: 0;
 			// }
 		}
-	}
-	@media (max-width: 750px) {
-		.partner_module {
+		.mb_partner_img{
+			display: none;
+		}
+		@media (max-width: 750px) {
+		.partner_img {
+			display: none;
+		}
+		.mb_partner_img {
+			display: block;
 			margin-bottom: 0.42rem;
-			.partner_title {
-				height: 0.7rem;
-				font-size: 0.54rem;
-				margin-bottom: 0.45rem;
-			}
-			.partner_img {
-				img {
-					width: 3.11rem;
-					// height: 1.46rem;
+
+				// img {
+				// 	width: 3.88rem;
+				// 	height: 2.14rem;
+				// }
+				.partner_img_div {
+					width: 1.56rem;
+					height: 1.56rem;
+					float: left;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					margin-bottom: 0.59rem;
+					margin-right: 0.16rem;
 				}
-			}
+				.partner_img_1 {
+					width: 100%;
+					// height: 1.18rem;
+				}
+				.partner_img_2 {
+					// width: 1.4416rem;
+					// height: 0.9077rem;
+					width: 100%;
+				}
+				.partner_img_3 {
+					// width: 0.93rem;
+					// height: 1.31rem;
+					width: 100%;
+				}
+				.partner_img_4 {
+					// width: 2.5rem;
+					// height: 1.18rem;
+					width: 100%;
+				}
 		}
 	}
+	}
+	// @media (max-width: 750px) {
+	// 	.partner_img {
+	// 		display: none;
+	// 	}
+	// 	.mb_partner_img {
+	// 		display: block;
+	// 		margin-bottom: 0.42rem;
+
+	// 			// img {
+	// 			// 	width: 3.88rem;
+	// 			// 	height: 2.14rem;
+	// 			// }
+	// 			.partner_img_div {
+	// 				width: 1.56rem;
+	// 				height: 1.56rem;
+	// 				float: left;
+	// 				display: flex;
+	// 				justify-content: center;
+	// 				align-items: center;
+	// 				margin-bottom: 0.59rem;
+	// 				margin-right: 0.16rem;
+	// 			}
+	// 			.partner_img_1 {
+	// 				width: 2.5rem;
+	// 				// height: 1.18rem;
+	// 			}
+	// 			.partner_img_2 {
+	// 				width: 3.39rem;
+	// 				// height: 0.9077rem;
+	// 			}
+	// 			.partner_img_3 {
+	// 				// width: 0.93rem;
+	// 				height: 1.31rem;
+	// 			}
+	// 			.partner_img_4 {
+	// 				width: 2.5rem;
+	// 				// height: 1.18rem;
+	// 			}
+	// 	}
+	// }
 
 	.contact_us_module {
 		width: 19.2rem;
