@@ -214,13 +214,13 @@
 
                             <p
                                 class="step_title"
-                                v-if="registBtnLoading"
+                                v-if="!registBtnLoading"
                             >
                                 您很快就可以完成域名注册
                             </p>
                             <p
                                 class="step_title"
-                                v-if="!registBtnLoading"
+                                v-if="registBtnLoading"
                             >
                                 <img
                                     :src="successPng"
@@ -1333,7 +1333,8 @@ export default {
 						display: flex;
 						flex-direction: column;
 						padding-left: 0.34rem;
-						padding-top: 0.4rem;
+						// padding-top: 0.4rem;
+						padding-top: 0rem;
 						box-sizing: border-box;
 						margin-top: 0.16rem;
 						// margin-bottom: 0.34rem;
@@ -1362,7 +1363,7 @@ export default {
 							font-size: 0.14rem;
 							margin: 0;
 							color: #999999;
-							margin-bottom: 0.6rem;
+							margin-bottom: 0.4rem;
 						}
 						.step_process {
 							display: flex;
