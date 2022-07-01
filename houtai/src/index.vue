@@ -1080,11 +1080,11 @@ export default {
 		async luckDrawBtn(flag) {
 			//var alreay = await checkAlready();
 			var _this = this;
-			var _fun = function (_this) {
+			// var _fun = function (_this) {
 				_this.luckDrawShowFlag = true;
 				_this.isShowDraw = true;
-			};
-			randomLottery(_fun, _this);
+			// };
+			// randomLottery(_fun, _this);
 		},
 		// 查看结果
 		async viewResultBtn(flag) { // TODO
