@@ -512,6 +512,36 @@
                     >
                 </div>
             </div>
+						<div class="mb_partner_img">
+                <div class="partner_img_div">
+                    <img
+                        class="partner_img_1"
+                        :src="mbpartnerImg1"
+                        alt=""
+                    >
+                </div>
+                <div class="partner_img_div">
+                    <img
+                        class="partner_img_2"
+                        :src="mbpartnerImg2"
+                        alt=""
+                    >
+                </div>
+                <div class="partner_img_div">
+                    <img
+                        class="partner_img_3"
+                        :src="mbpartnerImg3"
+                        alt=""
+                    >
+                </div>
+                <div class="partner_img_div">
+                    <img
+                        class="partner_img_4"
+                        :src="mbpartnerImg4"
+                        alt=""
+                    >
+                </div>
+            </div>
 
             <div class="contact_us_module">
                 <p
@@ -626,6 +656,12 @@ import partnerImg1 from 'img/首页/编组 36.png';
 import partnerImg2 from 'img/首页/编组 35.png';
 import partnerImg3 from 'img/首页/编组 34.png';
 import partnerImg4 from 'img/首页/编组 27.png';
+
+import mbpartnerImg1 from 'img/imgmb/首页/bottom1.png';
+import mbpartnerImg2 from 'img/imgmb/首页/bottom2.png';
+import mbpartnerImg3 from 'img/imgmb/首页/bottom3.png';
+import mbpartnerImg4 from 'img/imgmb/首页/bottom4.png';
+
 import twitterPng from 'img/首页/推特_twitter44@2x.png';
 import discordPng from 'img/首页/discord@2x.png';
 import lastIconPng from 'img/首页/编组 56@2x.png';
@@ -707,6 +743,10 @@ export default {
 			partnerImg2,
 			partnerImg3,
 			partnerImg4,
+			mbpartnerImg1,
+			mbpartnerImg2,
+			mbpartnerImg3,
+			mbpartnerImg4,
 			twitterPng,
 			discordPng,
 			lastIconPng,
@@ -2748,6 +2788,7 @@ export default {
 			margin-bottom: 1.22rem;
 		}
 		.partner_img {
+			display: block;
 			// img {
 			// 	width: 3.88rem;
 			// 	height: 2.14rem;
@@ -2792,16 +2833,17 @@ export default {
 			// 	margin-right: 0;
 			// }
 		}
-	}
-	@media (max-width: 750px) {
-		.partner_module {
+		.mb_partner_img{
+			display: none;
+		}
+		@media (max-width: 750px) {
+		.partner_img {
+			display: none;
+		}
+		.mb_partner_img {
+			display: block;
 			margin-bottom: 0.42rem;
-			.partner_title {
-				height: 0.7rem;
-				font-size: 0.54rem;
-				margin-bottom: 0.45rem;
-			}
-			.partner_img {
+		
 				// img {
 				// 	width: 3.88rem;
 				// 	height: 2.14rem;
@@ -2817,24 +2859,67 @@ export default {
 					margin-right: 0.16rem;
 				}
 				.partner_img_1 {
-					width: 2.5rem;
+					width: 100%;
 					// height: 1.18rem;
 				}
 				.partner_img_2 {
-					width: 3.39rem;
+					// width: 1.4416rem;
 					// height: 0.9077rem;
+					width: 100%;
 				}
 				.partner_img_3 {
 					// width: 0.93rem;
-					height: 1.31rem;
+					// height: 1.31rem;
+					width: 100%;
 				}
 				.partner_img_4 {
-					width: 2.5rem;
+					// width: 2.5rem;
 					// height: 1.18rem;
+					width: 100%;
 				}
-			}
 		}
 	}
+	}
+	// @media (max-width: 750px) {
+	// 	.partner_img {
+	// 		display: none;
+	// 	}
+	// 	.mb_partner_img {
+	// 		display: block;
+	// 		margin-bottom: 0.42rem;
+		
+	// 			// img {
+	// 			// 	width: 3.88rem;
+	// 			// 	height: 2.14rem;
+	// 			// }
+	// 			.partner_img_div {
+	// 				width: 1.56rem;
+	// 				height: 1.56rem;
+	// 				float: left;
+	// 				display: flex;
+	// 				justify-content: center;
+	// 				align-items: center;
+	// 				margin-bottom: 0.59rem;
+	// 				margin-right: 0.16rem;
+	// 			}
+	// 			.partner_img_1 {
+	// 				width: 2.5rem;
+	// 				// height: 1.18rem;
+	// 			}
+	// 			.partner_img_2 {
+	// 				width: 3.39rem;
+	// 				// height: 0.9077rem;
+	// 			}
+	// 			.partner_img_3 {
+	// 				// width: 0.93rem;
+	// 				height: 1.31rem;
+	// 			}
+	// 			.partner_img_4 {
+	// 				width: 2.5rem;
+	// 				// height: 1.18rem;
+	// 			}
+	// 	}
+	// }
 
 	.contact_us_module {
 		width: 19.2rem;
