@@ -158,7 +158,7 @@ export default new Vuex.Store({
                 developer_use: '开发人员使用',
                 team_members: '团队成员',
 
-                current_gains: '当前收益【USDT】',
+                current_gains: '当前收益',
                 view_results: '查看结果',
                 participate_draw: '参与抽奖',
 
@@ -333,7 +333,7 @@ export default new Vuex.Store({
                 participate_draw: 'Participate in the draw',
                 developer_use: 'Developer use',
                 team_members: 'Team Members',
-                current_gains: 'Current Gains[USDT]',
+                current_gains: 'Current Gains',
                 view_results: 'View results',
                 register_domain_names: 'Register Domain Names',
             }

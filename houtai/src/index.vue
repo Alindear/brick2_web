@@ -307,6 +307,7 @@
                 <div
                     class="left_img"
                     v-if="linkShowFlag"
+										@mouseover="activeItem = 'left'"    :class="{'actived': activeItem === 'left', 'unactived':activeItem === 'right'}"
                 >
                     <p class="on_link">{{this.refAddress}}</p>
                 </div>
@@ -314,13 +315,14 @@
                     class="left_img"
                     @click="linkClick"
                     v-if="!linkShowFlag"
+										@mouseover="activeItem = 'left'"   :class="{'actived': activeItem === 'left', 'unactived':activeItem === 'right'}" 
                 >
                     <p :class="$store.state.language === 'CN' ? 'dis_link' : 'dis_link_en'">
                         <!-- 点击生成专属链接 -->
                         {{i18n.click_text}}
                     </p>
                 </div>
-                <div class="right_img">
+                <div class="right_img" @mouseover="activeItem = 'right'"  :class="{'actived': activeItem === 'right'}" @mouseleave="activeItem = 'left'">
                     <div
                         class="now_profit"
                         v-if="changeStatusShowFlag"
@@ -329,7 +331,10 @@
                             <!-- 当前收益 -->
                             {{i18n.current_gains}}
                         </p>
-                        <div class="profit_num">{{usdtCps}}</div>
+												<div class="profit_usdt">USDT</div>
+                        <div class="profit_num_usdt">{{usdtCps}}</div>
+												<div class="profit_bnb">BNB</div>
+                        <div class="profit_num_bnb">{{bnbCps}}</div>
                         <!-- <div class="profit_num">BRICK: {{brickCps }}</div>
                         <div class="profit_num">USDT:{{usdtCps}}</div>
                         <div class="profit_num">BNB:{{bnbCps}}</div> -->
@@ -395,8 +400,8 @@
                 v-for="(item,index) in addressPriceList"
                 :key="index"
                 class="address_price_module"
-                :style="{ 'background' : index === 0 ? '#ffffff' : '#f8f8f8'}"
             >
+                <!-- :style="{ 'background' : index === 0 ? '#ffffff' : '#f8f8f8'}" -->
                 <div class="address_price_right_img">
                     <img
                         :src="item.img"
@@ -730,6 +735,9 @@ export default {
 	components: { headEr, registered, giftTips },
 	data() {
 		return {
+			activeItem: 'left',
+			activeLeft: "",
+			activeRight: "",
 			isShowDraw: false, //是否参与抽奖
 			luckDrawShowFlag: false, // 参与抽奖
 			viewResultShowFlag: false, // 查看结果
@@ -1076,6 +1084,23 @@ export default {
 	},
 
 	methods: {
+		// 鼠标移入 移除事件
+		mouseOverRight(){
+			this.activeRight = "'border':0.33rem solid; 'border-image': linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
+			this.activeLeft = "border:0.01rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
+		},
+		mouseLeaveRight(){
+			this.activeRight = "border:0.01rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
+			this.activeLeft = "border:0.03rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
+			console.log('	this.activeRight',	this.activeRight);
+		},
+		mouseOverLeft(){
+			// this.activeLeft = "border:0.33rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
+		},
+		mouseLeaveLeft(){
+			// this.activeLeft = "border:0.01rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
+			console.log('this.activeLeft',this.activeLeft);
+		},
 		//参与抽奖
 		async luckDrawBtn(flag) {
 			//var alreay = await checkAlready();
@@ -1353,7 +1378,7 @@ export default {
 			margin-left: 1.61rem;
 			box-sizing: border-box;
 			.left_top {
-				margin-bottom: 0.32rem;
+				margin-bottom: 0.62rem;
 				img {
 					height: 1.48rem;
 				}
@@ -1428,7 +1453,7 @@ export default {
 				}
 			}
 			.left_bottom {
-				margin-top: 0.22rem;
+				margin-top: 0.72rem;
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
@@ -2071,43 +2096,63 @@ export default {
 					// box-sizing: border-box;
 				}
 			}
-			.left_img:hover {
+			.actived{
 				border: 0.33rem solid;
+				// border: 0.01rem solid;
 				border-image: linear-gradient(
 						to right,
 						#e5b3fd,
 						#7de7ec
 					)
 					1 10;
-				box-sizing: border-box;
-				cursor: default;
-				.on_link {
-					// margin: 3.94rem 0.9rem 0.77rem 0.88rem;
-					// margin: 3.61rem 0.57rem 0.44rem 0.55rem;
-					margin: 2.96rem 0.57rem 0.44rem 0.55rem;
-				}
-				.dis_link {
-					// margin: 4.39rem 0 1.59rem 0.55rem;
-					margin: 4.72rem 0 1.25rem 0.88rem;
-					box-sizing: border-box;
-					// padding: 4.72rem 0 1.25rem 0.88rem;
-					// box-sizing: border-box;
-				}
-				.dis_link_en {
-					font-family: Alibaba-PuHuiTi-B;
-					font-weight: B;
-					font-size: 0.4rem;
-					background-image: linear-gradient(
+			}
+			.unactived{
+				border: 0.01rem solid;
+				// border: 0.01rem solid;
+				border-image: linear-gradient(
 						to right,
 						#e5b3fd,
 						#7de7ec
-					);
-					-webkit-background-clip: text;
-					color: transparent;
-					// margin: 4.39rem 0 1.59rem 0.55rem;
-					margin: 4.72rem 0 1.25rem 0.88rem;
-				}
+					)
+					1 10;
 			}
+			// .left_img:hover {
+			// 	border: 0.01rem solid;
+			// 	border-image: linear-gradient(
+			// 			to right,
+			// 			#e5b3fd,
+			// 			#7de7ec
+			// 		)
+			// 		1 10;
+			// 	box-sizing: border-box;
+			// 	cursor: default;
+			// 	.on_link {
+			// 		// margin: 3.94rem 0.9rem 0.77rem 0.88rem;
+			// 		// margin: 3.61rem 0.57rem 0.44rem 0.55rem;
+			// 		margin: 2.96rem 0.57rem 0.44rem 0.55rem;
+			// 	}
+			// 	.dis_link {
+			// 		// margin: 4.39rem 0 1.59rem 0.55rem;
+			// 		margin: 4.72rem 0 1.25rem 0.88rem;
+			// 		box-sizing: border-box;
+			// 		// padding: 4.72rem 0 1.25rem 0.88rem;
+			// 		// box-sizing: border-box;
+			// 	}
+			// 	.dis_link_en {
+			// 		font-family: Alibaba-PuHuiTi-B;
+			// 		font-weight: B;
+			// 		font-size: 0.4rem;
+			// 		background-image: linear-gradient(
+			// 			to right,
+			// 			#e5b3fd,
+			// 			#7de7ec
+			// 		);
+			// 		-webkit-background-clip: text;
+			// 		color: transparent;
+			// 		// margin: 4.39rem 0 1.59rem 0.55rem;
+			// 		margin: 4.72rem 0 1.25rem 0.88rem;
+			// 	}
+			// }
 			.right_img {
 				width: 8rem;
 				height: 6.6rem;
@@ -2125,7 +2170,7 @@ export default {
 				.now_profit {
 					margin-left: 0.69rem;
 					// margin-bottom: 1.95rem;
-					margin-bottom: 0.95rem;
+					// margin-bottom: 0.95rem;
 					.profit_text {
 						// width: 0.95rem;
 						height: 0.33rem;
@@ -2133,10 +2178,40 @@ export default {
 						font-weight: R;
 						font-size: 0.24rem;
 						color: #000000;
-						margin: 0.99rem 0 0.32rem;
+						// margin: 0.99rem 0 0.32rem;
+    				margin: 0.69rem 0 0.48rem 0;
 					}
-					.profit_num {
-						width: 5.69rem;
+					.profit_usdt{
+							height: 0.29rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.24rem;
+							color: #999999;
+							letter-spacing: 0;
+							margin-bottom: 0.11rem;
+						}
+						.profit_bnb{
+							height: 0.29rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.24rem;
+							color: #999999;
+							letter-spacing: 0;
+							margin-bottom: 0.11rem;
+						}
+						// .profit_num {
+						// 	width: 5.68rem;
+						// 	height: 0.38rem;
+						// 	font-family: Womby-Regular;
+						// 	font-weight: 400;
+						// 	font-size: 0.32rem;
+						// 	color: #000000;
+						// 	letter-spacing: 0.02rem;
+						// 	word-break: break-all;
+						// 	margin-bottom: 0.24rem;
+						// }
+					.profit_num_usdt {
+						width: 7rem;
 						height: 100%;
 						font-family: Womby-Regular;
 						font-weight: 400;
@@ -2144,7 +2219,20 @@ export default {
 						color: #000000;
 						letter-spacing: 0.04rem;
 						word-break: break-all;
+						margin-bottom: 0.32rem;
 					}
+					.profit_num_bnb {
+						width: 7rem;
+						height: 100%;
+						font-family: Womby-Regular;
+						font-weight: 400;
+						font-size: 0.64rem;
+						color: #000000;
+						letter-spacing: 0.04rem;
+						word-break: break-all;
+						margin-bottom: 0.32rem;
+					}
+					
 				}
 				.dis_content {
 					// width: 2.84rem;
@@ -2354,7 +2442,86 @@ export default {
 
 				.right_img {
 					width: 5.68rem;
-					height: 3.2rem;
+					height: 4.19rem;
+					background-image: url('houtai/img/imgmb/首页/收益.png');
+					background-size: 100% 100%;
+					.now_profit {
+						margin-left: 0.4rem;
+						margin-bottom: 0.16rem;
+						.profit_text {
+							height: 0.35rem;
+							font-family: Alibaba-PuHuiTi-R;
+							font-weight: R;
+							font-size: 0.28rem;
+							color: #000000;
+							margin: 0.24rem 0;
+							// text-align: center;
+						}
+						.profit_usdt{
+							height: 0.34rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.28rem;
+							color: #999999;
+							letter-spacing: 0;
+							margin-bottom: 0.08rem;
+						}
+						.profit_bnb{
+							height: 0.34rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.28rem;
+							color: #999999;
+							letter-spacing: 0;
+							margin-bottom: 0.08rem;
+						}
+						.profit_num_usdt {
+							width: 5.68rem;
+							height: 0.38rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.32rem;
+							color: #000000;
+							letter-spacing: 0.02rem;
+							word-break: break-all;
+							margin-bottom: 0.24rem;
+						}
+						.profit_num_bnb {
+							width: 5.68rem;
+							height: 0.38rem;
+							font-family: Womby-Regular;
+							font-weight: 400;
+							font-size: 0.32rem;
+							color: #000000;
+							letter-spacing: 0.02rem;
+							word-break: break-all;
+							margin-bottom: 0.24rem;
+						}
+					}
+					.dis_content {
+						// width: 2.84rem;
+						height: 0.35rem;
+						font-size: 0.26rem;
+						margin: 0;
+						margin-top: 1.18rem;
+						margin-bottom: 0.46rem;
+						text-align: center;
+					}
+					.el-button {
+						margin-left: 0.69rem;
+						margin-bottom: 0.92rem;
+						width: 4.48rem;
+						height: 0.94rem;
+						padding: 0 0.75rem;
+						font-size: 0.32rem;
+						border: none;
+						margin: 0 auto;
+						display: block;
+					}
+				}
+				.right_img:hover {
+					width: 5.68rem;
+					height: 4.19rem;
 					background-image: url('houtai/img/imgmb/首页/收益.png');
 					background-size: 100% 100%;
 					.now_profit {
@@ -2367,7 +2534,7 @@ export default {
 							font-size: 0.28rem;
 							color: #000000;
 							margin: 0.16rem 0;
-							text-align: center;
+							// text-align: center;
 						}
 						.profit_num {
 							width: 5.69rem;
@@ -2403,56 +2570,7 @@ export default {
 				}
 				.right_img:hover {
 					width: 5.68rem;
-					height: 3.2rem;
-					background-image: url('houtai/img/imgmb/首页/收益.png');
-					background-size: 100% 100%;
-					.now_profit {
-						margin-left: 0.4rem;
-						margin-bottom: 0.16rem;
-						.profit_text {
-							height: 0.33rem;
-							font-family: Alibaba-PuHuiTi-R;
-							font-weight: R;
-							font-size: 0.28rem;
-							color: #000000;
-							margin: 0.16rem 0;
-							text-align: center;
-						}
-						.profit_num {
-							width: 5.69rem;
-							height: 0.44rem;
-							font-family: Womby-Regular;
-							font-weight: 400;
-							font-size: 0.32rem;
-							color: #000000;
-							letter-spacing: 0.01rem;
-							word-break: break-all;
-						}
-					}
-					.dis_content {
-						// width: 2.84rem;
-						height: 0.35rem;
-						font-size: 0.26rem;
-						margin: 0;
-						margin-top: 1.18rem;
-						margin-bottom: 0.46rem;
-						text-align: center;
-					}
-					.el-button {
-						margin-left: 0.69rem;
-						margin-bottom: 0.92rem;
-						width: 4.48rem;
-						height: 0.94rem;
-						padding: 0 0.75rem;
-						font-size: 0.32rem;
-						border: none;
-						margin: 0 auto;
-						display: block;
-					}
-				}
-				.right_img:hover {
-					width: 5.68rem;
-					height: 3.2rem;
+					height: 4.19rem;
 					background-image: url('houtai/img/imgmb/首页/收益.png');
 					background-size: 100% 100%;
 					border: 0.01rem solid;
@@ -2731,6 +2849,7 @@ export default {
 			color: #ffffff;
 			border: none;
 			padding: 0 1.42rem;
+			box-shadow: 0 0.2rem 0.3rem #cccccc;
 		}
 		.four_gift_bottom {
 			margin-top: 1.92rem;
@@ -3179,9 +3298,10 @@ export default {
 		}
 	}
 }
-@media (max-width: 750px) {
-	.app_main {
-		background: #f8f8f8;
-	}
-}
+// @media (max-width: 750px) {
+// 	.app_main {
+// 		// background: #f8f8f8;
+// 		background: #ffffff;
+// 	}
+// }
 </style>

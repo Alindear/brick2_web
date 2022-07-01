@@ -367,7 +367,7 @@
                 >
                     <p :class="$store.state.language === 'CN' ? 'left_bsc':'left_bsc_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
-                        {{i18n.lucky_this}}572680.bsc
+                        {{i18n.lucky_this}}
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc':'right_bsc_en'">
                         <!-- 本期奖品：889988.bsc -->
@@ -537,7 +537,8 @@ export default {
 			align-items: flex-start;
 			// margin: auto;
 			padding: 0 0.25rem;
-			margin: 0 0.66rem;
+			// margin: 0 0.66rem;
+			margin: 0 auto;
 			// margin: 0 0.66rem 0.3rem;
 			box-sizing: border-box;
 			p {
@@ -559,12 +560,19 @@ export default {
 				font-size: 0.16rem;
 				color: #000000;
 			}
-			.left_bsc_en {
-				margin: 0.24rem 0 0.08rem 0;
-			}
-			.right_bsc_en {
-				margin: 0 0 0.24rem 0;
-			}
+			// .left_bsc_en {
+			// 	margin: 0.24rem 0 0.08rem 0;
+			// }
+			// .right_bsc_en {
+			// 	margin: 0 0 0.24rem 0;
+			// }
+				.left_bsc_en {
+					// margin: 0.24rem 0 0.08rem 0;
+    			margin: 0.4rem 0 0.22rem 0;
+				}
+				.right_bsc_en {
+					margin: 0 0 0.4rem 0;
+				}
 		}
 		.pre_bsc_luck {
 			display: flex;
@@ -745,8 +753,10 @@ export default {
 				justify-content: space-between;
 				align-items: flex-start;
 				// margin: auto;
-				padding: 0 0.25rem;
-				margin: 0 0.66rem;
+				// padding: 0 0.25rem;
+				padding: 0 0.4rem;
+				// margin: 0 0.66rem;
+				margin: 0 auto;
 				// margin: 0 0.66rem 0.3rem;
 				// box-sizing: border-box;
 				p {
@@ -772,12 +782,19 @@ export default {
 					color: #000000;
 					margin: 0 0 0.43rem 0.9rem;
 				}
-				.left_bsc_en {
-					margin: 0.24rem 0 0.08rem 0;
-				}
-				.right_bsc_en {
-					margin: 0 0 0.24rem 0;
-				}
+				// .left_bsc_en {
+				// 	margin: 0.24rem 0 0.08rem 0;
+				// }
+				// .right_bsc_en {
+				// 	margin: 0 0 0.24rem 0;
+				// }
+					.left_bsc_en {
+						// margin: 0.24rem 0 0.08rem 0;
+						margin: 0.4rem 0 0.22rem 0;
+					}
+					.right_bsc_en {
+						margin: 0 0 0.4rem 0;
+					}
 			}
 			.pre_bsc_luck {
 				display: flex;
@@ -895,7 +912,8 @@ export default {
 			justify-content: space-between;
 			align-items: center;
 			// margin: auto;
-			padding: 0 0.25rem;
+			// padding: 0 0.25rem;
+			padding: 0 0.4rem;
 			margin: 0 0.66rem;
 			// margin: 0 0.66rem 0.3rem;
 			box-sizing: border-box;
@@ -1236,12 +1254,19 @@ export default {
 				font-size: 0.16rem;
 				color: #000000;
 			}
-			.left_bsc_en {
-				margin: 0.24rem 0 0.08rem 0;
-			}
-			.right_bsc_en {
-				margin: 0 0 0.24rem 0;
-			}
+			// .left_bsc_en {
+			// 	margin: 0.24rem 0 0.08rem 0;
+			// }
+			// .right_bsc_en {
+			// 	margin: 0 0 0.24rem 0;
+			// }
+				.left_bsc_en {
+					// margin: 0.24rem 0 0.08rem 0;
+    			margin: 0.4rem 0 0.22rem 0;
+				}
+				.right_bsc_en {
+					margin: 0 0 0.4rem 0;
+				}
 		}
 		.bottom_logo {
 			display: flex;
@@ -1306,14 +1331,15 @@ export default {
 					margin: 0.62rem 0 0.22rem 0.9rem;
 				}
 				.title_text_en {
-					width: 100%;
+					width: 5.34rem;
 					font-family: Futura-Bold;
 					font-weight: Bold;
-					font-size: 0.68rem;
+					font-size: 0.52rem;
 					color: #000000;
 					margin: 0;
 					display: block;
-					text-align: center;
+					text-align: left;
+					margin-left: 0.9rem;
 				}
 			}
 			.title_text {
@@ -1329,7 +1355,8 @@ export default {
 			.input_bsc {
 				width: 5.86rem;
 				height: 1.86rem;
-				background: rgba(237, 237, 237, 0.21);
+				// background: rgba(237, 237, 237, 0.21);
+				background: rgba(237,237,237,0.21);
 				border: 0.01rem solid #d8d8d8;
 				border-radius: 0.12rem;
 				display: flex;
@@ -1416,10 +1443,11 @@ export default {
 					color: #000000;
 				}
 				.left_bsc_en {
-					margin: 0.24rem 0 0.08rem 0;
+					// margin: 0.24rem 0 0.08rem 0;
+    			margin: 0.4rem 0 0.22rem 0;
 				}
 				.right_bsc_en {
-					margin: 0 0 0.24rem 0;
+					margin: 0 0 0.4rem 0;
 				}
 			}
 			.bottom_logo {
