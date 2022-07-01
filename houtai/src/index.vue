@@ -743,7 +743,7 @@ export default {
 			searchEnsLoading: false,
 			changeStatusShowFlag: false,
 
-			// changeStatusShowFlag: true,
+			changeStatusShowFlag: true,
 
 			linkShowFlag: false,
 			refAddress: '',
