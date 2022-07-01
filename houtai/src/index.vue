@@ -655,7 +655,7 @@ import {
 	drawMine,
 	selectedAccount,
 	checkAlready,
-	randomLottery,
+	randomLottery, checkEnable, getMyLottery, hexToUtf8, getHolders, getLotteryPool,
 } from 'houtai/web3_eth.js';
 
 import topImg from 'img/imgmb/首页/顶部.png';
@@ -950,12 +950,32 @@ export default {
 			);
 			this.searchText = this.searchText.toLowerCase();
 		},
-		'$store.state.cpsFee': function (val, old) {
+		'$store.state.cpsFee': async function(val, old) {
 			console.log(val);
 			console.log('监听');
 			this.bnbCps = val[0];
 			this.brickCps = val[1];
 			this.usdtCps = val[2];
+			var _this = this;
+			var _fun = function(_this) {
+				_this.luckDrawShowFlag = true;
+				_this.isShowDraw = true;
+			}
+
+			var enable = await checkEnable();
+			// if(enable===true){
+			 if(enable===false){
+			 	// TODO
+				//_this.viewResultShowFlag = true;
+				// 判断是否中奖
+				this.changeStatusShowFlag =true;
+				this.isShowDraw = true;
+			}
+
+			var alreay = await checkAlready();
+			if(alreay){
+			   _fun(_this);
+			}
 		},
 		'$store.state.language': function (val, old) {
 			console.log(val);
@@ -1067,9 +1087,27 @@ export default {
 			randomLottery(_fun, _this);
 		},
 		// 查看结果
-		viewResultBtn(flag) {
+		async viewResultBtn(flag) { // TODO
 			this.viewResultShowFlag = flag;
-			this.luckOrNot = this.luckOrNot;
+			var myLottery = await getMyLottery();
+			if(myLottery==0x0000000000000000000000000000000000000000000000000000000000000000){
+				this.luckOrNot = "NO";
+				var holders = await getHolders();
+				console.log(holders);
+				var pool = await getLotteryPool();
+				for (let i=0;i< holders.length;i++) {
+					this.$store.state.lowerPoolAccounts = this.$store.state.lowerPoolAccounts===''?holders[i]:this.$store.state.lowerPoolAccounts+","+holders[i];
+				}
+				for (let i=0;i< pool.length;i++) {
+					console.log(hexToUtf8(pool[i]));
+					this.$store.state.lowerPools =this.$store.state.lowerPools===''?hexToUtf8(pool[i]):this.$store.state.lowerPools+","+hexToUtf8(pool[i]);
+				}
+			}else{
+				this.$store.state.selectedAccount = selectedAccount;
+				this.$store.state.myLottery = hexToUtf8(myLottery);
+				this.luckOrNot = "YES";
+			}
+			//this.luckOrNot = this.luckOrNot;
 		},
 		searchTextChange() {
 			console.log('域名发生变化');
@@ -1267,6 +1305,9 @@ export default {
 			}
 		},
 	},
+	mounted() {
+
+	}
 };
 </script>
 
@@ -2864,7 +2905,7 @@ export default {
 		.mb_partner_img {
 			display: block;
 			margin-bottom: 0.42rem;
-		
+
 				// img {
 				// 	width: 3.88rem;
 				// 	height: 2.14rem;
@@ -2908,7 +2949,7 @@ export default {
 	// 	.mb_partner_img {
 	// 		display: block;
 	// 		margin-bottom: 0.42rem;
-		
+
 	// 			// img {
 	// 			// 	width: 3.88rem;
 	// 			// 	height: 2.14rem;

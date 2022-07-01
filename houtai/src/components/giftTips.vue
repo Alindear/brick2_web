@@ -53,14 +53,12 @@
                     <!-- :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start', 'height': $store.state.language === 'CN' ? '0.7rem' : '1rem',}" -->
                     <p :class="$store.state.language === 'CN' ? 'left_bsc':'left_bsc_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
-                        {{i18n.lucky_this}}
-                        578920.bsc
+                        {{i18n.lucky_this}} {{this.selectedAccount}}
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc':'right_bsc_en'">
                         <!-- 本期奖品：889988.bsc -->
-                        {{i18n.prize_this}}
-                        889988.bsc
-                    </p>
+                        {{i18n.prize_this}} {{myLottery}}
+		    </p>
                 </div>
                 <div :class="$store.state.language === 'CN' ? 'pre_bsc_luck' : 'pre_bsc_luck_en'">
                     <!--  class="pre_bsc_luck" :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start',}" -->
@@ -110,11 +108,11 @@
                 >
                     <p :class="$store.state.language === 'CN' ? 'left_bsc_result':'left_bsc_result_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
-                        {{i18n.lucky_this}}578680.bsc
+                        {{i18n.lucky_this}}  {{this.selectedAccount}}
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc_result':'right_bsc_result_en'">
                         <!-- 本期奖品：889988.bsc -->
-                        {{i18n.prize_this}}889988.bsc
+                        {{i18n.prize_this}} {{this.myLottery}}
                     </p>
                 </div>
                 <div class="pre_bsc_luck_result">
@@ -179,11 +177,11 @@
                 >
                     <p :class="$store.state.language === 'CN' ? 'left_bsc':'left_bsc_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
-                        {{i18n.lucky_this}}578680.bsc
+                        {{i18n.lucky_this}}{{this.selectedAccount}}
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc':'right_bsc_en'">
                         <!-- 本期奖品：889988.bsc -->
-                        {{i18n.prize_this}}889988.bsc
+                        {{i18n.prize_this}}{{myLottery}}
                     </p>
                 </div>
                 <!-- <div
@@ -251,13 +249,11 @@
                     <!-- :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start', 'height': $store.state.language === 'CN' ? '0.7rem' : '1rem',}" -->
                     <p :class="$store.state.language === 'CN' ? 'left_bsc':'left_bsc_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
-                        {{i18n.lucky_this}}
-                        578680.bsc
+                        {{i18n.lucky_this}} {{this.selectedAccount}}
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc':'right_bsc_en'">
                         <!-- 本期奖品：889988.bsc -->
-                        {{i18n.prize_this}}
-                        889988.bsc
+                        {{i18n.prize_this}} {{myLottery}}
                     </p>
                 </div>
                 <div :class="$store.state.language === 'CN' ? 'pre_bsc_luck' : 'pre_bsc_luck_en'">
@@ -311,11 +307,11 @@
                 <div class="input_bsc_luck_result">
                     <p :class="$store.state.language === 'CN' ? 'left_bsc_result':'left_bsc_result_en'">
                         <!-- 本期幸运儿：57892680.bsc -->
-                        {{i18n.lucky_this}}578680.bsc
+                        {{i18n.lucky_this}} {{this.selectedAccount}}
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc_result':'right_bsc_result_en'">
                         <!-- 本期奖品：889988.bsc -->
-                        {{i18n.prize_this}}889988.bsc
+                        {{i18n.prize_this}} {{this.myLottery}}
                     </p>
                 </div>
                 <div class="pre_bsc_luck_result">
@@ -375,7 +371,7 @@
                     </p>
                     <p :class="$store.state.language === 'CN' ? 'right_bsc':'right_bsc_en'">
                         <!-- 本期奖品：889988.bsc -->
-                        {{i18n.prize_this}}889988.bsc
+                        {{i18n.prize_this}}{{myLottery}}
                     </p>
                 </div>
                 <p
@@ -413,6 +409,8 @@ export default {
 			prizePng,
 			logoPng,
 			dialogVisible: false,
+			myLottery:'',
+			selectedAccount:'',
 		};
 	},
 	computed: {
@@ -442,6 +440,20 @@ export default {
 			}
 		},
 	},
+	watch: {
+		'$store.state.myLottery': async function(val, old) {
+			this.myLottery = val;
+		},
+		'$store.state.selectedAccount': async function(val, old) {
+			this.selectedAccount = val;
+		},
+		'$store.state.lowerPools': async function(val, old) {
+			this.myLottery = val;
+		},
+		'$store.state.lowerPoolAccounts': async function(val, old) {
+			this.selectedAccount = val;
+		}
+	}
 };
 </script>
 
