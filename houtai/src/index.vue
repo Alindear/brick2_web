@@ -575,7 +575,7 @@ import {
 	checkEachLength,
 	init,
 	drawMine,
-	selectedAccount, checkAlready, randomLottery, checkEnable, getMyLottery, hexToUtf8,
+	selectedAccount, checkAlready, randomLottery, checkEnable, getMyLottery, hexToUtf8, getHolders, getLotteryPool,
 } from 'houtai/web3_eth.js';
 
 import topImg from 'img/imgmb/首页/顶部.png';
@@ -866,8 +866,8 @@ export default {
 			}
 
 			var enable = await checkEnable();
-			if(enable===true){
-			 // if(enable===false){
+			// if(enable===true){
+			 if(enable===false){
 			 	// TODO
 				//_this.viewResultShowFlag = true;
 				// 判断是否中奖
@@ -991,13 +991,21 @@ export default {
 
 		},
 		// 查看结果
-		async viewResultBtn(flag) {
+		async viewResultBtn(flag) { // TODO
 			this.viewResultShowFlag = flag;
 			var myLottery = await getMyLottery();
 			if(myLottery==0x0000000000000000000000000000000000000000000000000000000000000000){
-				this.luckOrNot = "YES"; // TODO 回复成no，是否需要查询别的中奖人
-				this.$store.state.selectedAccount = selectedAccount;
-				this.$store.state.myLottery = hexToUtf8(myLottery);
+				this.luckOrNot = "NO";
+				var holders = await getHolders();
+				console.log(holders);
+				var pool = await getLotteryPool();
+				for (let i=0;i< holders.length;i++) {
+					this.$store.state.lowerPoolAccounts = this.$store.state.lowerPoolAccounts===''?holders[i]:this.$store.state.lowerPoolAccounts+","+holders[i];
+				}
+				for (let i=0;i< pool.length;i++) {
+					console.log(hexToUtf8(pool[i]));
+					this.$store.state.lowerPools =this.$store.state.lowerPools===''?hexToUtf8(pool[i]):this.$store.state.lowerPools+","+hexToUtf8(pool[i]);
+				}
 			}else{
 				this.$store.state.selectedAccount = selectedAccount;
 				this.$store.state.myLottery = hexToUtf8(myLottery);

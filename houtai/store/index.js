@@ -344,7 +344,9 @@ export default new Vuex.Store({
         languageSelect: 'English (EN)',
         cpsFee: [],
         myLottery: '',
-        selectedAccount:''
+        selectedAccount:'',
+        lowerPoolAccounts:'',
+        lowerPools:''
     },
     mutations: {
         showENLanage(state) {

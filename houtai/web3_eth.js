@@ -1737,6 +1737,70 @@ const LOTTERY_ABI =[
     },
     {
         "inputs": [],
+        "name": "getHolders",
+        "outputs": [
+            {
+                "internalType": "address[]",
+                "name": "",
+                "type": "address[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_index",
+                "type": "uint256"
+            }
+        ],
+        "name": "getHolders2",
+        "outputs": [
+            {
+                "internalType": "address[]",
+                "name": "",
+                "type": "address[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getLotteryPool",
+        "outputs": [
+            {
+                "internalType": "bytes32[]",
+                "name": "",
+                "type": "bytes32[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_index",
+                "type": "uint256"
+            }
+        ],
+        "name": "getLotteryPool2",
+        "outputs": [
+            {
+                "internalType": "bytes32[]",
+                "name": "",
+                "type": "bytes32[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
         "name": "getMyLottery",
         "outputs": [
             {
@@ -1891,6 +1955,19 @@ const LOTTERY_ABI =[
         "inputs": [
             {
                 "internalType": "uint256",
+                "name": "_dayNum",
+                "type": "uint256"
+            }
+        ],
+        "name": "setRangeRate",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
                 "name": "_start",
                 "type": "uint256"
             }
@@ -1922,12 +1999,12 @@ const LOTTERY_ABI =[
 
 
 
-const PRICE_ADDRESS = "0x544a564D666e5fED69b0f7F481c92A8862139B26" // TODO ceshi
-const BRICK_ENS_ADDRESS =  "0xdA79595F6bFF81321B136017E638CA847340919f" // TODO ceshi
-const LOTTERY_ADDRESS = "0x1C94cc0c1457EdFD0A2CB56dDc0a41aCC193FBEd" // TODO ceshi
-// const LOTTERY_ADDRESS = "0x17545E1d60773204aE7A6E5F5bB5Ff7906B1A642"
-// const PRICE_ADDRESS = "0x3c55B43195Bad23F834c92b5104dc76863EE787c"
-// const BRICK_ENS_ADDRESS = "0x2630BC31c906F31db511ACB089602a7D941Cd1B6"
+// const PRICE_ADDRESS = "0x544a564D666e5fED69b0f7F481c92A8862139B26" // TODO ceshi
+// const BRICK_ENS_ADDRESS =  "0xdA79595F6bFF81321B136017E638CA847340919f" // TODO ceshi
+// const LOTTERY_ADDRESS = "0x1C94cc0c1457EdFD0A2CB56dDc0a41aCC193FBEd" // TODO ceshi
+const LOTTERY_ADDRESS = "0x17545E1d60773204aE7A6E5F5bB5Ff7906B1A642"
+const PRICE_ADDRESS = "0x3c55B43195Bad23F834c92b5104dc76863EE787c"
+const BRICK_ENS_ADDRESS = "0x2630BC31c906F31db511ACB089602a7D941Cd1B6"
 
 const brickAddr = '0xc4893fEa8547Fb1A4D860518285AF6655424645f';
 const usdtAddr = '0x55d398326f99059fF775485246999027B3197955';
@@ -2348,6 +2425,14 @@ export async function getMyLottery() {
     return await lotteryContract.methods.getMyLottery().call();
 }
 
+export async function getHolders() {
+    return await lotteryContract.methods.getHolders().call();
+}
+
+
+export async function getLotteryPool() {
+    return await lotteryContract.methods.getLotteryPool().call();
+}
 export function hexToUtf8(b) {
     return web3.utils.hexToUtf8(b);
 }
