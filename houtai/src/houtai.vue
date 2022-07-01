@@ -1,7 +1,7 @@
 <template>
     <div class="houtai_container">
         <div class="header_top">
-            <head-er></head-er>
+            <head-er @changeText="changeText"></head-er>
         </div>
         <div class="container_config">
             <div class="config_left">
@@ -27,7 +27,7 @@
                 </el-menu>
             </div>
             <div class="config_right">
-                <router-view></router-view>
+                <router-view @changeText="changeText"></router-view>
             </div>
         </div>
 
@@ -53,7 +53,7 @@ export default {
 			myensIcon,
 			documentdescIcon,
 			contanctusIcon,
-			activeMenu: 0,
+			activeMenu: '',
 
 			myensSelect,
 			documentdescSelect,
@@ -113,6 +113,9 @@ export default {
 	methods: {
 		itemDeal: function (item) {
 			this.$router.push(item.path);
+		},
+		changeText() {
+			console.log('2222222');
 		},
 	},
 	mounted: function () {

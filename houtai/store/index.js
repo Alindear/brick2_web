@@ -75,7 +75,7 @@ export default new Vuex.Store({
                 index_text3: '帮助每一个用户链接他的身份和资产',
                 index_text4: '帮助bsc链接更大的增量客户',
                 placeholder: "请输入域名或地址",
-                bns: 'Bns生态构成',
+                bns_ecological: 'Bns生态构成',
                 share: '分享赚取收益',
                 share_desc: '推荐好友注册域名有奖励！赶紧生成自己的专属链接吧！',
                 click_text: '点击生成专属链接',
@@ -109,7 +109,7 @@ export default new Vuex.Store({
 
                 validity_period: '有效期',
                 no_data: '什么也没有哦～',
-                expiration: '过期：',
+                // expiration: '过期：',
 
                 search_title: '查询',
                 bns: '域名',
@@ -158,7 +158,7 @@ export default new Vuex.Store({
                 developer_use: '开发人员使用',
                 team_members: '团队成员',
 
-                current_gains: '当前收益',
+                current_gains: '当前收益【USDT】',
                 view_results: '查看结果',
                 participate_draw: '参与抽奖',
 
@@ -245,9 +245,9 @@ export default new Vuex.Store({
                 index_text4: 'Help Bnb Smart Chain(BSC) link with more customers',
 
                 placeholder: 'Please enter your Domain Names or Addresses',
-                placeholder_mb_en: 'Enter Domain or Addresses',
-                bns: 'BNS Ecological Structure',
-                share: 'Share To Get Gains',
+                placeholder_mb_en: 'Enter Names or Address',
+                bns: 'BNS',
+                share: 'Share To Earn',
                 share_desc: 'You will get gains for recommending friends to register domain names! Come on to create your own link!',
                 click_text: 'Click to generate exclusive link',
                 btn_gains: 'Withdraw Gains',
@@ -261,8 +261,8 @@ export default new Vuex.Store({
                 first_gift_desc: 'The lucky draw of Domain Names is held once a week. The results will be announced on Friday. The new round of draw will start on Saturday and end on Thursday.',
                 connect_wallet_btn: 'Please connect your wallet',
                 gift_one_desc1: 'Start the financing plan',
-                gift_one_desc2: '',
-                gift_two_desc1: 'Launch on the test website',
+                gift_one_desc2: 'Launch on the test website',
+                gift_two_desc1: '',
                 gift_two_desc2: 'Launch on the main website',
                 gift_two_desc3: ' Open the Domain Names trading market',
                 gift_three_desc1: 'Launch the BNS tokens',
@@ -284,7 +284,7 @@ export default new Vuex.Store({
                 expiration: 'Expiration: ',
 
                 search_title: 'Search',
-                bns: 'BNS',
+                bns_ecological: 'BNS Ecological Structure',
                 payment_option: 'Please select payment option',
                 // payment: 'Payment Options（15% discount with Brick payment）',
                 payment: 'Payment Options',
@@ -333,7 +333,7 @@ export default new Vuex.Store({
                 participate_draw: 'Participate in the draw',
                 developer_use: 'Developer use',
                 team_members: 'Team Members',
-                current_gains: 'Current Gains',
+                current_gains: 'Current Gains[USDT]',
                 view_results: 'View results',
                 register_domain_names: 'Register Domain Names',
             }
@@ -342,7 +342,8 @@ export default new Vuex.Store({
         // languageSelect: '简体中文 (CN)',
         language: 'EN',
         languageSelect: 'English (EN)',
-        cpsFee: []
+        cpsFee: [],
+        query_search_text: ''
     },
     mutations: {
         showENLanage(state) {
@@ -360,5 +361,8 @@ export default new Vuex.Store({
             //     _this.$store.state.language
             // ].approved;
         },
+        setQuerySearchText(state, text) {
+            state.query_search_text = text
+        }
     },
 })
