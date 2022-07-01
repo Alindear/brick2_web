@@ -307,6 +307,7 @@
                 <div
                     class="left_img"
                     v-if="linkShowFlag"
+										@mouseover="activeItem = 'left'"    :class="{'actived': activeItem === 'left', 'unactived':activeItem === 'right'}"
                 >
                     <p class="on_link">{{this.refAddress}}</p>
                 </div>
@@ -314,13 +315,14 @@
                     class="left_img"
                     @click="linkClick"
                     v-if="!linkShowFlag"
+										@mouseover="activeItem = 'left'"   :class="{'actived': activeItem === 'left', 'unactived':activeItem === 'right'}" 
                 >
                     <p :class="$store.state.language === 'CN' ? 'dis_link' : 'dis_link_en'">
                         <!-- 点击生成专属链接 -->
                         {{i18n.click_text}}
                     </p>
                 </div>
-                <div class="right_img">
+                <div class="right_img" @mouseover="activeItem = 'right'"  :class="{'actived': activeItem === 'right'}" @mouseleave="activeItem = 'left'">
                     <div
                         class="now_profit"
                         v-if="changeStatusShowFlag"
@@ -733,6 +735,9 @@ export default {
 	components: { headEr, registered, giftTips },
 	data() {
 		return {
+			activeItem: 'left',
+			activeLeft: "",
+			activeRight: "",
 			isShowDraw: false, //是否参与抽奖
 			luckDrawShowFlag: false, // 参与抽奖
 			viewResultShowFlag: false, // 查看结果
@@ -1079,6 +1084,23 @@ export default {
 	},
 
 	methods: {
+		// 鼠标移入 移除事件
+		mouseOverRight(){
+			this.activeRight = "'border':0.33rem solid; 'border-image': linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
+			this.activeLeft = "border:0.01rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
+		},
+		mouseLeaveRight(){
+			this.activeRight = "border:0.01rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
+			this.activeLeft = "border:0.03rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
+			console.log('	this.activeRight',	this.activeRight);
+		},
+		mouseOverLeft(){
+			// this.activeLeft = "border:0.33rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
+		},
+		mouseLeaveLeft(){
+			// this.activeLeft = "border:0.01rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
+			console.log('this.activeLeft',this.activeLeft);
+		},
 		//参与抽奖
 		async luckDrawBtn(flag) {
 			//var alreay = await checkAlready();
@@ -2074,43 +2096,63 @@ export default {
 					// box-sizing: border-box;
 				}
 			}
-			.left_img:hover {
+			.actived{
 				border: 0.33rem solid;
+				// border: 0.01rem solid;
 				border-image: linear-gradient(
 						to right,
 						#e5b3fd,
 						#7de7ec
 					)
 					1 10;
-				box-sizing: border-box;
-				cursor: default;
-				.on_link {
-					// margin: 3.94rem 0.9rem 0.77rem 0.88rem;
-					// margin: 3.61rem 0.57rem 0.44rem 0.55rem;
-					margin: 2.96rem 0.57rem 0.44rem 0.55rem;
-				}
-				.dis_link {
-					// margin: 4.39rem 0 1.59rem 0.55rem;
-					margin: 4.72rem 0 1.25rem 0.88rem;
-					box-sizing: border-box;
-					// padding: 4.72rem 0 1.25rem 0.88rem;
-					// box-sizing: border-box;
-				}
-				.dis_link_en {
-					font-family: Alibaba-PuHuiTi-B;
-					font-weight: B;
-					font-size: 0.4rem;
-					background-image: linear-gradient(
+			}
+			.unactived{
+				border: 0.01rem solid;
+				// border: 0.01rem solid;
+				border-image: linear-gradient(
 						to right,
 						#e5b3fd,
 						#7de7ec
-					);
-					-webkit-background-clip: text;
-					color: transparent;
-					// margin: 4.39rem 0 1.59rem 0.55rem;
-					margin: 4.72rem 0 1.25rem 0.88rem;
-				}
+					)
+					1 10;
 			}
+			// .left_img:hover {
+			// 	border: 0.01rem solid;
+			// 	border-image: linear-gradient(
+			// 			to right,
+			// 			#e5b3fd,
+			// 			#7de7ec
+			// 		)
+			// 		1 10;
+			// 	box-sizing: border-box;
+			// 	cursor: default;
+			// 	.on_link {
+			// 		// margin: 3.94rem 0.9rem 0.77rem 0.88rem;
+			// 		// margin: 3.61rem 0.57rem 0.44rem 0.55rem;
+			// 		margin: 2.96rem 0.57rem 0.44rem 0.55rem;
+			// 	}
+			// 	.dis_link {
+			// 		// margin: 4.39rem 0 1.59rem 0.55rem;
+			// 		margin: 4.72rem 0 1.25rem 0.88rem;
+			// 		box-sizing: border-box;
+			// 		// padding: 4.72rem 0 1.25rem 0.88rem;
+			// 		// box-sizing: border-box;
+			// 	}
+			// 	.dis_link_en {
+			// 		font-family: Alibaba-PuHuiTi-B;
+			// 		font-weight: B;
+			// 		font-size: 0.4rem;
+			// 		background-image: linear-gradient(
+			// 			to right,
+			// 			#e5b3fd,
+			// 			#7de7ec
+			// 		);
+			// 		-webkit-background-clip: text;
+			// 		color: transparent;
+			// 		// margin: 4.39rem 0 1.59rem 0.55rem;
+			// 		margin: 4.72rem 0 1.25rem 0.88rem;
+			// 	}
+			// }
 			.right_img {
 				width: 8rem;
 				height: 6.6rem;
