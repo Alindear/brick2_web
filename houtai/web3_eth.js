@@ -2414,7 +2414,7 @@ export async function checkEachLength(name) {
 }
 
 export async function checkAlready() {
-    var alreay = await lotteryContract.methods.checkAlready().call();
+    var alreay = await lotteryContract.methods.checkAlready().call({ from: selectedAccount });
     console.log("checkAlready: ", alreay);
     return alreay;
 }
@@ -2424,7 +2424,7 @@ export async function checkEnable(_func,_this) {
     return enable;
 }
 export async function getMyLottery() {
-    return await lotteryContract.methods.getMyLottery().call();
+    return await lotteryContract.methods.getMyLottery().call({ from: selectedAccount });
 }
 
 export async function getHolders() {
