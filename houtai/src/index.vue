@@ -3287,8 +3287,8 @@ export default {
 						vertical-align: middle;
 						// margin-top: -0.1rem;
 					}
-					img:last-child {
-						margin-right: 0rem;
+					a:last-child {
+							margin-right: 0rem;
 					}
 					// .bottom_icon3 {
 					// 	margin-right: 0.6rem;

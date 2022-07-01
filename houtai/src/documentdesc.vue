@@ -784,8 +784,10 @@ export default {
 						margin-left: 0.6rem;
 						// margin-right: 0.94rem;
 						img {
-							width: 0.171rem;
-							height: 0.1rem;
+							// width: 0.171rem;
+							// height: 0.1rem;
+							width: 0.32rem;
+    					height: 0.32rem;
 							margin-left: 0.16rem;
 							vertical-align: middle;
 						}
