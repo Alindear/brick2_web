@@ -634,8 +634,7 @@ import {
 	drawMine,
 	selectedAccount,
 	checkAlready,
-	randomLottery,
-	selectedAccount, checkAlready, randomLottery, checkEnable, getMyLottery, hexToUtf8, getHolders, getLotteryPool,
+	randomLottery, checkEnable, getMyLottery, hexToUtf8, getHolders, getLotteryPool,
 } from 'houtai/web3_eth.js';
 
 import topImg from 'img/imgmb/首页/顶部.png';

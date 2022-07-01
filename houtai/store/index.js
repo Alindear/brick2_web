@@ -343,7 +343,7 @@ export default new Vuex.Store({
         language: 'EN',
         languageSelect: 'English (EN)',
         cpsFee: [],
-        query_search_text: ''
+        query_search_text: '',
         myLottery: '',
         selectedAccount:'',
         lowerPoolAccounts:'',
