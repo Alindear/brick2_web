@@ -961,9 +961,9 @@ export default {
 		'$store.state.cpsFee': async function(val, old) {
 			console.log(val);
 			console.log('监听');
-			this.bnbCps = val[0];
-			this.brickCps = val[1];
-			this.usdtCps = val[2];
+			this.bnbCps = val[0]/1e18;
+			this.brickCps = val[1]/1e18;
+			this.usdtCps = val[2]/1e18;
 			var _this = this;
 			var _fun = function(_this) {
 				_this.luckDrawShowFlag = true;

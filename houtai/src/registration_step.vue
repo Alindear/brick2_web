@@ -155,11 +155,10 @@ export default {
 			this.searchText = this.$route.query.text || '';
 			await getPrice(this.searchText);
 			this.price =
-				(brickPrice / 1e18).toFixed(0) * this.years;
+				(bnbPrice / 1e18).toFixed(5) * this.years;
 			this.toUsdtPrice =
 				(usdtPrice / 1e18).toFixed(0) *
-				this.years *
-				0.85;
+				this.years;
 		},
 		async changeText(text) {
 			console.log('changeText', text);
@@ -177,7 +176,8 @@ export default {
 			}
 			await getPrice(this.searchText);
 			this.price =
-				(brickPrice / 1e18).toFixed(0) * this.years;
+				(bnbPrice / 1e18).toFixed(5) * this.years;
+			alert(price);
 			this.toUsdtPrice =
 				(usdtPrice / 1e18).toFixed(0) * this.years;
 		},
