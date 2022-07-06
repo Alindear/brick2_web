@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { getAllNodes } from 'houtai/web3_eth.js';
+import {selectedAccount, getAllNodes } from 'houtai/web3_eth.js';
 import nodataPng from 'img/编组 8.png';
 import teamImg1 from 'img/头像/椭圆形.png';
 export default {
@@ -76,7 +76,7 @@ export default {
 			nodataPng,
 			teamImg1,
 			selectedAccount:
-				'0x56789098765482345678987654367890876545643232123122346789090987',
+				'',
 			bodyHeight: '',
 			myEnsNameList: [
 				// {
@@ -107,6 +107,7 @@ export default {
 			document.documentElement.clientHeight ||
 			document.body.clientHeight;
 		this.searchEnsList();
+		this.selectedAccount = selectedAccount;
 	},
 	computed: {
 		i18n: function () {
