@@ -106,8 +106,9 @@ export default {
 		this.bodyHeight =
 			document.documentElement.clientHeight ||
 			document.body.clientHeight;
-		this.searchEnsList();
 		this.selectedAccount = selectedAccount;
+		console.log("my ens:",this.selectedAccount)
+		this.searchEnsList();
 	},
 	computed: {
 		i18n: function () {
