@@ -118,13 +118,12 @@ export default {
 	methods: {
 		// 钱包链接成功 查询
 		searchEnsList() {
-			this.selectedAccount = localStorage.getItem('STATUS')
-				? localStorage.getItem('STATUS')
-				: '';
-			//钱包已连接 查询
-			if (this.selectedAccount) {
-				this.getAllNodesClick();
-			}
+			// this.selectedAccount = selectedAccount;
+			// //钱包已连接 查询
+			// if (this.selectedAccount) {
+			// 	this.getAllNodesClick();
+			// }
+			this.getAllNodesClick();
 		},
 
 		async getAllNodesClick() {
