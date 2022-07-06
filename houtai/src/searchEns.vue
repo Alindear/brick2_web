@@ -401,6 +401,8 @@ export default {
 				document.documentElement.clientHeight ||
 				document.body.clientHeight;
 			this.searchText = this.$route.query.text || '';
+			this.approveBtnDisabled =  true;
+			this.registBtnDisabled =  false;
 			await getPrice(this.searchText);
 			this.price =
 				(bnbPrice / 1e18).toFixed(5) * this.years;
@@ -471,14 +473,6 @@ export default {
 			};
 			var _cb = function () {
 				console.log('注册');
-				// _router.push({
-				// 	path: '/registration/info',
-				// 	query: {
-				// 		text: this.searchText
-				// 			? this.searchText
-				// 			: undefined,
-				// 	},
-				// });
 			};
 
 			console.log('_name', _name);
