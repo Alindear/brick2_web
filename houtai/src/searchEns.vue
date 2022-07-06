@@ -328,7 +328,7 @@ export default {
 			price: 99999999999,
 			// currencyUnit: 'BRICK',
 			currencyUnit: 'BNB',
-			currencyPrice: '999999999',
+			currencyPrice: '0',
 			toUsdtPrice: '0',
 			searchText: '',
 			warnPng,
