@@ -2269,10 +2269,7 @@ export async function buyWithEth(name, callback, loadingTrue, loadingFalse, _yea
 }
 
 export async function buyWithUsdt(name, callback, loadingTrue, loadingFalse, _years, amount) {
-    
-    if (localStorage.getItem('STATUS') != null) {
-        selectedAccount = localStorage.getItem('STATUS');
-    }
+    console.log("[buyWithUsdt] selectedAccount:",selectedAccount);
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
