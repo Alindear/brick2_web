@@ -10,7 +10,7 @@
 		"build": "nest build",
 		"format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
 		"lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-		"houtai": "webpack serve --inline --open --progress --profile --port 8083 --host 0.0.0.0 --hot --config houtai/entry.js",
+		"houtai": "webpack serve --inline --open --progress --profile --port 8088 --host 0.0.0.0 --hot --config houtai/entry.js",
 		"build:houtai": "webpack --config houtai/build.js"
 	},
 	"dependencies": {
