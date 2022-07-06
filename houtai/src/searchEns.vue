@@ -225,10 +225,11 @@
                                 <img
                                     :src="successPng"
                                     alt=""
+									v-if="registBtnLoading"
                                 >
-                                您已完成注册
+								{{i18n.step}}
                             </p>
-                            <p class="step_title_desc">*您可以收藏喜欢的域名，以便于浏览器关闭以后重新查看这个域名。</p>
+                            <p class="step_title_desc">{{i18n.register_tips}}</p>
 
                             <div class="step_process">
                                 <div class="step_left_process">

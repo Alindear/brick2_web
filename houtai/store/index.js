@@ -26,6 +26,9 @@ export default new Vuex.Store({
                 dialog_text: '这个域名不可注册',
                 dialog_cancle: '取消',
                 dialog_details: '查看详情',
+                step:'注册步骤',
+                register_completed:"您已完成注册",
+                register_tips:"*您可以收藏喜欢的域名，以便于浏览器关闭以后重新查看这个域名。",
 
 
                 placeholder_title: "请输入域名或地址",
@@ -194,6 +197,9 @@ export default new Vuex.Store({
                 dialog_text: 'This domain cannot be registered',
                 dialog_cancle: 'Cancel',
                 dialog_details: 'Details',
+                step:'STEP',
+                register_completed:"COMPLETED",
+                register_tips:"You can bookmark your favorite domain name so that you can view it again after the browser is closed",
 
                 payment_option: 'Please select payment option',
                 please_connect_wallet: 'Please connect your wallet',
