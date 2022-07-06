@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import {BRICK_ENS_ADDRESS, getAllNodes } from 'houtai/web3_eth.js';
+import {selectedAccount, getAllNodes } from 'houtai/web3_eth.js';
 import nodataPng from 'img/编组 8.png';
 import teamImg1 from 'img/头像/椭圆形.png';
 export default {
@@ -107,7 +107,7 @@ export default {
 			document.documentElement.clientHeight ||
 			document.body.clientHeight;
 		this.searchEnsList();
-		this.selectedAccount = BRICK_ENS_ADDRESS;
+		this.selectedAccount = selectedAccount;
 	},
 	computed: {
 		i18n: function () {
