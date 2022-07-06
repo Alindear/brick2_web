@@ -444,15 +444,19 @@ export default {
 	},
 	watch: {
 		'$store.state.myLottery': async function(val, old) {
+			console.log("store.state.myLottery:",val," old: ",old)
 			this.myLottery = val;
 		},
 		'$store.state.selectedAccount': async function(val, old) {
+			console.log("store.state.selectedAccount:",val," old: ",old)
 			this.selectedAccount = val;
 		},
 		'$store.state.lowerPools': async function(val, old) {
+			console.log("store.state.lowerPools:",val," old: ",old)
 			this.myLottery = val;
 		},
 		'$store.state.lowerPoolAccounts': async function(val, old) {
+			console.log("store.state.lowerPoolAccounts:",val," old: ",old)
 			this.selectedAccount = val;
 		}
 	}

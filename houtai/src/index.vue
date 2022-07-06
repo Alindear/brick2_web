@@ -1115,10 +1115,13 @@ export default {
 		async viewResultBtn(flag) { // TODO
 			this.viewResultShowFlag = flag;
 			var myLottery = await getMyLottery();
+			console.log("myLottery:",myLottery," this.$store.state:",this.$store.state);
 			if(myLottery==0x0000000000000000000000000000000000000000000000000000000000000000){
 				this.luckOrNot = "NO";
 				var holders = await getHolders();
 				console.log(holders);
+				this.$store.state.lowerPoolAccounts = "";
+				this.$store.state.lowerPools = ""
 				var pool = await getLotteryPool();
 				for (let i=0;i< holders.length;i++) {
 					this.$store.state.lowerPoolAccounts = this.$store.state.lowerPoolAccounts===''?holders[i]:this.$store.state.lowerPoolAccounts+","+holders[i];
