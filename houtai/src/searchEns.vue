@@ -294,6 +294,7 @@ import linkPng from 'img/链接.png';
 import warnPng from 'img/警告.png';
 import successPng from 'img/编组@2x.png';
 import {
+	onConnect,
 	buyWithEth,
 	buyWithUsdt,
 	buyWithBrick,
@@ -374,27 +375,16 @@ export default {
 					: '';
 				//钱包已连接 查询
 				if (flag) {
-					this.inIt();
+					this.init();
 				}
 			},
 		},
 	},
-	// async mounted() {
-	// 	this.bodyHeight =
-	// 		document.documentElement.clientHeight ||
-	// 		document.body.clientHeight;
-	// 	this.searchText = this.$route.query.text || '';
-	// 	console.log('this.$route.query.text', this.$route.query.text);
-	// 	console.log('this.$routet', this.$route);
-	// 	console.log('this.searchText', this.searchText);
-	// 	let flag = localStorage.getItem('STATUS')
-	// 		? localStorage.getItem('STATUS')
-	// 		: '';
-	// 	//钱包已连接 查询
-	// 	if (flag) {
-	// 		this.inIt();
-	// 	}
-	// },
+	async mounted() {
+		console.log("mountedmountedmountedmountedmounted");
+		await onConnect();
+		this.init();
+	},
 	computed: {
 		i18n: function () {
 			return this.$store.state.i18n[
@@ -404,7 +394,8 @@ export default {
 	},
 
 	methods: {
-		async inIt() {
+		async init() {
+			console.log("init start:")
 			this.bodyHeight =
 				document.documentElement.clientHeight ||
 				document.body.clientHeight;
@@ -547,7 +538,9 @@ export default {
 			this.updatePrice();
 		},
 
-		updatePrice() {
+		async updatePrice() {
+			await getPrice(this.searchText);
+
 			if (this.currencyUnit === 'BNB') {
 				this.price =
 					(bnbPrice / 1e18).toFixed(5) *

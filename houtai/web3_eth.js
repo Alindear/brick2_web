@@ -2074,7 +2074,7 @@ export function init() {
 }
 
 export async function approve(token, loadingFuncT, loadingFuncF, callback) {
-    await checkAndLoadFromLast();
+    
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
@@ -2111,7 +2111,7 @@ export async function approve(token, loadingFuncT, loadingFuncF, callback) {
 }
 
 export async function allowance(token) {
-    await checkAndLoadFromLast();
+    
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
@@ -2132,7 +2132,7 @@ export async function allowance(token) {
 }
 
 export async function isExist(searchText) {
-    await checkAndLoadFromLast();
+    
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
@@ -2155,7 +2155,7 @@ export async function isExist(searchText) {
 }
 
 export async function getNode(name) {
-    await checkAndLoadFromLast();
+    
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
@@ -2172,12 +2172,6 @@ export async function getNode(name) {
     return await brickEnsContract.methods.getRecord(byte32Name).call()
 }
 
-async function checkAndLoadFromLast() {
-    if (selectedAccount == null && localStorage.getItem('STATUS') != null) {
-        await fetchAccountData();
-        selectedAccount = localStorage.getItem('STATUS');
-    }
-}
 
 async function checkYear(year) {
     if (year != null && year < 1) {
@@ -2194,7 +2188,7 @@ async function checkYear(year) {
 
 
 export async function getAllNodes() {
-    await checkAndLoadFromLast();
+    
     console.log("getAllNodes selectedAccount：" + selectedAccount)
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
@@ -2240,7 +2234,7 @@ function getRef() {
 }
 
 export async function buyWithEth(name, callback, loadingTrue, loadingFalse, _years, amount) {
-    await checkAndLoadFromLast();
+    
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
@@ -2269,7 +2263,7 @@ export async function buyWithEth(name, callback, loadingTrue, loadingFalse, _yea
 }
 
 export async function buyWithUsdt(name, callback, loadingTrue, loadingFalse, _years, amount) {
-    await checkAndLoadFromLast();
+    
     if (localStorage.getItem('STATUS') != null) {
         selectedAccount = localStorage.getItem('STATUS');
     }
@@ -2301,7 +2295,7 @@ export async function buyWithUsdt(name, callback, loadingTrue, loadingFalse, _ye
 }
 
 export async function buyWithBrick(name, callback, loadingTrue, loadingFalse, _years, amount) {
-    await checkAndLoadFromLast();
+    
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
@@ -2328,7 +2322,7 @@ export async function buyWithBrick(name, callback, loadingTrue, loadingFalse, _y
 }
 
 export async function drawMine() {
-    await checkAndLoadFromLast();
+    
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
@@ -2351,8 +2345,9 @@ export async function drawMine() {
 }
 
 async function getCpsFee() {
+    console.log("[getCpsFee] params: ", brickEnsContract,selectedAccount);
     var fees = await brickEnsContract.methods.getCpsFee(selectedAccount).call();
-    console.log("getFees: ", fees);
+    console.log("[getCpsFee] result: ", fees);
 
     // bnbCps = fees[0];
     // brickCps = fees[1];
@@ -2362,7 +2357,7 @@ async function getCpsFee() {
     return fees;
 }
 export async function getPrice(name) {
-    await checkAndLoadFromLast();
+    
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
@@ -2374,9 +2369,9 @@ export async function getPrice(name) {
     }
 
     var byte32Name = web3.utils.padLeft(web3.utils.utf8ToHex(name), 64);
-    console.log("getPrice: ", byte32Name);
+    console.log("[getPrice] bns byte32 : ", byte32Name);
     var prices = await priceContract.methods.getPrice(byte32Name).call();
-    console.log("getPrice: ", prices);
+    console.log("[getPrice]: price list", prices);
 
     usdtPrice = prices[0];
     bnbPrice = prices[1];
@@ -2470,11 +2465,11 @@ async function fetchAccountData() {
     console.log("Web3 instance is", web3);
     console.log(lotteryContract)
 
-    // Get connected chain id from Ethereum node
-    const chainId = await web3.eth.getChainId();
-    // Load chain information over an HTTP API
-    const chainData = evmChains.getChain(chainId);
-    // document.querySelector("#network-name").textContent = chainData.name;
+    // // Get connected chain id from Ethereum node
+    // const chainId = await web3.eth.getChainId();
+    // // Load chain information over an HTTP API
+    // const chainData = evmChains.getChain(chainId);
+    // // document.querySelector("#network-name").textContent = chainData.name;
 
     // Get list of accounts of the connected wallet
     const accounts = await web3.eth.getAccounts();
@@ -2484,7 +2479,7 @@ async function fetchAccountData() {
     selectedAccount = accounts[0];
     console.log('selectedAccount', selectedAccount)
 
-    await getCpsFee();
+    getCpsFee();
 }
 
 async function refreshAccountData() {
@@ -2496,6 +2491,7 @@ async function refreshAccountData() {
  * Connect wallet button pressed.
  */
 export async function onConnect(vuecom) {
+    init();
 
     console.log("Opening a dialog", web3Modal);
     try {
@@ -2511,13 +2507,13 @@ export async function onConnect(vuecom) {
     // }
 
     // Subscribe to accounts change
-    console.log("vuecom")
-    console.log(vuecom);
+    console.log("vuecom:",vuecom)
     provider.on("accountsChanged", (accounts) => {
         console.log(vuecom.selectedAccount);
         vuecom.selectedAccount = accounts[0];
         console.log(vuecom.selectedAccount);
-        fetchAccountData();
+        selectedAccount = accounts[0];
+        //fetchAccountData();
     });
 
     // Subscribe to chainId change
@@ -2563,7 +2559,7 @@ function formatTime(timestamp) {
 }
 
 export async function checkBNBbalance(amount) {
-    await checkAndLoadFromLast();
+    
     if (selectedAccount == null || selectedAccount === "") {
         // alert("请链接钱包");
         alert(
@@ -2589,7 +2585,7 @@ export async function checkBNBbalance(amount) {
 }
 
 export async function checkUSDTbalance(amount) {
-    await checkAndLoadFromLast();
+    
     if (selectedAccount == null || selectedAccount === "") {
         // alert("请链接钱包");
         alert(
@@ -2615,7 +2611,7 @@ export async function checkUSDTbalance(amount) {
 }
 
 export async function checkBrickbalance(amount) {
-    await checkAndLoadFromLast();
+    
     if (selectedAccount == null || selectedAccount === "") {
         // alert("请链接钱包");
         alert(

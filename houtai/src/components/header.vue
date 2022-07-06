@@ -305,18 +305,14 @@
                             </span>
                         </el-button>
                     </div>
-                    <!-- </el-button> -->
                 </div>
                 <div class="his_list">
-                    <!-- v-if="histroys && histroys.length > 0" -->
-                    <!-- @click="goDetail(his)" -->
                     <span
                         class="his_text"
                         v-for="(his, i) in histroys"
                         :key="i"
                     >
                         {{ his && his.length > 14 ? his.slice(0,14) + '...' : his }}
-                        <!-- {{(his && his.length > 14) ? his.slice(0,14) + '...' : his}} -->
                     </span>
                 </div>
             </div>
@@ -342,12 +338,7 @@ import logoPng from 'img/logoleft.png';
 import {
 	onConnect,
 	onDisconnect,
-	getAccount,
-	isExist,
-	checkBrickbalance,
-	checkAndLoadFromLast,
-	checkEachLength,
-	init,
+	selectedAccount,
 } from 'houtai/web3_eth.js';
 
 export default {
@@ -395,10 +386,7 @@ export default {
 		searchText(newValue, oldValue) {
 			console.log(newValue);
 			this.searchText = newValue.replace('-', '');
-			// this.searchText = this.searchText.replace(
-			// 	/[`:_.~!｜」』『「@#$%^&*() \+ =<>?"{}|, \/ ;' \\ [ \] ·~～！@#￥¥%……&*（）—— \+ ={}|《》<>？：“”【】、；‘’，。、]/g,
-			// 	'',
-			// );
+
 			this.searchText = this.searchText.replace(
 				/[`:_.~!｜［｛｝〉×〉×［］〖〗＊〔〕‖〈〉«»«»×÷＞＜≥≤¡¿£€﹉–´´＂＇¢฿♀♂‹›」』『「@#$%^&*() \+ =<>?"{}|, \/ ;' \\ [ \] ·~～！@#￥¥%……&*（）—— \+ ={}|《》<>？：“”【】、；‘’，。、]/g,
 				'',
@@ -416,18 +404,16 @@ export default {
 	},
 	mounted() {
 		window.addEventListener('load', async () => {
-			init();
-			if (localStorage.getItem('STATUS')) {
-				await this.connectWallet();
-			}
+			await this.connectWallet();
+			// if (localStorage.getItem('STATUS')) {
+			// 	await this.connectWallet();
+			// }
 		});
 		window.addEventListener('beforeunload', (e) => {
-			localStorage.setItem('STATUS', '');
+			//localStorage.setItem('STATUS', '');
 		});
 		this.$nextTick(async () => {
-			this.selectedAccount = localStorage.getItem('STATUS')
-				? localStorage.getItem('STATUS')
-				: this.selectedAccount;
+			this.selectedAccount = selectedAccount;
 		});
 		console.log('this.$route', this.$route.fullPath);
 		// this.onConnect();
@@ -509,24 +495,13 @@ export default {
 			});
 		},
 		async connectWallet() {
-			console.log('链接');
+			console.log('connectWallet start');
 			await onConnect(this);
-			let account = getAccount();
-			this.selectedAccount = account || '';
-			localStorage.setItem('STATUS', this.selectedAccount);
-			// if (
-			// 	this.$router.history.current.path ===
-			// 	'/my/enslist'
-			// ) {
-			// 	console.log('/my/enslist');
-			// 	this.$parent.searchEnsList();
-			// }
-			// if (
-			// 	this.$router.history.current.path ===
-			// 	'/registration/request'
-			// ) {
-			// 	this.$parent.inIt();
-			// }
+			this.selectedAccount = selectedAccount;
+
+			console.log("connectWallet selectedAccount:",this.selectedAccount)
+			//localStorage.setItem('STATUS', this.selectedAccount);
+
 			if (this.$route.fullPath === '/index') {
 				console.log(
 					'this.selectedAccount',
@@ -541,14 +516,8 @@ export default {
 		async disconnectWallet() {
 			onDisconnect();
 			this.selectedAccount = '';
-			localStorage.setItem('STATUS', this.selectedAccount);
-			// if (
-			// 	this.$router.history.current.path ===
-			// 	'/my/enslist'
-			// ) {
-			// 	console.log('/my/enslist');
-			// 	this.$parent.searchEnsList();
-			// }
+			//localStorage.setItem('STATUS', this.selectedAccount);
+
 			if (this.$route.fullPath === '/index') {
 				console.log(
 					'this.selectedAccount',
