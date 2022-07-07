@@ -1,7 +1,7 @@
 <template>
     <div class="app_contact">
         <div class="contact_module">
-					<a href="https://discord.gg/FS2zwvPtEz">
+					<a href="https://discord.gg/zsVChguPBZ">
             <div class="comm_list color1">
                 <img
                     :src="icon1"
@@ -35,7 +35,7 @@
                 </p>
             </div>
 					</a>
-					<a href="(4) BNS | xxx.bsc (@bnsdomains_) / Twitter">
+					<a href="https://twitter.com/bnsdomains_">
             <div class="comm_list color3">
                 <img
                     :src="icon3"
