@@ -471,7 +471,9 @@ export default {
 				//_this.registBtnDisabled = true;
 			};
 			var _cb = function () {
-				console.log('注册');
+				_router.push({
+					path: '/brick/myens',
+				});
 			};
 
 			console.log('_name', _name);

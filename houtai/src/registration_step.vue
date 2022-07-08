@@ -216,12 +216,7 @@ export default {
 			};
 			var _cb = function () {
 				_router.push({
-					path: '/registration/info',
-					query: {
-						text: this.searchText
-							? this.searchText
-							: undefined,
-					},
+					path: '/brick/myens',
 				});
 			};
 
