@@ -435,10 +435,10 @@ export default {
 		closeIconBtn() {
 			if (this.type === 'viewResult') {
 				this.dialogVisible = !this.viewResultShowFlag;
-				this.$parent.viewResultBtn(false);
+				//this.$parent.viewResultBtn(false);
 			} else {
 				this.dialogVisible = !this.luckDrawShowFlag;
-				this.$parent.luckDrawBtn(false);
+				//this.$parent.luckDrawBtn(false);
 			}
 		},
 	},
