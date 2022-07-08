@@ -123,10 +123,10 @@ export default {
 					value: 'USDT',
 					label: 'USDT',
 				},
-				{
-					value: 'BRICK',
-					label: 'BRICK',
-				},
+				// {
+				// 	value: 'BRICK',
+				// 	label: 'BRICK',
+				// },
 			],
 		};
 	},
