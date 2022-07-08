@@ -64,11 +64,11 @@
                     <!--  class="pre_bsc_luck" :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start',}" -->
                     <p class="left_bsc">
                         <!-- 上期幸运儿：wow.bsc -->
-                        {{i18n.lucky_the_last}}wow.bsc
+                        {{i18n.lucky_the_last}}
                     </p>
                     <p class="right_bsc">
                         <!-- 上期奖品：really.bsc -->
-                        {{i18n.prize_the_last}}really.bsc
+                        {{i18n.prize_the_last}}
                     </p>
                 </div>
                 <p class="bottom_logo_luck">
@@ -260,11 +260,11 @@
                     <!--  class="pre_bsc_luck" :style="{ 'flex-direction': $store.state.language === 'CN' ? 'row' : 'column','align-items': $store.state.language === 'CN' ?'center' : 'flex-start',}" -->
                     <p class="left_bsc">
                         <!-- 上期幸运儿：wow.bsc -->
-                        {{i18n.lucky_the_last}}wow.bsc
+                        {{i18n.lucky_the_last}}
                     </p>
                     <p class="right_bsc">
                         <!-- 上期奖品：really.bsc -->
-                        {{i18n.prize_the_last}}really.bsc
+                        {{i18n.prize_the_last}}
                     </p>
                 </div>
                 <p class="bottom_logo_luck">

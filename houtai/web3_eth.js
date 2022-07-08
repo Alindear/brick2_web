@@ -2161,6 +2161,15 @@ export async function isExist(searchText) {
     return await brickEnsContract.methods.recordExists(byte32Name).call()
 }
 
+export function toPrecision(num, len) {
+    let str = num.toFixed(len);
+    if (!/^[0-9.]+$/g.test(str)) return "0";
+    while (str.includes(".") && (str.endsWith(".") || str.endsWith("0"))) {
+        str = str.slice(0, -1);
+    }
+    return str;
+}
+
 export async function getNode(name) {
     
     if (selectedAccount == null || selectedAccount == "") {

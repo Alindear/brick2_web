@@ -660,7 +660,7 @@ import {
 	drawMine,
 	selectedAccount,
 	checkAlready,
-	randomLottery, checkEnable, getMyLottery, hexToUtf8, getHolders, getLotteryPool,
+	randomLottery, checkEnable, getMyLottery, hexToUtf8, getHolders, getLotteryPool, toPrecision,
 } from 'houtai/web3_eth.js';
 
 import topImg from 'img/imgmb/首页/顶部.png';
@@ -961,9 +961,9 @@ export default {
 		'$store.state.cpsFee': async function(val, old) {
 			console.log(val);
 			console.log('监听');
-			this.bnbCps = val[0]/1e18;
+			this.bnbCps = toPrecision(val[0]/1e18,6);
 			this.brickCps = val[1]/1e18;
-			this.usdtCps = val[2]/1e18;
+			this.usdtCps = toPrecision(val[2]/1e18,6);
 			var _this = this;
 			var _fun = function(_this) {
 				_this.luckDrawShowFlag = true;
