@@ -311,6 +311,7 @@
                         class="his_text"
                         v-for="(his, i) in histroys"
                         :key="i"
+												@click="hisClick(his)"
                     >
                         {{ his && his.length > 14 ? his.slice(0,14) + '...' : his }}
                     </span>
@@ -421,6 +422,12 @@ export default {
 	},
 
 	methods: {
+		// 点击历史记录 写入输入框
+		hisClick(val){
+			console.log('val',val);
+			this.searchText = val
+			// this.searchTextChange()
+		},
 		onSearch(value) {
 			this.addHotSearch(value); //调用添加搜索的方法
 			// this.goDetail(value); //跳转页面
