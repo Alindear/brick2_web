@@ -966,7 +966,7 @@ export default {
 			this.usdtCps = toPrecision(val[2]/1e18,6);
 			var _this = this;
 			var _fun = function(_this) {
-				_this.luckDrawShowFlag = true;
+				//_this.luckDrawShowFlag = true;
 				_this.isShowDraw = true;
 			}
 
