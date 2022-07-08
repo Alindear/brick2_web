@@ -1452,14 +1452,12 @@ export default {
 			flex-direction: column;
 			justify-content: center;
 			.ens_text {
-				width: 0.44rem;
-				height: 0.3rem;
 				font-family: PingFangSC-Medium;
 				font-weight: 500;
 				font-size: 0.22rem;
 				color: #000000;
 				margin: 0.4rem 0 0.2rem 0.6rem;
-				width: 0.60rem;
+				width: 100%;
 				height: 0.42rem;
 				font-family: PingFangSC-Regular;
 				font-weight: 400;

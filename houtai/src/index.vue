@@ -567,14 +567,14 @@
                             alt=""
                         >
 												</a>
-                       <a href="https://discord.gg/FS2zwvPtEz">
+                       <a href="https://discord.gg/5tVSUKGAPJ">
                         <img
                             class="bottom_icon2"
                             :src="discordPng"
                             alt=""
                         >
 												</a>
-												<a href="https://t.me/brickcn">
+												<a href="https://t.me/+YUtgU-UumX9mZTll">
                         <img
                             class="bottom_icon3"
                             :src="lastIconPng"
@@ -620,14 +620,14 @@
 													>
 												</a>
                        
-                       <a href="https://discord.gg/FS2zwvPtEz">
+                       <a href="https://discord.gg/5tVSUKGAPJ">
 													<img
 														class="bottom_icon2"
 														:src="discordMBPng"
 														alt=""
 													>
 												</a>
-												<a href="https://t.me/brickcn">
+												<a href="https://t.me/+YUtgU-UumX9mZTll">
 													<img
 															class="bottom_icon3"
 															:src="lastIconMBPng"
@@ -1153,6 +1153,7 @@ export default {
 		// 打开已存在提示弹窗
 		openLinkBtn(flag) {
 			this.openLinkShowFlag = flag;
+			console.log('this.openLinkShowFlag',this.openLinkShowFlag);
 		},
 		//查询
 		async searchEns() {
