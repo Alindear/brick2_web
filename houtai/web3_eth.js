@@ -2349,11 +2349,12 @@ export async function drawMine() {
         alert("余额不足，无法提取");
         return;
     }
+    store.state.cpsFee =[0,0,0];
     brickEnsContract.methods.cpsDrawBrick().send({ from: selectedAccount }).then(result => {
         alert("提取成功！")
-        getCpsFee();
     }).catch((err) => {
-        alert("提取失败，请查看交易")
+        alert("提取失败，请查看交易");
+        getCpsFee();
     });
 }
 

@@ -155,10 +155,9 @@ export default {
 			this.searchText = this.$route.query.text || '';
 			await getPrice(this.searchText);
 			this.price =
-				(bnbPrice / 1e18).toFixed(5) * this.years;
+				((bnbPrice / 1e18).toFixed(5) * this.years).toFixed(5);
 			this.toUsdtPrice =
-				(usdtPrice / 1e18).toFixed(0) *
-				this.years;
+				((usdtPrice / 1e18).toFixed(0) * this.years).toFixed(5);
 		},
 		async changeText(text) {
 			console.log('changeText', text);
@@ -176,10 +175,9 @@ export default {
 			}
 			await getPrice(this.searchText);
 			this.price =
-				(bnbPrice / 1e18).toFixed(5) * this.years;
-			alert(price);
+				((bnbPrice / 1e18).toFixed(5) * this.years).toFixed(5);
 			this.toUsdtPrice =
-				(usdtPrice / 1e18).toFixed(0) * this.years;
+				((usdtPrice / 1e18).toFixed(0) * this.years).toFixed(5);
 		},
 
 		openLinkBtn(flag) {

@@ -405,10 +405,9 @@ export default {
 			this.registBtnDisabled =  false;
 			await getPrice(this.searchText);
 			this.price =
-				(bnbPrice / 1e18).toFixed(5) * this.years;
+				((bnbPrice / 1e18).toFixed(5) * this.years).toFixed(5);
 			this.toUsdtPrice =
-				(usdtPrice / 1e18).toFixed(0) *
-				this.years;
+				((usdtPrice / 1e18).toFixed(0) * this.years).toFixed(5);
 		},
 		//999999999999
 		async changeText(text) {
@@ -427,9 +426,9 @@ export default {
 			}
 			await getPrice(this.searchText);
 			this.price =
-				(bnbPrice / 1e18).toFixed(5) * this.years;
+				((bnbPrice / 1e18).toFixed(5) * this.years).toFixed(5);
 			this.toUsdtPrice =
-				(usdtPrice / 1e18).toFixed(0) * this.years;
+				((usdtPrice / 1e18).toFixed(0) * this.years).toFixed(5);
 		},
 
 		openLinkBtn(flag) {
@@ -538,16 +537,13 @@ export default {
 
 			if (this.currencyUnit === 'BNB') {
 				this.price =
-					(bnbPrice / 1e18).toFixed(5) *
-					this.years;
+					((bnbPrice / 1e18).toFixed(5) * this.years).toFixed(5);
 			} else if (this.currencyUnit === 'USDT') {
 				this.price =
-					(usdtPrice / 1e18).toFixed(0) *
-					this.years;
+					((usdtPrice / 1e18).toFixed(0) * this.years).toFixed(5);
 			} else if (this.currencyUnit === 'BRICK') {
 				this.price =
-					(brickPrice / 1e18).toFixed(0) *
-					this.years;
+					((brickPrice / 1e18).toFixed(0) * this.years).toFixed(5);
 			}
 
 			this.toUsdtPrice =
