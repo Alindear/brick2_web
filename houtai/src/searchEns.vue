@@ -225,9 +225,9 @@
                                 <img
                                     :src="successPng"
                                     alt=""
-									v-if="registBtnLoading"
+                                    v-if="registBtnLoading"
                                 >
-								{{i18n.step}}
+                                {{i18n.step}}
                             </p>
                             <p class="step_title_desc">{{i18n.register_tips}}</p>
 
@@ -270,9 +270,10 @@
                                 <el-progress
                                     :show-text="false"
                                     :stroke-width="20"
-                                    :percentage="registBtnDisabled ? 100 : (approveBtnDisabled ? 50 : 0)"
+                                    :percentage="progressLine"
                                     status="exception"
                                 ></el-progress>
+                                <!-- :percentage="registBtnDisabled ? 100 : (approveBtnDisabled ? 50 : 0)" -->
 
                             </div>
 
@@ -309,6 +310,7 @@ import {
 export default {
 	data() {
 		return {
+			progressLine: 0,
 			reducePng,
 			linkPng,
 			warnPng,
@@ -382,7 +384,7 @@ export default {
 		},
 	},
 	async mounted() {
-		console.log("mountedmountedmountedmountedmounted");
+		console.log('mountedmountedmountedmountedmounted');
 		await onConnect();
 		this.init();
 	},
@@ -396,18 +398,20 @@ export default {
 
 	methods: {
 		async init() {
-			console.log("init start:")
+			console.log('init start:');
 			this.bodyHeight =
 				document.documentElement.clientHeight ||
 				document.body.clientHeight;
 			this.searchText = this.$route.query.text || '';
-			this.approveBtnDisabled =  true;
-			this.registBtnDisabled =  false;
+			this.approveBtnDisabled = true;
+			this.registBtnDisabled = false;
 			await getPrice(this.searchText);
-			this.price =
-				((bnbPrice / 1e18).toFixed(5) * this.years).toFixed(5);
-			this.toUsdtPrice =
-				((usdtPrice / 1e18).toFixed(0) * this.years).toFixed(5);
+			this.price = (
+				(bnbPrice / 1e18).toFixed(5) * this.years
+			).toFixed(5);
+			this.toUsdtPrice = (
+				(usdtPrice / 1e18).toFixed(0) * this.years
+			).toFixed(5);
 		},
 		//999999999999
 		async changeText(text) {
@@ -425,10 +429,12 @@ export default {
 				this.registBtnLoading = false;
 			}
 			await getPrice(this.searchText);
-			this.price =
-				((bnbPrice / 1e18).toFixed(5) * this.years).toFixed(5);
-			this.toUsdtPrice =
-				((usdtPrice / 1e18).toFixed(0) * this.years).toFixed(5);
+			this.price = (
+				(bnbPrice / 1e18).toFixed(5) * this.years
+			).toFixed(5);
+			this.toUsdtPrice = (
+				(usdtPrice / 1e18).toFixed(0) * this.years
+			).toFixed(5);
 		},
 
 		openLinkBtn(flag) {
@@ -452,6 +458,7 @@ export default {
 							_this.$store.state.language
 						].approved;
 					_this.approveBtnDisabled = true;
+					_this.progressLine = 50;
 					_this.approveBtnLoading = false;
 				},
 			);
@@ -471,6 +478,7 @@ export default {
 				//_this.registBtnDisabled = true;
 			};
 			var _cb = function () {
+				_this.progressLine = 100;
 				_router.push({
 					path: '/brick/myens',
 				});
@@ -538,14 +546,20 @@ export default {
 			await getPrice(this.searchText);
 
 			if (this.currencyUnit === 'BNB') {
-				this.price =
-					((bnbPrice / 1e18).toFixed(5) * this.years).toFixed(5);
+				this.price = (
+					(bnbPrice / 1e18).toFixed(5) *
+					this.years
+				).toFixed(5);
 			} else if (this.currencyUnit === 'USDT') {
-				this.price =
-					((usdtPrice / 1e18).toFixed(0) * this.years).toFixed(5);
+				this.price = (
+					(usdtPrice / 1e18).toFixed(0) *
+					this.years
+				).toFixed(5);
 			} else if (this.currencyUnit === 'BRICK') {
-				this.price =
-					((brickPrice / 1e18).toFixed(0) * this.years).toFixed(5);
+				this.price = (
+					(brickPrice / 1e18).toFixed(0) *
+					this.years
+				).toFixed(5);
 			}
 
 			this.toUsdtPrice =
@@ -1123,7 +1137,7 @@ export default {
 								width: 5.78rem;
 								// height: 0.37rem;
 								// min-height: 0.74rem;
-    						height: 100%;
+								height: 100%;
 								line-height: 0.37rem;
 								font-size: 0.26rem;
 								color: #ff6e11;
@@ -1444,7 +1458,7 @@ export default {
 			}
 		}
 	}
-	@media (max-width:750px) {
+	@media (max-width: 750px) {
 		.search_ens_step {
 			display: flex;
 			flex-direction: column;
@@ -1459,7 +1473,7 @@ export default {
 				height: 0.42rem;
 				font-family: PingFangSC-Regular;
 				font-weight: 400;
-				font-size: 0.30rem;
+				font-size: 0.3rem;
 				color: #000000;
 				margin: 0.4rem 0 0.24rem 0.32rem;
 			}
@@ -1472,7 +1486,7 @@ export default {
 					position: relative;
 					width: 6.86rem;
 					height: 10.68rem;
-					background: #FFFFFF;
+					background: #ffffff;
 					border-radius: 0.32rem;
 					.right_content {
 						.title_name {
@@ -1482,8 +1496,8 @@ export default {
 							font-weight: 400;
 							font-size: 0.32rem;
 							color: #333333;
-							border-bottom: 0.01rem solid
-								#dedede;
+							border-bottom: 0.01rem
+								solid #dedede;
 							margin: 0;
 							padding-left: 0.32rem;
 							margin-bottom: 0.32rem 0;
