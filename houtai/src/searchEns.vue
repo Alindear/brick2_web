@@ -458,7 +458,6 @@ export default {
 							_this.$store.state.language
 						].approved;
 					_this.approveBtnDisabled = true;
-					_this.progressLine = 50;
 					_this.approveBtnLoading = false;
 				},
 			);
@@ -468,20 +467,24 @@ export default {
 			let _router = this.$router;
 			let _name = this.searchText.toLowerCase() + '.bsc';
 			var _this = this;
+			_this.progressLine = 50;
 			var _loadingTrue = function () {
 				// loading 转圈
 				_this.registBtnLoading = true;
 			};
 			var _loadingFalse = function () {
 				// loading转圈停止 进入disabled
+				_this.progressLine = 100;
 				_this.registBtnLoading = false;
 				//_this.registBtnDisabled = true;
 			};
 			var _cb = function () {
 				_this.progressLine = 100;
-				_router.push({
-					path: '/brick/myens',
-				});
+				setTimeout(function () {
+					_router.push({
+						path: '/brick/myens',
+					});
+				}, 1000);
 			};
 
 			console.log('_name', _name);
