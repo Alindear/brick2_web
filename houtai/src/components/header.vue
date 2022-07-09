@@ -311,7 +311,7 @@
                         class="his_text"
                         v-for="(his, i) in histroys"
                         :key="i"
-												@click="hisClick(his)"
+                        @click="hisClick(his)"
                     >
                         {{ his && his.length > 14 ? his.slice(0,14) + '...' : his }}
                     </span>
@@ -336,11 +336,7 @@ import search2Png from 'img/icon/编组 2.png';
 import searchblack from 'img/searchblack.png';
 // import logoPng from 'img/首页/BNS_logo@2x.png';
 import logoPng from 'img/logoleft.png';
-import {
-	onConnect,
-	onDisconnect,
-	selectedAccount,
-} from 'houtai/web3_eth.js';
+import { onConnect, onDisconnect, selectedAccount } from 'houtai/web3_eth.js';
 
 export default {
 	components: { registered },
@@ -423,9 +419,9 @@ export default {
 
 	methods: {
 		// 点击历史记录 写入输入框
-		hisClick(val){
-			console.log('val',val);
-			this.searchText = val
+		hisClick(val) {
+			console.log('val', val);
+			this.searchText = val;
 			// this.searchTextChange()
 		},
 		onSearch(value) {
@@ -506,7 +502,10 @@ export default {
 			await onConnect(this);
 			this.selectedAccount = selectedAccount;
 
-			console.log("connectWallet selectedAccount:",this.selectedAccount)
+			console.log(
+				'connectWallet selectedAccount:',
+				this.selectedAccount,
+			);
 			//localStorage.setItem('STATUS', this.selectedAccount);
 
 			if (this.$route.fullPath === '/index') {
@@ -540,22 +539,22 @@ export default {
 		//查询 99999999
 		async searchEns() {
 			if (!this.searchText) {
-				alert('请输入查询的域名');
-				// alert(
-				// 	this.$store.state.i18n[
-				// 		this.$store.state.language
-				// 	].enter_names,
-				// );
+				// alert('请输入查询的域名');
+				alert(
+					this.$store.state.i18n[
+						this.$store.state.language
+					].enter_names,
+				);
 				return;
 			}
 
 			if (this.searchText.length < 3) {
-				alert('请至少输入三个字符');
-				// alert(
-				// 	this.$store.state.i18n[
-				// 		this.$store.state.language
-				// 	].text_1,
-				// );
+				// alert('请至少输入三个字符');
+				alert(
+					this.$store.state.i18n[
+						this.$store.state.language
+					].text_1,
+				);
 				return;
 			}
 
@@ -570,11 +569,10 @@ export default {
 
 			this.searchEnsLoading = true;
 			let text = this.searchText.toLowerCase() + '.bsc';
-			this.isExist = false;
-			// this.isExist = await isExist(text);
-			// if (!(await checkEachLength(this.searchText))) {
-			// 	return;
-			// }
+			this.isExist = await isExist(text);
+			if (!(await checkEachLength(this.searchText))) {
+				return;
+			}
 			if (this.isExist) {
 				this.openLinkBtn(true);
 			} else if (!this.isExist && this.isExist !== null) {

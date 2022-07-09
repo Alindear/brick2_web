@@ -307,7 +307,8 @@
                 <div
                     class="left_img"
                     v-if="linkShowFlag"
-										@mouseover="activeItem = 'left'"    :class="{'actived': activeItem === 'left', 'unactived':activeItem === 'right'}"
+                    @mouseover="activeItem = 'left'"
+                    :class="{'actived': activeItem === 'left', 'unactived':activeItem === 'right'}"
                 >
                     <p class="on_link">{{this.refAddress}}</p>
                 </div>
@@ -315,14 +316,20 @@
                     class="left_img"
                     @click="linkClick"
                     v-if="!linkShowFlag"
-										@mouseover="activeItem = 'left'"   :class="{'actived': activeItem === 'left', 'unactived':activeItem === 'right'}" 
+                    @mouseover="activeItem = 'left'"
+                    :class="{'actived': activeItem === 'left', 'unactived':activeItem === 'right'}"
                 >
                     <p :class="$store.state.language === 'CN' ? 'dis_link' : 'dis_link_en'">
                         <!-- 点击生成专属链接 -->
                         {{i18n.click_text}}
                     </p>
                 </div>
-                <div class="right_img" @mouseover="activeItem = 'right'"  :class="{'actived': activeItem === 'right'}" @mouseleave="activeItem = 'left'">
+                <div
+                    class="right_img"
+                    @mouseover="activeItem = 'right'"
+                    :class="{'actived': activeItem === 'right'}"
+                    @mouseleave="activeItem = 'left'"
+                >
                     <div
                         class="now_profit"
                         v-if="changeStatusShowFlag"
@@ -331,9 +338,9 @@
                             <!-- 当前收益 -->
                             {{i18n.current_gains}}
                         </p>
-												<div class="profit_usdt">USDT</div>
+                        <div class="profit_usdt">USDT</div>
                         <div class="profit_num_usdt">{{usdtCps}}</div>
-												<div class="profit_bnb">BNB</div>
+                        <div class="profit_bnb">BNB</div>
                         <div class="profit_num_bnb">{{bnbCps}}</div>
                         <!-- <div class="profit_num">BRICK: {{brickCps }}</div>
                         <div class="profit_num">USDT:{{usdtCps}}</div>
@@ -445,6 +452,7 @@
             <el-button
                 v-if="changeStatusShowFlag && !isShowDraw"
                 @click="luckDrawBtn(true)"
+                disabled
             >
                 <!-- 参与抽奖 -->
                 {{i18n.participate_draw}}
@@ -452,6 +460,7 @@
             <el-button
                 v-if="changeStatusShowFlag && isShowDraw"
                 @click="viewResultBtn(true)"
+                disabled
             >
                 <!-- 查看结果 -->
                 {{i18n.view_results}}
@@ -517,7 +526,7 @@
                     >
                 </div>
             </div>
-						<div class="mb_partner_img">
+            <div class="mb_partner_img">
                 <div class="partner_img_div">
                     <img
                         class="partner_img_1"
@@ -560,81 +569,80 @@
                     <span class="email">E-mail: admin@bnsdid.io </span>
                     <span class="bottom_img">
 
-												<a href="https://twitter.com/bnsdomains_">
-                        <img
-                            class="bottom_icon1"
-                            :src="twitterPng"
-                            alt=""
-                        >
-												</a>
-                       <a href="https://discord.gg/5tVSUKGAPJ">
-                        <img
-                            class="bottom_icon2"
-                            :src="discordPng"
-                            alt=""
-                        >
-												</a>
-												<a href="https://t.me/+YUtgU-UumX9mZTll">
-                        <img
-                            class="bottom_icon3"
-                            :src="lastIconPng"
-                            alt=""
-                        >
-												</a>
+                        <a href="https://twitter.com/bnsdomains_">
+                            <img
+                                class="bottom_icon1"
+                                :src="twitterPng"
+                                alt=""
+                            >
+                        </a>
+                        <a href="https://discord.gg/5tVSUKGAPJ">
+                            <img
+                                class="bottom_icon2"
+                                :src="discordPng"
+                                alt=""
+                            >
+                        </a>
+                        <a href="https://t.me/+YUtgU-UumX9mZTll">
+                            <img
+                                class="bottom_icon3"
+                                :src="lastIconPng"
+                                alt=""
+                            >
+                        </a>
                         <!-- <div class="img_left"></div> -->
                     </span>
                     <span class="img_left"></span>
-											<span class="img_center">SAY HI HERE</span>
-											<a href="https://twitter.com/bnsdomains_">
-												<img
-														class="img_right"
-														:src="enterIcon"
-														alt=""
-												>
-											</a>
-                   
+                    <span class="img_center">SAY HI HERE</span>
+                    <a href="https://twitter.com/bnsdomains_">
+                        <img
+                            class="img_right"
+                            :src="enterIcon"
+                            alt=""
+                        >
+                    </a>
 
                 </div>
 
                 <div class="mb_contact_input">
                     <p class="email_top">E-mail: admin@bnsdid.io </p>
-										
+
                     <div class="input_center">
                         <span class="img_center">SAY HI HERE</span>
-												<a href="https://twitter.com/bnsdomains_">
-													<img
-															class="img_right"
-															:src="enterIcon"
-															alt=""
-													>
-												</a>
+                        <a href="https://twitter.com/bnsdomains_">
+                            <img
+                                class="img_right"
+                                :src="enterIcon"
+                                alt=""
+                            >
+                        </a>
                     </div>
 
                     <!-- <span class="img_left"></span> -->
                     <span class="bottom_img">
-												<a href="https://twitter.com/bnsdomains_">
-													<img
-															class="bottom_icon1"
-															:src="twitterMBPng"
-															alt=""
-													>
-												</a>
-                       
-                       <a href="https://discord.gg/5tVSUKGAPJ">
-													<img
-														class="bottom_icon2"
-														:src="discordMBPng"
-														alt=""
-													>
-												</a>
-												<a href="https://t.me/+YUtgU-UumX9mZTll">
-													<img
-															class="bottom_icon3"
-															:src="lastIconMBPng"
-															alt=""
-													>
-												</a>
-                        
+                        <a href="https://twitter.com/bnsdomains_">
+                            <img
+                                class="bottom_icon1"
+                                :src="twitterMBPng"
+                                alt=""
+                            >
+                        </a>
+
+                        <a href="https://discord.gg/5tVSUKGAPJ">
+                            <img
+                                class="bottom_icon2"
+                                :src="discordMBPng"
+                                alt=""
+                            >
+                        </a>
+                        <a href="https://t.me/+YUtgU-UumX9mZTll">
+                            <img
+                                class="bottom_icon3"
+                                :src="lastIconMBPng"
+                                alt=""
+                            >
+                        </a>
+
                     </span>
 
                 </div>
@@ -660,7 +668,13 @@ import {
 	drawMine,
 	selectedAccount,
 	checkAlready,
-	randomLottery, checkEnable, getMyLottery, hexToUtf8, getHolders, getLotteryPool, toPrecision,
+	randomLottery,
+	checkEnable,
+	getMyLottery,
+	hexToUtf8,
+	getHolders,
+	getLotteryPool,
+	toPrecision,
 } from 'houtai/web3_eth.js';
 
 import topImg from 'img/imgmb/首页/顶部.png';
@@ -736,8 +750,8 @@ export default {
 	data() {
 		return {
 			activeItem: 'left',
-			activeLeft: "",
-			activeRight: "",
+			activeLeft: '',
+			activeRight: '',
 			isShowDraw: false, //是否参与抽奖
 			luckDrawShowFlag: false, // 参与抽奖
 			viewResultShowFlag: false, // 查看结果
@@ -958,31 +972,31 @@ export default {
 			);
 			this.searchText = this.searchText.toLowerCase();
 		},
-		'$store.state.cpsFee': async function(val, old) {
+		'$store.state.cpsFee': async function (val, old) {
 			console.log(val);
 			console.log('监听');
-			this.bnbCps = toPrecision(val[0]/1e18,6);
-			this.brickCps = val[1]/1e18;
-			this.usdtCps = toPrecision(val[2]/1e18,6);
+			this.bnbCps = toPrecision(val[0] / 1e18, 6);
+			this.brickCps = val[1] / 1e18;
+			this.usdtCps = toPrecision(val[2] / 1e18, 6);
 			var _this = this;
-			var _fun = function(_this) {
+			var _fun = function (_this) {
 				//_this.luckDrawShowFlag = true;
 				_this.isShowDraw = true;
-			}
+			};
 
 			var enable = await checkEnable();
 			// if(enable===true){
-			 if(enable===false){
-			 	// TODO
+			if (enable === false) {
+				// TODO
 				//_this.viewResultShowFlag = true;
 				// 判断是否开奖
-				this.changeStatusShowFlag =true;
+				this.changeStatusShowFlag = true;
 				this.isShowDraw = true;
 			}
 
 			var alreay = await checkAlready();
-			if(alreay){
-			   _fun(_this);
+			if (alreay) {
+				_fun(_this);
 			}
 		},
 		'$store.state.language': function (val, old) {
@@ -1085,21 +1099,25 @@ export default {
 
 	methods: {
 		// 鼠标移入 移除事件
-		mouseOverRight(){
-			this.activeRight = "'border':0.33rem solid; 'border-image': linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
-			this.activeLeft = "border:0.01rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
+		mouseOverRight() {
+			this.activeRight =
+				"'border':0.33rem solid; 'border-image': linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;";
+			this.activeLeft =
+				'border:0.01rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;';
 		},
-		mouseLeaveRight(){
-			this.activeRight = "border:0.01rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
-			this.activeLeft = "border:0.03rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
-			console.log('	this.activeRight',	this.activeRight);
+		mouseLeaveRight() {
+			this.activeRight =
+				'border:0.01rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;';
+			this.activeLeft =
+				'border:0.03rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;';
+			console.log('	this.activeRight', this.activeRight);
 		},
-		mouseOverLeft(){
+		mouseOverLeft() {
 			// this.activeLeft = "border:0.33rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
 		},
-		mouseLeaveLeft(){
+		mouseLeaveLeft() {
 			// this.activeLeft = "border:0.01rem solid; border-image: linear-gradient( to bottom, #e5b3fd, #7de7ec ) 1 10;"
-			console.log('this.activeLeft',this.activeLeft);
+			console.log('this.activeLeft', this.activeLeft);
 		},
 		//参与抽奖
 		async luckDrawBtn(flag) {
@@ -1108,32 +1126,58 @@ export default {
 			var _fun = function (_this) {
 				_this.luckDrawShowFlag = true;
 				_this.isShowDraw = true;
-			 };
+			};
 			randomLottery(_fun, _this);
 		},
 		// 查看结果
-		async viewResultBtn(flag) { // TODO
+		async viewResultBtn(flag) {
+			// TODO
 			this.viewResultShowFlag = flag;
 			var myLottery = await getMyLottery();
-			console.log("myLottery:",myLottery," this.$store.state:",this.$store.state);
-			if(myLottery==0x0000000000000000000000000000000000000000000000000000000000000000){
-				this.luckOrNot = "NO";
+			console.log(
+				'myLottery:',
+				myLottery,
+				' this.$store.state:',
+				this.$store.state,
+			);
+			if (
+				myLottery ==
+				0x0000000000000000000000000000000000000000000000000000000000000000
+			) {
+				this.luckOrNot = 'NO';
 				var holders = await getHolders();
 				console.log(holders);
-				this.$store.state.lowerPoolAccounts = "";
-				this.$store.state.lowerPools = ""
+				this.$store.state.lowerPoolAccounts = '';
+				this.$store.state.lowerPools = '';
 				var pool = await getLotteryPool();
-				for (let i=0;i< holders.length;i++) {
-					this.$store.state.lowerPoolAccounts = this.$store.state.lowerPoolAccounts===''?holders[i]:this.$store.state.lowerPoolAccounts+","+holders[i];
+				for (let i = 0; i < holders.length; i++) {
+					this.$store.state.lowerPoolAccounts =
+						this.$store.state
+							.lowerPoolAccounts ===
+						''
+							? holders[i]
+							: this.$store.state
+									.lowerPoolAccounts +
+							  ',' +
+							  holders[i];
 				}
-				for (let i=0;i< pool.length;i++) {
+				for (let i = 0; i < pool.length; i++) {
 					console.log(hexToUtf8(pool[i]));
-					this.$store.state.lowerPools =this.$store.state.lowerPools===''?hexToUtf8(pool[i]):this.$store.state.lowerPools+","+hexToUtf8(pool[i]);
+					this.$store.state.lowerPools =
+						this.$store.state.lowerPools ===
+						''
+							? hexToUtf8(pool[i])
+							: this.$store.state
+									.lowerPools +
+							  ',' +
+							  hexToUtf8(pool[i]);
 				}
-			}else{
-				this.$store.state.selectedAccount = selectedAccount;
-				this.$store.state.myLottery = hexToUtf8(myLottery);
-				this.luckOrNot = "YES";
+			} else {
+				this.$store.state.selectedAccount =
+					selectedAccount;
+				this.$store.state.myLottery =
+					hexToUtf8(myLottery);
+				this.luckOrNot = 'YES';
 			}
 			//this.luckOrNot = this.luckOrNot;
 		},
@@ -1153,7 +1197,10 @@ export default {
 		// 打开已存在提示弹窗
 		openLinkBtn(flag) {
 			this.openLinkShowFlag = flag;
-			console.log('this.openLinkShowFlag',this.openLinkShowFlag);
+			console.log(
+				'this.openLinkShowFlag',
+				this.openLinkShowFlag,
+			);
 		},
 		//查询
 		async searchEns() {
@@ -1334,9 +1381,7 @@ export default {
 			}
 		},
 	},
-	mounted() {
-
-	}
+	mounted() {},
 };
 </script>
 
@@ -2100,7 +2145,7 @@ export default {
 					// box-sizing: border-box;
 				}
 			}
-			.actived{
+			.actived {
 				border: 0.33rem solid;
 				// border: 0.01rem solid;
 				border-image: linear-gradient(
@@ -2110,7 +2155,7 @@ export default {
 					)
 					1 10;
 			}
-			.unactived{
+			.unactived {
 				border: 0.01rem solid;
 				// border: 0.01rem solid;
 				border-image: linear-gradient(
@@ -2183,37 +2228,37 @@ export default {
 						font-size: 0.24rem;
 						color: #000000;
 						// margin: 0.99rem 0 0.32rem;
-    				margin: 0.69rem 0 0.48rem 0;
+						margin: 0.69rem 0 0.48rem 0;
 					}
-					.profit_usdt{
-							height: 0.29rem;
-							font-family: Womby-Regular;
-							font-weight: 400;
-							font-size: 0.24rem;
-							color: #999999;
-							letter-spacing: 0;
-							margin-bottom: 0.11rem;
-						}
-						.profit_bnb{
-							height: 0.29rem;
-							font-family: Womby-Regular;
-							font-weight: 400;
-							font-size: 0.24rem;
-							color: #999999;
-							letter-spacing: 0;
-							margin-bottom: 0.11rem;
-						}
-						// .profit_num {
-						// 	width: 5.68rem;
-						// 	height: 0.38rem;
-						// 	font-family: Womby-Regular;
-						// 	font-weight: 400;
-						// 	font-size: 0.32rem;
-						// 	color: #000000;
-						// 	letter-spacing: 0.02rem;
-						// 	word-break: break-all;
-						// 	margin-bottom: 0.24rem;
-						// }
+					.profit_usdt {
+						height: 0.29rem;
+						font-family: Womby-Regular;
+						font-weight: 400;
+						font-size: 0.24rem;
+						color: #999999;
+						letter-spacing: 0;
+						margin-bottom: 0.11rem;
+					}
+					.profit_bnb {
+						height: 0.29rem;
+						font-family: Womby-Regular;
+						font-weight: 400;
+						font-size: 0.24rem;
+						color: #999999;
+						letter-spacing: 0;
+						margin-bottom: 0.11rem;
+					}
+					// .profit_num {
+					// 	width: 5.68rem;
+					// 	height: 0.38rem;
+					// 	font-family: Womby-Regular;
+					// 	font-weight: 400;
+					// 	font-size: 0.32rem;
+					// 	color: #000000;
+					// 	letter-spacing: 0.02rem;
+					// 	word-break: break-all;
+					// 	margin-bottom: 0.24rem;
+					// }
 					.profit_num_usdt {
 						width: 7rem;
 						height: 100%;
@@ -2236,7 +2281,6 @@ export default {
 						word-break: break-all;
 						margin-bottom: 0.32rem;
 					}
-					
 				}
 				.dis_content {
 					// width: 2.84rem;
@@ -2461,7 +2505,7 @@ export default {
 							margin: 0.24rem 0;
 							// text-align: center;
 						}
-						.profit_usdt{
+						.profit_usdt {
 							height: 0.34rem;
 							font-family: Womby-Regular;
 							font-weight: 400;
@@ -2470,7 +2514,7 @@ export default {
 							letter-spacing: 0;
 							margin-bottom: 0.08rem;
 						}
-						.profit_bnb{
+						.profit_bnb {
 							height: 0.34rem;
 							font-family: Womby-Regular;
 							font-weight: 400;
@@ -3018,16 +3062,16 @@ export default {
 			// 	margin-right: 0;
 			// }
 		}
-		.mb_partner_img{
+		.mb_partner_img {
 			display: none;
 		}
 		@media (max-width: 750px) {
-		.partner_img {
-			display: none;
-		}
-		.mb_partner_img {
-			display: block;
-			margin-bottom: 0.42rem;
+			.partner_img {
+				display: none;
+			}
+			.mb_partner_img {
+				display: block;
+				margin-bottom: 0.42rem;
 
 				// img {
 				// 	width: 3.88rem;
@@ -3062,8 +3106,8 @@ export default {
 					// height: 1.18rem;
 					width: 100%;
 				}
+			}
 		}
-	}
 	}
 	// @media (max-width: 750px) {
 	// 	.partner_img {
@@ -3292,7 +3336,7 @@ export default {
 						// margin-top: -0.1rem;
 					}
 					a:last-child {
-							margin-right: 0rem;
+						margin-right: 0rem;
 					}
 					// .bottom_icon3 {
 					// 	margin-right: 0.6rem;
