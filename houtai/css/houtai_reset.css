@@ -25,12 +25,12 @@ html body {
 } */
 @font-face {
     font-family: Futura;
-    src: url('./Futura.ttc');
+    src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Futura.ttc');
 }
 
 @font-face {
     font-family: PingFangSC-Regular;
-    src: url('./PingFangSC-Regular.ttf') format('truetype');
+    src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/PingFangSC-Regular.ttf') format('truetype');
 }
 @font-face {
     font-family: Alibaba-PuHuiTi-B;
@@ -51,21 +51,21 @@ html body {
 
 @font-face {
     font-family: PingFangSC-Regular;
-    src: url('./PingFangSC-Regular.ttf') format('truetype');
+    src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/PingFangSC-Regular.ttf') format('truetype');
 }
 @font-face {
     font-family: Womby-Regular;
-    src: url('./Womby-Regular-3.ttf') format('truetype');
+    src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Womby-Regular-3.ttf') format('truetype');
 }
 @font-face {
     /* font-family: 'Womby'; */
     font-family: Womby-Regular;
-    src: url('./Womby-Regular.eot');
-    src: url('./Womby-Regular.eot?#iefix') format('embedded-opentype'),
-        url('./Womby-Regular.woff2') format('woff2'),
-        url('./Womby-Regular.woff') format('woff'),
-        url('./Womby-Regular.ttf') format('truetype'),
-        url('./Womby-Regular.svg#Womby-Regular') format('svg');
+    src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Womby-Regular.eot');
+    src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Womby-Regular.eot?#iefix') format('embedded-opentype'),
+        url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Womby-Regular.woff2') format('woff2'),
+        url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Womby-Regular.woff') format('woff'),
+        url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Womby-Regular.ttf') format('truetype'),
+        url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Womby-Regular.svg#Womby-Regular') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
