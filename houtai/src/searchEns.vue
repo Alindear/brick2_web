@@ -158,7 +158,7 @@
                     <div class="step_process">
                         <div class="step_left_process">
                             <div class="left_circle">
-                                <p :style="{color: approveBtnDisabled ? '#ffffff' : '#d8d8d8', 'background-image': approveBtnDisabled ? 'linear-gradient(-60deg, #6AF0E9 0%, #EDAFFF 100%)' : 'linear-gradient(-60deg, #ffffff 0%, #ffffff 100%)','border': approveBtnDisabled? 'none' : '0.01rem solid #ccc;'}">1</p>
+                                <p :style="{color: approveBtnDisabled ? '#ffffff' : '#d8d8d8', 'background-image': approveBtnDisabled ? 'linear-gradient(-60deg, #6AF0E9 0%, #EDAFFF 100%)' : 'linear-gradient(-60deg, #ffffff 0%, #ffffff 100%)','border': approveBtnDisabled? '' : '0.01rem solid #ccc;'}">1</p>
                             </div>
                             <div class="step_text">
                                 <div class="step_text_title">
@@ -175,7 +175,7 @@
                         <div class="step_center_process">
                             <div class="left_circle">
                                 <!-- <p :style="{color: registBtnDisabled ? '#ffffff' : '#d8d8d8', border: registBtnDisabled ? '0.02rem solid #a63928' : '0.01rem solid #d8d8d8'}">2</p> -->
-                                <p :style="{color: registBtnDisabled ? '#ffffff' : '#d8d8d8', 'background-image': registBtnDisabled ? 'linear-gradient(-60deg, #6AF0E9 0%, #EDAFFF 100%)' : 'linear-gradient(-60deg, #ffffff 0%, #ffffff 100%)','border': registBtnDisabled? 'none' : '0.01rem solid #ccc;'}">2</p>
+                                <p :style="{color: registBtnDisabled ? '#ffffff' : '#d8d8d8', 'background-image': registBtnDisabled ? 'linear-gradient(-60deg, #6AF0E9 0%, #EDAFFF 100%)' : 'linear-gradient(-60deg, #ffffff 0%, #ffffff 100%)','border': registBtnDisabled? '' : '0.01rem solid #ccc;'}">2</p>
                             </div>
                             <div class="step_text">
                                 <div class="step_text_title">
@@ -876,6 +876,7 @@ export default {
 								);
 								-webkit-background-clip: text;
 								color: transparent;
+								padding: 0;
 							}
 							.regist_btn {
 								width: 1.18rem;
@@ -891,6 +892,7 @@ export default {
 								font-size: 0.16rem;
 								border-radius: 1.5484rem;
 								border: 0;
+								padding: 0;
 							}
 							.el-button
 								+ .el-button {
