@@ -19,10 +19,9 @@
                         <!-- 我的域名 -->
                         {{i18n.my_domain}}
                     </span>
-                    <span @click="goRouter('/brick/documentdesc')">
-                        <!-- 文档说明 -->
+                    <!-- <span @click="goRouter('/brick/documentdesc')">
                         {{i18n.document_desc}}
-                    </span>
+                    </span> -->
                     <span @click="goRouter('/brick/contactus')">
                         <!-- 联系社区 -->
                         {{i18n.contact_community}}

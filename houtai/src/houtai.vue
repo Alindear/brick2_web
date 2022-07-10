@@ -83,18 +83,19 @@ export default {
 					code: '0502',
 					showed: true,
 				},
-				{
-					// label: '文档说明',
-					label: this.$store.state.i18n[
-						this.$store.state.language
-					].document_desc,
-					path: '/brick/documentdesc',
-					icon: 'el-icon-c-scale-to-original',
-					img: documentdescIcon,
-					imgSelect: documentdescSelect,
-					code: '0503',
-					showed: true,
-				},
+				// {
+				// 	// label: '文档说明',
+				// 	label: this.$store.state.i18n[
+				// 		this.$store.state.language
+				// 	].document_desc,
+				// 	// path: '/brick/documentdesc',
+				// 	path: '',
+				// 	icon: 'el-icon-c-scale-to-original',
+				// 	img: documentdescIcon,
+				// 	imgSelect: documentdescSelect,
+				// 	code: '0503',
+				// 	showed: true,
+				// },
 				{
 					// label: '联系社区',
 					label: this.$store.state.i18n[
