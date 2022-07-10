@@ -251,7 +251,7 @@
                                 <div class="step_center_process">
                                     <div class="left_circle">
                                         <!-- <p :style="{color: registBtnDisabled ? '#ffffff' : '#d8d8d8', border: registBtnDisabled ? '0.02rem solid #a63928' : '0.01rem solid #d8d8d8'}">2</p> -->
-                                        <p :style="{color: registBtnDisabled ? '#ffffff' : '#d8d8d8', 'background-image': registBtnDisabled ? 'linear-gradient(-60deg, #6AF0E9 0%, #EDAFFF 100%)' : 'linear-gradient(-60deg, #ffffff 0%, #ffffff 100%)','border': registBtnDisabled? 'none' : '0.01rem solid #ccc;'}">2</p>
+                                        <p :style="{color: progressLine === 100 ? '#ffffff' : '#d8d8d8', 'background-image':  progressLine === 100 ? 'linear-gradient(-60deg, #6AF0E9 0%, #EDAFFF 100%)' : 'linear-gradient(-60deg, #ffffff 0%, #ffffff 100%)','border':  progressLine === 100? 'none' : '0.01rem solid #ccc;'}">2</p>
                                     </div>
                                     <div class="step_text">
                                         <div class="step_text_title">
