@@ -480,11 +480,9 @@ export default {
 			};
 			var _cb = function () {
 				_this.progressLine = 100;
-				setTimeout(function () {
-					_router.push({
-						path: '/brick/myens',
-					});
-				}, 1000);
+				_router.push({
+					path: '/brick/myens',
+				});
 			};
 
 			console.log('_name', _name);

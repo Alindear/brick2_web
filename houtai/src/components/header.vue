@@ -334,7 +334,7 @@ import search2Png from 'img/icon/编组 2.png';
 import searchblack from 'img/searchblack.png';
 // import logoPng from 'img/首页/BNS_logo@2x.png';
 import logoPng from 'img/logoleft.png';
-import { onConnect, onDisconnect, selectedAccount } from 'houtai/web3_eth.js';
+import { isExist, onConnect, onDisconnect, selectedAccount } from 'houtai/web3_eth.js';
 
 export default {
 	components: { registered },
