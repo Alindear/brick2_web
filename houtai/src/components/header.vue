@@ -6,7 +6,7 @@
         ></registered>
         <div class="header_pc">
             <img
-                :src="logoPng"
+                src="https://brick-static.oss-accelerate.aliyuncs.com/tmp/logoleft.png"
                 alt=""
                 @click="goRouter('/index')"
             >
