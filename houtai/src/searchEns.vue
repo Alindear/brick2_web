@@ -475,7 +475,7 @@ export default {
 			var _loadingFalse = function () {
 				// loading转圈停止 进入disabled
 				_this.progressLine = 100;
-				_this.registBtnLoading = false;
+				//_this.registBtnLoading = false;
 				//_this.registBtnDisabled = true;
 			};
 			var _cb = function () {
