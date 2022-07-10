@@ -695,6 +695,7 @@ export default {
 				);
 				border-radius: 0.0533rem;
 				// border: none;
+				padding: 0;
 			}
 			.menu_top {
 				cursor: pointer;
