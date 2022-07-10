@@ -152,7 +152,7 @@
                         <div class="border_bns_input">
                             <span>{{bnsInput}}</span>
                             <img
-                                :src="inputIcon"
+                                src="https://brick-static.oss-accelerate.aliyuncs.com/tmp/椭圆形@2x.png"
                                 alt=""
                             >
                         </div>
