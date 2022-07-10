@@ -220,10 +220,9 @@
                 {{i18n.my_domain}}
             </p>
             <div class="list_border"></div>
-            <p @click="goRouter('/brick/documentdesc')">
-                <!-- 文档说明 -->
+            <!-- <p @click="goRouter('/brick/documentdesc')">
                 {{i18n.document_desc}}
-            </p>
+            </p> -->
             <div class="list_border"></div>
             <p @click="goRouter('/brick/contactus')">
                 <!-- 联系社区 -->
