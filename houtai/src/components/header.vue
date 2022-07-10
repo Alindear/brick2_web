@@ -6,7 +6,7 @@
         ></registered>
         <div class="header_pc">
             <img
-                :src="logoPng"
+                src="https://brick-static.oss-accelerate.aliyuncs.com/tmp/logoleft.png"
                 alt=""
                 @click="goRouter('/index')"
             >
@@ -335,7 +335,7 @@ import searchPng from 'img/icon/编组.png';
 import search2Png from 'img/icon/编组 2.png';
 import searchblack from 'img/searchblack.png';
 // import logoPng from 'img/首页/BNS_logo@2x.png';
-import logoPng from 'https://brick-static.oss-accelerate.aliyuncs.com/tmp/logoleft.png';
+import logoPng from 'img/logoleft.png';
 import { onConnect, onDisconnect, selectedAccount } from 'houtai/web3_eth.js';
 
 export default {
