@@ -1999,15 +1999,15 @@ const LOTTERY_ABI =[
 
 
 
-// const PRICE_ADDRESS = "0x682ef103EA25B54E5D6480E71d1173F515C18A8B" // TODO ceshi
-// const BRICK_ENS_ADDRESS =  "0x856bf24485163E968564022813f239186C5a189a" // TODO ceshi
-// const LOTTERY_ADDRESS = "0x98F57A185f693a9bd3D6A75e2f4E248a3fd0dB36" // TODO ceshi
-// const usdtAddr =  '0x7ef95a0FEE0Dd31b22626fA2e10Ee6A223F8a684'; // TODO 测试
+const PRICE_ADDRESS = "0x682ef103EA25B54E5D6480E71d1173F515C18A8B" // TODO ceshi
+const BRICK_ENS_ADDRESS =  "0x856bf24485163E968564022813f239186C5a189a" // TODO ceshi
+const LOTTERY_ADDRESS = "0x98F57A185f693a9bd3D6A75e2f4E248a3fd0dB36" // TODO ceshi
+const usdtAddr =  '0x7ef95a0FEE0Dd31b22626fA2e10Ee6A223F8a684'; // TODO 测试
 
-const usdtAddr = '0x55d398326f99059fF775485246999027B3197955';
-const LOTTERY_ADDRESS = "0x17545E1d60773204aE7A6E5F5bB5Ff7906B1A642"
-const PRICE_ADDRESS = "0x3c55B43195Bad23F834c92b5104dc76863EE787c"
-const BRICK_ENS_ADDRESS = "0x39a09Ea595e6BA77F2FC0c2395077b64a0EB179A"
+// const usdtAddr = '0x55d398326f99059fF775485246999027B3197955';
+// const LOTTERY_ADDRESS = "0x17545E1d60773204aE7A6E5F5bB5Ff7906B1A642"
+// const PRICE_ADDRESS = "0x3c55B43195Bad23F834c92b5104dc76863EE787c"
+// const BRICK_ENS_ADDRESS = "0x39a09Ea595e6BA77F2FC0c2395077b64a0EB179A"
 
 const brickAddr = '0xc4893fEa8547Fb1A4D860518285AF6655424645f';
 
@@ -2095,20 +2095,22 @@ export async function approve(token, loadingFuncT, loadingFuncF, callback) {
     // loading
     loadingFuncT()
 
+    let approveAmount = "10000000000000000000000"
+
     let _allowance = await allowance(token);
-    if (_allowance > "9000000000000000000000000000000") {
+    if (_allowance > approveAmount) {
         callback()
         return;
     }
     if (token == "USDT") {
-        usdtContract.methods.approve(BRICK_ENS_ADDRESS, "90000000000000000000000000000000000").send({ from: selectedAccount }).then(result => {
+        usdtContract.methods.approve(BRICK_ENS_ADDRESS, approveAmount).send({ from: selectedAccount }).then(result => {
             callback();
         }).catch((err) => {
             console.log(err)
             loadingFuncF()
         });
     } else if (token == "BRICK") {
-        brickContract.methods.approve(BRICK_ENS_ADDRESS, "90000000000000000000000000000000000").send({ from: selectedAccount }).then(result => {
+        brickContract.methods.approve(BRICK_ENS_ADDRESS, approveAmount).send({ from: selectedAccount }).then(result => {
             callback();
         }).catch((err) => {
             console.log(err)
