@@ -34,11 +34,11 @@ html body {
 }
 @font-face {
     font-family: Alibaba-PuHuiTi-B;
-    src: url('./Alibaba-PuHuiTi-B.ttf') format('truetype');
+    src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-B.ttf') format('truetype');
 }
 @font-face {
     font-family: Alibaba-PuHuiTi-R;
-    src: url('./Alibaba-PuHuiTi-Regular.ttf') format('truetype');
+    src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-Regular.ttf') format('truetype');
 }
 /* @font-face {
     font-family: Alibaba-PuHuiTi-H;
@@ -46,7 +46,7 @@ html body {
 } */
 @font-face {
     font-family: Alibaba-PuHuiTi-M;
-    src: url('./Alibaba-PuHuiTi-Medium.ttf') format('truetype');
+    src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-Medium.ttf') format('truetype');
 }
 
 @font-face {
@@ -73,12 +73,12 @@ html body {
 
 @font-face {
     font-family: 'Alibaba PuHuiTi B';
-    src: url('./Alibaba-PuHuiTi-B.eot');
-    src: url('./Alibaba-PuHuiTi-B.eot?#iefix') format('embedded-opentype'),
-        url('./Alibaba-PuHuiTi-B.woff2') format('woff2'),
-        url('./Alibaba-PuHuiTi-B.woff') format('woff'),
-        url('./Alibaba-PuHuiTi-B.ttf') format('truetype'),
-        url('./Alibaba-PuHuiTi-B.svg#Alibaba-PuHuiTi-B') format('svg');
+    src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-B.eot');
+    src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-B.eot?#iefix') format('embedded-opentype'),
+        url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-B.woff2') format('woff2'),
+        url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-B.woff') format('woff'),
+        url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-B.ttf') format('truetype'),
+        url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-B.svg#Alibaba-PuHuiTi-B') format('svg');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -86,12 +86,12 @@ html body {
 
 @font-face {
     font-family: 'Alibaba-PuHuiTi-R';
-    src: url('./Alibaba-PuHuiTi-R.eot');
-    src: url('./Alibaba-PuHuiTi-R.eot?#iefix') format('embedded-opentype'),
-        url('./Alibaba-PuHuiTi-R.woff2') format('woff2'),
-        url('./Alibaba-PuHuiTi-R.woff') format('woff'),
-        url('./Alibaba-PuHuiTi-R.ttf') format('truetype'),
-        url('./Alibaba-PuHuiTi-R.svg#Alibaba-PuHuiTi-R') format('svg');
+    src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-R.eot');
+    src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-R.eot?#iefix') format('embedded-opentype'),
+        url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-R.woff2') format('woff2'),
+        url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-R.woff') format('woff'),
+        url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-R.ttf') format('truetype'),
+        url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-R.svg#Alibaba-PuHuiTi-R') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
