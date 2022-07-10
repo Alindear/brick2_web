@@ -123,28 +123,28 @@
                     <div class="right_top_input">
                         <img
                             class="img"
-                            :src="top1Png"
+                            src="https://brick-static.oss-accelerate.aliyuncs.com/tmp/rodion-kutsaev--tgTipG2t_g-unsplash@2x.png"
                             alt=""
                         >
                         <!-- <el-input v-model="megaInput"></el-input> -->
                         <div class="border_input">
                             <span>{{megaInput}}</span>
                             <img
-                                :src="inputIcon"
+                                src="https://brick-static.oss-accelerate.aliyuncs.com/tmp/椭圆形@2x.png"
                                 alt=""
                             >
                         </div>
                     </div>
                     <img
                         class="img2"
-                        :src="top2Png"
+                        src="https://brick-static.oss-accelerate.aliyuncs.com/tmp/位图@2x.png"
                         alt=""
                     >
                 </div>
                 <div class="right_bottom">
                     <img
                         class="img3"
-                        :src="top3Png"
+                        src="https://brick-static.oss-accelerate.aliyuncs.com/tmp/tezos-NN8ioR6Y88A-unsplash@2x.png"
                         alt=""
                     >
                     <div class="right_bottom_input">
@@ -158,7 +158,7 @@
                         </div>
                         <img
                             class="img4"
-                            :src="top4Png"
+                            src="https://brick-static.oss-accelerate.aliyuncs.com/tmp/tezos-N593T973hl0-unsplash@2x.png"
                             alt=""
                         >
                     </div>
