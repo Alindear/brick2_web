@@ -38,7 +38,7 @@
 
                             <div class="ens_name_time">
                                 <span class="ens_name">{{item.ensName}}</span>
-                                <span class="ens_time" v-if="enableSet">set</span>
+                              <el-button  v-if="enableSet" onclick="setDefaultNode(item.ensName)">set</el-button>
                                 <span class="ens_time">
                                     <!-- 过期 -->
                                     {{i18n.expiration}}
@@ -82,26 +82,6 @@ export default {
 			bodyHeight: '',
       enableSet : false,
 			myEnsNameList: [
-				// {
-				// 	ensName: 'benxiong.brick',
-				// 	endTime: '2023.05.05',
-				// },
-				// {
-				// 	ensName: 'benxiong.brick',
-				// 	endTime: '2023.05.05',
-				// },
-				// {
-				// 	ensName: 'benxiong.brick',
-				// 	endTime: '2023.05.05',
-				// },
-				// {
-				// 	ensName: 'benxiong.brick',
-				// 	endTime: '2023.05.05',
-				// },
-				// {
-				// 	ensName: 'benxiong.brick',
-				// 	endTime: '2023.05.05',
-				// },
 			],
 		};
 	},
@@ -139,6 +119,10 @@ export default {
           this.enableSet = true;
       }
 		},
+    async setDefaultNode(node) {
+		  // TODO 加上对按钮的disable，已经默认按钮default的现实
+      await setDefault(node);
+    },
 	},
 };
 </script>

@@ -2204,6 +2204,27 @@ async function checkYear(year) {
     return true;
 }
 
+export async function setDefault (name){
+    if (selectedAccount == null || selectedAccount == "") {
+        // alert("请链接钱包");
+        alert(
+            store.state.i18n[
+                store.state.language
+                ].please_connect_wallet
+        )
+        return;
+    }
+
+    var byte32Name = web3.utils.padLeft(web3.utils.utf8ToHex(name), 64);
+    brickEnsContract.methods.setDefault(byte32Name).send({ from: selectedAccount}).then(result => {
+        loadingFalse()
+        callback();
+    }).catch((err) => {
+        loadingFalse()
+        console.log(err)
+    });
+}
+
 
 export async function getAllNodes() {
     
