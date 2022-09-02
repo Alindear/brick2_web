@@ -35,8 +35,10 @@
                             :label="item.ensName"
                             :key="index"
                         >
+
                             <div class="ens_name_time">
                                 <span class="ens_name">{{item.ensName}}</span>
+                                <span class="ens_time" v-if="enableSet">set</span>
                                 <span class="ens_time">
                                     <!-- 过期 -->
                                     {{i18n.expiration}}
@@ -78,6 +80,7 @@ export default {
 			selectedAccount:
 				'',
 			bodyHeight: '',
+      enableSet : false,
 			myEnsNameList: [
 				// {
 				// 	ensName: 'benxiong.brick',
@@ -131,6 +134,10 @@ export default {
 		async getAllNodesClick() {
 			this.myEnsNameList = await getAllNodes();
 			console.log('myEnsNameList', this.myEnsNameList);
+			// TODO 增加set按钮
+      if(this.myEnsNameList.length>=2){
+          this.enableSet = true;
+      }
 		},
 	},
 };
@@ -283,7 +290,8 @@ export default {
 						height: 0.28rem;
 						color: #999999;
 						margin-top: 0.2358rem;
-					}
+            float: right;
+          }
 				}
 				.no_data_img {
 					text-align: center;
