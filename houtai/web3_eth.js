@@ -2140,8 +2140,125 @@ export async function allowance(token) {
     return await contract.methods.allowance(selectedAccount, BRICK_ENS_ADDRESS).call();
 }
 
+/**
+ * 图片路径转成canvas
+ * @param {图片url} url
+ */
+async function imgToCanvas(url) {
+    // 创建img元素
+    const img = document.createElement("img");
+    img.setAttribute("crossOrigin", "anonymous");
+    img.src = url;
+    // 防止跨域引起的 Failed to execute 'toDataURL' on 'HTMLCanvasElement': Tainted canvases may not be exported.
+    await new Promise((resolve) => (img.onload = resolve));
+
+    // 创建canvas DOM元素，并设置其宽高和图片一样
+    const canvas = document.createElement("canvas");
+
+    canvas.width = img.width;
+    canvas.height = img.height;
+    // 坐标(0,0) 表示从此处开始绘制，相当于偏移。
+    canvas.getContext("2d").drawImage(img, 0, 0);
+    return canvas;
+}
+
+/**
+ * canvas添加水印
+ * @param {canvas对象} canvas
+ * @param {水印文字} text
+ */
+function addWatermark(canvas, text) {
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "red";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = 'center';
+    ctx.font = '28px Arial';
+
+    //设置文字水印居中的：canvas.width/2
+    //不需要居中请改为自定义值
+    ctx.fillText(text,canvas.width/2, 50);
+    return canvas;
+}
+/**
+ * canvas转成img
+ * @param {canvas对象} canvas
+ */
+function convasToImg(canvas) {
+    // 新建Image对象，可以理解为DOM
+    var image = new Image();
+
+    // canvas.toDataURL 返回的是一串Base64编码的URL
+    // 指定格式 PNG
+    image.src = canvas.toDataURL("image/png");
+    return image;
+}
+function canvas2Blob(canvas) {
+    return new Promise((resolve, reject) => {
+        canvas.toBlob(blob => resolve(blob))
+    })
+}
+
+
+
 export async function isExist(searchText) {
-    
+    // todo
+    // 1. 文字添加到图片
+    const imgUrl ="houtai/img/2.jpeg";
+
+    // 1.图片路径转成canvas
+    const tempCanvas = await imgToCanvas(imgUrl);
+
+    // 2.canvas添加水印
+    const canvas = addWatermark(tempCanvas, "ganganlee@outlook.com");
+
+    // 转为blob对象
+    // const blob = canvas2Blob(canvas)
+    // // // 转为后端要的file对象
+    // const newFile = new File([blob], "ganganlee.jpeg", { type: "jpeg" })
+
+    // 3.canvas转成img
+    // const img = convasToImg(canvas);
+    // console.log('====',img)
+
+    // 查看效果
+    // document.body.appendChild(img);
+    // 2. post url
+
+    let src = canvas.toDataURL("image/png")//这里转成的是base64的地址，直接用到img标签的src是可以显示图片的
+    function dataURItoBlob(dataURI) {//图片转成Buffer
+        var byteString = atob(dataURI.split(',')[1]);
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        var ab = new ArrayBuffer(byteString.length);
+        var ia = new Uint8Array(ab);
+        for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+        return new Blob([ab], {type: mimeString});
+    }
+    var blob = dataURItoBlob(src);
+
+    // console.log(img.files);
+    // var fileObj = img.files[0];
+    // var formData = new FormData();
+    // formData.append('file', img);
+    var ajax = new XMLHttpRequest();
+    ajax.open("POST", "http://156.247.14.128/", true);
+    ajax.setRequestHeader("Access-Control-Allow-Origin", "*")
+    // ajax.send(img);
+    console.log('====--', ajax)
+    ajax.onreadystatechange = function() {
+        console.log('----',ajax.readyState)
+        if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+                console.log("上传成功");
+                console.log(ajax.responseText);
+            }
+        }
+    }
+    let formData = new FormData()
+    formData.append('file', new File([blob], "ganganlee.jpeg", { type: "jpeg" }))
+    ajax.send(formData);
+
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
