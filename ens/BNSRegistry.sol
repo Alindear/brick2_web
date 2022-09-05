@@ -242,7 +242,31 @@ abstract contract BNSBase  is ERC721Enumerable,Ownable{
  */
 contract BNSRegistry is BNSBase{
     bytes32 public template=bytes32(0x000000000000000000000000000000000000000000000000000000002e627363);
+    uint256 public superPreRegistrationTime = 0;
+    uint256 public preRegistrationTime = 0;
+    uint256 public publicRegistrationTime = 0;
 
+    mapping(address => bool) public t2;
+    mapping(address => bool) public t3;
+
+    function isT1(address _addr) public view returns (uint8) {
+        // TODO 通过是否持有三个nft的数量判断
+        return t3[_addr];
+    }
+
+    function isT2(address _addr) public view returns (bool) {
+        return t2[_addr];
+    }
+
+    function isT3(address _addr) public view returns (bool) {
+        return t3[_addr];
+    }
+
+
+    function setRegistrationTime(uint256 _preRegistrationTime, uint256 _publicRegistrationTime) public ownerOnly {
+        preRegistrationTime = _preRegistrationTime;
+        publicRegistrationTime = _publicRegistrationTime;
+    }
 
     function _setRef(address ref, address owner) internal virtual {
         referrals[owner] = ref;
@@ -284,7 +308,7 @@ contract BNSRegistry is BNSBase{
     }
 
 
-    function getNodes(address holder) external view returns (NodeInfo[] memory) {
+    function getNodes(address holder) public view returns (NodeInfo[] memory) {
         uint len = _getNodesLen(holder);
         NodeInfo[] memory nodes= new NodeInfo[](len);
         uint j=0;
@@ -297,6 +321,7 @@ contract BNSRegistry is BNSBase{
         return nodes;
     }
     function buyWithEth(bytes32 node, address owner, address holder,uint256 _years,address ref) public payable{
+        checkPreRegister(owner);
         uint256 totalPrice = _price.getBnbPrice(node) * _years;
         require(msg.value >= totalPrice ,"under price");
         _setRef(ref, owner);
@@ -305,6 +330,7 @@ contract BNSRegistry is BNSBase{
     }
 
     function buyWithUsdt(bytes32 node, address owner, address holder, uint256 _years,address ref) public payable{
+        checkPreRegister(owner);
         uint256 totalPrice = _price.getUsdtPrice(node) * _years;
         uint256 allowance =  IERC20(_usdtAddr).allowance(msg.sender, address(this));
 
@@ -313,6 +339,19 @@ contract BNSRegistry is BNSBase{
         _setRef(ref, owner);
         promotionFeeToken(msg.sender,totalPrice,_usdtAddr);
         setRecord(node,owner,holder,_years);
+    }
+
+    function checkPreRegister(address _owner) public{
+        if(block.timestamp>=publicRegistrationTime) return;
+        if(block.timestamp<publicRegistrationTime && block.timestamp>=preRegistrationTime){
+            uint8 _num = getNodes(_owner).length;
+            if( _num< isT1(_owner)) return;
+            if(isT2(_owner) && _num<1) return;
+            if(isT3(_owner) && _num<5) return;
+        }else if(block.timestamp >= superPreRegistrationTime){
+            if(isT3(_owner) && getNodes(_owner).length<5) return;
+        }
+        require(false ,"not register time");
     }
 
     function promotionFeeToken(address _owner,uint256 totalPrice,address tokenAddress) public payable{
