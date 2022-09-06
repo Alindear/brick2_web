@@ -251,12 +251,29 @@ contract BNSRegistry is BNSBase{
     address[] public t1Nfts;
 
     function isT1(address _addr) public view returns (uint256) {
-        // TODO 通过是否持有三个nft的数量判断
         uint256 _num = 0;
         for(uint i=0;i<t1Nfts.length;i++){
             _num = _num + ERC721Enumerable(t1Nfts[i]).balanceOf(_addr);
         }
         return _num;
+    }
+
+    function addT23(address[] memory _t2,address[] memory _t3) public ownerOnly {
+        for(uint i = 0; i < _t2.length; i++) {
+            t2[_t2[i]] = true;
+        }
+        for(uint i = 0; i < _t3.length; i++) {
+            t3[_t3[i]] = true;
+        }
+    }
+
+    function removeT23(address[] memory _t2,address[] memory _t3) public ownerOnly {
+        for(uint i = 0; i < _t2.length; i++) {
+            t2[_t2[i]] = false;
+        }
+        for(uint i = 0; i < _t3.length; i++) {
+            t3[_t3[i]] = false;
+        }
     }
 
     function isT2(address _addr) public view returns (bool) {
@@ -268,7 +285,8 @@ contract BNSRegistry is BNSBase{
     }
 
 
-    function setRegistrationTime(uint256 _preRegistrationTime, uint256 _publicRegistrationTime) public ownerOnly {
+    function setRegistrationTime(uint256 _superPreRegistrationTime,uint256 _preRegistrationTime, uint256 _publicRegistrationTime) public ownerOnly {
+        superPreRegistrationTime = _superPreRegistrationTime;
         preRegistrationTime = _preRegistrationTime;
         publicRegistrationTime = _publicRegistrationTime;
     }
@@ -284,6 +302,7 @@ contract BNSRegistry is BNSBase{
         whitelist[msg.sender]=true;
         whitelist[marketAddr]=true;
         _price = IPrice(address(new Price()));
+        // TODO t1Nfts add nft
     }
 
     receive() external payable {}
