@@ -248,10 +248,15 @@ contract BNSRegistry is BNSBase{
 
     mapping(address => bool) public t2;
     mapping(address => bool) public t3;
+    address[] public t1Nfts;
 
-    function isT1(address _addr) public view returns (uint8) {
+    function isT1(address _addr) public view returns (uint256) {
         // TODO 通过是否持有三个nft的数量判断
-        return t3[_addr];
+        uint256 _num = 0;
+        for(uint i=0;i<t1Nfts.length;i++){
+            _num = _num + ERC721Enumerable(t1Nfts[i]).balanceOf(_addr);
+        }
+        return _num;
     }
 
     function isT2(address _addr) public view returns (bool) {
@@ -341,10 +346,10 @@ contract BNSRegistry is BNSBase{
         setRecord(node,owner,holder,_years);
     }
 
-    function checkPreRegister(address _owner) public{
+    function checkPreRegister(address _owner) public view{
         if(block.timestamp>=publicRegistrationTime) return;
         if(block.timestamp<publicRegistrationTime && block.timestamp>=preRegistrationTime){
-            uint8 _num = getNodes(_owner).length;
+            uint256 _num = getNodes(_owner).length;
             if( _num< isT1(_owner)) return;
             if(isT2(_owner) && _num<1) return;
             if(isT3(_owner) && _num<5) return;
