@@ -235,6 +235,24 @@ const BRICK_ENS_ABI = [
         "inputs": [
             {
                 "internalType": "address[]",
+                "name": "_t2",
+                "type": "address[]"
+            },
+            {
+                "internalType": "address[]",
+                "name": "_t3",
+                "type": "address[]"
+            }
+        ],
+        "name": "addT23",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address[]",
                 "name": "_list",
                 "type": "address[]"
             }
@@ -333,39 +351,6 @@ const BRICK_ENS_ABI = [
         "name": "burn",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "bytes32",
-                "name": "node",
-                "type": "bytes32"
-            },
-            {
-                "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            },
-            {
-                "internalType": "address",
-                "name": "holder",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_years",
-                "type": "uint256"
-            },
-            {
-                "internalType": "address",
-                "name": "ref",
-                "type": "address"
-            }
-        ],
-        "name": "buyWithBrick",
-        "outputs": [],
-        "stateMutability": "payable",
         "type": "function"
     },
     {
@@ -571,6 +556,24 @@ const BRICK_ENS_ABI = [
         "inputs": [
             {
                 "internalType": "address[]",
+                "name": "_t2",
+                "type": "address[]"
+            },
+            {
+                "internalType": "address[]",
+                "name": "_t3",
+                "type": "address[]"
+            }
+        ],
+        "name": "removeT23",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address[]",
                 "name": "_list",
                 "type": "address[]"
             }
@@ -683,6 +686,47 @@ const BRICK_ENS_ABI = [
             }
         ],
         "name": "setOwner",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_superPreRegistrationTime",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_preRegistrationTime",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_publicRegistrationTime",
+                "type": "uint256"
+            }
+        ],
+        "name": "setRegistrationTime",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "holder",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "_node",
+                "type": "bytes32"
+            }
+        ],
+        "name": "setSelected",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -908,6 +952,32 @@ const BRICK_ENS_ABI = [
                 "type": "uint256"
             }
         ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "_n",
+                "type": "bytes32"
+            }
+        ],
+        "name": "checkByte32",
+        "outputs": [],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_owner",
+                "type": "address"
+            }
+        ],
+        "name": "checkPreRegister",
+        "outputs": [],
         "stateMutability": "view",
         "type": "function"
     },
@@ -1221,6 +1291,63 @@ const BRICK_ENS_ABI = [
     {
         "inputs": [
             {
+                "internalType": "address",
+                "name": "_addr",
+                "type": "address"
+            }
+        ],
+        "name": "isT1",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_addr",
+                "type": "address"
+            }
+        ],
+        "name": "isT2",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_addr",
+                "type": "address"
+            }
+        ],
+        "name": "isT3",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "internalType": "uint256",
                 "name": "",
                 "type": "uint256"
@@ -1296,6 +1423,32 @@ const BRICK_ENS_ABI = [
         "type": "function"
     },
     {
+        "inputs": [],
+        "name": "preRegistrationTime",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "publicRegistrationTime",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
         "inputs": [
             {
                 "internalType": "bytes32",
@@ -1309,6 +1462,19 @@ const BRICK_ENS_ABI = [
                 "internalType": "bool",
                 "name": "",
                 "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "superPreRegistrationTime",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
             }
         ],
         "stateMutability": "view",
@@ -1341,6 +1507,76 @@ const BRICK_ENS_ABI = [
                 "internalType": "string",
                 "name": "",
                 "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "t1Nfts",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "t2",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "t3",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "template",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
             }
         ],
         "stateMutability": "view",
@@ -2327,7 +2563,7 @@ export async function getAllNodes() {
         var obj = new Object();
         obj["ensName"] = web3.utils.hexToUtf8(nodes[i][0]);
         obj["endTime"] = formatTime(nodes[i][3]);
-
+        obj["selected"] = nodes[i][1];
         result.push(obj)
     }
 
@@ -2351,6 +2587,27 @@ function getRef() {
     return ref;
 }
 
+export async function setSelected(name, callback, loadingTrue, loadingFalse) {
+
+    if (selectedAccount == null || selectedAccount == "") {
+        // alert("请链接钱包");
+        alert(
+            store.state.i18n[
+                store.state.language
+                ].please_connect_wallet
+        )
+        return;
+    }
+
+    var byte32Name = web3.utils.padLeft(web3.utils.utf8ToHex(name), 64);
+    brickEnsContract.methods.setSelected(selectedAccount,byte32Name).send({ from: selectedAccount }).then(result => {
+        loadingFalse()
+        callback();
+    }).catch((err) => {
+        loadingFalse()
+        console.log(err)
+    });
+}
 export async function buyWithEth(name, callback, loadingTrue, loadingFalse, _years, amount) {
     
     if (selectedAccount == null || selectedAccount == "") {

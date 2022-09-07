@@ -38,7 +38,8 @@
 
                             <div class="ens_name_time">
                                 <span class="ens_name">{{item.ensName}}</span>
-                              <el-button  v-if="enableSet" onclick="setDefaultNode(item.ensName)">set</el-button>
+                              <el-button  v-if="enableSet" @click="setDefaultNode(item.ensName)">set</el-button>
+                              <span class="ens_time" v-if="item.selected">默认域名</span>
                                 <span class="ens_time">
                                     <!-- 过期 -->
                                     {{i18n.expiration}}
@@ -68,7 +69,7 @@
 </template>
 
 <script>
-import {selectedAccount, getAllNodes } from 'houtai/web3_eth.js';
+import {selectedAccount, getAllNodes, setSelected} from 'houtai/web3_eth.js';
 import nodataPng from 'img/编组 8.png';
 import teamImg1 from 'img/头像/椭圆形.png';
 export default {
@@ -121,7 +122,7 @@ export default {
 		},
     async setDefaultNode(node) {
 		  // TODO 加上对按钮的disable，已经默认按钮default的现实
-      await setDefault(node);
+      await setSelected(node);
     },
 	},
 };
