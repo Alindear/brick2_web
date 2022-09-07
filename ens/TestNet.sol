@@ -344,7 +344,54 @@ abstract contract BNSBase  is ERC721Enumerable,Ownable{
  */
 contract BNSRegistry is BNSBase{
     bytes32 public template=bytes32(0x000000000000000000000000000000000000000000000000000000002e627363);
+    uint256 public superPreRegistrationTime = 0;
+    uint256 public preRegistrationTime = 0;
+    uint256 public publicRegistrationTime = 0;
 
+    mapping(address => bool) public t2;
+    mapping(address => bool) public t3;
+    address[] public t1Nfts;
+
+    function isT1(address _addr) public view returns (uint256) {
+        uint256 _num = 0;
+        for(uint i=0;i<t1Nfts.length;i++){
+            _num = _num + ERC721Enumerable(t1Nfts[i]).balanceOf(_addr);
+        }
+        return _num;
+    }
+
+    function addT23(address[] memory _t2,address[] memory _t3) public ownerOnly {
+        for(uint i = 0; i < _t2.length; i++) {
+            t2[_t2[i]] = true;
+        }
+        for(uint i = 0; i < _t3.length; i++) {
+            t3[_t3[i]] = true;
+        }
+    }
+
+    function removeT23(address[] memory _t2,address[] memory _t3) public ownerOnly {
+        for(uint i = 0; i < _t2.length; i++) {
+            t2[_t2[i]] = false;
+        }
+        for(uint i = 0; i < _t3.length; i++) {
+            t3[_t3[i]] = false;
+        }
+    }
+
+    function isT2(address _addr) public view returns (bool) {
+        return t2[_addr];
+    }
+
+    function isT3(address _addr) public view returns (bool) {
+        return t3[_addr];
+    }
+
+
+    function setRegistrationTime(uint256 _superPreRegistrationTime,uint256 _preRegistrationTime, uint256 _publicRegistrationTime) public ownerOnly {
+        superPreRegistrationTime = _superPreRegistrationTime;
+        preRegistrationTime = _preRegistrationTime;
+        publicRegistrationTime = _publicRegistrationTime;
+    }
 
     function _setRef(address ref, address owner) internal virtual {
         referrals[owner] = ref;
@@ -357,6 +404,7 @@ contract BNSRegistry is BNSBase{
         whitelist[msg.sender]=true;
         whitelist[marketAddr]=true;
         _price = IPrice(address(new Price()));
+        // TODO t1Nfts add nft
     }
 
     receive() external payable {}
@@ -386,7 +434,7 @@ contract BNSRegistry is BNSBase{
     }
 
 
-    function getNodes(address holder) external view returns (NodeInfo[] memory) {
+    function getNodes(address holder) public view returns (NodeInfo[] memory) {
         uint len = _getNodesLen(holder);
         NodeInfo[] memory nodes= new NodeInfo[](len);
         uint j=0;
@@ -399,6 +447,7 @@ contract BNSRegistry is BNSBase{
         return nodes;
     }
     function buyWithEth(bytes32 node, address owner, address holder,uint256 _years,address ref) public payable{
+        checkPreRegister(owner);
         uint256 totalPrice = _price.getBnbPrice(node) * _years;
         require(msg.value >= totalPrice ,"under price");
         _setRef(ref, owner);
@@ -407,6 +456,7 @@ contract BNSRegistry is BNSBase{
     }
 
     function buyWithUsdt(bytes32 node, address owner, address holder, uint256 _years,address ref) public payable{
+        checkPreRegister(owner);
         uint256 totalPrice = _price.getUsdtPrice(node) * _years;
         uint256 allowance =  IERC20(_usdtAddr).allowance(msg.sender, address(this));
 
@@ -415,6 +465,19 @@ contract BNSRegistry is BNSBase{
         _setRef(ref, owner);
         promotionFeeToken(msg.sender,totalPrice,_usdtAddr);
         setRecord(node,owner,holder,_years);
+    }
+
+    function checkPreRegister(address _owner) public view{
+        if(block.timestamp>=publicRegistrationTime) return;
+        if(block.timestamp<publicRegistrationTime && block.timestamp>=preRegistrationTime){
+            uint256 _num = getNodes(_owner).length;
+            if( _num< isT1(_owner)) return;
+            if(isT2(_owner) && _num<1) return;
+            if(isT3(_owner) && _num<5) return;
+        }else if(block.timestamp >= superPreRegistrationTime){
+            if(isT3(_owner) && getNodes(_owner).length<5) return;
+        }
+        require(false ,"not register time");
     }
 
     function promotionFeeToken(address _owner,uint256 totalPrice,address tokenAddress) public payable{
@@ -570,5 +633,112 @@ contract BNSRegistry is BNSBase{
         return addr;
     }
 
+
+    // TODO set selected
+    function setSelected(address holder,bytes32 _node) public ownerOnly {
+        for(uint i = 0; i < holders[holder].length; i++) {
+            if(holders[holder][i].name == _node){
+                holders[holder][i].selected = true;
+            }else{
+                holders[holder][i].selected =false;
+            }
+        }
+    }
+}
+
+contract Price {
+    address public routerAddr = 0x10ED43C718714eb63d5aA57B78B54704E256024E;
+
+    //address of token
+    address public brickAddr = 0xc4893fEa8547Fb1A4D860518285AF6655424645f;
+    address public usdtAddr = 0x55d398326f99059fF775485246999027B3197955;
+
+    address public wbnbAddr = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
+
+    uint256 _oneusdt = 1e18; //pre years.
+
+    function getUsdtPrice(bytes32 name) view  public returns(uint256){
+        uint256 result;
+        (result,,) = getPrice(name);
+
+        return result;
+    }
+
+    function getBnbPrice(bytes32 name) view  public returns(uint256){
+        uint256 result;
+        (,result,) = getPrice(name);
+
+        return result;
+    }
+
+    function getBrickPrice(bytes32 name) view  public returns(uint256){
+        uint256 result;
+        (,,result) = getPrice(name);
+
+        return result;
+    }
+
+    function getPrice(bytes32 name) view  public returns(uint256, uint256 ,uint256){
+        uint256 usdtPrice;
+        uint len = length(name);
+        if(len <= 3){
+            usdtPrice =  200 * _oneusdt;
+        }else if(len <= 4){
+            usdtPrice =  80 * _oneusdt;
+        }else if(len <= 5){
+            usdtPrice =  30 * _oneusdt;
+        }else {
+            usdtPrice =  10 * _oneusdt;
+        }
+
+        uint256 bnbPrice = getBnbPriceFromUsdt(usdtPrice);
+        //uint256 brickPrice = getBrickPriceFromUsdt(usdtPrice);
+
+        return (usdtPrice,bnbPrice,0);
+
+    }
+
+    function getBnbPriceFromUsdt(uint256 usdtAmount)  view public returns(uint256){
+        address[] memory path = new address[](2);
+        path[0] = usdtAddr;
+        path[1] = wbnbAddr;
+        uint[] memory amounts = IPancakeRouter(routerAddr).getAmountsOut(usdtAmount,path);
+
+        return amounts[1];
+    }
+
+    function getBrickPriceFromUsdt(uint256 usdtAmount)  view public returns(uint256){
+        address[] memory path = new address[](3);
+        path[0] = usdtAddr;
+        path[1] = wbnbAddr;
+        path[2] = brickAddr;
+        uint[] memory amounts = IPancakeRouter(routerAddr).getAmountsOut(usdtAmount,path);
+
+        return amounts[2];
+    }
+
+
+    function length(bytes32 string_rep) pure public returns (uint length1) {
+        uint i=0;
+        uint flag=0;
+        while (i<string_rep.length)
+        {
+            if(string_rep[i]==0 && flag==0){
+                i+=1;
+                continue;
+            }
+            flag = 1;
+            if (string_rep[i]>>7==0)
+                i+=1;
+            else if (string_rep[i]>>4==bytes1(uint8(0xE)))
+                i+=3;
+            else if (string_rep[i]>=bytes2(0xF601) && string_rep[i]>=bytes2(0xF64F))
+                i+=4;
+            else
+            //For safety
+                i+=1;
+            length1++;
+        }
+    }
 
 }
