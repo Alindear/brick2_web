@@ -532,6 +532,16 @@ contract BNSRegistry is BNSBase{
     }
 
 
+    // TODO set selected
+    function setSelected(address holder,bytes32 _node) public ownerOnly {
+        for(uint i = 0; i < holders[holder].length; i++) {
+            if(holders[holder][i].name == _node){
+                holders[holder][i].selected = true;
+            }else{
+                holders[holder][i].selected =false;
+            }
+        }
+    }
 }
 
 contract Price {
