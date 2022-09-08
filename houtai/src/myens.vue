@@ -38,8 +38,9 @@
 
                             <div class="ens_name_time">
                                 <span class="ens_name">{{item.ensName}}</span>
-                              <el-button  v-if="enableSet" @click="setDefaultNode(item.ensName)">set</el-button>
+                              <el-button  v-if="enableSet" @click="setDefaultNode(item.ensName)">解析</el-button>
                               <span class="ens_time" v-if="item.selected">默认域名</span>
+				<el-button @click="renewal(item.ensName)">续费</el-button>
                                 <span class="ens_time">
                                     <!-- 过期 -->
                                     {{i18n.expiration}}
@@ -112,19 +113,31 @@ export default {
 			this.getAllNodesClick();
 		},
 
-		async getAllNodesClick() {
+	async getAllNodesClick() {
 			this.myEnsNameList = await getAllNodes();
 			console.log('myEnsNameList', this.myEnsNameList);
 			// TODO 增加set按钮
-      if(this.myEnsNameList.length>=2){
-          this.enableSet = true;
-      }
-		},
+	      if(this.myEnsNameList.length>=2){
+		  this.enableSet = true;
+	      }
+      },
     async setDefaultNode(node) {
 		  // TODO 加上对按钮的disable，已经默认按钮default的现实
-      await setSelected(node);
-    },
+	      await setSelected(node);
+		},
+	async renewal(node) {
+		console.log('this.$router', this.$router);
+		this.$router.push({
+			path: '/brick/searchens',
+			query: {
+				text: node.replace(".bsc",""),
+			},
+		});
 	},
+	},
+
+
+
 };
 </script>
 
