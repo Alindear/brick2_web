@@ -291,75 +291,6 @@
 
         <div class="back_right_center_img"></div>
 
-        <div class="share_module">
-            <div
-                class="title_text"
-                :style="{ 'font-family': $store.state.language === 'CN' ? 'YouSheBiaoTiYuan' : 'Futura-Bold', 'font-weight': $store.state.language === 'CN' ? '' : 'Bold'}"
-            >
-                <!-- 分享赚取收益 -->
-                {{i18n.share}}
-            </div>
-            <p :class="$store.state.language === 'CN' ? 'span_text' : 'span_text_en'">
-                <!-- 推荐好友注册域名有奖励！赶紧生成自己的专属链接吧！ -->
-                {{i18n.share_desc}}
-            </p>
-            <div class="share_img">
-                <div
-                    class="left_img"
-                    v-if="linkShowFlag"
-                    @mouseover="activeItem = 'left'"
-                    :class="{'actived': activeItem === 'left', 'unactived':activeItem === 'right'}"
-                >
-                    <p class="on_link">{{this.refAddress}}</p>
-                </div>
-                <div
-                    class="left_img"
-                    @click="linkClick"
-                    v-if="!linkShowFlag"
-                    @mouseover="activeItem = 'left'"
-                    :class="{'actived': activeItem === 'left', 'unactived':activeItem === 'right'}"
-                >
-                    <p :class="$store.state.language === 'CN' ? 'dis_link' : 'dis_link_en'">
-                        <!-- 点击生成专属链接 -->
-                        {{i18n.click_text}}
-                    </p>
-                </div>
-                <div
-                    class="right_img"
-                    @mouseover="activeItem = 'right'"
-                    :class="{'actived': activeItem === 'right'}"
-                    @mouseleave="activeItem = 'left'"
-                >
-                    <div
-                        class="now_profit"
-                        v-if="changeStatusShowFlag"
-                    >
-                        <p class="profit_text">
-                            <!-- 当前收益 -->
-                            {{i18n.current_gains}}
-                        </p>
-                        <div class="profit_usdt">USDT</div>
-                        <div class="profit_num_usdt">{{usdtCps}}</div>
-                        <div class="profit_bnb">BNB</div>
-                        <div class="profit_num_bnb">{{bnbCps}}</div>
-                        <!-- <div class="profit_num">BRICK: {{brickCps }}</div>
-                        <div class="profit_num">USDT:{{usdtCps}}</div>
-                        <div class="profit_num">BNB:{{bnbCps}}</div> -->
-                    </div>
-                    <p
-                        class="dis_content"
-                        v-if="!changeStatusShowFlag"
-                    >
-                        <!-- 请链接钱包后查看当前收益 -->
-                        {{i18n.please_link_wallet}}
-                    </p>
-                    <el-button @click="getIncomeBtn">
-                        <!-- 提取收益 -->
-                        {{i18n.btn_gains}}
-                    </el-button>
-                </div>
-            </div>
-        </div>
 
         <div class="express_module">
             <p
@@ -477,7 +408,6 @@
                     >
                     <p class="item_title">{{item.title}}</p>
                     <div class="item_desc">
-                        <p>{{item.desc1}}</p>
                         <p>{{item.desc2}}</p>
                         <p v-if="item.desc3">{{item.desc3}}</p>
                     </div>
@@ -569,7 +499,7 @@
                     <span class="email">E-mail: admin@bnsdid.io </span>
                     <span class="bottom_img">
 
-                        <a href="https://twitter.com/bnsdomains_">
+                        <a href="https://twitter.com/bnsdid">
                             <img
                                 class="bottom_icon1"
                                 :src="twitterPng"
@@ -594,7 +524,7 @@
                     </span>
                     <span class="img_left"></span>
                     <span class="img_center">SAY HI HERE</span>
-                    <a href="https://twitter.com/bnsdomains_">
+                    <a href="https://twitter.com/bnsdid">
                         <img
                             class="img_right"
                             :src="enterIcon"
@@ -609,7 +539,7 @@
 
                     <div class="input_center">
                         <span class="img_center">SAY HI HERE</span>
-                        <a href="https://twitter.com/bnsdomains_">
+                        <a href="https://twitter.com/bnsdid">
                             <img
                                 class="img_right"
                                 :src="enterIcon"
@@ -620,7 +550,7 @@
 
                     <!-- <span class="img_left"></span> -->
                     <span class="bottom_img">
-                        <a href="https://twitter.com/bnsdomains_">
+                        <a href="https://twitter.com/bnsdid">
                             <img
                                 class="bottom_icon1"
                                 :src="twitterMBPng"
@@ -903,7 +833,7 @@ export default {
 					img: giftImg2,
 				},
 				{
-					title: '2022Q1-Q2',
+					title: '2023Q1-Q2',
 					// desc1: 'BNS代币上线',
 					// desc2: '实现90%的场景覆盖',
 					desc1: this.$store.state.i18n[
@@ -1059,7 +989,7 @@ export default {
 					img: giftImg2,
 				},
 				{
-					title: '2022Q1-Q2',
+					title: '2023Q1-Q2',
 					// desc1: 'BNS代币上线',
 					// desc2: '实现90%的场景覆盖',
 					desc1: this.$store.state.i18n[

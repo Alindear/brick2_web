@@ -18,7 +18,7 @@
                 </p>
             </div>
 					</a>
-					<a href="https://medium.com/@BNS_xxx.bsc">
+					<a href="https://medium.com/@bnsdid">
             <div class="comm_list color2">
                 <img
                     :src="icon2"
@@ -35,7 +35,7 @@
                 </p>
             </div>
 					</a>
-					<a href="https://twitter.com/bnsdomains_">
+					<a href="https://twitter.com/bnsdid">
             <div class="comm_list color3">
                 <img
                     :src="icon3"
@@ -60,7 +60,7 @@
                     class="image_icon"
                 >
                 <p>
-                    <span> TELEGRAM PERSONAL </span>
+                    <span> TELEGRAM GROUP </span>
                     <img
                         :src="enterPng"
                         alt=""
