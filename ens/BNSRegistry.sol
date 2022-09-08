@@ -427,11 +427,19 @@ contract BNSRegistry is BNSBase{
         return (refFatherFee[_addr],0,refFatherFeeUsdt[_addr]);
     }
 
+    function setHolderNodeExpiredTime(bytes32 node, address owner,uint256 expired_time) internal{
+        for(uint i=0;i<holders[owner].length;i++){
+            if(holders[owner][i].name==node){
+                holders[owner][i].expired_time = expired_time;
+            }
+        }
+    }
     function setRecord(bytes32 node, address owner, address holder ,uint256 _years) internal  {
         checkByte32(node);
         if(recordExists(node)){
             require(records[node].owner==msg.sender, 'domain name already exists');
             records[node].info.expired_time =  records[node].info.expired_time + _years * secondsOfYears;
+            setHolderNodeExpiredTime(node,owner,records[node].info.expired_time);
             emit Deposit(holder,node,records[node].info.expired_time);
         }else{
             _setOwner(node, owner);
@@ -472,6 +480,7 @@ contract BNSRegistry is BNSBase{
         checkByte32(node);
         if(recordExists(node)){
             records[node].info.expired_time =  block.timestamp + _years * secondsOfYears;
+            setHolderNodeExpiredTime(node,owner,records[node].info.expired_time);
             if(records[node].holder==holder){
                 return;
             }
