@@ -291,7 +291,6 @@
 
         <div class="back_right_center_img"></div>
 
-
         <div class="express_module">
             <p
                 class="title_text"
@@ -429,29 +428,9 @@
             <div class="partner_img">
                 <div class="partner_img_div">
                     <img
-                        class="partner_img_1"
-                        :src="partnerImg1"
-                        alt=""
-                    >
-                </div>
-                <div class="partner_img_div">
-                    <img
-                        class="partner_img_2"
-                        :src="partnerImg2"
-                        alt=""
-                    >
-                </div>
-                <div class="partner_img_div">
-                    <img
-                        class="partner_img_3"
-                        :src="partnerImg3"
-                        alt=""
-                    >
-                </div>
-                <div class="partner_img_div">
-                    <img
-                        class="partner_img_4"
-                        :src="partnerImg4"
+                        v-for="(item,index) in bigScreenPartnerImgs"
+                        :key="index"
+                        :src="item.src"
                         alt=""
                     >
                 </div>
@@ -459,29 +438,9 @@
             <div class="mb_partner_img">
                 <div class="partner_img_div">
                     <img
-                        class="partner_img_1"
-                        :src="mbpartnerImg1"
-                        alt=""
-                    >
-                </div>
-                <div class="partner_img_div">
-                    <img
-                        class="partner_img_2"
-                        :src="mbpartnerImg2"
-                        alt=""
-                    >
-                </div>
-                <div class="partner_img_div">
-                    <img
-                        class="partner_img_3"
-                        :src="mbpartnerImg3"
-                        alt=""
-                    >
-                </div>
-                <div class="partner_img_div">
-                    <img
-                        class="partner_img_4"
-                        :src="mbpartnerImg4"
+                        v-for="(item,index) in smallScreenPartnerImgs"
+                        :key="index"
+                        :src="item.src"
                         alt=""
                     >
                 </div>
@@ -622,15 +581,6 @@ import img1 from 'img/首页/未标题-2.png';
 import img2 from 'img/首页/编组 20.png';
 import enterIcon from 'img/首页/编组 24@2x.png';
 import inputIcon from 'img/首页/椭圆形@2x.png';
-import partnerImg1 from 'img/首页/编组 36.png';
-import partnerImg2 from 'img/首页/编组 35.png';
-import partnerImg3 from 'img/首页/编组 34.png';
-import partnerImg4 from 'img/首页/编组 27.png';
-
-import mbpartnerImg1 from 'img/imgmb/首页/bottom1.png';
-import mbpartnerImg2 from 'img/imgmb/首页/bottom2.png';
-import mbpartnerImg3 from 'img/imgmb/首页/bottom3.png';
-import mbpartnerImg4 from 'img/imgmb/首页/bottom4.png';
 
 import twitterPng from 'img/首页/推特_twitter44@2x.png';
 import discordPng from 'img/首页/discord@2x.png';
@@ -679,6 +629,8 @@ export default {
 	components: { headEr, registered, giftTips },
 	data() {
 		return {
+			bigScreenPartnerImgs: [], //大屏合作伙伴
+			smallScreenPartnerImgs: [], //小屏幕合作伙伴
 			activeItem: 'left',
 			activeLeft: '',
 			activeRight: '',
@@ -712,14 +664,6 @@ export default {
 			img2,
 			enterIcon,
 			inputIcon,
-			partnerImg1,
-			partnerImg2,
-			partnerImg3,
-			partnerImg4,
-			mbpartnerImg1,
-			mbpartnerImg2,
-			mbpartnerImg3,
-			mbpartnerImg4,
 			twitterPng,
 			discordPng,
 			lastIconPng,
@@ -856,38 +800,6 @@ export default {
 					].gift_four_desc2,
 					img: giftImg4,
 				},
-			],
-			imgList: [
-				{ img: icon1 },
-				{ img: icon2 },
-				{ img: icon3 },
-				{ img: icon4 },
-				{ img: icon5 },
-				{ img: icon6 },
-				{ img: icon7 },
-				{ img: icon8 },
-				{ img: icon9 },
-				{ img: icon10 },
-				{ img: icon11 },
-				{ img: icon12 },
-				{ img: icon13 },
-				{ img: icon14 },
-			],
-			imgSelectList: [
-				{ img: iconSelect1 },
-				{ img: iconSelect2 },
-				{ img: iconSelect3 },
-				{ img: iconSelect4 },
-				{ img: iconSelect5 },
-				{ img: iconSelect6 },
-				{ img: iconSelect7 },
-				{ img: iconSelect8 },
-				{ img: iconSelect9 },
-				{ img: iconSelect10 },
-				{ img: iconSelect11 },
-				{ img: iconSelect12 },
-				{ img: iconSelect13 },
-				{ img: iconSelect14 },
 			],
 		};
 	},
@@ -1298,20 +1210,55 @@ export default {
 		getIncomeBtn() {
 			drawMine();
 		},
-		changeImageSrc(key, way) {
-			console.log('key, way', key, way);
-			let tempStr = way === 'hover' ? 'Select' : '';
-			for (let i = 0; i < this.imgList.length; i++) {
-				if (i === key) {
-					// this.imgList[key].img =
-					// 	this.imgSelectList[i].img;
-					this.imgList[i].img =
-						this[`icon${tempStr}${i + 1}`];
-				}
+		dealImgs(files, text, arr) {
+			for (var i = 0; i < files.keys().length; i++) {
+				arr.push({
+					src:
+						'houtai/img/合作伙伴/' +
+						text +
+						'/' +
+						files
+							.keys()
+							[i].substr(
+								2,
+								files.keys()[i]
+									.length,
+							),
+				});
 			}
+			return arr;
 		},
 	},
-	mounted() {},
+	mounted() {
+		const files = require.context(
+			'../img/合作伙伴/大屏',
+			false,
+			/.png$/,
+		);
+		const files1 = require.context(
+			'../img/合作伙伴/小屏',
+			false,
+			/.png$/,
+		);
+
+		this.bigScreenPartnerImgs = [];
+		this.smallScreenPartnerImgs = [];
+		this.bigScreenPartnerImgs = this.dealImgs(
+			files,
+			'大屏',
+			this.bigScreenPartnerImgs,
+		);
+		this.smallScreenPartnerImgs = this.dealImgs(
+			files1,
+			'小屏',
+			this.smallScreenPartnerImgs,
+		);
+		console.log('bigScreenPartnerImgs', this.bigScreenPartnerImgs);
+		console.log(
+			'smallScreenPartnerImgs',
+			this.smallScreenPartnerImgs,
+		);
+	},
 };
 </script>
 
@@ -2948,49 +2895,21 @@ export default {
 		}
 		.partner_img {
 			display: block;
-			// img {
-			// 	width: 3.88rem;
-			// 	height: 2.14rem;
-			// }
+			width: 100%;
 			.partner_img_div {
-				width: 3.88rem;
-				height: 2.14rem;
+				width: 100%;
 				float: left;
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				flex-wrap: wrap;
 				margin-bottom: 1.01rem;
-				margin-right: 0.16rem;
+				padding: 0 10%;
+				box-sizing: border-box;
+				img {
+					width: 3rem;
+				}
 			}
-			.partner_img_1 {
-				width: 2.5rem;
-				// height: 1.18rem;
-			}
-			.partner_img_2 {
-				width: 3.39rem;
-				// height: 0.9077rem;
-			}
-			.partner_img_3 {
-				// width: 0.93rem;
-				height: 1.31rem;
-			}
-			.partner_img_4 {
-				width: 2.5rem;
-				// height: 1.18rem;
-			}
-			// display: flex;
-			// flex-direction: row;
-			// justify-content: space-around;
-			// flex-wrap: wrap;
-			// width: 15.61rem;
-			// img {
-			// 	width: 1.29rem;
-			// 	height: 1.27rem;
-			// 	margin-right: 0.96rem;
-			// }
-			// img:nth-child(7n) {
-			// 	margin-right: 0;
-			// }
 		}
 		.mb_partner_img {
 			display: none;
@@ -3002,83 +2921,23 @@ export default {
 			.mb_partner_img {
 				display: block;
 				margin-bottom: 0.42rem;
-
-				// img {
-				// 	width: 3.88rem;
-				// 	height: 2.14rem;
-				// }
+				width: 100%;
 				.partner_img_div {
-					width: 1.56rem;
-					height: 1.56rem;
 					float: left;
 					display: flex;
 					justify-content: center;
 					align-items: center;
+					flex-wrap: wrap;
 					margin-bottom: 0.59rem;
-					margin-right: 0.16rem;
-				}
-				.partner_img_1 {
-					width: 100%;
-					// height: 1.18rem;
-				}
-				.partner_img_2 {
-					// width: 1.4416rem;
-					// height: 0.9077rem;
-					width: 100%;
-				}
-				.partner_img_3 {
-					// width: 0.93rem;
-					// height: 1.31rem;
-					width: 100%;
-				}
-				.partner_img_4 {
-					// width: 2.5rem;
-					// height: 1.18rem;
-					width: 100%;
+					padding: 0 10%;
+					box-sizing: border-box;
+					img {
+						width: 1.56rem;
+					}
 				}
 			}
 		}
 	}
-	// @media (max-width: 750px) {
-	// 	.partner_img {
-	// 		display: none;
-	// 	}
-	// 	.mb_partner_img {
-	// 		display: block;
-	// 		margin-bottom: 0.42rem;
-
-	// 			// img {
-	// 			// 	width: 3.88rem;
-	// 			// 	height: 2.14rem;
-	// 			// }
-	// 			.partner_img_div {
-	// 				width: 1.56rem;
-	// 				height: 1.56rem;
-	// 				float: left;
-	// 				display: flex;
-	// 				justify-content: center;
-	// 				align-items: center;
-	// 				margin-bottom: 0.59rem;
-	// 				margin-right: 0.16rem;
-	// 			}
-	// 			.partner_img_1 {
-	// 				width: 2.5rem;
-	// 				// height: 1.18rem;
-	// 			}
-	// 			.partner_img_2 {
-	// 				width: 3.39rem;
-	// 				// height: 0.9077rem;
-	// 			}
-	// 			.partner_img_3 {
-	// 				// width: 0.93rem;
-	// 				height: 1.31rem;
-	// 			}
-	// 			.partner_img_4 {
-	// 				width: 2.5rem;
-	// 				// height: 1.18rem;
-	// 			}
-	// 	}
-	// }
 
 	.contact_us_module {
 		width: 19.2rem;
