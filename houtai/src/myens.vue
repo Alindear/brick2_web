@@ -85,7 +85,10 @@ export default {
       enableSet : false,
 			myEnsNameList: [
 			],
-		};
+
+		}
+		;
+
 	},
 	mounted() {
 		this.bodyHeight =
@@ -123,7 +126,12 @@ export default {
       },
     async setDefaultNode(node) {
 		  // TODO 加上对按钮的disable，已经默认按钮default的现实
-	      await setSelected(node);
+	    let _this = this;
+	    var callback = async function() {
+		    // loading 转圈
+		    _this.myEnsNameList = await getAllNodes();
+	    };
+	      await setSelected(node,callback);
 		},
 	async renewal(node) {
 		console.log('this.$router', this.$router);

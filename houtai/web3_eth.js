@@ -3,7 +3,10 @@
 import store from './store'
 
 // Unpkg imports
-const Web3Modal = window.Web3Modal.default;
+//const Web3Modal = window.Web3Modal.default;
+import Web3Modal from "web3modal";
+
+
 const WalletConnectProvider = window.WalletConnectProvider.default;
 const Fortmatic = window.Fortmatic;
 const evmChains = window.evmChains;
@@ -2291,10 +2294,13 @@ export function init() {
             package: WalletConnectProvider,
             options: {
                 rpc: {
-                    1: "https://bsc-dataseed.binance.org/",  
-                    56: "https://bsc-dataseed.binance.org/",                  
+                    1: "https://bsc-dataseed.binance.org/",
+                    56: "https://bsc-dataseed.binance.org/",
                 },
             }
+        },
+        bitkeep: {
+            package: true
         },
 
         fortmatic: {
@@ -2587,7 +2593,7 @@ function getRef() {
     return ref;
 }
 
-export async function setSelected(name, callback, loadingTrue, loadingFalse) {
+export async function setSelected(name, callback) {
 
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
@@ -2601,10 +2607,9 @@ export async function setSelected(name, callback, loadingTrue, loadingFalse) {
 
     var byte32Name = web3.utils.padLeft(web3.utils.utf8ToHex(name), 64);
     brickEnsContract.methods.setSelected(selectedAccount,byte32Name).send({ from: selectedAccount }).then(result => {
-        loadingFalse()
         callback();
     }).catch((err) => {
-        loadingFalse()
+        alert("交易失败或取消交易")
         console.log(err)
     });
 }

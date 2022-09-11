@@ -71,6 +71,7 @@
 		"vue-server-renderer": "^2.6.8",
 		"vuex": "^3.1.0",
 		"vuex-router-sync": "^5.0.0",
+		"web3modal": "^1.9.9",
 		"websocket-stream": "^5.5.2"
 	},
 	"devDependencies": {
