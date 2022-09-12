@@ -2878,6 +2878,7 @@ export async function onConnect(vuecom) {
         provider = await web3Modal.connect();
     } catch (e) {
         console.log("Could not get a wallet connection", e);
+        alert(e);
         return false
     }
 

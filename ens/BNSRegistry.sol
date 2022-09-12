@@ -457,7 +457,7 @@ contract BNSRegistry is BNSBase{
 
             holders[holder].push(nodeInfo);
             emit Deposit(holder,node,records[node].info.expired_time);
-            mint(holder,string(abi.encodePacked(node)),node);
+            mint(holder,string(abi.encodePacked(node,'156.247.14.128:8089/','.jpeg')),node);
         }
     }
 
@@ -502,7 +502,7 @@ contract BNSRegistry is BNSBase{
             });
 
             holders[holder].push(nodeInfo);
-            mint(holder,string(abi.encodePacked(node)),node);
+            mint(holder,string(abi.encodePacked('156.247.14.128:8089/',node,'.jpeg')),node);
             _setInfo(node, nodeInfo); // TODO ???
             emit Deposit(holder,node,records[node].info.expired_time);
         }
