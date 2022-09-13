@@ -4,7 +4,8 @@ import store from './store'
 
 // Unpkg imports
 //const Web3Modal = window.Web3Modal.default;
-import Web3Modal from "web3modal";
+//import Web3Modal from "web3modal";
+import Web3Modal from 'bitkeep-web3modal'
 
 
 const WalletConnectProvider = window.WalletConnectProvider.default;
