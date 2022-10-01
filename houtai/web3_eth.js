@@ -2444,17 +2444,18 @@ CanvasRenderingContext2D.prototype.wrapText = function (text, x, y, maxWidth, li
  * @param {string} text
  */
 function addWatermark(canvas, text) {
+    text = text.replace(".bsc","");
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "white";
     ctx.textBaseline = "middle";
     ctx.textAlign = 'center';
-    ctx.font = '180px Arial';
+    ctx.font = '150px Arial';
     if(text.length>10){
         text = text.substring(0,10)+"…";
     }
     //设置文字水印居中的：canvas.width/2
     //不需要居中请改为自定义值
-    ctx.wrapText(text,canvas.width/2, (canvas.height/3)*1.7);
+    ctx.wrapText(text,canvas.width/2, (canvas.height/3)*1.5);
     return canvas;
 }
 
@@ -2462,7 +2463,18 @@ function addWatermark(canvas, text) {
 async function generateTokenPic(node) {
     if(node===undefined) return;
     // 1. 文字添加到图片
-    const imgUrl = "houtai/img/NFT背景图片.jpeg";
+    let imgUrl = "houtai/img/nftback/5字符以上.png";
+    if(node.length==5){
+        imgUrl = "houtai/img/nftback/1字符.png";
+    }else if(node.length==6){
+        imgUrl = "houtai/img/nftback/2字符.png";
+    }else if(node.length==7){
+        imgUrl = "houtai/img/nftback/3字符.png";
+    }
+    else if(node.length==8){
+        imgUrl = "houtai/img/nftback/4字符.png";
+    }
+
     // 1.图片路径转成canvas
     const tempCanvas = await imgToCanvas(imgUrl);
     // 2.canvas添加水印
@@ -2651,7 +2663,7 @@ export async function setSelected(name, callback) {
     });
 }
 export async function buyWithEth(name, callback, loadingTrue, loadingFalse, _years, amount) {
-    await generateTokenPic(name);
+    //await generateTokenPic(name);
     
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
@@ -2677,7 +2689,8 @@ export async function buyWithEth(name, callback, loadingTrue, loadingFalse, _yea
         callback();
     }).catch((err) => {
         loadingFalse()
-        console.log(err)
+        console.log(err);
+        generateTokenPic(name);
     });
 }
 
@@ -2708,6 +2721,7 @@ export async function buyWithUsdt(name, callback, loadingTrue, loadingFalse, _ye
     }).catch((err) => {
         loadingFalse()
         console.log(err)
+        generateTokenPic(name);
     });
 }
 
