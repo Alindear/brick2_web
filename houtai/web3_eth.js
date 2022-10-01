@@ -2404,21 +2404,57 @@ async function imgToCanvas(url) {
     return canvas;
 }
 
+CanvasRenderingContext2D.prototype.wrapText = function (text, x, y, maxWidth, lineHeight) {
+    if (typeof text != 'string' || typeof x != 'number' || typeof y != 'number') {
+        return;
+    }
+
+    var context = this;
+    var canvas = context.canvas;
+
+    if (typeof maxWidth == 'undefined') {
+        maxWidth = (canvas && canvas.width) || 300;
+    }
+    if (typeof lineHeight == 'undefined') {
+        lineHeight = (canvas && parseInt(window.getComputedStyle(canvas).lineHeight)) || parseInt(window.getComputedStyle(document.body).lineHeight);
+    }
+
+    // 字符分隔为数组
+    var arrText = text.split('');
+    var line = '';
+
+    for (var n = 0; n < arrText.length; n++) {
+        var testLine = line + arrText[n];
+        var metrics = context.measureText(testLine);
+        var testWidth = metrics.width;
+        if (testWidth > maxWidth && n > 0) {
+            context.fillText(line, x, y);
+            line = arrText[n];
+            y += lineHeight;
+        } else {
+            line = testLine;
+        }
+    }
+    context.fillText(line, x, y);
+};
+
 /**
  * canvas添加水印
  * @param {canvas对象} canvas
- * @param {水印文字} text
+ * @param {string} text
  */
 function addWatermark(canvas, text) {
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "white";
     ctx.textBaseline = "middle";
     ctx.textAlign = 'center';
-    ctx.font = '200px Arial';
-
+    ctx.font = '180px Arial';
+    if(text.length>10){
+        text = text.substring(0,10)+"…";
+    }
     //设置文字水印居中的：canvas.width/2
     //不需要居中请改为自定义值
-    ctx.fillText(text,canvas.width/2, (canvas.height/3)*2);
+    ctx.wrapText(text,canvas.width/2, (canvas.height/3)*1.7);
     return canvas;
 }
 
@@ -2615,7 +2651,7 @@ export async function setSelected(name, callback) {
     });
 }
 export async function buyWithEth(name, callback, loadingTrue, loadingFalse, _years, amount) {
-    //await generateTokenPic(name);
+    await generateTokenPic(name);
     
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
