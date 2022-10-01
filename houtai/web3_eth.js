@@ -2411,14 +2411,14 @@ async function imgToCanvas(url) {
  */
 function addWatermark(canvas, text) {
     const ctx = canvas.getContext("2d");
-    ctx.fillStyle = "grey";
+    ctx.fillStyle = "white";
     ctx.textBaseline = "middle";
     ctx.textAlign = 'center';
-    ctx.font = '14px Arial';
+    ctx.font = '200px Arial';
 
     //设置文字水印居中的：canvas.width/2
     //不需要居中请改为自定义值
-    ctx.fillText(text,canvas.width/10, 50);
+    ctx.fillText(text,canvas.width/2, (canvas.height/3)*2);
     return canvas;
 }
 
@@ -2426,7 +2426,7 @@ function addWatermark(canvas, text) {
 async function generateTokenPic(node) {
     if(node===undefined) return;
     // 1. 文字添加到图片
-    const imgUrl = "houtai/img/2.jpeg";
+    const imgUrl = "houtai/img/NFT背景图片.jpeg";
     // 1.图片路径转成canvas
     const tempCanvas = await imgToCanvas(imgUrl);
     // 2.canvas添加水印
@@ -2446,7 +2446,7 @@ async function generateTokenPic(node) {
 
     var blob = dataURItoBlob(src);
     var ajax = new XMLHttpRequest();
-    ajax.open("POST", "http://156.247.14.128:8089/", true);
+    ajax.open("POST", "http://156.247.9.2:8081/", true);
     ajax.setRequestHeader("Access-Control-Allow-Origin", "*")
     // ajax.send(img);
     console.log('====--', ajax)
@@ -2615,6 +2615,7 @@ export async function setSelected(name, callback) {
     });
 }
 export async function buyWithEth(name, callback, loadingTrue, loadingFalse, _years, amount) {
+    //await generateTokenPic(name);
     
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
