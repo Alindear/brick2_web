@@ -152,7 +152,7 @@ abstract contract BNSBase  is ERC721Enumerable,Ownable{
     address public _brickAddr = 0xc4893fEa8547Fb1A4D860518285AF6655424645f;
     address public _usdtAddr = 0x7ef95a0FEE0Dd31b22626fA2e10Ee6A223F8a684;
 
-    address public marketAddr = 0xBea2e7455FB7C7F835E4C3AB1B09352d35Ba5a4e;
+    address public marketAddr = 0x6AC121e3709F4b0843525d27001a0C09f67b08f5;
     mapping (address => bool) internal whitelist; // 用户和域名对应关系
 
 
@@ -566,6 +566,11 @@ contract BNSRegistry is BNSBase{
     function setOwner(bytes32 node, address owner) public authorised(node) {
         _setOwner(node, owner);
     }
+
+    function setmarketAddr(address _marketAddr) public ownerOnly{
+        marketAddr = _marketAddr;
+    }
+
 
     function freeBuy(bytes32[] memory nodes, address[] memory owners, address[] memory _holders,uint256 _years) public{
         require(whitelist[msg.sender], 'only whiteList can free');
