@@ -457,7 +457,7 @@ contract BNSRegistry is BNSBase{
 
             holders[holder].push(nodeInfo);
             emit Deposit(holder,node,records[node].info.expired_time);
-            mint(holder,string(abi.encodePacked(node,'156.247.14.128:8089/','.jpeg')),node);
+            mint(holder,string(abi.encodePacked(node,'156.247.9.2:8081/','.jpeg')),node);
         }
     }
 
