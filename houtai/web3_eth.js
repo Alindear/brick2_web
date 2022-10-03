@@ -2463,16 +2463,16 @@ function addWatermark(canvas, text) {
 async function generateTokenPic(node) {
     if(node===undefined) return;
     // 1. 文字添加到图片
-    let imgUrl = "houtai/img/nftback/5字符以上.png";
+    let imgUrl = "houtai/img/nftback/5字符以上.jpeg";
     if(node.length==5){
-        imgUrl = "houtai/img/nftback/1字符.png";
+        imgUrl = "houtai/img/nftback/1字符.jpeg";
     }else if(node.length==6){
-        imgUrl = "houtai/img/nftback/2字符.png";
+        imgUrl = "houtai/img/nftback/2字符.jpeg";
     }else if(node.length==7){
-        imgUrl = "houtai/img/nftback/3字符.png";
+        imgUrl = "houtai/img/nftback/3字符.jpeg";
     }
     else if(node.length==8){
-        imgUrl = "houtai/img/nftback/4字符.png";
+        imgUrl = "houtai/img/nftback/4字符.jpeg";
     }
 
     // 1.图片路径转成canvas
@@ -2512,7 +2512,7 @@ async function generateTokenPic(node) {
 }
 
 export async function isExist(searchText) {
-    await generateTokenPic(searchText);
+    //await generateTokenPic(searchText);
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
