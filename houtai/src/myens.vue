@@ -38,9 +38,9 @@
 
                             <div class="ens_name_time">
                                 <span class="ens_name">{{item.ensName}}</span>
-                              <el-button  v-if="enableSet" @click="setDefaultNode(item.ensName)">解析</el-button>
-                              <span class="ens_time" v-if="item.selected">默认域名</span>
-				<el-button @click="renewal(item.ensName)">续费</el-button>
+                              <el-button  v-if="enableSet" @click="setDefaultNode(item.ensName)">{{i18n.setDefault}}</el-button>
+                              <span class="ens_time" v-if="item.selected">{{i18n.defaultName}}</span>
+				<el-button @click="renewal(item.ensName)">{{i18n.xufei}}</el-button>
                                 <span class="ens_time">
                                     <!-- 过期 -->
                                     {{i18n.expiration}}

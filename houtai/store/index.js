@@ -168,7 +168,9 @@ export default new Vuex.Store({
                 participate_draw: '参与抽奖',
 
                 register_domain_names: '注册域名',
-
+                setDefault: '解析',
+                defaultName:'默认域名',
+                xufei:'续费',
             },
             EN: {
 
@@ -344,6 +346,10 @@ export default new Vuex.Store({
                 current_gains: 'Current Gains',
                 view_results: 'View results',
                 register_domain_names: 'Register Domain Names',
+
+                setDefault: 'set',
+                defaultName:'Default',
+                xufei:'Renewal',
             }
         },
         // language: 'CN',
