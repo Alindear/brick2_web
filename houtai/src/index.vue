@@ -87,6 +87,7 @@
                                 slot="suffix"
                                 placeholder=""
                                 @change="selectLanageChange"
+                                popper-append-to-body="false"
                             >
                                 <el-option
                                     v-for="item in lanageListOpts"
@@ -1269,6 +1270,10 @@ export default {
 	font-size: 0.16rem;
 	background: #ffffff;
 	position: relative;
+	// /deep/ .el-list-enter-active,
+	// /deep/ .el-list-leave-active {
+	// 	transition: none;
+	// }
 	.header_top {
 		position: relative;
 		// position: absolute;

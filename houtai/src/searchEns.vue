@@ -229,7 +229,9 @@
                                 >
                                 {{i18n.step}}
                             </p>
-                            <p class="step_title_desc">{{i18n.register_tips}}</p>
+                            <p class="step_title_desc">
+                                <!-- {{i18n.register_tips}} -->
+                            </p>
 
                             <div class="step_process">
                                 <div class="step_left_process">
@@ -367,12 +369,8 @@ export default {
 					document.documentElement.clientHeight ||
 					document.body.clientHeight;
 				this.searchText = this.$route.query.text || '';
-				console.log(
-					'this.$route.query.text',
-					this.$route.query.text,
-				);
-				console.log('this.$routet', this.$route);
-				console.log('this.searchText', this.searchText);
+				this.registBtnLoading = false;
+				this.init();
 				let flag = localStorage.getItem('STATUS')
 					? localStorage.getItem('STATUS')
 					: '';
@@ -417,6 +415,7 @@ export default {
 		async changeText(text) {
 			console.log('changeText----', text);
 			this.searchText = text;
+			this.registBtnLoading = false;
 			if (this.paymentMethod == 'BNB') {
 				this.approveBtnDisabled = true;
 				this.registBtnDisabled = false;
@@ -428,6 +427,10 @@ export default {
 				this.approveBtnLoading = false;
 				this.registBtnLoading = false;
 			}
+			console.log(
+				'registBtnLoading>>>>>>>',
+				this.registBtnLoading,
+			);
 			await getPrice(this.searchText);
 			this.price = (
 				(bnbPrice / 1e18).toFixed(5) * this.years
@@ -472,6 +475,25 @@ export default {
 				// loading 转圈
 				_this.registBtnLoading = true;
 			};
+			var _loadingUI = function () {
+				setTimeout(() => {
+					if (_this.progressLine < 60)
+						_this.progressLine = 60;
+				}, 100);
+				setTimeout(() => {
+					if (_this.progressLine < 70)
+						_this.progressLine = 70;
+				}, 200);
+				setTimeout(() => {
+					if (_this.progressLine < 80)
+						_this.progressLine = 80;
+				}, 200);
+				setTimeout(() => {
+					if (_this.progressLine < 90)
+						_this.progressLine = 90;
+				}, 300);
+			};
+
 			var _loadingFalse = function () {
 				// loading转圈停止 进入disabled
 				_this.progressLine = 100;
@@ -496,6 +518,7 @@ export default {
 					_name,
 					_cb,
 					_loadingTrue,
+					_loadingUI,
 					_loadingFalse,
 					this.years,
 					this.price * 1e18,
@@ -505,6 +528,7 @@ export default {
 					_name,
 					_cb,
 					_loadingTrue,
+					_loadingUI,
 					_loadingFalse,
 					this.years,
 					this.price * 1e18,
@@ -514,6 +538,7 @@ export default {
 					_name,
 					_cb,
 					_loadingTrue,
+					_loadingUI,
 					_loadingFalse,
 					this.years,
 					this.price * 1e18,
@@ -1458,6 +1483,9 @@ export default {
 									#edafff
 										100%
 								);
+								transition: all
+									1s
+									linear;
 							}
 						}
 					}
@@ -1639,6 +1667,9 @@ export default {
 										#edafff
 											100%
 									);
+									transition: all
+										1s
+										linear;
 								}
 							}
 						}

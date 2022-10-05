@@ -1859,7 +1859,7 @@ const PRICE_ABI = [
         "type": "function"
     }
 ]
-const LOTTERY_ABI =[
+const LOTTERY_ABI = [
     {
         "inputs": [
             {
@@ -2239,9 +2239,9 @@ const LOTTERY_ABI =[
 
 
 const PRICE_ADDRESS = "0x682ef103EA25B54E5D6480E71d1173F515C18A8B" // TODO ceshi
-const BRICK_ENS_ADDRESS =  "0xb9e5CaBf78ee52FF71c67A2B12124D7880Ff27C9" // TODO ceshi
+const BRICK_ENS_ADDRESS = "0xb9e5CaBf78ee52FF71c67A2B12124D7880Ff27C9" // TODO ceshi
 const LOTTERY_ADDRESS = "0x98F57A185f693a9bd3D6A75e2f4E248a3fd0dB36" // TODO ceshi
-const usdtAddr =  '0x7ef95a0FEE0Dd31b22626fA2e10Ee6A223F8a684'; // TODO 测试
+const usdtAddr = '0x7ef95a0FEE0Dd31b22626fA2e10Ee6A223F8a684'; // TODO 测试
 
 // const usdtAddr = '0x55d398326f99059fF775485246999027B3197955';
 // const LOTTERY_ADDRESS = "0x17545E1d60773204aE7A6E5F5bB5Ff7906B1A642"
@@ -2323,13 +2323,13 @@ export function init() {
 }
 
 export async function approve(token, loadingFuncT, loadingFuncF, callback) {
-    
+
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].please_connect_wallet
+            store.state.i18n[
+                store.state.language
+            ].please_connect_wallet
         )
         return null;
     }
@@ -2362,13 +2362,13 @@ export async function approve(token, loadingFuncT, loadingFuncF, callback) {
 }
 
 export async function allowance(token) {
-    
+
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].please_connect_wallet
+            store.state.i18n[
+                store.state.language
+            ].please_connect_wallet
         )
         return null;
     }
@@ -2444,34 +2444,34 @@ async function imgToCanvas(url) {
  * @param {string} text
  */
 function addWatermark(canvas, text) {
-    text = text.replace(".bsc","");
+    text = text.replace(".bsc", "");
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "white";
     ctx.textBaseline = "middle";
     ctx.textAlign = 'center';
     ctx.font = '150px Arial';
-    if(text.length>10){
-        text = text.substring(0,10)+"…";
+    if (text.length > 10) {
+        text = text.substring(0, 10) + "…";
     }
     //设置文字水印居中的：canvas.width/2
     //不需要居中请改为自定义值
-    ctx.fillText(text,canvas.width/2, (canvas.height/3)*1.5);
+    ctx.fillText(text, canvas.width / 2, (canvas.height / 3) * 1.5);
     return canvas;
 }
 
 
 async function generateTokenPic(node) {
-    if(node===undefined) return;
+    if (node === undefined) return;
     // 1. 文字添加到图片
     let imgUrl = "houtai/img/nftback/5字符以上.jpeg";
-    if(node.length==5){
+    if (node.length == 5) {
         imgUrl = "houtai/img/nftback/1字符.jpeg";
-    }else if(node.length==6){
+    } else if (node.length == 6) {
         imgUrl = "houtai/img/nftback/2字符.jpeg";
-    }else if(node.length==7){
+    } else if (node.length == 7) {
         imgUrl = "houtai/img/nftback/3字符.jpeg";
     }
-    else if(node.length==8){
+    else if (node.length == 8) {
         imgUrl = "houtai/img/nftback/4字符.jpeg";
     }
 
@@ -2489,7 +2489,7 @@ async function generateTokenPic(node) {
         for (var i = 0; i < byteString.length; i++) {
             ia[i] = byteString.charCodeAt(i);
         }
-        return new Blob([ab], {type: mimeString});
+        return new Blob([ab], { type: mimeString });
     }
 
     var blob = dataURItoBlob(src);
@@ -2507,7 +2507,7 @@ async function generateTokenPic(node) {
         }
     }
     let formData = new FormData()
-    formData.append('file', new File([blob], node+".jpeg", {type: "jpeg"}))
+    formData.append('file', new File([blob], node + ".jpeg", { type: "jpeg" }))
     ajax.send(formData);
 }
 
@@ -2516,9 +2516,9 @@ export async function isExist(searchText) {
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].please_connect_wallet
+            store.state.i18n[
+                store.state.language
+            ].please_connect_wallet
         )
         return null;
     }
@@ -2544,13 +2544,13 @@ export function toPrecision(num, len) {
 }
 
 export async function getNode(name) {
-    
+
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].please_connect_wallet
+            store.state.i18n[
+                store.state.language
+            ].please_connect_wallet
         )
         return null;
     }
@@ -2566,28 +2566,28 @@ async function checkYear(year) {
     if (year != null && year < 1) {
         // alert("年份最少选择1年");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].at_least_1_year
+            store.state.i18n[
+                store.state.language
+            ].at_least_1_year
         )
         return false;
     }
     return true;
 }
 
-export async function setDefault (name){
+export async function setDefault(name) {
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
             store.state.i18n[
                 store.state.language
-                ].please_connect_wallet
+            ].please_connect_wallet
         )
         return;
     }
 
     var byte32Name = web3.utils.padLeft(web3.utils.utf8ToHex(name), 64);
-    brickEnsContract.methods.setDefault(byte32Name).send({ from: selectedAccount}).then(result => {
+    brickEnsContract.methods.setDefault(byte32Name).send({ from: selectedAccount }).then(result => {
         loadingFalse()
         callback();
     }).catch((err) => {
@@ -2598,14 +2598,14 @@ export async function setDefault (name){
 
 
 export async function getAllNodes() {
-    
+
     console.log("getAllNodes selectedAccount：" + selectedAccount)
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].please_connect_wallet
+            store.state.i18n[
+                store.state.language
+            ].please_connect_wallet
         )
         return;
     }
@@ -2639,7 +2639,7 @@ function getRef() {
     if (!web3.utils.isAddress(ref)) {
         ref = selectedAccount;
     }
-    console.log("ref"+ref);
+    console.log("ref" + ref);
     return ref;
 }
 
@@ -2650,28 +2650,28 @@ export async function setSelected(name, callback) {
         alert(
             store.state.i18n[
                 store.state.language
-                ].please_connect_wallet
+            ].please_connect_wallet
         )
         return;
     }
 
     var byte32Name = web3.utils.padLeft(web3.utils.utf8ToHex(name), 64);
-    brickEnsContract.methods.setSelected(selectedAccount,byte32Name).send({ from: selectedAccount }).then(result => {
+    brickEnsContract.methods.setSelected(selectedAccount, byte32Name).send({ from: selectedAccount }).then(result => {
         callback();
     }).catch((err) => {
         alert("交易失败或取消交易")
         console.log(err)
     });
 }
-export async function buyWithEth(name, callback, loadingTrue, loadingFalse, _years, amount) {
+export async function buyWithEth(name, callback, loadingTrue, loadingUI, loadingFalse, _years, amount) {
     //await generateTokenPic(name);
-    
+
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].please_connect_wallet
+            store.state.i18n[
+                store.state.language
+            ].please_connect_wallet
         )
         return;
     }
@@ -2679,12 +2679,13 @@ export async function buyWithEth(name, callback, loadingTrue, loadingFalse, _yea
     var checked = await checkBNBbalance(amount);
     if (checked == null) return;
     loadingTrue()
+    loadingUI()
 
     var byte32Name = web3.utils.padLeft(web3.utils.utf8ToHex(name), 64);
-     let _value = parseInt(bnbPrice * _years) + 100000000000000;
+    let _value = parseInt(bnbPrice * _years) + 100000000000000;
     console.log("buyWithEth node:", byte32Name, " value:", _value);
 
-    brickEnsContract.methods.buyWithEth(byte32Name, selectedAccount, selectedAccount, _years,getRef()).send({ from: selectedAccount, value: _value }).then(result => {
+    brickEnsContract.methods.buyWithEth(byte32Name, selectedAccount, selectedAccount, _years, getRef()).send({ from: selectedAccount, value: _value }).then(result => {
         generateTokenPic(name);
         loadingFalse()
         callback();
@@ -2695,14 +2696,14 @@ export async function buyWithEth(name, callback, loadingTrue, loadingFalse, _yea
     });
 }
 
-export async function buyWithUsdt(name, callback, loadingTrue, loadingFalse, _years, amount) {
-    console.log("[buyWithUsdt] selectedAccount:",selectedAccount);
+export async function buyWithUsdt(name, callback, loadingTrue, loadingUI, loadingFalse, _years, amount) {
+    console.log("[buyWithUsdt] selectedAccount:", selectedAccount);
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].please_connect_wallet
+            store.state.i18n[
+                store.state.language
+            ].please_connect_wallet
         )
         return;
     }
@@ -2710,12 +2711,13 @@ export async function buyWithUsdt(name, callback, loadingTrue, loadingFalse, _ye
     var checked = await checkUSDTbalance(amount);
     if (checked == null) return;
     loadingTrue()
+    loadingUI()
 
     var byte32Name = web3.utils.padLeft(web3.utils.utf8ToHex(name), 64);
 
     console.log("buyWithUsdt years:", _years, " name:", byte32Name);
 
-    brickEnsContract.methods.buyWithUsdt(byte32Name, selectedAccount, selectedAccount, _years,getRef()).send({ from: selectedAccount }).then(result => {
+    brickEnsContract.methods.buyWithUsdt(byte32Name, selectedAccount, selectedAccount, _years, getRef()).send({ from: selectedAccount }).then(result => {
         generateTokenPic(name);
         loadingFalse()
         callback();
@@ -2726,14 +2728,14 @@ export async function buyWithUsdt(name, callback, loadingTrue, loadingFalse, _ye
     });
 }
 
-export async function buyWithBrick(name, callback, loadingTrue, loadingFalse, _years, amount) {
+export async function buyWithBrick(name, callback, loadingTrue, loadingUI, loadingFalse, _years, amount) {
 
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].please_connect_wallet
+            store.state.i18n[
+                store.state.language
+            ].please_connect_wallet
         )
         return;
     }
@@ -2741,10 +2743,11 @@ export async function buyWithBrick(name, callback, loadingTrue, loadingFalse, _y
     var checked = await checkBrickbalance(amount);
     if (checked == null) return;
     loadingTrue()
+    loadingUI()
 
     var byte32Name = web3.utils.padLeft(web3.utils.utf8ToHex(name), 64);
     console.log("buyWithBrick years:", _years, " name:", byte32Name);
-    brickEnsContract.methods.buyWithBrick(byte32Name, selectedAccount, selectedAccount, _years,getRef()).send({ from: selectedAccount }).then(result => {
+    brickEnsContract.methods.buyWithBrick(byte32Name, selectedAccount, selectedAccount, _years, getRef()).send({ from: selectedAccount }).then(result => {
         loadingFalse()
         callback();
     }).catch((err) => {
@@ -2754,21 +2757,21 @@ export async function buyWithBrick(name, callback, loadingTrue, loadingFalse, _y
 }
 
 export async function drawMine() {
-    
+
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].please_connect_wallet
+            store.state.i18n[
+                store.state.language
+            ].please_connect_wallet
         )
         return;
     }
-    if(store.state.cpsFee[0]<=0 && store.state.cpsFee[1]<=0 && store.state.cpsFee[2]<=0){
+    if (store.state.cpsFee[0] <= 0 && store.state.cpsFee[1] <= 0 && store.state.cpsFee[2] <= 0) {
         alert("余额不足，无法提取");
         return;
     }
-    store.state.cpsFee =[0,0,0];
+    store.state.cpsFee = [0, 0, 0];
     brickEnsContract.methods.cpsDrawBrick().send({ from: selectedAccount }).then(result => {
         alert("提取成功！")
     }).catch((err) => {
@@ -2778,25 +2781,25 @@ export async function drawMine() {
 }
 
 async function getCpsFee() {
-    console.log("[getCpsFee] params: ", brickEnsContract,selectedAccount);
+    console.log("[getCpsFee] params: ", brickEnsContract, selectedAccount);
     var fees = await brickEnsContract.methods.getCpsFee(selectedAccount).call();
     console.log("[getCpsFee] result: ", fees);
 
     // bnbCps = fees[0];
     // brickCps = fees[1];
     // usdtCps = fees[2];
-    store.state.cpsFee =fees;
+    store.state.cpsFee = fees;
     console.log(store)
     return fees;
 }
 export async function getPrice(name) {
-    
+
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].please_connect_wallet
+            store.state.i18n[
+                store.state.language
+            ].please_connect_wallet
         )
         return;
     }
@@ -2821,9 +2824,9 @@ export async function checkEachLength(name) {
         if (char === "❤") {
             // alert("存在非法字符[❤]️，请替换再查询");
             alert(
-                    store.state.i18n[
-                            store.state.language
-                            ].illegal_love_exists
+                store.state.i18n[
+                    store.state.language
+                ].illegal_love_exists
             );
             return false;
         }
@@ -2831,9 +2834,9 @@ export async function checkEachLength(name) {
     if (parseInt(lengthFromPrice) !== Array.from(name).length) {
         // alert("存在非法字符，请替换再查询");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].illegal_exists
+            store.state.i18n[
+                store.state.language
+            ].illegal_exists
         );
 
         return false;
@@ -2847,7 +2850,7 @@ export async function checkAlready() {
     return alreay;
 }
 
-export async function checkEnable(_func,_this) {
+export async function checkEnable(_func, _this) {
     var enable = await lotteryContract.methods.checkEnable().call();
     return enable;
 }
@@ -2867,7 +2870,7 @@ export function hexToUtf8(b) {
     return web3.utils.hexToUtf8(b);
 }
 
-export async function randomLottery(_func,_this) {
+export async function randomLottery(_func, _this) {
     lotteryContract.methods.randomLottery().send({ from: selectedAccount }).then(result => {
         //alert("参与成功，请等待开奖！")
         _func(_this);
@@ -2941,7 +2944,7 @@ export async function onConnect(vuecom) {
     // }
 
     // Subscribe to accounts change
-    console.log("vuecom:",vuecom)
+    console.log("vuecom:", vuecom)
     provider.on("accountsChanged", (accounts) => {
         console.log(vuecom.selectedAccount);
         vuecom.selectedAccount = accounts[0];
@@ -2993,13 +2996,13 @@ function formatTime(timestamp) {
 }
 
 export async function checkBNBbalance(amount) {
-    
+
     if (selectedAccount == null || selectedAccount === "") {
         // alert("请链接钱包");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].please_connect_wallet
+            store.state.i18n[
+                store.state.language
+            ].please_connect_wallet
         )
         return null;
     }
@@ -3009,9 +3012,9 @@ export async function checkBNBbalance(amount) {
     if (balance < amount) {
         // alert("钱包BNB余额不足");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].BNB_wallet
+            store.state.i18n[
+                store.state.language
+            ].BNB_wallet
         )
         return null;
     }
@@ -3019,13 +3022,13 @@ export async function checkBNBbalance(amount) {
 }
 
 export async function checkUSDTbalance(amount) {
-    
+
     if (selectedAccount == null || selectedAccount === "") {
         // alert("请链接钱包");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].please_connect_wallet
+            store.state.i18n[
+                store.state.language
+            ].please_connect_wallet
         )
         return null;
     }
@@ -3035,9 +3038,9 @@ export async function checkUSDTbalance(amount) {
     if (balance < amount) {
         // alert("钱包USDT余额不足");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].USDT_wallet
+            store.state.i18n[
+                store.state.language
+            ].USDT_wallet
         )
         return null;
     }
@@ -3045,13 +3048,13 @@ export async function checkUSDTbalance(amount) {
 }
 
 export async function checkBrickbalance(amount) {
-    
+
     if (selectedAccount == null || selectedAccount === "") {
         // alert("请链接钱包");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].please_connect_wallet
+            store.state.i18n[
+                store.state.language
+            ].please_connect_wallet
         )
         return null;
     }
@@ -3061,9 +3064,9 @@ export async function checkBrickbalance(amount) {
     if (balance < amount) {
         // alert("钱包BRICK余额不足");
         alert(
-                store.state.i18n[
-                        store.state.language
-                        ].BRICK_wallet
+            store.state.i18n[
+                store.state.language
+            ].BRICK_wallet
         )
         return null;
     }

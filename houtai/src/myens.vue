@@ -38,9 +38,16 @@
 
                             <div class="ens_name_time">
                                 <span class="ens_name">{{item.ensName}}</span>
-                              <el-button  v-if="enableSet" @click="setDefaultNode(item.ensName)">{{i18n.setDefault}}</el-button>
-                              <span class="ens_time" v-if="item.selected">{{i18n.defaultName}}</span>
-				<el-button @click="renewal(item.ensName)">{{i18n.xufei}}</el-button>
+                                <el-button
+                                    size="mini"
+                                    v-if="enableSet"
+                                    @click="setDefaultNode(item.ensName)"
+                                >{{i18n.setDefault}}</el-button>
+                                <span
+                                    class="ens_time"
+                                    v-if="item.selected"
+                                >{{i18n.defaultName}}</span>
+                                <el-button @click="renewal(item.ensName)">{{i18n.xufei}}</el-button>
                                 <span class="ens_time">
                                     <!-- 过期 -->
                                     {{i18n.expiration}}
@@ -70,7 +77,7 @@
 </template>
 
 <script>
-import {selectedAccount, getAllNodes, setSelected} from 'houtai/web3_eth.js';
+import { selectedAccount, getAllNodes, setSelected } from 'houtai/web3_eth.js';
 import nodataPng from 'img/编组 8.png';
 import teamImg1 from 'img/头像/椭圆形.png';
 export default {
@@ -79,23 +86,18 @@ export default {
 		return {
 			nodataPng,
 			teamImg1,
-			selectedAccount:
-				'',
+			selectedAccount: '',
 			bodyHeight: '',
-      enableSet : false,
-			myEnsNameList: [
-			],
-
-		}
-		;
-
+			enableSet: false,
+			myEnsNameList: [],
+		};
 	},
 	mounted() {
 		this.bodyHeight =
 			document.documentElement.clientHeight ||
 			document.body.clientHeight;
 		this.selectedAccount = selectedAccount;
-		console.log("my ens:",this.selectedAccount)
+		console.log('my ens:', this.selectedAccount);
 		this.searchEnsList();
 	},
 	computed: {
@@ -116,36 +118,33 @@ export default {
 			this.getAllNodesClick();
 		},
 
-	async getAllNodesClick() {
+		async getAllNodesClick() {
 			this.myEnsNameList = await getAllNodes();
 			console.log('myEnsNameList', this.myEnsNameList);
 			// TODO 增加set按钮
-	      if(this.myEnsNameList.length>=2){
-		  this.enableSet = true;
-	      }
-      },
-    async setDefaultNode(node) {
-		  // TODO 加上对按钮的disable，已经默认按钮default的现实
-	    let _this = this;
-	    var callback = async function() {
-		    // loading 转圈
-		    _this.myEnsNameList = await getAllNodes();
-	    };
-	      await setSelected(node,callback);
+			if (this.myEnsNameList.length >= 2) {
+				this.enableSet = true;
+			}
 		},
-	async renewal(node) {
-		console.log('this.$router', this.$router);
-		this.$router.push({
-			path: '/brick/searchens',
-			query: {
-				text: node.replace(".bsc",""),
-			},
-		});
+		async setDefaultNode(node) {
+			// TODO 加上对按钮的disable，已经默认按钮default的现实
+			let _this = this;
+			var callback = async function () {
+				// loading 转圈
+				_this.myEnsNameList = await getAllNodes();
+			};
+			await setSelected(node, callback);
+		},
+		async renewal(node) {
+			console.log('this.$router', this.$router);
+			this.$router.push({
+				path: '/brick/searchens',
+				query: {
+					text: node.replace('.bsc', ''),
+				},
+			});
+		},
 	},
-	},
-
-
-
 };
 </script>
 
@@ -289,6 +288,7 @@ export default {
 					font-size: 0.2rem;
 					.ens_name {
 						height: 0.28rem;
+						width: 5.5rem;
 						color: #000000;
 						margin-top: 0.2358rem;
 					}
@@ -296,8 +296,8 @@ export default {
 						height: 0.28rem;
 						color: #999999;
 						margin-top: 0.2358rem;
-            float: right;
-          }
+						float: right;
+					}
 				}
 				.no_data_img {
 					text-align: center;

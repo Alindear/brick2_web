@@ -1,14 +1,15 @@
 html body {
-	/* height: 100%; */
+    /* height: 100%; */
     width: 100%;
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
     font-size: 100px;
     height: 100%;
     /* background-color: #ffffff; */
-    background-color:#F1F1F1;
-    overflow-x:hidden
+    background-color: #F1F1F1;
+    overflow-x: hidden
 }
+
 @media only screen and (max-width: 750px) {
     html body {
         width: 100%;
@@ -32,14 +33,17 @@ html body {
     font-family: PingFangSC-Regular;
     src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/PingFangSC-Regular.ttf') format('truetype');
 }
+
 @font-face {
     font-family: Alibaba-PuHuiTi-B;
     src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-B.ttf') format('truetype');
 }
+
 @font-face {
     font-family: Alibaba-PuHuiTi-R;
     src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Alibaba-PuHuiTi-Regular.ttf') format('truetype');
 }
+
 /* @font-face {
     font-family: Alibaba-PuHuiTi-H;
     src: url('./Alibaba-PuHuiTi-H.ttf') format('truetype');
@@ -53,10 +57,12 @@ html body {
     font-family: PingFangSC-Regular;
     src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/PingFangSC-Regular.ttf') format('truetype');
 }
+
 @font-face {
     font-family: Womby-Regular;
     src: url('https://brick-static.oss-accelerate.aliyuncs.com/tmp/Womby-Regular-3.ttf') format('truetype');
 }
+
 @font-face {
     /* font-family: 'Womby'; */
     font-family: Womby-Regular;
@@ -101,10 +107,11 @@ html body {
     font-family: YouSheBiaoTiYuan;
     src: url('./优设标题圆.otf') format('truetype');
 }*/
- @font-face {
+@font-face {
     font-family: YouSheBiaoTiYuan;
     src: url("./优设标题圆.otf");
 }
+
 /* @font-face {
     font-family: GraublauWeb;
     src: url("../../assets/otf/111.otf");
@@ -125,28 +132,34 @@ html body {
 
 /*去除a标签下划线*/
 a {
-	text-decoration: none;
+    text-decoration: none;
 }
+
 /*去除未被访问的a标签的下划线*/
 a:link {
-	text-decoration: none;
+    text-decoration: none;
 }
+
 /*去除已经被访问过的a标签的下划线*/
 a:visited {
-	text-decoration: none;
+    text-decoration: none;
 }
+
 /*去除鼠标悬停时的a标签的下划线*/
 a:hover {
-	text-decoration: none;
+    text-decoration: none;
 }
+
 /*去除正在点击的a标签的下划线（鼠标按下，尚未松开）*/
 a:active {
-	text-decoration: none;
+    text-decoration: none;
 }
+
 /*去除获得焦点的a标签的下划线（被鼠标点击过）*/
 a:focus {
-	text-decoration: none;
+    text-decoration: none;
 }
+
 /* .tvps-font {
    font-family: 'DINCond';
 } */
@@ -161,35 +174,42 @@ a:focus {
 .el-popper .popper__arrow {
     border-width: 0;
 }
-.el-popper .popper__arrow::after{
+
+.el-popper .popper__arrow::after {
     border-width: 0px;
 }
-.el-select-dropdown__wrap{
+
+.el-select-dropdown__wrap {
     /* height: 1.36rem;
     min-height: 1.36rem; */
 }
-.el-scrollbar{
+
+.el-scrollbar {
     /* height: 1.36rem;
     min-height: 1.36rem; */
 }
-.el-select-dropdown__list{
+
+.el-select-dropdown__list {
     /* height: 1.36rem;
     min-height: 1.36rem; */
-    padding:0;
+    padding: 0;
 }
-.el-select-dropdown__item{
+
+.el-select-dropdown__item {
     height: 0.675rem;
     line-height: 0.675rem;
     border-bottom: 0.01rem solid #eeeeee;
     padding: 0 0.2rem;
 }
-.el-select-dropdown__item{
+
+.el-select-dropdown__item {
     /* height: 0.675rem;
     line-height: 0.675rem; */
     /* border-bottom: none; */
 }
+
 .el-select-dropdown__item:last-child {
-  /* border-bottom: 1px solid #EEEEEE;*/
+    /* border-bottom: 1px solid #EEEEEE;*/
     border-bottom: none;
 }
 
@@ -210,15 +230,17 @@ a:focus {
  */
 
 .el-breadcrumb {
-	padding: 0 0 0.020rem 0;
+    padding: 0 0 0.020rem 0;
 }
 
-.el-radio, .el-radio__input{
+.el-radio,
+.el-radio__input {
     line-height: normal;
 }
+
 .el-radio__inner {
-	/* border: 0.01rem solid #a63928 !important; */
-	border: 0.01rem solid ;
+    /* border: 0.01rem solid #a63928 !important; */
+    border: 0.01rem solid;
     /* background-image: linear-gradient(
 					-60deg,
 					#6af0e9 0%,
@@ -233,7 +255,7 @@ a:focus {
                 #ffffff
             ),
         linear-gradient(90deg, #e5b3fd, #7de7ec); */
-        /* background-image: url('houtai/img/首页/编组 12@3x.png');
+    /* background-image: url('houtai/img/首页/编组 12@3x.png');
         background-size: 100% 100%;
         border: none; */
 }
@@ -245,7 +267,7 @@ a:focus {
     font-weight: 600;
     color: #999999;
     font-size: 0.32rem; */
-    font-family:PingFangSC-Regular;
+    font-family: PingFangSC-Regular;
     width: 1.30rem;
     height: 0.28rem;
     font-family: PingFangSC-Semibold;
@@ -263,26 +285,31 @@ a:focus {
     background: inherit;
 }
 
-.el-radio__input.is-checked + .el-radio__label {
+.el-radio__input.is-checked+.el-radio__label {
     color: #999999 !important;
 }
-.el-radio__inner::after{
+
+.is-checked .el-radio__inner::after {
     width: 0.2rem;
     height: 0.2rem;
     background-image: url('houtai/img/首页/编组 12@3x.png');
     background-size: 100% 100%;
     border: none;
 }
-.el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
+
+.el-select-dropdown__item.hover,
+.el-select-dropdown__item:hover {
     background-color: inherit;
 }
+
 .el-popper .popper__arrow {
     border-width: 1px;
 }
 
-.el-popper[x-placement^=bottom] .popper__arrow{
+.el-popper[x-placement^=bottom] .popper__arrow {
     top: 0 !important;
 }
+
 .el-select {
     -webkit-tap-highlight-color: #ffffff !important;
 }
@@ -291,16 +318,19 @@ a:focus {
     .el-select-dropdown {
         width: 2.44rem;
     }
-    .el-radio__label{
+
+    .el-radio__label {
         width: 1.68rem;
         height: 0.37rem;
         font-size: 0.26rem;
         margin-right: 0.16rem;
     }
+
     .el-input {
         display: block;
     }
-    .el-radio__inner::after{
+
+    .el-radio__inner::after {
         width: 0.32rem;
         height: 0.32rem;
         background-image: url('houtai/img/首页/编组 12@3x.png');
@@ -308,16 +338,20 @@ a:focus {
         border: none;
         margin-top: 0.02rem;
     }
-    .el-radio, .el-radio__input {
+
+    .el-radio,
+    .el-radio__input {
         line-height: normal;
         height: 0.765rem;
     }
-    .el-select-dropdown__item{
+
+    .el-select-dropdown__item {
         height: 0.765rem;
         line-height: 0.765rem;
         border-bottom: 0.01rem solid #eeeeee;
         padding: 0.2rem 0 0.2rem 0.2rem;
     }
+
     .el-radio__input.is-checked .el-radio__inner {
         /* background-color: inherit;
         border-color: inherit;
@@ -326,4 +360,3 @@ a:focus {
         background: #ffffff;
     }
 }
-
