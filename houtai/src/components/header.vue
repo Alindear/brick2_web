@@ -3,6 +3,7 @@
         <registered
             v-if="openLinkShowFlag"
             :openLinkShowFlag="openLinkShowFlag"
+	    :searchText="searchText"
         ></registered>
         <div class="header_pc">
             <img

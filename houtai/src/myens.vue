@@ -47,7 +47,7 @@
                                     class="ens_time"
                                     v-if="item.selected"
                                 >{{i18n.defaultName}}</span>
-                                <el-button @click="renewal(item.ensName)">{{i18n.xufei}}</el-button>
+                                <el-button @click="renewal(item.ensName)" v-if='enableRenewal'>{{i18n.xufei}}</el-button>
                                 <span class="ens_time">
                                     <!-- 过期 -->
                                     {{i18n.expiration}}
@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import { selectedAccount, getAllNodes, setSelected } from 'houtai/web3_eth.js';
+	import { selectedAccount, getAllNodes, setSelected, getRecord } from 'houtai/web3_eth.js';
 import nodataPng from 'img/编组 8.png';
 import teamImg1 from 'img/头像/椭圆形.png';
 export default {
@@ -89,14 +89,22 @@ export default {
 			selectedAccount: '',
 			bodyHeight: '',
 			enableSet: false,
+			enableRenewal: false,
 			myEnsNameList: [],
 		};
 	},
-	mounted() {
+	async mounted() {
 		this.bodyHeight =
 			document.documentElement.clientHeight ||
 			document.body.clientHeight;
-		this.selectedAccount = selectedAccount;
+		if (this.$route.query.text != undefined) {
+			console.log("this.$route.query.text:", this.$route.query.text);
+			let record = await getRecord(this.$route.query.text+".bsc");
+			console.log(record)
+			this.selectedAccount = record.holder;
+		}else{
+			this.selectedAccount = selectedAccount;
+		}
 		console.log('my ens:', this.selectedAccount);
 		this.searchEnsList();
 	},
@@ -119,11 +127,13 @@ export default {
 		},
 
 		async getAllNodesClick() {
-			this.myEnsNameList = await getAllNodes();
+			this.myEnsNameList = await getAllNodes(this.selectedAccount);
 			console.log('myEnsNameList', this.myEnsNameList);
-			// TODO 增加set按钮
-			if (this.myEnsNameList.length >= 2) {
-				this.enableSet = true;
+			if(selectedAccount==this.selectedAccount){
+				if (this.myEnsNameList.length >= 2) {
+					this.enableSet = true;
+				}
+				this.enableRenewal = true;
 			}
 		},
 		async setDefaultNode(node) {
@@ -131,7 +141,7 @@ export default {
 			let _this = this;
 			var callback = async function () {
 				// loading 转圈
-				_this.myEnsNameList = await getAllNodes();
+				_this.myEnsNameList = await getAllNodes(selectedAccount);
 			};
 			await setSelected(node, callback);
 		},

@@ -33,7 +33,7 @@
 
 <script>
 export default {
-	props: ['openLinkShowFlag', 'text'],
+	props: ['openLinkShowFlag', 'text','searchText'],
 	data() {
 		return {
 			dialogVisible: false,
@@ -54,10 +54,13 @@ export default {
 			this.$parent.openLinkBtn(false);
 		},
 		saveSelectBtn() {
+			console.log("saveSelectBtn",this.searchText)
 			//已存在 跳到我的域名
 			this.$router.push({
 				path: '/brick/myens',
-				
+				query: {
+					text: this.searchText,
+				},
 			});
 			this.$parent.openLinkBtn(false);
 		},

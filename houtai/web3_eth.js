@@ -2543,7 +2543,7 @@ export function toPrecision(num, len) {
     return str;
 }
 
-export async function getNode(name) {
+export async function getRecord(name) {
 
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
@@ -2597,9 +2597,9 @@ export async function setDefault(name) {
 }
 
 
-export async function getAllNodes() {
+export async function getAllNodes(_selectedAccount) {
 
-    console.log("getAllNodes selectedAccount：" + selectedAccount)
+    console.log("getAllNodes selectedAccount：" + _selectedAccount)
     if (selectedAccount == null || selectedAccount == "") {
         // alert("请链接钱包");
         alert(
@@ -2610,7 +2610,7 @@ export async function getAllNodes() {
         return;
     }
 
-    let nodes = await brickEnsContract.methods.getNodes(selectedAccount).call()
+    let nodes = await brickEnsContract.methods.getNodes(_selectedAccount).call()
 
     var result = new Array();
     for (let i in nodes) {

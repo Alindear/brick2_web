@@ -17,6 +17,7 @@
         <registered
             v-if="openLinkShowFlag"
             :openLinkShowFlag="openLinkShowFlag"
+	    :searchText="searchText"
         ></registered>
         <div class="header_top">
             <head-er
