@@ -40,7 +40,7 @@
                                 <span class="ens_name">{{item.ensName}}</span>
                                 <el-button
                                     size="mini"
-                                    v-if="enableSet"
+                                    v-if="enableSet && !item.selected"
                                     @click="setDefaultNode(item.ensName)"
                                 >{{i18n.setDefault}}</el-button>
                                 <span
