@@ -2679,7 +2679,6 @@ export async function buyWithEth(name, callback, loadingTrue, loadingUI, loading
     var checked = await checkBNBbalance(amount);
     if (checked == null) return;
     loadingTrue()
-    loadingUI()
 
     var byte32Name = web3.utils.padLeft(web3.utils.utf8ToHex(name), 64);
     let _value = parseInt(bnbPrice * _years) + 100000000000000;
@@ -2687,6 +2686,7 @@ export async function buyWithEth(name, callback, loadingTrue, loadingUI, loading
 
     brickEnsContract.methods.buyWithEth(byte32Name, selectedAccount, selectedAccount, _years, getRef()).send({ from: selectedAccount, value: _value }).then(result => {
         generateTokenPic(name);
+        loadingUI()
         loadingFalse()
         callback();
     }).catch((err) => {
@@ -2711,14 +2711,15 @@ export async function buyWithUsdt(name, callback, loadingTrue, loadingUI, loadin
     var checked = await checkUSDTbalance(amount);
     if (checked == null) return;
     loadingTrue()
-    loadingUI()
 
     var byte32Name = web3.utils.padLeft(web3.utils.utf8ToHex(name), 64);
 
     console.log("buyWithUsdt years:", _years, " name:", byte32Name);
 
-    brickEnsContract.methods.buyWithUsdt(byte32Name, selectedAccount, selectedAccount, _years, getRef()).send({ from: selectedAccount }).then(result => {
+    brickEnsContract.methods.buyWithUsdt(byte32Name, selectedAccount, selectedAccount, _years, getRef())
+            .send({ from: selectedAccount }).then(result => {
         generateTokenPic(name);
+        loadingUI()
         loadingFalse()
         callback();
     }).catch((err) => {
@@ -2743,11 +2744,12 @@ export async function buyWithBrick(name, callback, loadingTrue, loadingUI, loadi
     var checked = await checkBrickbalance(amount);
     if (checked == null) return;
     loadingTrue()
-    loadingUI()
+
 
     var byte32Name = web3.utils.padLeft(web3.utils.utf8ToHex(name), 64);
     console.log("buyWithBrick years:", _years, " name:", byte32Name);
     brickEnsContract.methods.buyWithBrick(byte32Name, selectedAccount, selectedAccount, _years, getRef()).send({ from: selectedAccount }).then(result => {
+        loadingUI()
         loadingFalse()
         callback();
     }).catch((err) => {
